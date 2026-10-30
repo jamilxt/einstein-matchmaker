@@ -7,7 +7,8 @@
 		"start": "tsx src/run.ts",
 		"typecheck": "tsc --noEmit",
 		"check:data": "tsx src/check-data.ts",
-		"start:nocritic": "tsx src/run.ts --no-critic"
+		"start:nocritic": "tsx src/run.ts --no-critic",
+		"eval:critic": "tsx src/eval-critic.ts"
 	},
 	"dependencies": {
 		"@mozaik-ai/core": "4.2.0",

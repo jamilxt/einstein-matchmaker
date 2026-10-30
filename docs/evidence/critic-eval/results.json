@@ -1,0 +1,694 @@
+{
+  "summary": {
+    "mode": "live (OpenAI Decisions API, gpt-6-luna)",
+    "source": "docs/evidence/run-03-live/proposals.md",
+    "supportThreshold": 0.5,
+    "plantedErrors": {
+      "caught": 18,
+      "total": 18,
+      "byKind": {
+        "invented_id": {
+          "caught": 3,
+          "total": 3
+        },
+        "foreign_record": {
+          "caught": 3,
+          "total": 3
+        },
+        "off_topic_expertise": {
+          "caught": 3,
+          "total": 3
+        },
+        "fabricated_company_fact": {
+          "caught": 3,
+          "total": 3
+        },
+        "inflated_researcher_fact": {
+          "caught": 3,
+          "total": 3
+        },
+        "changed_number": {
+          "caught": 3,
+          "total": 3
+        }
+      }
+    },
+    "trueClaims": {
+      "wronglyBlocked": 0,
+      "total": 35
+    },
+    "wallClockMs": 783,
+    "spendUsd": 0.00385
+  },
+  "rows": [
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "ArmaturaSec d.o.o. is a 67-person cybersecurity company based in Zrenjanin, founded in 2008.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "ArmaturaSec builds OT-focused network security hardware and products including ProtoSense, NetGuard-OT, and NetGuard-OT Mini.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "ArmaturaSec’s challenge is to detect unusual behaviour on Modbus and BACnet networks without labelled attack data, using site-specific normal traffic and on-device inference.",
+      "evidence": [
+        "C001-CH1"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "ArmaturaSec has collected several terabytes of normal traffic captures from consenting clients over the past three years.",
+      "evidence": [
+        "C001-CH1"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "ArmaturaSec can dedicate one to two engineers part-time to a collaborative project and provide traffic archives, a hardware bench, and firmware code under NDA.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "Radovan Čičić is ArmaturaSec’s head of engineering.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "Krisztina Kiss is a Full Professor in the Faculty of Technical Sciences, Department of Computing and Control Engineering.",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "Krisztina Kiss’s expertise includes industrial cybersecurity, network traffic analysis, machine learning and statistical modelling, industrial control systems, anomaly detection, one-class classification, SCADA security, statistical baseline modelling, Modbus, DNP3, unsupervised learning, network intrusion detection, and protocol traffic analysis.",
+      "evidence": [
+        "R1008",
+        "SYN-PUB-10472",
+        "SYN-PUB-10473",
+        "SYN-PUB-00492",
+        "SYN-PUB-00722",
+        "SYN-PRJ-0511",
+        "SYN-PUB-10474",
+        "SYN-PUB-10478",
+        "SYN-PUB-10479",
+        "SYN-PUB-10477",
+        "SYN-PUB-10475",
+        "SYN-PUB-10480"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "Krisztina Kiss’s group has an ICS testbed with Siemens-compatible PLCs, Modbus/TCP and DNP3 traffic generators, and packet capture infrastructure.",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "true_claim",
+      "claim": "Krisztina Kiss has collaborated with a regional energy distributor and a water utility on funded projects and consulted for a mid-size automation integrator on SCADA anomaly detection requirements.",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "invented_id",
+      "note": "true statement, citation to a paper that does not exist",
+      "claim": "Krisztina Kiss’s expertise includes industrial cybersecurity, network traffic analysis, machine learning and statistical modelling, industrial control systems, anomaly detection, one-class classification, SCADA security, statistical baseline modelling, Modbus, DNP3, unsupervised learning, network intrusion detection, and protocol traffic analysis.",
+      "evidence": [
+        "SYN-PUB-99902"
+      ],
+      "deterministic": [
+        "SYN-PUB-99902 does not exist in the dataset"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "foreign_record",
+      "note": "true statement, citation to SYN-PUB-00001 by someone else",
+      "claim": "Krisztina Kiss’s expertise includes industrial cybersecurity, network traffic analysis, machine learning and statistical modelling, industrial control systems, anomaly detection, one-class classification, SCADA security, statistical baseline modelling, Modbus, DNP3, unsupervised learning, network intrusion detection, and protocol traffic analysis.",
+      "evidence": [
+        "SYN-PUB-00001"
+      ],
+      "deterministic": [
+        "SYN-PUB-00001 belongs to neither R1008 nor C001"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "off_topic_expertise",
+      "note": "expertise from another faculty (Formal Methods and Program Verification) cited to the researcher's own real papers",
+      "claim": "Krisztina Kiss has published extensively on formal methods and program verification.",
+      "evidence": [
+        "SYN-PUB-10472",
+        "SYN-PUB-10473"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "fabricated_company_fact",
+      "note": "invented company capability, cited to the real company record",
+      "claim": "ArmaturaSec d.o.o. already runs a 25-person in-house machine-learning research team.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "inflated_researcher_fact",
+      "note": "invented track record, cited to the real researcher record",
+      "claim": "Krisztina Kiss has supervised ten industrial PhD theses with ArmaturaSec d.o.o..",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 0.02,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "kind": "changed_number",
+      "note": "number altered: \"ArmaturaSec d.o.o. is a 67-person cybersecurity company base...\"",
+      "claim": "ArmaturaSec d.o.o. is a 201-person cybersecurity company based in Zrenjanin, founded in 2008.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Veljko Savić is an Associate Professor in the Faculty of Technical Sciences, Department of Production Engineering.",
+      "evidence": [
+        "R0135"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Veljko Savić works in Production and Industrial Engineering, Maintenance Engineering and Reliability, Biomass Processing Technology, and Applied Statistics and Stochastic Modelling.",
+      "evidence": [
+        "R0135"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "His expertise includes condition-based and predictive maintenance for biomass densification equipment, reliability and failure modelling of pellet mills and briquetting presses, wear and degradation analysis, condition monitoring, and stochastic/statistical modelling for maintenance decision support.",
+      "evidence": [
+        "SYN-PUB-01786",
+        "SYN-PUB-01791",
+        "SYN-PUB-01792",
+        "SYN-PUB-01794",
+        "SYN-PUB-01795",
+        "SYN-PRJ-0333",
+        "SYN-PRJ-0334",
+        "SYN-PUB-01784",
+        "SYN-PUB-01787",
+        "SYN-PUB-01788",
+        "SYN-PUB-01790",
+        "SYN-PUB-01785",
+        "SYN-PUB-01789",
+        "SYN-PUB-01793"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Suncokret Eko d.o.o. is a cleantech company focused on biomass and organic waste valorisation.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Suncokret Eko d.o.o. has 31 employees and was founded in 2017.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Suncokret Eko d.o.o. is based in Novi Sad.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Suncokret Eko d.o.o. produces wood-free biomass pellets from sunflower husks and maize cobs, agricultural biochar, custom pelletising services, bulk biochar supply, and carbon-removal documentation support.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Suncokret Eko d.o.o. operates rotary drum drying, hammer-mill size reduction, flat-die and ring-die pellet presses, a slow-pyrolysis reactor, in-line NIR moisture sensing, and ISO 17225 pellet quality testing.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "Suncokret Eko d.o.o. has two technically trained staff for controlled production trials and detailed logs, but no dedicated research personnel or laboratory equipment beyond basic moisture and proximate-analysis tools.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "The company’s challenge is that the pellet press breaks down about once a month because sunflower husk feedstock has inconsistent moisture and particle size; each incident costs about 15,000 EUR.",
+      "evidence": [
+        "C007-CH3"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "The company’s current intake situation includes moisture from 8% to 22%, particle size from fine powder to chunks above 15 mm, clogs above 14% moisture, unreliable NIR below 10% and above 18%, and no automated particle-size check.",
+      "evidence": [
+        "C007-CH3"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "true_claim",
+      "claim": "The company is considering a secondary hammer mill and a conditioning mixer but has not confirmed whether these would stabilize output enough to prevent failures.",
+      "evidence": [
+        "C007-CH3"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "invented_id",
+      "note": "true statement, citation to a paper that does not exist",
+      "claim": "His expertise includes condition-based and predictive maintenance for biomass densification equipment, reliability and failure modelling of pellet mills and briquetting presses, wear and degradation analysis, condition monitoring, and stochastic/statistical modelling for maintenance decision support.",
+      "evidence": [
+        "SYN-PUB-99900"
+      ],
+      "deterministic": [
+        "SYN-PUB-99900 does not exist in the dataset"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "foreign_record",
+      "note": "true statement, citation to SYN-PUB-00001 by someone else",
+      "claim": "His expertise includes condition-based and predictive maintenance for biomass densification equipment, reliability and failure modelling of pellet mills and briquetting presses, wear and degradation analysis, condition monitoring, and stochastic/statistical modelling for maintenance decision support.",
+      "evidence": [
+        "SYN-PUB-00001"
+      ],
+      "deterministic": [
+        "SYN-PUB-00001 belongs to neither R0135 nor C007"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "off_topic_expertise",
+      "note": "expertise from another faculty (Formal Methods and Program Verification) cited to the researcher's own real papers",
+      "claim": "Veljko Savić has published extensively on formal methods and program verification.",
+      "evidence": [
+        "SYN-PUB-01784",
+        "SYN-PUB-01785"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "fabricated_company_fact",
+      "note": "invented company capability, cited to the real company record",
+      "claim": "Suncokret Eko d.o.o. already runs a 25-person in-house machine-learning research team.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "inflated_researcher_fact",
+      "note": "invented track record, cited to the real researcher record",
+      "claim": "Veljko Savić has supervised ten industrial PhD theses with Suncokret Eko d.o.o..",
+      "evidence": [
+        "R0135"
+      ],
+      "support": 0.01,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "kind": "changed_number",
+      "note": "number altered: \"Suncokret Eko d.o.o. has 31 employees and was founded in 201...\"",
+      "claim": "Suncokret Eko d.o.o. has 93 employees and was founded in 2017.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "Goran Radulović is an Associate Professor in the Faculty of Technology, Department of Applied and Engineering Chemistry.",
+      "evidence": [
+        "R0679"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "Radulović’s expertise includes analytical chemistry, environmental chemistry, water quality monitoring, field analysis, and portable instrumentation.",
+      "evidence": [
+        "R0679"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "His research profile includes portable photometric methods for groundwater and water-quality monitoring.",
+      "evidence": [
+        "SYN-PUB-07643",
+        "SYN-PUB-07644",
+        "SYN-PUB-07649",
+        "SYN-PRJ-0338"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "His research profile includes matrix interference correction in colorimetric field analysis.",
+      "evidence": [
+        "SYN-PUB-07641",
+        "SYN-PUB-07642",
+        "SYN-PUB-07645",
+        "SYN-PUB-04737",
+        "SYN-PUB-07647",
+        "SYN-PUB-01375",
+        "SYN-PRJ-0337"
+      ],
+      "support": 0.99,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "His research profile includes iron determination and iron speciation in alkaline groundwater.",
+      "evidence": [
+        "SYN-PUB-07641",
+        "SYN-PUB-04737",
+        "SYN-PUB-01375",
+        "SYN-PUB-07650"
+      ],
+      "support": 0.96,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "His research profile includes phosphate analysis and interference from hardness and dissolved organic matter.",
+      "evidence": [
+        "SYN-PUB-07642",
+        "SYN-PUB-07648",
+        "SYN-PUB-04737",
+        "SYN-PUB-07647"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "Kristal Voda is a water quality testing and on-site treatment equipment company in Zrenjanin.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "Kristal Voda has 9 employees and was founded in 2011.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "Kristal Voda supplies and maintains water softeners, UV disinfection units, and portable water-quality testing kits for food industry clients across central and southern Vojvodina.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "Kristal Voda’s portable turbidity and nitrate kits were specified for water up to about 300 mg/L CaCO₃ hardness.",
+      "evidence": [
+        "C015-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "The challenge samples can exceed 450 mg/L CaCO₃ and sometimes reach 550 mg/L CaCO₃ hardness.",
+      "evidence": [
+        "C015-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "In those samples, turbidity reads 20 to 30 percent higher than the reference lab and nitrate can read low by a similar margin.",
+      "evidence": [
+        "C015-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "true_claim",
+      "claim": "The company wants a fast, on-site, handheld solution and cannot budget reference-lab testing for every field sample.",
+      "evidence": [
+        "C015-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "invented_id",
+      "note": "true statement, citation to a paper that does not exist",
+      "claim": "His research profile includes portable photometric methods for groundwater and water-quality monitoring.",
+      "evidence": [
+        "SYN-PUB-99901"
+      ],
+      "deterministic": [
+        "SYN-PUB-99901 does not exist in the dataset"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "foreign_record",
+      "note": "true statement, citation to SYN-PUB-00001 by someone else",
+      "claim": "His research profile includes portable photometric methods for groundwater and water-quality monitoring.",
+      "evidence": [
+        "SYN-PUB-00001"
+      ],
+      "deterministic": [
+        "SYN-PUB-00001 belongs to neither R0679 nor C015"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "off_topic_expertise",
+      "note": "expertise from another faculty (Formal Methods and Program Verification) cited to the researcher's own real papers",
+      "claim": "Goran Radulović has published extensively on formal methods and program verification.",
+      "evidence": [
+        "SYN-PUB-07641",
+        "SYN-PUB-07642"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "fabricated_company_fact",
+      "note": "invented company capability, cited to the real company record",
+      "claim": "Kristal Voda preduzetnik already runs a 25-person in-house machine-learning research team.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "inflated_researcher_fact",
+      "note": "invented track record, cited to the real researcher record",
+      "claim": "Goran Radulović has supervised ten industrial PhD theses with Kristal Voda preduzetnik.",
+      "evidence": [
+        "R0679"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "kind": "changed_number",
+      "note": "number altered: \"Kristal Voda has 9 employees and was founded in 2011....\"",
+      "claim": "Kristal Voda has 9 employees and was founded in 2002.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    }
+  ]
+}

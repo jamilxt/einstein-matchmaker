@@ -36,7 +36,8 @@ import {
 	type Screened,
 	type Selection,
 } from "./runtime"
-import { checkCitations, type Claim } from "./verify/citations"
+import { type Claim } from "./verify/citations"
+import { checkClaims } from "./verify/critic-check"
 
 // ---------- small helpers ----------
 
@@ -418,30 +419,7 @@ export function buildTeam(tracePath: string): Team {
 		emit("critic.review.started", critic.getId(), { key, attempt, claims: proposal.claims?.length ?? 0 })
 		const pair = { researcherId: sel.researcherId, companyId: sel.companyId }
 		const claims: Claim[] = proposal.claims ?? []
-		const issues = checkCitations(s.ds, pair, claims)
-		const checks: ClaimCheck[] = claims.map((c, i) => ({
-			claim: c.text,
-			evidence: c.evidence,
-			deterministic: issues.filter((x) => x.claimIndex === i).map((x) => x.message),
-			supported: false,
-		}))
-		// Semantic check only for claims whose ids are all real and owned: does the cited record say this?
-		const toAsk = checks.map((c, i) => ({ c, i })).filter(({ c }) => c.deterministic.length === 0)
-		if (toAsk.length) {
-			const blocks = toAsk.map(({ c, i }) => `### claim${i}\n${c.evidence.map((id) => s.ds.evidenceText(id)?.slice(0, 4000)).join("\n")}`)
-			const questions = toAsk.map(({ c, i }) => ({
-				type: "predicate" as const,
-				name: `claim${i}`,
-				instructions: `Using only the evidence in [[claim${i}]], is this statement supported: "${c.claim}"`,
-			}))
-			const answers = await decider.decide(blocks.join("\n\n"), questions)
-			for (const a of answers) {
-				if (a.type !== "predicate") continue
-				const idx = Number(a.name.replace("claim", ""))
-				checks[idx].support = a.probability
-				checks[idx].supported = a.probability >= TUNING.supportThreshold
-			}
-		}
+		const checks: ClaimCheck[] = await checkClaims(s.ds, pair, claims)
 		const failed = checks.filter((c) => !c.supported)
 		const rec = s.proposals.get(key) ?? { key, attempts: [] }
 		s.proposals.set(key, rec)
