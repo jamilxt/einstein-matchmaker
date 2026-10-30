@@ -3,7 +3,7 @@
 import "dotenv/config"
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join as joinPath } from "node:path"
-import { BUDGET_USD, CRITIC_ENFORCES, LIVE, MODELS, TUNING } from "./config"
+import { BUDGET_USD, CRITIC_ENFORCES, LIVE, MODELS, PROPOSAL_LANG, TUNING } from "./config"
 import { Dataset } from "./data/dataset"
 import { ResearcherIndex, shortlistPairs } from "./data/shortlist"
 import { buildTeam } from "./agents"
@@ -21,7 +21,7 @@ async function main() {
 	mkdirSync(runDir, { recursive: true })
 	const tracePath = joinPath(runDir, "trace.jsonl")
 
-	console.log(`mode: ${LIVE ? "LIVE (real OpenAI APIs)" : "STUB (offline, no key, no cost)"} | critic ${CRITIC_ENFORCES ? "enforcing" : "OFF (ablation)"} | budget $${BUDGET_USD}`)
+	console.log(`mode: ${LIVE ? "LIVE (real OpenAI APIs)" : "STUB (offline, no key, no cost)"} | critic ${CRITIC_ENFORCES ? "enforcing" : "OFF (ablation)"} | budget $${BUDGET_USD} | proposals in ${PROPOSAL_LANG === "sr" ? "Serbian" : "English"}`)
 	st.ds = Dataset.load()
 	if (st.reverse) {
 		// Reverse search: the company's own words become a citable record (Q001 / Q001-CH1).

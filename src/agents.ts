@@ -21,7 +21,7 @@ import {
 	type Tool,
 } from "@mozaik-ai/core"
 import { appendFileSync } from "node:fs"
-import { CRITIC_ENFORCES, MODELS, TUNING } from "./config"
+import { CRITIC_ENFORCES, LANG_RULE, MODELS, TUNING } from "./config"
 import { tokenize } from "./data/shortlist"
 import { decider } from "./decisions"
 import { runJob } from "./jobs"
@@ -402,6 +402,7 @@ export function buildTeam(tracePath: string): Team {
 					"Be as specific as the example: use the company's own numbers and constraints from the challenge text (volumes, error rates, deadlines, tools) in the problem and research questions. " +
 					"Add who supervises on each side and an 'agreed up front' line on publication and IP. " +
 					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). " +
+					LANG_RULE +
 					"List every factual statement about either party in `claims` with the dataset id of the record that states it: " +
 					"company size, location, sector, products or capacity -> the company id (e.g. C003); the company's problem -> the challenge id (e.g. C003-CH2); " +
 					"a researcher's title, department or role -> the researcher id (e.g. R0995); a researcher's expertise -> their publication, project or patent ids. Use only ids given to you. " +

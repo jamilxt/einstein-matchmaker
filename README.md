@@ -39,6 +39,8 @@ npm run start:nocritic    # same, with the Critic only recording what it would b
 npx tsx src/run.ts --input=examples/conveyor.json   # Reverse Search for one company problem
 ```
 
+Proposals are in English by default, even for companies that write in Serbian. Add `--lang=sr` to any run for Serbian (Latin script).
+
 Each run writes `runs/<id>/` with `trace.jsonl` (every event), `summary.json`, `timeline.txt`, `proposals.md` and `run.json`.
 
 **Web UI (replays need no key):**
@@ -133,7 +135,7 @@ What changed between runs, and why we kept every one:
 - **Run 3:** with complete evidence and clearer citation rules, all three proposals passed on the first draft. The Critic still checked all 35 claims.
 - **Run 4 (Critic off):** both flagged claims turned out to be false alarms by the checker (claims that cite both sides of the pair, such as "supervised by X and Y"). Fixed afterwards.
 
-- **Run 5 (final, all fixes):** all three proposals passed on the first draft, with 51 claims checked. The Matchmaker happened to pick the same three pairs as run 4, so runs 4 and 5 compare the same pairs with the Critic off and on. The fit scores (2.0 to 2.3) are lower than run 3's (2.9 to 3.0): the Matchmaker takes the first pair over its 2.0 threshold instead of waiting for all 180 scores. That is the price of early selection. The FinPuls proposal is in Serbian because FinPuls wrote its challenge in Serbian, and the Writer answered in the company's language.
+- **Run 5 (final, all fixes):** all three proposals passed on the first draft, with 51 claims checked. The Matchmaker happened to pick the same three pairs as run 4, so runs 4 and 5 compare the same pairs with the Critic off and on. The fit scores (2.0 to 2.3) are lower than run 3's (2.9 to 3.0): the Matchmaker takes the first pair over its 2.0 threshold instead of waiting for all 180 scores. That is the price of early selection. The FinPuls proposal came out in Serbian because FinPuls wrote its challenge in Serbian. Proposals are now written in English by default; pass `--lang=sr` for Serbian (Latin script).
 
 The natural runs are too small to measure the Critic, which is why we tested it directly.
 

@@ -27,6 +27,13 @@ export const PRICES: Record<string, { input: number; output: number }> = {
 	"decisions:gpt-6-luna": { input: 0.1, output: 0 },
 }
 
+/** Language of the written proposals. English by default; `--lang=sr` writes in Serbian (Latin script). */
+export const PROPOSAL_LANG = (process.argv.find((a) => a.startsWith("--lang="))?.split("=")[1] ?? "en") === "sr" ? "sr" : "en"
+export const LANG_RULE =
+	PROPOSAL_LANG === "sr"
+		? "Write the proposal and every claim in Serbian, Latin script, even when a source is in English or Cyrillic. Keep names, product names and record ids exactly as written. "
+		: "Write the proposal and every claim in English, even when the company or researcher wrote in Serbian (Latin or Cyrillic). Keep names, product names and record ids exactly as written; translate quoted figures and facts faithfully. "
+
 export const BUDGET_USD = Number(process.env.BUDGET_USD ?? 1)
 
 export const TUNING = {
