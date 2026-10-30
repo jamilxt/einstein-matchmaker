@@ -28,7 +28,7 @@ export function MatchMap({ snap, focusChallenges }: { snap: Snapshot; focusChall
 			const list = byCh.get(ch) ?? []
 			const r = ids.length === 1 ? 108 : 66
 			const nodes = list.map((c, j) => {
-				const a = -Math.PI / 2 + (j / Math.max(1, list.length)) * Math.PI * 2 + (list.length <= 3 ? Math.PI / 6 : 0)
+				const a = -Math.PI / 2 + (j / Math.max(1, list.length)) * Math.PI * 2
 				return { c, x: cx + Math.cos(a) * r * (ids.length === 1 ? 1.9 : 1), y: cy + Math.sin(a) * r * (ids.length === 1 ? 1 : 1.5) }
 			})
 			return { challengeId: ch, company: list[0]?.company ?? ch, x: cx, y: cy, nodes }

@@ -53,7 +53,9 @@ export function SearchPage({ config, runs, go }: { config: ServerConfig | null; 
 	// Live clock: last trace timestamp plus wall time since it arrived.
 	useEffect(() => {
 		if (phase !== "running") return
-		const id = window.setInterval(() => setNow(clock.current.t + (Date.now() - clock.current.at)), 100)
+		const id = window.setInterval(() => {
+			if (clock.current.at) setNow(clock.current.t + (Date.now() - clock.current.at))
+		}, 100)
 		return () => window.clearInterval(id)
 	}, [phase])
 
@@ -69,7 +71,7 @@ export function SearchPage({ config, runs, go }: { config: ServerConfig | null; 
 			const { id } = await api.search(company, problem)
 			setRunId(id)
 			setPhase("running")
-			clock.current = { t: 0, at: Date.now() }
+			clock.current = { t: 0, at: 0 } // the clock starts with the first event, not the click
 			stageRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
 			const es = new EventSource(`/api/stream/${id}`)
 			es.addEventListener("trace", (m) => {
@@ -197,7 +199,7 @@ export function SearchPage({ config, runs, go }: { config: ServerConfig | null; 
 							view={view}
 							criticEnforcing
 							runId={runId ?? undefined}
-							status={phase === "done" ? <>Finished. You can replay this search any time from Recorded runs.</> : <>Live. Events stream from the running agents.</>}
+							status={phase === "done" ? <>Finished. You can replay this search any time from Recorded runs.</> : trace.length ? <>Live. Events stream from the running agents.</> : <>Starting the agent team and loading the dataset...</>}
 						/>
 					</section>
 				)}

@@ -104,6 +104,23 @@ function listRuns() {
 		.sort((a, b) => Number(b.evidence) - Number(a.evidence) || a.id.localeCompare(b.id))
 }
 
+/** The Critic red-team evaluations (docs/evidence/critic-eval*), summarised for the UI. */
+function evals() {
+	const read = (d: string) => {
+		const f = join("docs/evidence", d, "results.json")
+		if (!existsSync(f)) return null
+		const { summary, rows } = JSON.parse(readFileSync(f, "utf-8"))
+		const truth = (r: any) => r.truth ?? r.kind === "true_claim"
+		return {
+			id: d,
+			summary,
+			misses: rows.filter((r: any) => !truth(r) && !r.blocked).map((r: any) => ({ claim: r.claim, evidence: r.evidence, support: r.support, note: r.note })),
+			falseBlocks: rows.filter((r: any) => truth(r) && r.blocked).map((r: any) => ({ kind: r.kind, claim: r.claim, evidence: r.evidence, support: r.support })),
+		}
+	}
+	return { easy: read("critic-eval"), hardBefore: read("critic-eval-hard-v1"), hardAfter: read("critic-eval-hard") }
+}
+
 function readBody(req: IncomingMessage): Promise<string> {
 	return new Promise((ok, fail) => {
 		let data = ""
@@ -218,6 +235,7 @@ createServer(async (req, res) => {
 	try {
 		if (req.method === "GET" && p === "/api/config") return json(res, 200, { liveSearch: LIVE_SEARCH, activeSearch, perSearchBudgetUsd: PER_SEARCH_BUDGET, ...ledger(), totalBudgetUsd: TOTAL_SEARCH_BUDGET })
 		if (req.method === "GET" && p === "/api/runs") return json(res, 200, listRuns())
+		if (req.method === "GET" && p === "/api/evals") return json(res, 200, evals())
 		if (req.method === "GET" && p.startsWith("/api/runs/")) {
 			const id = p.slice("/api/runs/".length)
 			const dir = runDir(id)

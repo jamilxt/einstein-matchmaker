@@ -5,6 +5,7 @@ import { api, type RunSummary, type ServerConfig } from "@/lib/api"
 import { cn } from "@/lib/utils"
 import { RunsPage } from "@/pages/runs-page"
 import { SearchPage } from "@/pages/search-page"
+import { HowPage } from "@/pages/how-page"
 
 function useHash() {
 	const [hash, setHash] = useState(window.location.hash || "#/")
@@ -40,6 +41,7 @@ export default function App() {
 	}, [hash])
 
 	const onRuns = hash.startsWith("#/runs")
+	const onHow = hash.startsWith("#/how")
 	const runId = onRuns ? decodeURIComponent(hash.slice("#/runs/".length)) || null : null
 
 	return (
@@ -51,12 +53,17 @@ export default function App() {
 							<span className="grid size-6 place-items-center rounded-md bg-primary text-[13px] font-bold text-primary-foreground">E</span>
 							<span className="hidden sm:inline">EINSTEIN Matchmaker</span>
 						</a>
-						<nav className="flex items-center gap-1 text-sm">
-							<NavLink active={!onRuns} href="#/">
-								Find researchers
+						<nav className="flex items-center gap-0.5 text-sm sm:gap-1">
+							<NavLink active={!onRuns && !onHow} href="#/">
+								<span className="sm:hidden">Search</span>
+								<span className="hidden sm:inline">Find researchers</span>
 							</NavLink>
 							<NavLink active={onRuns} href="#/runs">
-								Recorded runs
+								<span className="sm:hidden">Runs</span>
+								<span className="hidden sm:inline">Recorded runs</span>
+							</NavLink>
+							<NavLink active={onHow} href="#/how">
+								How it works
 							</NavLink>
 						</nav>
 						<button
@@ -69,7 +76,7 @@ export default function App() {
 						</button>
 					</div>
 				</header>
-				<main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-6 md:py-12">{onRuns ? <RunsPage runs={runs} selected={runId} go={go} /> : <SearchPage config={config} runs={runs} go={go} />}</main>
+				<main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 md:px-6 md:py-12">{onHow ? <HowPage go={go} /> : onRuns ? <RunsPage runs={runs} selected={runId} go={go} /> : <SearchPage config={config} runs={runs} go={go} />}</main>
 				<footer className="border-t">
 					<div className="mx-auto max-w-7xl px-4 py-6 text-xs text-muted-foreground md:px-6">
 						Built on Mozaik for the JigJoy and NTP Novi Sad hackathon. Researcher and company data is the synthetic EINSTEIN dataset.
