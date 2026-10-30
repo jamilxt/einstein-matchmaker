@@ -4,9 +4,10 @@
 	"description": "Concurrent AI agents on the Mozaik agentic environment (3alet Hackathon, Oct 30-31 2026)",
 	"type": "module",
 	"scripts": {
-		"start": "tsx src/index.ts",
+		"start": "tsx src/run.ts",
 		"typecheck": "tsc --noEmit",
-		"check:data": "tsx src/check-data.ts"
+		"check:data": "tsx src/check-data.ts",
+		"start:nocritic": "tsx src/run.ts --no-critic"
 	},
 	"dependencies": {
 		"@mozaik-ai/core": "4.2.0",
