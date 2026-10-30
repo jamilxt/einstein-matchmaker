@@ -5,7 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"start": "tsx src/index.ts",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"check:data": "tsx src/check-data.ts"
 	},
 	"dependencies": {
 		"@mozaik-ai/core": "4.2.0",
