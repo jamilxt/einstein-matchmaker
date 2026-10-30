@@ -1,0 +1,4 @@
+{
+  "company": "Example packaging plant, Subotica",
+  "problem": "Bearings on our conveyor drive motors fail without warning about once a quarter and each stop halts a packaging line for most of a shift. We could add vibration sensors to 24 motors, but we have no one who knows how to turn vibration data into a maintenance decision. We want to predict a bearing failure a week ahead and know which data to collect."
+}

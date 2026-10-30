@@ -1,0 +1,27 @@
+mode: LIVE (real OpenAI APIs) | critic enforcing | budget $0.1
+shortlist: 15 pairs over 1 challenges (46 researchers excluded by open_to)
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+mozaik cloud: no API key — telemetry disabled. Set MOZAIK_API_KEY, or run `npx @mozaik-ai/cloud-sdk pair` to connect this machine.
+
+Analyst-1    |  ppppppppppppppppppppppppp                                             |
+Profiler-1   |  ppppppppppppppppppppppppp                                             |
+Profiler-2   |  ppppppppppppppppppppppppppppp                                         |
+Screener-1   |sss                                                                     |
+Screener-2   |sss                                                                     |
+Screener-3   |sss                                                                     |
+Writer-1     |                          WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW |
+Writer-2     |                          WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW           |
+              0                                                                21.6s
+s = Decisions screening, p = profiling (LLM + tool), W = writing (LLM, Critic-gated)
+
+peak in flight: 4 jobs at 0.7s (Profiler-1:profile_researcher, Analyst-1:profile_company, Profiler-2:profile_researcher, Profiler-1:profile_researcher)
+jobs overlapping another agent: 10/10
+critic: 3 drafts, 0 sent back, 0 claims blocked, 0 unsupported claims in final proposals
+spend: $0.03447 (metered from API-reported token usage)
+
+run dir: runs/search-2026-10-30T10-23-41-436Z

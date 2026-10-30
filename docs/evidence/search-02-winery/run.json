@@ -1,0 +1,1784 @@
+{
+ "summary": {
+  "runId": "2026-10-30T10-23-42-400Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+   "profiler": "gpt-5.4-mini",
+   "analyst": "gpt-5.4-mini",
+   "writer": "gpt-5.4-mini",
+   "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 21583,
+  "shortlist": {
+   "pairs": 15,
+   "challenges": 1
+  },
+  "screened": 15,
+  "selected": [
+   {
+    "key": "R1006xQ001-CH1",
+    "score": 1.99,
+    "screener": "Screener-1",
+    "selectedAtMs": 740
+   },
+   {
+    "key": "R0086xQ001-CH1",
+    "score": 1.78,
+    "screener": "Screener-1",
+    "selectedAtMs": 743
+   },
+   {
+    "key": "R0818xQ001-CH1",
+    "score": 1.77,
+    "screener": "Screener-2",
+    "selectedAtMs": 743
+   }
+  ],
+  "concurrency": {
+   "jobs": 10,
+   "peakInFlight": 4,
+   "peakAtMs": 743,
+   "inFlightAtPeak": [
+    "Profiler-1:profile_researcher",
+    "Analyst-1:profile_company",
+    "Profiler-2:profile_researcher",
+    "Profiler-1:profile_researcher"
+   ],
+   "jobsOverlappingAnotherAgent": 10
+  },
+  "critic_record": {
+   "drafts": 3,
+   "revisionsRequested": 0,
+   "claimsChecked": 36,
+   "claimsBlocked": 0,
+   "unsupportedClaimsInFinalProposals": 0,
+   "outcomes": [
+    {
+     "key": "R0818xQ001-CH1",
+     "verdict": "approved",
+     "drafts": 1
+    },
+    {
+     "key": "R0086xQ001-CH1",
+     "verdict": "approved",
+     "drafts": 1
+    },
+    {
+     "key": "R1006xQ001-CH1",
+     "verdict": "approved",
+     "drafts": 1
+    }
+   ]
+  },
+  "spend": {
+   "usd": 0.03447,
+   "budgetUsd": 0.1,
+   "halted": false,
+   "byModel": {
+    "decisions:gpt-6-luna": {
+     "input": 24922,
+     "output": 0,
+     "usd": 0.0024922,
+     "calls": 6
+    },
+    "gpt-5.4-mini": {
+     "input": 12761,
+     "output": 4980,
+     "usd": 0.03198075,
+     "calls": 11
+    }
+   },
+   "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+   "challenges": 60,
+   "perChallenge": 3,
+   "proposals": 3,
+   "screeners": 3,
+   "profilers": 2,
+   "analysts": 2,
+   "writers": 2,
+   "selectThreshold": 2,
+   "supportThreshold": 0.5,
+   "maxRevisions": 2,
+   "jobTimeoutMs": 90000,
+   "runTimeoutMs": 600000,
+   "screenBatch": 6
+  }
+ },
+ "reverse": true,
+ "candidates": [
+  {
+   "key": "R0797xQ001-CH1",
+   "researcherId": "R0797",
+   "researcher": "Dejan Malešević",
+   "title": "Associate Professor",
+   "department": "Department of Psychology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.85
+  },
+  {
+   "key": "R0612xQ001-CH1",
+   "researcherId": "R0612",
+   "researcher": "Miroslav Malešević",
+   "title": "Senior Research Associate",
+   "department": "Department of Animal Science",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.56
+  },
+  {
+   "key": "R0086xQ001-CH1",
+   "researcherId": "R0086",
+   "researcher": "István Nagy",
+   "title": "Full Professor",
+   "department": "Department of Environmental Engineering and Occupational Safety",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 1.78
+  },
+  {
+   "key": "R0818xQ001-CH1",
+   "researcherId": "R0818",
+   "researcher": "Dimitrije Ristić",
+   "title": "Associate Professor",
+   "department": "Department of Animal Science",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 1.77
+  },
+  {
+   "key": "R0824xQ001-CH1",
+   "researcherId": "R0824",
+   "researcher": "Nenad Pavlović",
+   "title": "Associate Professor",
+   "department": "Department of Materials Engineering",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.94
+  },
+  {
+   "key": "R0417xQ001-CH1",
+   "researcherId": "R0417",
+   "researcher": "Aleksandra Vranješ",
+   "title": "Full Professor",
+   "department": "Department of Carbohydrate Food Engineering",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 1.67
+  },
+  {
+   "key": "R0727xQ001-CH1",
+   "researcherId": "R0727",
+   "researcher": "Milutin Đukić",
+   "title": "Principal Research Fellow",
+   "department": "Remote Sensing and GIS Group",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.93
+  },
+  {
+   "key": "R0963xQ001-CH1",
+   "researcherId": "R0963",
+   "researcher": "Jasmina Obradović",
+   "title": "Research Associate",
+   "department": "Department of Fruit Growing, Viticulture, Horticulture and Landscape Architecture",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 1.05
+  },
+  {
+   "key": "R0553xQ001-CH1",
+   "researcherId": "R0553",
+   "researcher": "Branka Grujić",
+   "title": "Research Associate",
+   "department": "Department of Field and Vegetable Crops",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.4
+  },
+  {
+   "key": "R0816xQ001-CH1",
+   "researcherId": "R0816",
+   "researcher": "Branislava Erić",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 1.55
+  },
+  {
+   "key": "R1006xQ001-CH1",
+   "researcherId": "R1006",
+   "researcher": "Danilo Mitrović",
+   "title": "Assistant Professor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 1.99
+  },
+  {
+   "key": "R0267xQ001-CH1",
+   "researcherId": "R0267",
+   "researcher": "Filip Todić",
+   "title": "Senior Research Associate",
+   "department": "Department of Psychology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.16
+  },
+  {
+   "key": "R0348xQ001-CH1",
+   "researcherId": "R0348",
+   "researcher": "Róbert Tóth",
+   "title": "Associate Professor",
+   "department": "Department of Biotechnology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.86
+  },
+  {
+   "key": "R0210xQ001-CH1",
+   "researcherId": "R0210",
+   "researcher": "Marina Ivković",
+   "title": "Associate Professor",
+   "department": "Department of Biology and Ecology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.08
+  },
+  {
+   "key": "R0332xQ001-CH1",
+   "researcherId": "R0332",
+   "researcher": "Valentina Hadžić",
+   "title": "Associate Professor",
+   "department": "Department of Agricultural Economics and Rural Sociology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Example winery, Fruška Gora",
+   "score": 0.45
+  }
+ ],
+ "selected": [
+  {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "researcherId": "R1006",
+   "retrievalScore": 16.837,
+   "matchedTerms": [
+    "log",
+    "but",
+    "early",
+    "warning",
+    "before"
+   ],
+   "score": 1.99,
+   "confidence": 0.99,
+   "screener": "Screener-1",
+   "key": "R1006xQ001-CH1",
+   "selectedAt": 740,
+   "profiler": "4267f648-44dd-4010-bc6c-6f8560b4ec92",
+   "analyst": "870c9010-4ba2-4835-b0e3-e377822fd774",
+   "status": "done",
+   "writer": "dd165f18-6b96-4a65-81d8-9d16568a7ae9"
+  },
+  {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "researcherId": "R0086",
+   "retrievalScore": 19.896,
+   "matchedTerms": [
+    "two",
+    "stainless",
+    "fermentation",
+    "sugar",
+    "before",
+    "master"
+   ],
+   "score": 1.78,
+   "confidence": 0.78,
+   "screener": "Screener-1",
+   "key": "R0086xQ001-CH1",
+   "selectedAt": 743,
+   "profiler": "86b97344-a7f6-49f0-883d-df8121b6bc7d",
+   "analyst": "99c6763a-e0df-4df0-b5af-e739aab0d7b8",
+   "status": "done",
+   "writer": "dd165f18-6b96-4a65-81d8-9d16568a7ae9"
+  },
+  {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "researcherId": "R0818",
+   "retrievalScore": 19.655,
+   "matchedTerms": [
+    "two",
+    "fermentation",
+    "days",
+    "temperature",
+    "but",
+    "early",
+    "master"
+   ],
+   "score": 1.77,
+   "confidence": 0.77,
+   "screener": "Screener-2",
+   "key": "R0818xQ001-CH1",
+   "selectedAt": 743,
+   "profiler": "4267f648-44dd-4010-bc6c-6f8560b4ec92",
+   "analyst": "870c9010-4ba2-4835-b0e3-e377822fd774",
+   "status": "done",
+   "writer": "d8b8d599-7dab-428d-8756-0928ef2d76ec"
+  }
+ ],
+ "researcherProfiles": {
+  "R1006": {
+   "researcherId": "R1006",
+   "summary": "Danilo Mitrović (R1006) is an Assistant Professor in Mathematics and Informatics whose work centers on educational data mining, learning analytics, applied statistics, and machine learning. His evidence shows repeated work on Moodle/clickstream data, longitudinal student modelling, competency prediction, and statistical model development for educational settings, plus some broader machine learning collaboration.",
+   "expertise": [
+    {
+     "topic": "Educational data mining and learning analytics for student performance prediction",
+     "evidence": [
+      "SYN-PUB-10454",
+      "SYN-PUB-10457",
+      "SYN-PUB-10458",
+      "SYN-PRJ-0270",
+      "SYN-PRJ-0271"
+     ]
+    },
+    {
+     "topic": "Longitudinal and sequential modelling of learning behaviour",
+     "evidence": [
+      "SYN-PUB-10455",
+      "SYN-PUB-10456",
+      "SYN-PUB-10459",
+      "SYN-PUB-10460"
+     ]
+    },
+    {
+     "topic": "Competency modelling, mastery estimation, and retention analysis",
+     "evidence": [
+      "SYN-PUB-06872",
+      "SYN-PUB-10460",
+      "SYN-PRJ-0270"
+     ]
+    },
+    {
+     "topic": "Statistical and machine learning methods for educational data",
+     "evidence": [
+      "SYN-PUB-10454",
+      "SYN-PUB-10456",
+      "SYN-PUB-10457",
+      "SYN-PUB-10458",
+      "SYN-PUB-10461"
+     ]
+    },
+    {
+     "topic": "Learning trace data harmonisation and comparative analytics across institutions",
+     "evidence": [
+      "SYN-PRJ-0271",
+      "SYN-PUB-10459",
+      "SYN-PUB-10461"
+     ]
+    }
+   ]
+  },
+  "R0818": {
+   "researcherId": "R0818",
+   "summary": "Dimitrije Ristić (R0818) is an Associate Professor in Animal Science whose work centers on maize silage fermentation, especially the use of heterofermentative lactic acid bacteria inoculants, fermentation kinetics, and aerobic stability. His evidence also shows applied project leadership in field evaluation of silage quality and cross-border farm surveys, with additional work linking silage characteristics to animal performance.",
+   "expertise": [
+    {
+     "topic": "Maize silage fermentation and inoculant effects",
+     "evidence": [
+      "SYN-PUB-08888",
+      "SYN-PUB-08889",
+      "SYN-PUB-08894",
+      "SYN-PUB-07022"
+     ]
+    },
+    {
+     "topic": "Heterofermentative lactic acid bacteria isolation, characterization, and evaluation",
+     "evidence": [
+      "SYN-PUB-08892",
+      "SYN-PUB-08893",
+      "SYN-PRJ-1231"
+     ]
+    },
+    {
+     "topic": "Fermentation kinetics, organic acid profiling, and modeling",
+     "evidence": [
+      "SYN-PUB-06748",
+      "SYN-PUB-08894",
+      "SYN-PUB-08895"
+     ]
+    },
+    {
+     "topic": "Aerobic stability and spoilage-related silage performance",
+     "evidence": [
+      "SYN-PUB-08888",
+      "SYN-PUB-08891",
+      "SYN-PUB-08894",
+      "SYN-PUB-08895"
+     ]
+    },
+    {
+     "topic": "Applied silage quality assessment and farm-level management studies",
+     "evidence": [
+      "SYN-PRJ-1232",
+      "SYN-PRJ-1231",
+      "SYN-PUB-08638",
+      "SYN-PUB-08639"
+     ]
+    }
+   ]
+  },
+  "R0086": {
+   "researcherId": "R0086",
+   "summary": "István Nagy (R0086) is a Full Professor in Environmental Engineering and Occupational Safety whose work centers on life cycle assessment (LCA) for industrial biotechnology and biobased production systems. His record shows recurring expertise in fermentation-process LCA, inventory analysis, carbon footprinting, downstream processing, biorefinery co-product allocation, and methodological issues such as uncertainty and system boundary definition. He also leads project work on regional LCA frameworks and inventory methods for fermentation and downstream processing.",
+   "expertise": [
+    {
+     "topic": "Life cycle assessment methodology for fermentation and biobased products",
+     "evidence": [
+      "SYN-PUB-01159",
+      "SYN-PUB-01160",
+      "SYN-PUB-01161",
+      "SYN-PRJ-0262",
+      "SYN-PRJ-0263"
+     ]
+    },
+    {
+     "topic": "Industrial biotechnology process assessment and fermentation systems",
+     "evidence": [
+      "SYN-PUB-01160",
+      "SYN-PUB-01162",
+      "SYN-PUB-01025",
+      "SYN-PUB-01168",
+      "SYN-PRJ-0262"
+     ]
+    },
+    {
+     "topic": "Downstream processing and separation technologies in bioprocessing",
+     "evidence": [
+      "SYN-PUB-00372",
+      "SYN-PUB-01161",
+      "SYN-PRJ-0263"
+     ]
+    },
+    {
+     "topic": "Biorefinery and co-product allocation modeling",
+     "evidence": [
+      "SYN-PUB-01164",
+      "SYN-PUB-01168",
+      "SYN-PUB-01159"
+     ]
+    },
+    {
+     "topic": "Uncertainty, inventory quality, and hotspot analysis in LCA",
+     "evidence": [
+      "SYN-PUB-01161",
+      "SYN-PUB-01166",
+      "SYN-PUB-01167"
+     ]
+    }
+   ]
+  }
+ },
+ "companyProfiles": {
+  "Q001-CH1": {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "summary": "Q001 is an unnamed winery in Fruška Gora, described only through its submitted problem statement. It monitors 40 stainless fermentation tanks and wants earlier detection of stalled fermentations.",
+   "needs": []
+  }
+ },
+ "proposals": [
+  {
+   "key": "R0818xQ001-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Early-warning detection of stuck wine fermentations from tank temperature and density curves",
+      "problem": "Example winery in Fruška Gora monitors 40 stainless fermentation tanks, logging temperature every 10 minutes and density twice a day. In a typical harvest, 2 or 3 tanks get stuck: sugar stops dropping for days and the issue is only noticed at the morning density check. The winery wants an early warning, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on. Dimitrije Ristić and the winery can use his experience with fermentation kinetics, microbial processes, and applied monitoring to build a practical decision tool for the cellar.",
+      "research_questions": [
+       "Can temperature and density time series from 40 tanks be combined into a model that flags a stalled fermentation at least 24 hours before the morning density check would reveal it?",
+       "What set of curve features and thresholds gives the best balance between early warning and false alarms for the cellar master’s daily workflow?",
+       "How well does a model trained on one harvest transfer to the next harvest with the winery’s existing logging routine, without adding new sensors?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Collect and clean historical tank temperature records (10-minute intervals) and density measurements (twice daily); reconstruct past stuck fermentations; define labels for normal versus stalled behavior; test simple rule-based and statistical baseline models.",
+        "result": "A validated data pipeline and baseline detector that the winery can interpret, with an initial shortlist of warning indicators."
+       },
+       {
+        "year": 2,
+        "work": "Develop and compare multivariate models that fuse temperature and density curves; tune alert timing and false-alarm rate with the cellar master; run retrospective back-testing across harvests.",
+        "result": "A prototype early-warning model that can flag likely stalls about 24 hours in advance under the winery’s current measurement schedule."
+       },
+       {
+        "year": 3,
+        "work": "Pilot the system during a live harvest; refine thresholds and alert format; document operating procedures for cellar staff; assess robustness across tank types and vintages.",
+        "result": "A deployment-ready decision support tool and a final protocol for routine use in the cellar."
+       }
+      ],
+      "company_brings": "Example winery brings access to 40 stainless fermentation tanks, historical temperature logs every 10 minutes, density readings twice daily, and the practical constraint that any alert must be simple enough for the cellar master to trust and act on quickly.",
+      "faculty_brings": "Dimitrije Ristić and the Faculty of Agriculture bring expertise in fermentation kinetics, applied monitoring of fermentation processes, data analysis of biological time series, and an established laboratory culture of linking process measurements to actionable quality control. Supervisors: Assoc. Prof. Dimitrije Ristić on the faculty side; the winery’s cellar master or technical director on the company side.",
+      "why_this_pair": "This pair is a strong fit because the winery’s problem is fundamentally a fermentation-monitoring problem, and Dimitrije Ristić has a research profile centered on fermentation kinetics, microbial processes, and practical fermentation quality assessment. The company already collects the key variables needed for modeling, but lacks a method to integrate them into an early warning. That makes this collaboration concrete, measurable, and immediately useful.",
+      "first_step": "Next month, the partners should anonymize one recent harvest’s tank data, align temperature and density timestamps, and jointly review the 2 or 3 tanks that stalled to define the first warning target and acceptable false-alarm rate.",
+      "claims": [
+       {
+        "text": "Dimitrije Ristić is an Associate Professor in the Faculty of Agriculture, Department of Animal Science.",
+        "about": "researcher",
+        "evidence": [
+         "R0818"
+        ]
+       },
+       {
+        "text": "Ristić’s fields include Animal and Veterinary Sciences, Feed Technology and Forage Science, Microbiology and Fermentation, and Agricultural Science.",
+        "about": "researcher",
+        "evidence": [
+         "R0818"
+        ]
+       },
+       {
+        "text": "His research expertise includes maize silage fermentation, heterofermentative lactic acid bacteria, fermentation kinetics, organic acid profiling, and aerobic stability.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-08888",
+         "SYN-PUB-08889",
+         "SYN-PUB-08891",
+         "SYN-PUB-08892",
+         "SYN-PUB-08893",
+         "SYN-PUB-08894",
+         "SYN-PUB-08895",
+         "SYN-PRJ-1231"
+        ]
+       },
+       {
+        "text": "He has applied experience from paid consultancy for two Vojvodina-based dairy cooperatives on silage quality improvement programmes.",
+        "about": "researcher",
+        "evidence": [
+         "R0818"
+        ]
+       },
+       {
+        "text": "Example winery is in Fruška Gora.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Example winery monitors 40 stainless fermentation tanks.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "The winery logs tank temperature every 10 minutes and density twice a day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "In a typical harvest, two or three of the 40 tanks get stuck and the winery wants an early warning ideally 24 hours before a fermentation stalls.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Dimitrije Ristić is an Associate Professor in the Faculty of Agriculture, Department of Animal Science.",
+       "evidence": [
+        "R0818"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Ristić’s fields include Animal and Veterinary Sciences, Feed Technology and Forage Science, Microbiology and Fermentation, and Agricultural Science.",
+       "evidence": [
+        "R0818"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "His research expertise includes maize silage fermentation, heterofermentative lactic acid bacteria, fermentation kinetics, organic acid profiling, and aerobic stability.",
+       "evidence": [
+        "SYN-PUB-08888",
+        "SYN-PUB-08889",
+        "SYN-PUB-08891",
+        "SYN-PUB-08892",
+        "SYN-PUB-08893",
+        "SYN-PUB-08894",
+        "SYN-PUB-08895",
+        "SYN-PRJ-1231"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "He has applied experience from paid consultancy for two Vojvodina-based dairy cooperatives on silage quality improvement programmes.",
+       "evidence": [
+        "R0818"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Example winery is in Fruška Gora.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Example winery monitors 40 stainless fermentation tanks.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The winery logs tank temperature every 10 minutes and density twice a day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "In a typical harvest, two or three of the 40 tanks get stuck and the winery wants an early warning ideally 24 hours before a fermentation stalls.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Early-warning detection of stuck wine fermentations from tank temperature and density curves",
+    "problem": "Example winery in Fruška Gora monitors 40 stainless fermentation tanks, logging temperature every 10 minutes and density twice a day. In a typical harvest, 2 or 3 tanks get stuck: sugar stops dropping for days and the issue is only noticed at the morning density check. The winery wants an early warning, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on. Dimitrije Ristić and the winery can use his experience with fermentation kinetics, microbial processes, and applied monitoring to build a practical decision tool for the cellar.",
+    "research_questions": [
+     "Can temperature and density time series from 40 tanks be combined into a model that flags a stalled fermentation at least 24 hours before the morning density check would reveal it?",
+     "What set of curve features and thresholds gives the best balance between early warning and false alarms for the cellar master’s daily workflow?",
+     "How well does a model trained on one harvest transfer to the next harvest with the winery’s existing logging routine, without adding new sensors?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Collect and clean historical tank temperature records (10-minute intervals) and density measurements (twice daily); reconstruct past stuck fermentations; define labels for normal versus stalled behavior; test simple rule-based and statistical baseline models.",
+      "result": "A validated data pipeline and baseline detector that the winery can interpret, with an initial shortlist of warning indicators."
+     },
+     {
+      "year": 2,
+      "work": "Develop and compare multivariate models that fuse temperature and density curves; tune alert timing and false-alarm rate with the cellar master; run retrospective back-testing across harvests.",
+      "result": "A prototype early-warning model that can flag likely stalls about 24 hours in advance under the winery’s current measurement schedule."
+     },
+     {
+      "year": 3,
+      "work": "Pilot the system during a live harvest; refine thresholds and alert format; document operating procedures for cellar staff; assess robustness across tank types and vintages.",
+      "result": "A deployment-ready decision support tool and a final protocol for routine use in the cellar."
+     }
+    ],
+    "company_brings": "Example winery brings access to 40 stainless fermentation tanks, historical temperature logs every 10 minutes, density readings twice daily, and the practical constraint that any alert must be simple enough for the cellar master to trust and act on quickly.",
+    "faculty_brings": "Dimitrije Ristić and the Faculty of Agriculture bring expertise in fermentation kinetics, applied monitoring of fermentation processes, data analysis of biological time series, and an established laboratory culture of linking process measurements to actionable quality control. Supervisors: Assoc. Prof. Dimitrije Ristić on the faculty side; the winery’s cellar master or technical director on the company side.",
+    "why_this_pair": "This pair is a strong fit because the winery’s problem is fundamentally a fermentation-monitoring problem, and Dimitrije Ristić has a research profile centered on fermentation kinetics, microbial processes, and practical fermentation quality assessment. The company already collects the key variables needed for modeling, but lacks a method to integrate them into an early warning. That makes this collaboration concrete, measurable, and immediately useful.",
+    "first_step": "Next month, the partners should anonymize one recent harvest’s tank data, align temperature and density timestamps, and jointly review the 2 or 3 tanks that stalled to define the first warning target and acceptable false-alarm rate.",
+    "claims": [
+     {
+      "text": "Dimitrije Ristić is an Associate Professor in the Faculty of Agriculture, Department of Animal Science.",
+      "about": "researcher",
+      "evidence": [
+       "R0818"
+      ]
+     },
+     {
+      "text": "Ristić’s fields include Animal and Veterinary Sciences, Feed Technology and Forage Science, Microbiology and Fermentation, and Agricultural Science.",
+      "about": "researcher",
+      "evidence": [
+       "R0818"
+      ]
+     },
+     {
+      "text": "His research expertise includes maize silage fermentation, heterofermentative lactic acid bacteria, fermentation kinetics, organic acid profiling, and aerobic stability.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-08888",
+       "SYN-PUB-08889",
+       "SYN-PUB-08891",
+       "SYN-PUB-08892",
+       "SYN-PUB-08893",
+       "SYN-PUB-08894",
+       "SYN-PUB-08895",
+       "SYN-PRJ-1231"
+      ]
+     },
+     {
+      "text": "He has applied experience from paid consultancy for two Vojvodina-based dairy cooperatives on silage quality improvement programmes.",
+      "about": "researcher",
+      "evidence": [
+       "R0818"
+      ]
+     },
+     {
+      "text": "Example winery is in Fruška Gora.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Example winery monitors 40 stainless fermentation tanks.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "The winery logs tank temperature every 10 minutes and density twice a day.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "In a typical harvest, two or three of the 40 tanks get stuck and the winery wants an early warning ideally 24 hours before a fermentation stalls.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "Q001-CH1",
+    "companyId": "Q001",
+    "researcherId": "R0818",
+    "retrievalScore": 19.655,
+    "matchedTerms": [
+     "two",
+     "fermentation",
+     "days",
+     "temperature",
+     "but",
+     "early",
+     "master"
+    ],
+    "score": 1.77,
+    "confidence": 0.77,
+    "screener": "Screener-2",
+    "key": "R0818xQ001-CH1",
+    "selectedAt": 743,
+    "profiler": "4267f648-44dd-4010-bc6c-6f8560b4ec92",
+    "analyst": "870c9010-4ba2-4835-b0e3-e377822fd774",
+    "status": "done",
+    "writer": "d8b8d599-7dab-428d-8756-0928ef2d76ec"
+   }
+  },
+  {
+   "key": "R0086xQ001-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Early warning for stalled wine fermentations in 40-tank winery operations",
+      "problem": "Example winery in Fruška Gora runs 40 stainless fermentation tanks, but every harvest 2 or 3 tanks get stuck: sugar stops dropping for days and the problem is only noticed at the morning density check. Temperature is logged every 10 minutes and density twice a day, yet the curves are not analyzed together. The company wants an early warning system, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on.",
+      "research_questions": [
+       "Can a model built from 10-minute temperature traces and twice-daily density readings predict a stalled fermentation at least 24 hours in advance with a useful false-alarm rate for cellar operations?",
+       "Which features from the combined temperature-density time series most strongly indicate an upcoming stall in this winery’s 40-tank process, and can they be turned into an interpretable warning rule for the cellar master?",
+       "How stable is the warning model across harvests, tank-to-tank variation, and changing must conditions so that it remains reliable enough for operational use?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Collect and clean historical tank data, align temperature and density time series, define stall labels from the winery’s own records, and test simple baseline predictors and threshold rules.",
+        "result": "A validated dataset and baseline early-warning prototype with measurable performance on past harvests."
+       },
+       {
+        "year": 2,
+        "work": "Develop and compare time-series and hybrid statistical models, add interpretability checks, and co-design alert logic with the cellar master so warnings are understandable and actionable.",
+        "result": "A model that predicts stalls 24 hours ahead with documented sensitivity, precision, and explanation of the key signals."
+       },
+       {
+        "year": 3,
+        "work": "Run prospective pilots in live harvest conditions, tune alert thresholds for practical use, and document deployment, maintenance, and transfer to the winery’s routine workflow.",
+        "result": "A tested decision-support tool ready for operational adoption, with guidance for future seasons."
+       }
+      ],
+      "company_brings": "Example winery brings access to its 40 stainless fermentation tanks, historical temperature logs every 10 minutes, density readings twice daily, and practical knowledge from the cellar master about what counts as a true stall and what kind of warning is useful in harvest work.",
+      "faculty_brings": "István Nagy brings expertise in data analysis for process systems, environmental and industrial process engineering, and experience working with industrial datasets and operational constraints. His group can support data cleaning, model design, validation, and interpretation, with supervision from Prof. István Nagy and a co-supervisor from the Department of Environmental Engineering and Occupational Safety.",
+      "why_this_pair": "This pairing fits because the winery has a tightly defined operational problem with enough routine sensor data to support applied modeling, while István Nagy’s group is experienced in process-focused analysis, structured data handling, and industrial collaboration. The project is narrow enough for a 3-year industrial PhD and directly tied to a real production need that can be measured by earlier and more reliable stall detection.",
+      "first_step": "Next month, the two sides should meet to agree on a 12-month retrospective data extract from all 40 tanks, define the stall event label together with the cellar master, and test a first baseline model on one harvest season before expanding to all available data.",
+      "claims": [
+       {
+        "text": "István Nagy is a Full Professor in the Faculty of Technical Sciences, Department of Environmental Engineering and Occupational Safety.",
+        "about": "researcher",
+        "evidence": [
+         "R0086"
+        ]
+       },
+       {
+        "text": "His fields include Environmental Engineering, Industrial Biotechnology, Life Cycle Assessment, and Sustainable Process Engineering.",
+        "about": "researcher",
+        "evidence": [
+         "R0086"
+        ]
+       },
+       {
+        "text": "His group focuses on life cycle assessment methodology applied to industrial biotechnology, covering fermentation, enzymatic conversion, and downstream processing.",
+        "about": "researcher",
+        "evidence": [
+         "R0086"
+        ]
+       },
+       {
+        "text": "He uses SimaPro and openLCA and has access to a small wet-chemistry laboratory and shared pilot-scale fermentation equipment.",
+        "about": "researcher",
+        "evidence": [
+         "R0086"
+        ]
+       },
+       {
+        "text": "He has conducted two industry-contracted LCA studies for regional food ingredient manufacturers under confidentiality agreements.",
+        "about": "researcher",
+        "evidence": [
+         "R0086"
+        ]
+       },
+       {
+        "text": "The company is Example winery in Fruška Gora.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "The company monitors 40 stainless fermentation tanks.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Every harvest two or three of the 40 tanks get stuck.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "The winery logs tank temperature every 10 minutes and density twice a day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "The company wants an early warning, ideally 24 hours before a fermentation stalls.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "István Nagy is a Full Professor in the Faculty of Technical Sciences, Department of Environmental Engineering and Occupational Safety.",
+       "evidence": [
+        "R0086"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "His fields include Environmental Engineering, Industrial Biotechnology, Life Cycle Assessment, and Sustainable Process Engineering.",
+       "evidence": [
+        "R0086"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "His group focuses on life cycle assessment methodology applied to industrial biotechnology, covering fermentation, enzymatic conversion, and downstream processing.",
+       "evidence": [
+        "R0086"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "He uses SimaPro and openLCA and has access to a small wet-chemistry laboratory and shared pilot-scale fermentation equipment.",
+       "evidence": [
+        "R0086"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "He has conducted two industry-contracted LCA studies for regional food ingredient manufacturers under confidentiality agreements.",
+       "evidence": [
+        "R0086"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company is Example winery in Fruška Gora.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company monitors 40 stainless fermentation tanks.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.96
+      },
+      {
+       "claim": "Every harvest two or three of the 40 tanks get stuck.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The winery logs tank temperature every 10 minutes and density twice a day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company wants an early warning, ideally 24 hours before a fermentation stalls.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Early warning for stalled wine fermentations in 40-tank winery operations",
+    "problem": "Example winery in Fruška Gora runs 40 stainless fermentation tanks, but every harvest 2 or 3 tanks get stuck: sugar stops dropping for days and the problem is only noticed at the morning density check. Temperature is logged every 10 minutes and density twice a day, yet the curves are not analyzed together. The company wants an early warning system, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on.",
+    "research_questions": [
+     "Can a model built from 10-minute temperature traces and twice-daily density readings predict a stalled fermentation at least 24 hours in advance with a useful false-alarm rate for cellar operations?",
+     "Which features from the combined temperature-density time series most strongly indicate an upcoming stall in this winery’s 40-tank process, and can they be turned into an interpretable warning rule for the cellar master?",
+     "How stable is the warning model across harvests, tank-to-tank variation, and changing must conditions so that it remains reliable enough for operational use?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Collect and clean historical tank data, align temperature and density time series, define stall labels from the winery’s own records, and test simple baseline predictors and threshold rules.",
+      "result": "A validated dataset and baseline early-warning prototype with measurable performance on past harvests."
+     },
+     {
+      "year": 2,
+      "work": "Develop and compare time-series and hybrid statistical models, add interpretability checks, and co-design alert logic with the cellar master so warnings are understandable and actionable.",
+      "result": "A model that predicts stalls 24 hours ahead with documented sensitivity, precision, and explanation of the key signals."
+     },
+     {
+      "year": 3,
+      "work": "Run prospective pilots in live harvest conditions, tune alert thresholds for practical use, and document deployment, maintenance, and transfer to the winery’s routine workflow.",
+      "result": "A tested decision-support tool ready for operational adoption, with guidance for future seasons."
+     }
+    ],
+    "company_brings": "Example winery brings access to its 40 stainless fermentation tanks, historical temperature logs every 10 minutes, density readings twice daily, and practical knowledge from the cellar master about what counts as a true stall and what kind of warning is useful in harvest work.",
+    "faculty_brings": "István Nagy brings expertise in data analysis for process systems, environmental and industrial process engineering, and experience working with industrial datasets and operational constraints. His group can support data cleaning, model design, validation, and interpretation, with supervision from Prof. István Nagy and a co-supervisor from the Department of Environmental Engineering and Occupational Safety.",
+    "why_this_pair": "This pairing fits because the winery has a tightly defined operational problem with enough routine sensor data to support applied modeling, while István Nagy’s group is experienced in process-focused analysis, structured data handling, and industrial collaboration. The project is narrow enough for a 3-year industrial PhD and directly tied to a real production need that can be measured by earlier and more reliable stall detection.",
+    "first_step": "Next month, the two sides should meet to agree on a 12-month retrospective data extract from all 40 tanks, define the stall event label together with the cellar master, and test a first baseline model on one harvest season before expanding to all available data.",
+    "claims": [
+     {
+      "text": "István Nagy is a Full Professor in the Faculty of Technical Sciences, Department of Environmental Engineering and Occupational Safety.",
+      "about": "researcher",
+      "evidence": [
+       "R0086"
+      ]
+     },
+     {
+      "text": "His fields include Environmental Engineering, Industrial Biotechnology, Life Cycle Assessment, and Sustainable Process Engineering.",
+      "about": "researcher",
+      "evidence": [
+       "R0086"
+      ]
+     },
+     {
+      "text": "His group focuses on life cycle assessment methodology applied to industrial biotechnology, covering fermentation, enzymatic conversion, and downstream processing.",
+      "about": "researcher",
+      "evidence": [
+       "R0086"
+      ]
+     },
+     {
+      "text": "He uses SimaPro and openLCA and has access to a small wet-chemistry laboratory and shared pilot-scale fermentation equipment.",
+      "about": "researcher",
+      "evidence": [
+       "R0086"
+      ]
+     },
+     {
+      "text": "He has conducted two industry-contracted LCA studies for regional food ingredient manufacturers under confidentiality agreements.",
+      "about": "researcher",
+      "evidence": [
+       "R0086"
+      ]
+     },
+     {
+      "text": "The company is Example winery in Fruška Gora.",
+      "about": "company",
+      "evidence": [
+       "Q001"
+      ]
+     },
+     {
+      "text": "The company monitors 40 stainless fermentation tanks.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Every harvest two or three of the 40 tanks get stuck.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "The winery logs tank temperature every 10 minutes and density twice a day.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "The company wants an early warning, ideally 24 hours before a fermentation stalls.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "Q001-CH1",
+    "companyId": "Q001",
+    "researcherId": "R0086",
+    "retrievalScore": 19.896,
+    "matchedTerms": [
+     "two",
+     "stainless",
+     "fermentation",
+     "sugar",
+     "before",
+     "master"
+    ],
+    "score": 1.78,
+    "confidence": 0.78,
+    "screener": "Screener-1",
+    "key": "R0086xQ001-CH1",
+    "selectedAt": 743,
+    "profiler": "86b97344-a7f6-49f0-883d-df8121b6bc7d",
+    "analyst": "99c6763a-e0df-4df0-b5af-e739aab0d7b8",
+    "status": "done",
+    "writer": "dd165f18-6b96-4a65-81d8-9d16568a7ae9"
+   }
+  },
+  {
+   "key": "R1006xQ001-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Early warning for stuck fermentations from sparse tank telemetry",
+      "problem": "Example winery in Fruška Gora runs 40 stainless fermentation tanks each harvest, and two or three tanks typically get stuck every season: sugar stops dropping for days and the cellar team only notices at the morning density check. The winery already logs tank temperature every 10 minutes and density twice a day, but the measurements are not interpreted together. The goal is a trusted early-warning system that can flag a likely fermentation stall about 24 hours in advance, so the cellar master can intervene in time.",
+      "research_questions": [
+       "Can a model that fuses 10-minute temperature traces with twice-daily density readings predict a stall at least 24 hours before it becomes visible in the morning check, with acceptable false-alarm rates for cellar use?",
+       "Which temporal features and sequence patterns best separate normal fermentations from fermentations that later stall across the winery’s 40 tanks?",
+       "Can the model be converted into a simple risk score or alert rule that the cellar master can trust and act on during harvest operations?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Collect and clean one harvest cycle of tank-level data; align temperature and density streams; define operational labels for normal and stalled fermentations; build baseline statistical and machine-learning models on historical tank curves.",
+        "result": "A validated data pipeline and a baseline stall-prediction model with clear performance metrics on past harvests."
+       },
+       {
+        "year": 2,
+        "work": "Develop sequence models that combine irregular density checks with high-frequency temperature histories; test feature sets such as slope changes, plateaus, lagged temperature response, and tank-specific effects; calibrate alert thresholds with the cellar master.",
+        "result": "A predictive model that can issue a 24-hour early warning with quantified precision, recall, and lead time."
+       },
+       {
+        "year": 3,
+        "work": "Run prospective trials during a harvest season; compare alerts with cellar interventions and outcomes; refine the interface and operating rules for daily use; document robustness across tanks and vintages.",
+        "result": "A deployable early-warning tool and a transfer package for routine cellar use."
+       }
+      ],
+      "company_brings": "Example winery brings access to its 40-tank fermentation operation, the existing temperature logs every 10 minutes, density measurements twice a day, and the cellar master’s knowledge of what a real stall looks like and how alerts should be used in practice.",
+      "faculty_brings": "Danilo Mitrović and the Faculty of Sciences, Department of Mathematics and Informatics, bring expertise in educational data mining, longitudinal sequence modelling, statistical learning, machine learning, and access to departmental statistical computing resources. Danilo Mitrović will supervise the research side; the company-side supervisor should be the cellar master or production manager responsible for fermentation decisions.",
+      "why_this_pair": "This is a good fit because Danilo Mitrović’s research focuses on longitudinal clickstream and sequence modelling, where sparse observations must be combined with dense time-stamped traces to predict later outcomes. The winery’s data have the same core structure: irregular outcome checks, frequent sensor logs, and a clear operational target. The partnership is specific and practical: 40 tanks, two or three annual stalls, 10-minute temperature logging, twice-daily density checks, and a need for a trusted 24-hour warning rather than a generic analytics dashboard.",
+      "first_step": "Within the next month, the partners should meet to map one completed harvest into a shared dataset specification, export one tank season of temperature and density data, and agree on the definition of a stall, the alert window, and the evaluation metric for a first baseline model.",
+      "claims": [
+       {
+        "text": "Danilo Mitrović is an Assistant Professor in the Faculty of Sciences, Department of Mathematics and Informatics.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s research areas include Educational Data Mining, Learning Analytics, Applied Statistics, and Machine Learning.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović works on clickstream analysis, longitudinal data modelling, competency prediction, learning management systems, survival analysis, hidden Markov models, sequence mining, student performance, Moodle log data, and feature engineering.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović completed a BSc and MSc in Mathematics and Computer Science at the University of Novi Sad and a PhD in Applied Mathematics at the same institution; he joined the department as a Teaching Assistant in 2010 and became Assistant Professor in 2016.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s group regularly analyses event-log datasets from the university’s Moodle deployment and collaborates with the department’s Statistical Computing Laboratory, which maintains standard HPC cluster access.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović completed a four-month consultancy in 2022 with an e-learning content provider based in Novi Sad, advising on a learner progress scoring system for a corporate training platform.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović has no other sustained industry roles.",
+        "about": "researcher",
+        "evidence": [
+         "R1006"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s expertise includes educational data mining and learning analytics for student performance prediction.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10454",
+         "SYN-PUB-10457",
+         "SYN-PUB-10458",
+         "SYN-PRJ-0270",
+         "SYN-PRJ-0271"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s expertise includes longitudinal and sequential modelling of learning behaviour.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10455",
+         "SYN-PUB-10456",
+         "SYN-PUB-10459",
+         "SYN-PUB-10460"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s expertise includes competency modelling, mastery estimation, and retention analysis.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-06872",
+         "SYN-PUB-10460",
+         "SYN-PRJ-0270"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s expertise includes statistical and machine learning methods for educational data.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10454",
+         "SYN-PUB-10456",
+         "SYN-PUB-10457",
+         "SYN-PUB-10458",
+         "SYN-PUB-10461"
+        ]
+       },
+       {
+        "text": "Danilo Mitrović’s expertise includes learning trace data harmonisation and comparative analytics across institutions.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PRJ-0271",
+         "SYN-PUB-10459",
+         "SYN-PUB-10461"
+        ]
+       },
+       {
+        "text": "Example winery is located in Fruška Gora.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "Example winery monitors 40 stainless fermentation tanks.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Example winery has a recurring problem in which two or three of its 40 tanks get stuck each harvest.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Example winery logs tank temperature every 10 minutes and density twice a day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Example winery wants an early warning, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "The company is a winery; no size, sector, location, or history beyond the problem statement was given.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Danilo Mitrović is an Assistant Professor in the Faculty of Sciences, Department of Mathematics and Informatics.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović’s research areas include Educational Data Mining, Learning Analytics, Applied Statistics, and Machine Learning.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović works on clickstream analysis, longitudinal data modelling, competency prediction, learning management systems, survival analysis, hidden Markov models, sequence mining, student performance, Moodle log data, and feature engineering.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović completed a BSc and MSc in Mathematics and Computer Science at the University of Novi Sad and a PhD in Applied Mathematics at the same institution; he joined the department as a Teaching Assistant in 2010 and became Assistant Professor in 2016.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović’s group regularly analyses event-log datasets from the university’s Moodle deployment and collaborates with the department’s Statistical Computing Laboratory, which maintains standard HPC cluster access.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović completed a four-month consultancy in 2022 with an e-learning content provider based in Novi Sad, advising on a learner progress scoring system for a corporate training platform.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović has no other sustained industry roles.",
+       "evidence": [
+        "R1006"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović’s expertise includes educational data mining and learning analytics for student performance prediction.",
+       "evidence": [
+        "SYN-PUB-10454",
+        "SYN-PUB-10457",
+        "SYN-PUB-10458",
+        "SYN-PRJ-0270",
+        "SYN-PRJ-0271"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović’s expertise includes longitudinal and sequential modelling of learning behaviour.",
+       "evidence": [
+        "SYN-PUB-10455",
+        "SYN-PUB-10456",
+        "SYN-PUB-10459",
+        "SYN-PUB-10460"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović’s expertise includes competency modelling, mastery estimation, and retention analysis.",
+       "evidence": [
+        "SYN-PUB-06872",
+        "SYN-PUB-10460",
+        "SYN-PRJ-0270"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.97
+      },
+      {
+       "claim": "Danilo Mitrović’s expertise includes statistical and machine learning methods for educational data.",
+       "evidence": [
+        "SYN-PUB-10454",
+        "SYN-PUB-10456",
+        "SYN-PUB-10457",
+        "SYN-PUB-10458",
+        "SYN-PUB-10461"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Danilo Mitrović’s expertise includes learning trace data harmonisation and comparative analytics across institutions.",
+       "evidence": [
+        "SYN-PRJ-0271",
+        "SYN-PUB-10459",
+        "SYN-PUB-10461"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Example winery is located in Fruška Gora.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.96
+      },
+      {
+       "claim": "Example winery monitors 40 stainless fermentation tanks.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Example winery has a recurring problem in which two or three of its 40 tanks get stuck each harvest.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Example winery logs tank temperature every 10 minutes and density twice a day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Example winery wants an early warning, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company is a winery; no size, sector, location, or history beyond the problem statement was given.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Early warning for stuck fermentations from sparse tank telemetry",
+    "problem": "Example winery in Fruška Gora runs 40 stainless fermentation tanks each harvest, and two or three tanks typically get stuck every season: sugar stops dropping for days and the cellar team only notices at the morning density check. The winery already logs tank temperature every 10 minutes and density twice a day, but the measurements are not interpreted together. The goal is a trusted early-warning system that can flag a likely fermentation stall about 24 hours in advance, so the cellar master can intervene in time.",
+    "research_questions": [
+     "Can a model that fuses 10-minute temperature traces with twice-daily density readings predict a stall at least 24 hours before it becomes visible in the morning check, with acceptable false-alarm rates for cellar use?",
+     "Which temporal features and sequence patterns best separate normal fermentations from fermentations that later stall across the winery’s 40 tanks?",
+     "Can the model be converted into a simple risk score or alert rule that the cellar master can trust and act on during harvest operations?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Collect and clean one harvest cycle of tank-level data; align temperature and density streams; define operational labels for normal and stalled fermentations; build baseline statistical and machine-learning models on historical tank curves.",
+      "result": "A validated data pipeline and a baseline stall-prediction model with clear performance metrics on past harvests."
+     },
+     {
+      "year": 2,
+      "work": "Develop sequence models that combine irregular density checks with high-frequency temperature histories; test feature sets such as slope changes, plateaus, lagged temperature response, and tank-specific effects; calibrate alert thresholds with the cellar master.",
+      "result": "A predictive model that can issue a 24-hour early warning with quantified precision, recall, and lead time."
+     },
+     {
+      "year": 3,
+      "work": "Run prospective trials during a harvest season; compare alerts with cellar interventions and outcomes; refine the interface and operating rules for daily use; document robustness across tanks and vintages.",
+      "result": "A deployable early-warning tool and a transfer package for routine cellar use."
+     }
+    ],
+    "company_brings": "Example winery brings access to its 40-tank fermentation operation, the existing temperature logs every 10 minutes, density measurements twice a day, and the cellar master’s knowledge of what a real stall looks like and how alerts should be used in practice.",
+    "faculty_brings": "Danilo Mitrović and the Faculty of Sciences, Department of Mathematics and Informatics, bring expertise in educational data mining, longitudinal sequence modelling, statistical learning, machine learning, and access to departmental statistical computing resources. Danilo Mitrović will supervise the research side; the company-side supervisor should be the cellar master or production manager responsible for fermentation decisions.",
+    "why_this_pair": "This is a good fit because Danilo Mitrović’s research focuses on longitudinal clickstream and sequence modelling, where sparse observations must be combined with dense time-stamped traces to predict later outcomes. The winery’s data have the same core structure: irregular outcome checks, frequent sensor logs, and a clear operational target. The partnership is specific and practical: 40 tanks, two or three annual stalls, 10-minute temperature logging, twice-daily density checks, and a need for a trusted 24-hour warning rather than a generic analytics dashboard.",
+    "first_step": "Within the next month, the partners should meet to map one completed harvest into a shared dataset specification, export one tank season of temperature and density data, and agree on the definition of a stall, the alert window, and the evaluation metric for a first baseline model.",
+    "claims": [
+     {
+      "text": "Danilo Mitrović is an Assistant Professor in the Faculty of Sciences, Department of Mathematics and Informatics.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s research areas include Educational Data Mining, Learning Analytics, Applied Statistics, and Machine Learning.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović works on clickstream analysis, longitudinal data modelling, competency prediction, learning management systems, survival analysis, hidden Markov models, sequence mining, student performance, Moodle log data, and feature engineering.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović completed a BSc and MSc in Mathematics and Computer Science at the University of Novi Sad and a PhD in Applied Mathematics at the same institution; he joined the department as a Teaching Assistant in 2010 and became Assistant Professor in 2016.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s group regularly analyses event-log datasets from the university’s Moodle deployment and collaborates with the department’s Statistical Computing Laboratory, which maintains standard HPC cluster access.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović completed a four-month consultancy in 2022 with an e-learning content provider based in Novi Sad, advising on a learner progress scoring system for a corporate training platform.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović has no other sustained industry roles.",
+      "about": "researcher",
+      "evidence": [
+       "R1006"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s expertise includes educational data mining and learning analytics for student performance prediction.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10454",
+       "SYN-PUB-10457",
+       "SYN-PUB-10458",
+       "SYN-PRJ-0270",
+       "SYN-PRJ-0271"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s expertise includes longitudinal and sequential modelling of learning behaviour.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10455",
+       "SYN-PUB-10456",
+       "SYN-PUB-10459",
+       "SYN-PUB-10460"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s expertise includes competency modelling, mastery estimation, and retention analysis.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-06872",
+       "SYN-PUB-10460",
+       "SYN-PRJ-0270"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s expertise includes statistical and machine learning methods for educational data.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10454",
+       "SYN-PUB-10456",
+       "SYN-PUB-10457",
+       "SYN-PUB-10458",
+       "SYN-PUB-10461"
+      ]
+     },
+     {
+      "text": "Danilo Mitrović’s expertise includes learning trace data harmonisation and comparative analytics across institutions.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PRJ-0271",
+       "SYN-PUB-10459",
+       "SYN-PUB-10461"
+      ]
+     },
+     {
+      "text": "Example winery is located in Fruška Gora.",
+      "about": "company",
+      "evidence": [
+       "Q001"
+      ]
+     },
+     {
+      "text": "Example winery monitors 40 stainless fermentation tanks.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Example winery has a recurring problem in which two or three of its 40 tanks get stuck each harvest.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Example winery logs tank temperature every 10 minutes and density twice a day.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Example winery wants an early warning, ideally 24 hours before a fermentation stalls, that the cellar master can trust and act on.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "The company is a winery; no size, sector, location, or history beyond the problem statement was given.",
+      "about": "company",
+      "evidence": [
+       "Q001"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "Q001-CH1",
+    "companyId": "Q001",
+    "researcherId": "R1006",
+    "retrievalScore": 16.837,
+    "matchedTerms": [
+     "log",
+     "but",
+     "early",
+     "warning",
+     "before"
+    ],
+    "score": 1.99,
+    "confidence": 0.99,
+    "screener": "Screener-1",
+    "key": "R1006xQ001-CH1",
+    "selectedAt": 740,
+    "profiler": "4267f648-44dd-4010-bc6c-6f8560b4ec92",
+    "analyst": "870c9010-4ba2-4835-b0e3-e377822fd774",
+    "status": "done",
+    "writer": "dd165f18-6b96-4a65-81d8-9d16568a7ae9"
+   }
+  }
+ ],
+ "jobs": [
+  {
+   "jobId": "screen-Screener-1-1",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 1,
+   "status": "done",
+   "finishedAt": 659
+  },
+  {
+   "jobId": "screen-Screener-2-1",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 22,
+   "status": "done",
+   "finishedAt": 660
+  },
+  {
+   "jobId": "screen-Screener-3-1",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 22,
+   "status": "done",
+   "finishedAt": 740
+  },
+  {
+   "jobId": "profile-R1006",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 740,
+   "status": "done",
+   "finishedAt": 7686
+  },
+  {
+   "jobId": "profile-Q001-CH1",
+   "agent": "Analyst-1",
+   "kind": "profile_company",
+   "startedAt": 742,
+   "status": "done",
+   "finishedAt": 8047
+  },
+  {
+   "jobId": "profile-R0086",
+   "agent": "Profiler-2",
+   "kind": "profile_researcher",
+   "startedAt": 743,
+   "status": "done",
+   "finishedAt": 9144
+  },
+  {
+   "jobId": "profile-R0818",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 743,
+   "status": "done",
+   "finishedAt": 7876
+  },
+  {
+   "jobId": "write-R1006xQ001-CH1",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 8047,
+   "status": "done",
+   "finishedAt": 21203
+  },
+  {
+   "jobId": "write-R0818xQ001-CH1",
+   "agent": "Writer-2",
+   "kind": "write",
+   "startedAt": 8048,
+   "status": "done",
+   "finishedAt": 18011
+  },
+  {
+   "jobId": "write-R0086xQ001-CH1",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 9145,
+   "status": "done",
+   "finishedAt": 18724
+  }
+ ]
+}
