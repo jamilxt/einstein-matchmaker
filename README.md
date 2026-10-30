@@ -24,14 +24,29 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 
 ![The source record sheet](docs/screenshots/04-source-record.png)
 
-| | |
-| --- | --- |
-| ![Reverse Search form](docs/screenshots/01-find-researchers.png) **Reverse Search:** a company describes its problem. | ![Reverse Search running](docs/screenshots/05-reverse-search.png) **The same team on one problem:** 15 candidates around it, the chosen three in bold. |
-| ![How it works page](docs/screenshots/06-how-it-works.png) **How it works:** the architecture in the app. | ![Critic evaluation](docs/screenshots/07-critic-evaluation.png) **The Critic evaluation**, including the bug it found and the one miss. |
+**Reverse Search.** A company describes its problem in its own words.
 
-| | |
-| --- | --- |
-| ![Mobile, dark mode, run summary](docs/screenshots/08-mobile-dark-run.png) | ![Mobile, dark mode, proposal](docs/screenshots/09-mobile-dark-proposal.png) |
+![Reverse Search form](docs/screenshots/01-find-researchers.png)
+
+**The same team on one problem.** Fifteen candidates sit around the company's challenge, and the three chosen ones are in bold.
+
+![Reverse Search running](docs/screenshots/05-reverse-search.png)
+
+**How it works.** The architecture, inside the app.
+
+![How it works page](docs/screenshots/06-how-it-works.png)
+
+**The Critic evaluation**, including the bug it found and the one miss.
+
+![Critic evaluation](docs/screenshots/07-critic-evaluation.png)
+
+**On a phone, in dark mode.**
+
+<p>
+  <img src="docs/screenshots/08-mobile-dark-run.png" alt="Mobile, dark mode, run summary" width="380">
+  &nbsp;
+  <img src="docs/screenshots/09-mobile-dark-proposal.png" alt="Mobile, dark mode, proposal" width="380">
+</p>
 
 ## What the brief asks for, and where it is
 
