@@ -1,0 +1,108 @@
+{
+  "runId": "2026-10-30T11-22-59-985Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+    "profiler": "gpt-5.4-mini",
+    "analyst": "gpt-5.4-mini",
+    "writer": "gpt-5.4-mini",
+    "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 30590,
+  "shortlist": {
+    "pairs": 15,
+    "challenges": 1
+  },
+  "screened": 15,
+  "selected": [
+    {
+      "key": "R0496xQ001-CH1",
+      "score": 1.97,
+      "screener": "Screener-2",
+      "selectedAtMs": 765
+    },
+    {
+      "key": "R0289xQ001-CH1",
+      "score": 1.56,
+      "screener": "Screener-3",
+      "selectedAtMs": 767
+    },
+    {
+      "key": "R0749xQ001-CH1",
+      "score": 1.23,
+      "screener": "Screener-3",
+      "selectedAtMs": 767
+    }
+  ],
+  "concurrency": {
+    "jobs": 10,
+    "peakInFlight": 4,
+    "peakAtMs": 767,
+    "inFlightAtPeak": [
+      "Profiler-1:profile_researcher",
+      "Analyst-1:profile_company",
+      "Profiler-2:profile_researcher",
+      "Profiler-1:profile_researcher"
+    ],
+    "jobsOverlappingAnotherAgent": 10
+  },
+  "critic_record": {
+    "drafts": 5,
+    "revisionsRequested": 2,
+    "claimsChecked": 69,
+    "claimsBlocked": 2,
+    "unsupportedClaimsInFinalProposals": 0,
+    "outcomes": [
+      {
+        "key": "R0496xQ001-CH1",
+        "verdict": "approved",
+        "drafts": 2
+      },
+      {
+        "key": "R0749xQ001-CH1",
+        "verdict": "approved",
+        "drafts": 1
+      },
+      {
+        "key": "R0289xQ001-CH1",
+        "verdict": "approved",
+        "drafts": 2
+      }
+    ]
+  },
+  "spend": {
+    "usd": 0.05972,
+    "budgetUsd": 0.1,
+    "halted": false,
+    "byModel": {
+      "decisions:gpt-6-luna": {
+        "input": 57069,
+        "output": 0,
+        "usd": 0.0057069,
+        "calls": 8
+      },
+      "gpt-5.4-mini": {
+        "input": 21341,
+        "output": 8446,
+        "usd": 0.05401275,
+        "calls": 13
+      }
+    },
+    "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+    "challenges": 60,
+    "perChallenge": 3,
+    "proposals": 3,
+    "screeners": 3,
+    "profilers": 2,
+    "analysts": 2,
+    "writers": 2,
+    "selectThreshold": 2,
+    "supportThreshold": 0.5,
+    "maxRevisions": 2,
+    "jobTimeoutMs": 90000,
+    "runTimeoutMs": 600000,
+    "screenBatch": 6
+  }
+}

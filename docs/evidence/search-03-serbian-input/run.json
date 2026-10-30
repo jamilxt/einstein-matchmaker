@@ -1,0 +1,2491 @@
+{
+ "summary": {
+  "runId": "2026-10-30T11-22-59-985Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+   "profiler": "gpt-5.4-mini",
+   "analyst": "gpt-5.4-mini",
+   "writer": "gpt-5.4-mini",
+   "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 30590,
+  "shortlist": {
+   "pairs": 15,
+   "challenges": 1
+  },
+  "screened": 15,
+  "selected": [
+   {
+    "key": "R0496xQ001-CH1",
+    "score": 1.97,
+    "screener": "Screener-2",
+    "selectedAtMs": 765
+   },
+   {
+    "key": "R0289xQ001-CH1",
+    "score": 1.56,
+    "screener": "Screener-3",
+    "selectedAtMs": 767
+   },
+   {
+    "key": "R0749xQ001-CH1",
+    "score": 1.23,
+    "screener": "Screener-3",
+    "selectedAtMs": 767
+   }
+  ],
+  "concurrency": {
+   "jobs": 10,
+   "peakInFlight": 4,
+   "peakAtMs": 767,
+   "inFlightAtPeak": [
+    "Profiler-1:profile_researcher",
+    "Analyst-1:profile_company",
+    "Profiler-2:profile_researcher",
+    "Profiler-1:profile_researcher"
+   ],
+   "jobsOverlappingAnotherAgent": 10
+  },
+  "critic_record": {
+   "drafts": 5,
+   "revisionsRequested": 2,
+   "claimsChecked": 69,
+   "claimsBlocked": 2,
+   "unsupportedClaimsInFinalProposals": 0,
+   "outcomes": [
+    {
+     "key": "R0496xQ001-CH1",
+     "verdict": "approved",
+     "drafts": 2
+    },
+    {
+     "key": "R0749xQ001-CH1",
+     "verdict": "approved",
+     "drafts": 1
+    },
+    {
+     "key": "R0289xQ001-CH1",
+     "verdict": "approved",
+     "drafts": 2
+    }
+   ]
+  },
+  "spend": {
+   "usd": 0.05972,
+   "budgetUsd": 0.1,
+   "halted": false,
+   "byModel": {
+    "decisions:gpt-6-luna": {
+     "input": 57069,
+     "output": 0,
+     "usd": 0.0057069,
+     "calls": 8
+    },
+    "gpt-5.4-mini": {
+     "input": 21341,
+     "output": 8446,
+     "usd": 0.05401275,
+     "calls": 13
+    }
+   },
+   "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+   "challenges": 60,
+   "perChallenge": 3,
+   "proposals": 3,
+   "screeners": 3,
+   "profilers": 2,
+   "analysts": 2,
+   "writers": 2,
+   "selectThreshold": 2,
+   "supportThreshold": 0.5,
+   "maxRevisions": 2,
+   "jobTimeoutMs": 90000,
+   "runTimeoutMs": 600000,
+   "screenBatch": 6
+  }
+ },
+ "reverse": true,
+ "candidates": [
+  {
+   "key": "R1010xQ001-CH1",
+   "researcherId": "R1010",
+   "researcher": "Bojana Žarković",
+   "title": "vanredni profesor",
+   "department": "Department of Physics",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.07
+  },
+  {
+   "key": "R0284xQ001-CH1",
+   "researcherId": "R0284",
+   "researcher": "Milena Vidaković",
+   "title": "docent",
+   "department": "Department of Biology and Ecology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.2
+  },
+  {
+   "key": "R0672xQ001-CH1",
+   "researcherId": "R0672",
+   "researcher": "Danilo Stevanović",
+   "title": "naučni saradnik",
+   "department": "Department of Pharmacology, Toxicology and Clinical Pharmacology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.14
+  },
+  {
+   "key": "R0137xQ001-CH1",
+   "researcherId": "R0137",
+   "researcher": "Zorica Marić",
+   "title": "istraživač saradnik",
+   "department": "Data Science and Bioinformatics Group",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.32
+  },
+  {
+   "key": "R0496xQ001-CH1",
+   "researcherId": "R0496",
+   "researcher": "Saša Kosanović",
+   "title": "viši naučni saradnik",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 1.97
+  },
+  {
+   "key": "R1047xQ001-CH1",
+   "researcherId": "R1047",
+   "researcher": "Milena Pantelić",
+   "title": "naučni saradnik",
+   "department": "Department of Water Management",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.26
+  },
+  {
+   "key": "R0289xQ001-CH1",
+   "researcherId": "R0289",
+   "researcher": "Đurđica Žigić",
+   "title": "naučni saradnik",
+   "department": "Food Safety and Quality Group",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 1.56
+  },
+  {
+   "key": "R0766xQ001-CH1",
+   "researcherId": "R0766",
+   "researcher": "Marko Bjelica",
+   "title": "naučni saradnik",
+   "department": "Department of Commercial Law",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.01
+  },
+  {
+   "key": "R0749xQ001-CH1",
+   "researcherId": "R0749",
+   "researcher": "Emilija Vranješ",
+   "title": "docent",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 1.23
+  },
+  {
+   "key": "R0217xQ001-CH1",
+   "researcherId": "R0217",
+   "researcher": "Andrea Malešević",
+   "title": "docent",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 1
+  },
+  {
+   "key": "R0483xQ001-CH1",
+   "researcherId": "R0483",
+   "researcher": "Aleksandra Paunović",
+   "title": "redovni profesor",
+   "department": "Department of Serbian Language and Linguistics",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.02
+  },
+  {
+   "key": "R0843xQ001-CH1",
+   "researcherId": "R0843",
+   "researcher": "Miloš Zdravković",
+   "title": "asistent",
+   "department": "Department of Pharmacy",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.19
+  },
+  {
+   "key": "R0020xQ001-CH1",
+   "researcherId": "R0020",
+   "researcher": "Dejan Žigić",
+   "title": "naučni saradnik",
+   "department": "Department of Commercial Law",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.01
+  },
+  {
+   "key": "R0018xQ001-CH1",
+   "researcherId": "R0018",
+   "researcher": "Lidija Ranković",
+   "title": "student doktorskih studija",
+   "department": "Department of Finance and Banking",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.03
+  },
+  {
+   "key": "R0232xQ001-CH1",
+   "researcherId": "R0232",
+   "researcher": "Vladan Radić",
+   "title": "docent",
+   "department": "Department of Biotechnology",
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "company": "Primer: industrijska pekara, Novi Sad (test input)",
+   "score": 0.83
+  }
+ ],
+ "selected": [
+  {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "researcherId": "R0496",
+   "retrievalScore": 22.953,
+   "matchedTerms": [
+    "proizvodnje",
+    "kao",
+    "zbog",
+    "ili",
+    "koje"
+   ],
+   "score": 1.97,
+   "confidence": 0.97,
+   "screener": "Screener-2",
+   "key": "R0496xQ001-CH1",
+   "selectedAt": 765,
+   "profiler": "7764a443-1b9e-491b-ba2f-0281891cbc18",
+   "analyst": "907e754e-b35e-44b3-81b6-126d200adc1a",
+   "status": "done",
+   "writer": "33006b17-26db-4a90-9c25-abc459833b7e"
+  },
+  {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "researcherId": "R0289",
+   "retrievalScore": 20.074,
+   "matchedTerms": [
+    "nost",
+    "fermentacije",
+    "kao",
+    "koje"
+   ],
+   "score": 1.56,
+   "confidence": 0.54,
+   "screener": "Screener-3",
+   "key": "R0289xQ001-CH1",
+   "selectedAt": 767,
+   "profiler": "9b5372bf-055a-46ab-a406-073c84a47a15",
+   "analyst": "d8afea18-a815-41bb-a4ef-b02e15a340d9",
+   "status": "done",
+   "writer": "c4ffe382-d04e-441d-9b60-bb80c86a642b"
+  },
+  {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "researcherId": "R0749",
+   "retrievalScore": 19.007,
+   "matchedTerms": [
+    "kao",
+    "zbog",
+    "vreme",
+    "koje"
+   ],
+   "score": 1.23,
+   "confidence": 0.67,
+   "screener": "Screener-3",
+   "key": "R0749xQ001-CH1",
+   "selectedAt": 767,
+   "profiler": "7764a443-1b9e-491b-ba2f-0281891cbc18",
+   "analyst": "907e754e-b35e-44b3-81b6-126d200adc1a",
+   "status": "done",
+   "writer": "33006b17-26db-4a90-9c25-abc459833b7e"
+  }
+ ],
+ "researcherProfiles": {
+  "R0749": {
+   "researcherId": "R0749",
+   "summary": "Emilija Vranješ (R0749) is a docent at the Faculty of Technical Sciences, University of Novi Sad, with demonstrated expertise in dynamic vehicle routing, combinatorial optimization, and logistics-focused operations research. Her work centers on real-time replanning, hybrid exact/heuristic algorithms, and logistics applications such as same-day delivery, emergency vehicles, and last-mile distribution.",
+   "expertise": [
+    {
+     "topic": "Dynamic vehicle routing and real-time replanning",
+     "evidence": [
+      "SYN-PUB-08271",
+      "SYN-PUB-08272",
+      "SYN-PUB-08274",
+      "SYN-PUB-08275",
+      "SYN-PRJ-0462"
+     ]
+    },
+    {
+     "topic": "Hybrid exact and metaheuristic optimization methods",
+     "evidence": [
+      "SYN-PUB-08272",
+      "SYN-PUB-08276",
+      "SYN-PUB-08278",
+      "SYN-PRJ-0462"
+     ]
+    },
+    {
+     "topic": "Logistics and distribution planning",
+     "evidence": [
+      "SYN-PUB-06835",
+      "SYN-PUB-08273",
+      "SYN-PUB-08277",
+      "SYN-PRJ-0463"
+     ]
+    },
+    {
+     "topic": "Emergency and time-critical routing applications",
+     "evidence": [
+      "SYN-PUB-08275",
+      "SYN-PUB-08274",
+      "SYN-PUB-08276"
+     ]
+    },
+    {
+     "topic": "Solution quality, stability, and benchmarking for routing algorithms",
+     "evidence": [
+      "SYN-PUB-08273",
+      "SYN-PUB-08276",
+      "SYN-PUB-06835",
+      "SYN-PUB-06832"
+     ]
+    }
+   ]
+  },
+  "R0289": {
+   "researcherId": "R0289",
+   "summary": "Đurđica Žigić (R0289) works in food science and technology at FINS, with a strong focus on dairy biotechnology, especially fermented milk gels, yoghurt texture, and the microbiology of fermented foods. Her record shows repeated work on acidification kinetics, rheology, EPS-producing starter cultures, and microstructure analysis, with both academic and industry-oriented project experience in dairy processing.",
+   "expertise": [
+    {
+     "topic": "Fermented dairy gel formulation and acidification kinetics",
+     "evidence": [
+      "SYN-PUB-03597",
+      "SYN-PUB-03602",
+      "SYN-PUB-03604",
+      "SYN-PRJ-1797"
+     ]
+    },
+    {
+     "topic": "Rheology, texture analysis, and gel structure of yoghurt and fermented milk",
+     "evidence": [
+      "SYN-PUB-03597",
+      "SYN-PUB-03599",
+      "SYN-PUB-03601",
+      "SYN-PUB-03603"
+     ]
+    },
+    {
+     "topic": "Exopolysaccharide-producing starter cultures for yoghurt functionality",
+     "evidence": [
+      "SYN-PUB-03598",
+      "SYN-PUB-03599",
+      "SYN-PUB-03601",
+      "SYN-PRJ-1796"
+     ]
+    },
+    {
+     "topic": "Microstructure characterization of fermented milk gels using confocal microscopy",
+     "evidence": [
+      "SYN-PUB-03600"
+     ]
+    },
+    {
+     "topic": "Product optimization and reformulation, including low-fat and blended dairy systems",
+     "evidence": [
+      "SYN-PUB-03599",
+      "SYN-PUB-03603",
+      "SYN-PUB-03604",
+      "SYN-PRJ-1796"
+     ]
+    }
+   ]
+  },
+  "R0496": {
+   "researcherId": "R0496",
+   "summary": "Saša Kosanović (FTN, Mechatronics, Robotics and Automation) works on additive manufacturing quality monitoring, especially FDM 3D printing, using machine vision and deep learning. His record shows sustained work on defect detection, anomaly detection, embedded inference, and closed-loop process control, plus involvement in mechatronics/automation and one cross-domain diagnostics project.",
+   "expertise": [
+    {
+     "topic": "In-situ quality monitoring for FDM additive manufacturing",
+     "evidence": [
+      "SYN-PUB-05834",
+      "SYN-PUB-05839",
+      "SYN-PUB-05843",
+      "SYN-PRJ-0239",
+      "SYN-PAT-022"
+     ]
+    },
+    {
+     "topic": "Machine learning and computer vision for defect detection/classification",
+     "evidence": [
+      "SYN-PUB-05836",
+      "SYN-PUB-05837",
+      "SYN-PUB-05840",
+      "SYN-PUB-05844",
+      "SYN-PAT-022"
+     ]
+    },
+    {
+     "topic": "Embedded and real-time deployment of CNN-based inspection systems",
+     "evidence": [
+      "SYN-PUB-05838",
+      "SYN-PUB-05841",
+      "SYN-PRJ-0239",
+      "SYN-PAT-022"
+     ]
+    },
+    {
+     "topic": "Anomaly detection and learning from limited labeled data",
+     "evidence": [
+      "SYN-PUB-05837",
+      "SYN-PUB-05840",
+      "SYN-PUB-05844"
+     ]
+    },
+    {
+     "topic": "Mechatronics, automation, and process-control applications",
+     "evidence": [
+      "SYN-PUB-05841",
+      "SYN-PUB-05842",
+      "SYN-PRJ-0377"
+     ]
+    }
+   ]
+  }
+ },
+ "companyProfiles": {
+  "Q001-CH1": {
+   "challengeId": "Q001-CH1",
+   "companyId": "Q001",
+   "summary": "Q001 Primer is an industrial bakery in Novi Sad, described only through its submitted problem statement. It bakes about 18,000 loaves per day and is seeking better process control around dough condition before baking.",
+   "needs": []
+  }
+ },
+ "proposals": [
+  {
+   "key": "R0496xQ001-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "In-line dough condition monitoring and pre-bake warning for a 18,000-loaf/day industrial bakery",
+      "problem": "Primer, an industrial bakery in Novi Sad, bakes about 18,000 loaves per day, but 4% to 6% of production becomes scrap because the loaves end up too small or with cracked crust. The root issue is that dough humidity and temperature after fermentation vary from shift to shift, while the line currently measures only chamber temperature and fermentation time, not the dough state itself. Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can correct the process in time. This is a good industrial PhD topic because the challenge is concrete, measurable, and already tied to a real production rate, defect rate, and decision point on the line.",
+      "research_questions": [
+       "Which in-line measurements of dough condition before baking best predict under-volume and cracked-crust scrap at Primer’s 18,000-loaf/day line, beyond the currently measured chamber temperature and fermentation time?",
+       "Can a vision- and sensor-based model detect out-of-spec dough state before oven entry with enough accuracy to reduce the current 4% to 6% scrap rate?",
+       "What warning threshold and operator feedback format allow the baker to intervene in time without slowing the line or increasing false alarms?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Map the existing bread line, define the critical control point before oven entry, and run a measurement campaign on dough state, ambient conditions, chamber temperature, fermentation time, and final loaf quality. Build the first predictive model from historical and newly collected data.",
+        "result": "A validated list of required measurements and a baseline model that predicts scrap risk before baking."
+       },
+       {
+        "year": 2,
+        "work": "Develop and test an in-line sensing and warning prototype, likely combining camera-based inspection with process data. Tune the model for shift-to-shift variation and compare several alert thresholds with bakery operators.",
+        "result": "A working prototype that issues pre-bake warnings and demonstrably improves detection of risky dough batches."
+       },
+       {
+        "year": 3,
+        "work": "Deploy the system in pilot operation, measure impact on scrap, stability, and operator workload, and refine the model and user interface for routine use across shifts.",
+        "result": "A pilot-validated decision-support system that reduces scrap and can be transferred to production use."
+       }
+      ],
+      "company_brings": "Primer brings the real production line, access to the 18,000-loaf/day process, the current measurements already recorded on the line, and bakery operators who can validate which warnings are useful in practice.",
+      "faculty_brings": "Saša Kosanović and the Faculty of Technical Sciences bring expertise in machine vision, deep learning, anomaly detection, and process monitoring, plus the research infrastructure for building and training in-line quality models. Saša Kosanović will supervise the academic side from FTN, and Primer should appoint a production or quality lead to supervise the industrial side.",
+      "why_this_pair": "This pair fits unusually well because the challenge is about detecting a hidden process state before a quality defect appears, and Saša Kosanović’s work is specifically focused on in-situ quality monitoring, machine vision, anomaly detection, and real-time deployment of inspection systems. He already worked with industry on a pilot quality-monitoring system, so the collaboration can move from research method to bakery deployment faster than a general-purpose team could. Primer’s line also offers the kind of stable, high-volume setting needed to turn a prediction model into a measurable industrial tool.",
+      "first_step": "Next month, both sides should run a one-day scoping workshop at Primer to define the exact measurement points, agree on the target defect labels, and install a temporary data collection setup for dough images and process variables over at least two shifts.",
+      "claims": [
+       {
+        "text": "Saša Kosanović is a senior research associate at the Faculty of Technical Sciences, Department of Mechatronics, Robotics and Automation.",
+        "about": "researcher",
+        "evidence": [
+         "R0496"
+        ]
+       },
+       {
+        "text": "Saša Kosanović works on additive manufacturing quality monitoring, especially FDM 3D printing, using machine vision and deep learning.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05834",
+         "SYN-PUB-05839",
+         "SYN-PUB-05843",
+         "SYN-PRJ-0239",
+         "SYN-PAT-022"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in machine learning and computer vision for defect detection and classification.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05836",
+         "SYN-PUB-05837",
+         "SYN-PUB-05840",
+         "SYN-PUB-05844",
+         "SYN-PAT-022"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in embedded and real-time deployment of CNN-based inspection systems.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05838",
+         "SYN-PUB-05841",
+         "SYN-PRJ-0239",
+         "SYN-PAT-022"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in anomaly detection and learning from limited labeled data.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05837",
+         "SYN-PUB-05840",
+         "SYN-PUB-05844"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has experience in mechatronics, automation, and process-control applications.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05841",
+         "SYN-PUB-05842",
+         "SYN-PRJ-0377"
+        ]
+       },
+       {
+        "text": "Saša Kosanović collaborated with Primat Inženjering d.o.o. from Novi Sad between 2019 and 2021 on a pilot introduction of a print-quality monitoring system in their prototype workshop.",
+        "about": "researcher",
+        "evidence": [
+         "Researcher profile (cited)"
+        ]
+       },
+       {
+        "text": "Primer is an industrial bakery in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "Primer bakes about 18,000 loaves per day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer has a scrap rate of 4% to 6% بسبب loaves being too small or having cracked crust.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer wants pre-bake warning so the baker can correct the process before the dough enters the oven.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Saša Kosanović is a senior research associate at the Faculty of Technical Sciences, Department of Mechatronics, Robotics and Automation.",
+       "evidence": [
+        "R0496"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Saša Kosanović works on additive manufacturing quality monitoring, especially FDM 3D printing, using machine vision and deep learning.",
+       "evidence": [
+        "SYN-PUB-05834",
+        "SYN-PUB-05839",
+        "SYN-PUB-05843",
+        "SYN-PRJ-0239",
+        "SYN-PAT-022"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Saša Kosanović has expertise in machine learning and computer vision for defect detection and classification.",
+       "evidence": [
+        "SYN-PUB-05836",
+        "SYN-PUB-05837",
+        "SYN-PUB-05840",
+        "SYN-PUB-05844",
+        "SYN-PAT-022"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Saša Kosanović has expertise in embedded and real-time deployment of CNN-based inspection systems.",
+       "evidence": [
+        "SYN-PUB-05838",
+        "SYN-PUB-05841",
+        "SYN-PRJ-0239",
+        "SYN-PAT-022"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Saša Kosanović has expertise in anomaly detection and learning from limited labeled data.",
+       "evidence": [
+        "SYN-PUB-05837",
+        "SYN-PUB-05840",
+        "SYN-PUB-05844"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.98
+      },
+      {
+       "claim": "Saša Kosanović has experience in mechatronics, automation, and process-control applications.",
+       "evidence": [
+        "SYN-PUB-05841",
+        "SYN-PUB-05842",
+        "SYN-PRJ-0377"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.95
+      },
+      {
+       "claim": "Saša Kosanović collaborated with Primat Inženjering d.o.o. from Novi Sad between 2019 and 2021 on a pilot introduction of a print-quality monitoring system in their prototype workshop.",
+       "evidence": [
+        "Researcher profile (cited)"
+       ],
+       "deterministic": [
+        "Researcher profile (cited) does not exist in the dataset"
+       ],
+       "supported": false
+      },
+      {
+       "claim": "Primer is an industrial bakery in Novi Sad.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.83
+      },
+      {
+       "claim": "Primer bakes about 18,000 loaves per day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer has a scrap rate of 4% to 6% بسبب loaves being too small or having cracked crust.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer wants pre-bake warning so the baker can correct the process before the dough enters the oven.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "revise"
+    },
+    {
+     "attempt": 2,
+     "proposal": {
+      "title": "In-line dough condition monitoring and pre-bake warning for a 18,000-loaf/day industrial bakery",
+      "problem": "Primer, an industrial bakery in Novi Sad, bakes about 18,000 loaves per day, but 4% to 6% of production becomes scrap because the loaves end up too small or with cracked crust. The root issue is that dough humidity and temperature after fermentation vary from shift to shift, while the line currently measures only chamber temperature and fermentation time, not the dough state itself. Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can correct the process in time. This is a good industrial PhD topic because the challenge is concrete, measurable, and already tied to a real production rate, defect rate, and decision point on the line.",
+      "research_questions": [
+       "Which in-line measurements of dough condition before baking best predict under-volume and cracked-crust scrap at Primer’s 18,000-loaf/day line, beyond the currently measured chamber temperature and fermentation time?",
+       "Can a vision- and sensor-based model detect out-of-spec dough state before oven entry with enough accuracy to reduce the current 4% to 6% scrap rate?",
+       "What warning threshold and operator feedback format allow the baker to intervene in time without slowing the line or increasing false alarms?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Map the existing bread line, define the critical control point before oven entry, and run a measurement campaign on dough state, ambient conditions, chamber temperature, fermentation time, and final loaf quality. Build the first predictive model from historical and newly collected data.",
+        "result": "A validated list of required measurements and a baseline model that predicts scrap risk before baking."
+       },
+       {
+        "year": 2,
+        "work": "Develop and test an in-line sensing and warning prototype, likely combining camera-based inspection with process data. Tune the model for shift-to-shift variation and compare several alert thresholds with bakery operators.",
+        "result": "A working prototype that issues pre-bake warnings and demonstrably improves detection of risky dough batches."
+       },
+       {
+        "year": 3,
+        "work": "Deploy the system in pilot operation, measure impact on scrap, stability, and operator workload, and refine the model and user interface for routine use across shifts.",
+        "result": "A pilot-validated decision-support system that reduces scrap and can be transferred to production use."
+       }
+      ],
+      "company_brings": "Primer brings the real production line, access to the 18,000-loaf/day process, the current measurements already recorded on the line, and bakery operators who can validate which warnings are useful in practice.",
+      "faculty_brings": "Saša Kosanović and the Faculty of Technical Sciences bring expertise in machine vision, deep learning, anomaly detection, and process monitoring, plus the research infrastructure for building and training in-line quality models. Saša Kosanović will supervise the academic side from FTN, and Primer should appoint a production or quality lead to supervise the industrial side.",
+      "why_this_pair": "This pair fits unusually well because the challenge is about detecting a hidden process state before a quality defect appears, and Saša Kosanović’s work is specifically focused on in-situ quality monitoring, machine vision, anomaly detection, and real-time deployment of inspection systems. Primer’s line also offers the kind of stable, high-volume setting needed to turn a prediction model into a measurable industrial tool.",
+      "first_step": "Next month, both sides should run a one-day scoping workshop at Primer to define the exact measurement points, agree on the target defect labels, and install a temporary data collection setup for dough images and process variables over at least two shifts.",
+      "claims": [
+       {
+        "text": "Saša Kosanović is a senior research associate at the Faculty of Technical Sciences, Department of Mechatronics, Robotics and Automation.",
+        "about": "researcher",
+        "evidence": [
+         "R0496"
+        ]
+       },
+       {
+        "text": "Saša Kosanović works on additive manufacturing quality monitoring, especially FDM 3D printing, using machine vision and deep learning.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05834",
+         "SYN-PUB-05839",
+         "SYN-PUB-05843",
+         "SYN-PRJ-0239",
+         "SYN-PAT-022"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in machine learning and computer vision for defect detection and classification.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05836",
+         "SYN-PUB-05837",
+         "SYN-PUB-05840",
+         "SYN-PUB-05844",
+         "SYN-PAT-022"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in embedded and real-time deployment of CNN-based inspection systems.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05838",
+         "SYN-PUB-05841",
+         "SYN-PRJ-0239",
+         "SYN-PAT-022"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in anomaly detection and learning from limited labeled data.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05837",
+         "SYN-PUB-05840",
+         "SYN-PUB-05844"
+        ]
+       },
+       {
+        "text": "Saša Kosanović has expertise in mechatronics, automation, and process-control applications.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-05841",
+         "SYN-PUB-05842",
+         "SYN-PRJ-0377"
+        ]
+       },
+       {
+        "text": "Primer is an industrial bakery in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "Primer bakes about 18,000 loaves per day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer has a scrap rate of 4% to 6% because loaves are too small or have cracked crust.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer wants pre-bake warning so the baker can correct the process before the dough enters the oven.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Saša Kosanović is a senior research associate at the Faculty of Technical Sciences, Department of Mechatronics, Robotics and Automation.",
+       "evidence": [
+        "R0496"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Saša Kosanović works on additive manufacturing quality monitoring, especially FDM 3D printing, using machine vision and deep learning.",
+       "evidence": [
+        "SYN-PUB-05834",
+        "SYN-PUB-05839",
+        "SYN-PUB-05843",
+        "SYN-PRJ-0239",
+        "SYN-PAT-022"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Saša Kosanović has expertise in machine learning and computer vision for defect detection and classification.",
+       "evidence": [
+        "SYN-PUB-05836",
+        "SYN-PUB-05837",
+        "SYN-PUB-05840",
+        "SYN-PUB-05844",
+        "SYN-PAT-022"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Saša Kosanović has expertise in embedded and real-time deployment of CNN-based inspection systems.",
+       "evidence": [
+        "SYN-PUB-05838",
+        "SYN-PUB-05841",
+        "SYN-PRJ-0239",
+        "SYN-PAT-022"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Saša Kosanović has expertise in anomaly detection and learning from limited labeled data.",
+       "evidence": [
+        "SYN-PUB-05837",
+        "SYN-PUB-05840",
+        "SYN-PUB-05844"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.96
+      },
+      {
+       "claim": "Saša Kosanović has expertise in mechatronics, automation, and process-control applications.",
+       "evidence": [
+        "SYN-PUB-05841",
+        "SYN-PUB-05842",
+        "SYN-PRJ-0377"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.95
+      },
+      {
+       "claim": "Primer is an industrial bakery in Novi Sad.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Primer bakes about 18,000 loaves per day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer has a scrap rate of 4% to 6% because loaves are too small or have cracked crust.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer wants pre-bake warning so the baker can correct the process before the dough enters the oven.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "In-line dough condition monitoring and pre-bake warning for a 18,000-loaf/day industrial bakery",
+    "problem": "Primer, an industrial bakery in Novi Sad, bakes about 18,000 loaves per day, but 4% to 6% of production becomes scrap because the loaves end up too small or with cracked crust. The root issue is that dough humidity and temperature after fermentation vary from shift to shift, while the line currently measures only chamber temperature and fermentation time, not the dough state itself. Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can correct the process in time. This is a good industrial PhD topic because the challenge is concrete, measurable, and already tied to a real production rate, defect rate, and decision point on the line.",
+    "research_questions": [
+     "Which in-line measurements of dough condition before baking best predict under-volume and cracked-crust scrap at Primer’s 18,000-loaf/day line, beyond the currently measured chamber temperature and fermentation time?",
+     "Can a vision- and sensor-based model detect out-of-spec dough state before oven entry with enough accuracy to reduce the current 4% to 6% scrap rate?",
+     "What warning threshold and operator feedback format allow the baker to intervene in time without slowing the line or increasing false alarms?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Map the existing bread line, define the critical control point before oven entry, and run a measurement campaign on dough state, ambient conditions, chamber temperature, fermentation time, and final loaf quality. Build the first predictive model from historical and newly collected data.",
+      "result": "A validated list of required measurements and a baseline model that predicts scrap risk before baking."
+     },
+     {
+      "year": 2,
+      "work": "Develop and test an in-line sensing and warning prototype, likely combining camera-based inspection with process data. Tune the model for shift-to-shift variation and compare several alert thresholds with bakery operators.",
+      "result": "A working prototype that issues pre-bake warnings and demonstrably improves detection of risky dough batches."
+     },
+     {
+      "year": 3,
+      "work": "Deploy the system in pilot operation, measure impact on scrap, stability, and operator workload, and refine the model and user interface for routine use across shifts.",
+      "result": "A pilot-validated decision-support system that reduces scrap and can be transferred to production use."
+     }
+    ],
+    "company_brings": "Primer brings the real production line, access to the 18,000-loaf/day process, the current measurements already recorded on the line, and bakery operators who can validate which warnings are useful in practice.",
+    "faculty_brings": "Saša Kosanović and the Faculty of Technical Sciences bring expertise in machine vision, deep learning, anomaly detection, and process monitoring, plus the research infrastructure for building and training in-line quality models. Saša Kosanović will supervise the academic side from FTN, and Primer should appoint a production or quality lead to supervise the industrial side.",
+    "why_this_pair": "This pair fits unusually well because the challenge is about detecting a hidden process state before a quality defect appears, and Saša Kosanović’s work is specifically focused on in-situ quality monitoring, machine vision, anomaly detection, and real-time deployment of inspection systems. Primer’s line also offers the kind of stable, high-volume setting needed to turn a prediction model into a measurable industrial tool.",
+    "first_step": "Next month, both sides should run a one-day scoping workshop at Primer to define the exact measurement points, agree on the target defect labels, and install a temporary data collection setup for dough images and process variables over at least two shifts.",
+    "claims": [
+     {
+      "text": "Saša Kosanović is a senior research associate at the Faculty of Technical Sciences, Department of Mechatronics, Robotics and Automation.",
+      "about": "researcher",
+      "evidence": [
+       "R0496"
+      ]
+     },
+     {
+      "text": "Saša Kosanović works on additive manufacturing quality monitoring, especially FDM 3D printing, using machine vision and deep learning.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-05834",
+       "SYN-PUB-05839",
+       "SYN-PUB-05843",
+       "SYN-PRJ-0239",
+       "SYN-PAT-022"
+      ]
+     },
+     {
+      "text": "Saša Kosanović has expertise in machine learning and computer vision for defect detection and classification.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-05836",
+       "SYN-PUB-05837",
+       "SYN-PUB-05840",
+       "SYN-PUB-05844",
+       "SYN-PAT-022"
+      ]
+     },
+     {
+      "text": "Saša Kosanović has expertise in embedded and real-time deployment of CNN-based inspection systems.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-05838",
+       "SYN-PUB-05841",
+       "SYN-PRJ-0239",
+       "SYN-PAT-022"
+      ]
+     },
+     {
+      "text": "Saša Kosanović has expertise in anomaly detection and learning from limited labeled data.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-05837",
+       "SYN-PUB-05840",
+       "SYN-PUB-05844"
+      ]
+     },
+     {
+      "text": "Saša Kosanović has expertise in mechatronics, automation, and process-control applications.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-05841",
+       "SYN-PUB-05842",
+       "SYN-PRJ-0377"
+      ]
+     },
+     {
+      "text": "Primer is an industrial bakery in Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "Q001"
+      ]
+     },
+     {
+      "text": "Primer bakes about 18,000 loaves per day.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer has a scrap rate of 4% to 6% because loaves are too small or have cracked crust.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer wants pre-bake warning so the baker can correct the process before the dough enters the oven.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "Q001-CH1",
+    "companyId": "Q001",
+    "researcherId": "R0496",
+    "retrievalScore": 22.953,
+    "matchedTerms": [
+     "proizvodnje",
+     "kao",
+     "zbog",
+     "ili",
+     "koje"
+    ],
+    "score": 1.97,
+    "confidence": 0.97,
+    "screener": "Screener-2",
+    "key": "R0496xQ001-CH1",
+    "selectedAt": 765,
+    "profiler": "7764a443-1b9e-491b-ba2f-0281891cbc18",
+    "analyst": "907e754e-b35e-44b3-81b6-126d200adc1a",
+    "status": "done",
+    "writer": "33006b17-26db-4a90-9c25-abc459833b7e"
+   }
+  },
+  {
+   "key": "R0749xQ001-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Real-time dough condition sensing and pre-bake warning for Primer’s bread line",
+      "problem": "Primer’s industrial bread line in Novi Sad bakes about 18,000 loaves per day, but 4–6% of production is rejected because of too small volume or cracked crust. The bakery currently measures chamber temperature and fermentation time, but not the condition of the dough itself after fermentation. The concrete industrial problem is to identify which process variables should be measured on the line, and to build an early-warning model that tells the baker before the loaf enters the oven whether the process should be corrected.",
+      "research_questions": [
+       "Which measurable on-line variables best predict final loaf defects in Primer’s process, beyond the currently tracked chamber temperature and fermentation time, so that the false-negative rate for defect warnings can be kept low on a line producing about 18,000 loaves per day?",
+       "Can a model that combines process measurements with real-time classification estimate pre-bake risk with enough accuracy to reduce the current 4–6% scrap rate while remaining usable within the line’s shift-to-shift variability?",
+       "What sensor set and decision threshold provide the best trade-off between early warning, implementation cost, and operator actionability for a bakery process where dough state is currently unmeasured?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Map the bread line, define defect labels, and instrument a pilot section with additional measurements of dough and process conditions. Build the first predictive baseline using historical batches and current measurements, and compare simple statistical models with machine-learning classifiers.",
+        "result": "A validated dataset, a first list of candidate variables to measure, and an initial warning model with documented accuracy and failure modes."
+       },
+       {
+        "year": 2,
+        "work": "Refine the sensing setup and develop a robust pre-bake risk model that handles shift-to-shift variation. Test feature selection, calibration, and threshold tuning with bakery operators to ensure warnings are timely and understandable.",
+        "result": "A prototype early-warning system that identifies high-risk loaves before oven entry and a recommended minimal sensor set for routine use."
+       },
+       {
+        "year": 3,
+        "work": "Run extended pilot deployment on the production line, quantify reduction in scrap and operational impact, and harden the model for day-to-day use. Prepare transfer documentation and finalize the collaboration on a path to implementation.",
+        "result": "A production-ready decision-support tool, measured reduction in scrap, and a deployment handbook for Primer."
+       }
+      ],
+      "company_brings": "Primer brings access to the bread line in Novi Sad, daily production at the scale of about 18,000 loaves, the existing measurements of chamber temperature and fermentation time, operator knowledge, and practical constraints on what can be sensed and changed during the shift.",
+      "faculty_brings": "Emilija Vranješ, docent at the Faculty of Technical Sciences, Department of Computing and Control Engineering, brings expertise in combinatorial optimization, operations research, computer intelligence, logistics and supply-chain planning, and, most importantly here, dynamic real-time decision support, data-driven optimization, and a research group with access to the Intelligent Systems Laboratory and its parallel computing cluster. Supervisors: on the university side, Emilija Vranješ; on the company side, Primer’s designated process/production supervisor to be appointed at project start.",
+      "why_this_pair": "This pair fits because Primer has a concrete, measurable production problem with enough daily volume to support model training and validation, while Emilija Vranješ has proven experience in building operational decision-support tools and working with real operational data. Although her published focus is logistics and dynamic routing, the transferable core of her work is real-time optimization under uncertainty, which is directly relevant to pre-bake warning and process correction in a high-throughput line. Primer is not asking for generic analytics; it needs a practical sensing-and-warning system, which matches a researcher who can connect data, prediction, and operational decision rules.",
+      "first_step": "Within the next month, the partners should run a scoping workshop on site to define the defect taxonomy, decide which batch-level variables can be recorded immediately, and select one pilot line segment for additional measurements. The output should be a short measurement protocol and a shared data template for the first 4–6 weeks of sampling.",
+      "claims": [
+       {
+        "text": "Emilija Vranješ is a docent at the Faculty of Technical Sciences, Department of Computing and Control Engineering, University of Novi Sad.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "Her fields include combinatorial optimization, operations research, computer intelligence, and logistics and supply-chain management.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "Her keywords include dynamic vehicle routing, VRP with time windows, metaheuristics, hybridization of exact solvers, real-time replanning, order insertion, tabu search, branch-and-price, combinatorial optimization, and last-mile logistics.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "She completed her undergraduate degree at the Department of Computing and Control, Faculty of Technical Sciences, University of Novi Sad in 2012 and defended her doctorate in 2019 on hybrid metaheuristic approaches for dynamic vehicle routing with real-time order insertion.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "She has been employed as an assistant professor/docent at her home department since 2020.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "Her research group works on combinatorial optimization in logistics, especially vehicle routing with dynamic changes in demand, hybridization of exact solvers and metaheuristics, and applications in distribution logistics and emergency services.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "She uses the Intelligent Systems Laboratory infrastructure at FTN, including a parallel computing cluster.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "She participated in a 2017–2018 industry project optimizing routes for the regional courier company BrzaPošiljka d.o.o. from Novi Sad, where she developed a prototype for dynamic order assignment to drivers in real time.",
+        "about": "researcher",
+        "evidence": [
+         "R0749"
+        ]
+       },
+       {
+        "text": "Primer is an industrial bakery in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "Primer bakes about 18,000 loaves per day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer currently measures chamber temperature and fermentation time.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer reports 4–6% scrap due to too small volume or cracked crust.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer wants to know which data should be measured on the line and wants a warning before the loaf enters the oven so the baker can correct the process.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "The challenge is about improving process control around dough condition before baking.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Emilija Vranješ is a docent at the Faculty of Technical Sciences, Department of Computing and Control Engineering, University of Novi Sad.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her fields include combinatorial optimization, operations research, computer intelligence, and logistics and supply-chain management.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her keywords include dynamic vehicle routing, VRP with time windows, metaheuristics, hybridization of exact solvers, real-time replanning, order insertion, tabu search, branch-and-price, combinatorial optimization, and last-mile logistics.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She completed her undergraduate degree at the Department of Computing and Control, Faculty of Technical Sciences, University of Novi Sad in 2012 and defended her doctorate in 2019 on hybrid metaheuristic approaches for dynamic vehicle routing with real-time order insertion.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She has been employed as an assistant professor/docent at her home department since 2020.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her research group works on combinatorial optimization in logistics, especially vehicle routing with dynamic changes in demand, hybridization of exact solvers and metaheuristics, and applications in distribution logistics and emergency services.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She uses the Intelligent Systems Laboratory infrastructure at FTN, including a parallel computing cluster.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She participated in a 2017–2018 industry project optimizing routes for the regional courier company BrzaPošiljka d.o.o. from Novi Sad, where she developed a prototype for dynamic order assignment to drivers in real time.",
+       "evidence": [
+        "R0749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer is an industrial bakery in Novi Sad.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Primer bakes about 18,000 loaves per day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer currently measures chamber temperature and fermentation time.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer reports 4–6% scrap due to too small volume or cracked crust.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer wants to know which data should be measured on the line and wants a warning before the loaf enters the oven so the baker can correct the process.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge is about improving process control around dough condition before baking.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Real-time dough condition sensing and pre-bake warning for Primer’s bread line",
+    "problem": "Primer’s industrial bread line in Novi Sad bakes about 18,000 loaves per day, but 4–6% of production is rejected because of too small volume or cracked crust. The bakery currently measures chamber temperature and fermentation time, but not the condition of the dough itself after fermentation. The concrete industrial problem is to identify which process variables should be measured on the line, and to build an early-warning model that tells the baker before the loaf enters the oven whether the process should be corrected.",
+    "research_questions": [
+     "Which measurable on-line variables best predict final loaf defects in Primer’s process, beyond the currently tracked chamber temperature and fermentation time, so that the false-negative rate for defect warnings can be kept low on a line producing about 18,000 loaves per day?",
+     "Can a model that combines process measurements with real-time classification estimate pre-bake risk with enough accuracy to reduce the current 4–6% scrap rate while remaining usable within the line’s shift-to-shift variability?",
+     "What sensor set and decision threshold provide the best trade-off between early warning, implementation cost, and operator actionability for a bakery process where dough state is currently unmeasured?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Map the bread line, define defect labels, and instrument a pilot section with additional measurements of dough and process conditions. Build the first predictive baseline using historical batches and current measurements, and compare simple statistical models with machine-learning classifiers.",
+      "result": "A validated dataset, a first list of candidate variables to measure, and an initial warning model with documented accuracy and failure modes."
+     },
+     {
+      "year": 2,
+      "work": "Refine the sensing setup and develop a robust pre-bake risk model that handles shift-to-shift variation. Test feature selection, calibration, and threshold tuning with bakery operators to ensure warnings are timely and understandable.",
+      "result": "A prototype early-warning system that identifies high-risk loaves before oven entry and a recommended minimal sensor set for routine use."
+     },
+     {
+      "year": 3,
+      "work": "Run extended pilot deployment on the production line, quantify reduction in scrap and operational impact, and harden the model for day-to-day use. Prepare transfer documentation and finalize the collaboration on a path to implementation.",
+      "result": "A production-ready decision-support tool, measured reduction in scrap, and a deployment handbook for Primer."
+     }
+    ],
+    "company_brings": "Primer brings access to the bread line in Novi Sad, daily production at the scale of about 18,000 loaves, the existing measurements of chamber temperature and fermentation time, operator knowledge, and practical constraints on what can be sensed and changed during the shift.",
+    "faculty_brings": "Emilija Vranješ, docent at the Faculty of Technical Sciences, Department of Computing and Control Engineering, brings expertise in combinatorial optimization, operations research, computer intelligence, logistics and supply-chain planning, and, most importantly here, dynamic real-time decision support, data-driven optimization, and a research group with access to the Intelligent Systems Laboratory and its parallel computing cluster. Supervisors: on the university side, Emilija Vranješ; on the company side, Primer’s designated process/production supervisor to be appointed at project start.",
+    "why_this_pair": "This pair fits because Primer has a concrete, measurable production problem with enough daily volume to support model training and validation, while Emilija Vranješ has proven experience in building operational decision-support tools and working with real operational data. Although her published focus is logistics and dynamic routing, the transferable core of her work is real-time optimization under uncertainty, which is directly relevant to pre-bake warning and process correction in a high-throughput line. Primer is not asking for generic analytics; it needs a practical sensing-and-warning system, which matches a researcher who can connect data, prediction, and operational decision rules.",
+    "first_step": "Within the next month, the partners should run a scoping workshop on site to define the defect taxonomy, decide which batch-level variables can be recorded immediately, and select one pilot line segment for additional measurements. The output should be a short measurement protocol and a shared data template for the first 4–6 weeks of sampling.",
+    "claims": [
+     {
+      "text": "Emilija Vranješ is a docent at the Faculty of Technical Sciences, Department of Computing and Control Engineering, University of Novi Sad.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "Her fields include combinatorial optimization, operations research, computer intelligence, and logistics and supply-chain management.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "Her keywords include dynamic vehicle routing, VRP with time windows, metaheuristics, hybridization of exact solvers, real-time replanning, order insertion, tabu search, branch-and-price, combinatorial optimization, and last-mile logistics.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "She completed her undergraduate degree at the Department of Computing and Control, Faculty of Technical Sciences, University of Novi Sad in 2012 and defended her doctorate in 2019 on hybrid metaheuristic approaches for dynamic vehicle routing with real-time order insertion.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "She has been employed as an assistant professor/docent at her home department since 2020.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "Her research group works on combinatorial optimization in logistics, especially vehicle routing with dynamic changes in demand, hybridization of exact solvers and metaheuristics, and applications in distribution logistics and emergency services.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "She uses the Intelligent Systems Laboratory infrastructure at FTN, including a parallel computing cluster.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "She participated in a 2017–2018 industry project optimizing routes for the regional courier company BrzaPošiljka d.o.o. from Novi Sad, where she developed a prototype for dynamic order assignment to drivers in real time.",
+      "about": "researcher",
+      "evidence": [
+       "R0749"
+      ]
+     },
+     {
+      "text": "Primer is an industrial bakery in Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "Q001"
+      ]
+     },
+     {
+      "text": "Primer bakes about 18,000 loaves per day.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer currently measures chamber temperature and fermentation time.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer reports 4–6% scrap due to too small volume or cracked crust.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer wants to know which data should be measured on the line and wants a warning before the loaf enters the oven so the baker can correct the process.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "The challenge is about improving process control around dough condition before baking.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "Q001-CH1",
+    "companyId": "Q001",
+    "researcherId": "R0749",
+    "retrievalScore": 19.007,
+    "matchedTerms": [
+     "kao",
+     "zbog",
+     "vreme",
+     "koje"
+    ],
+    "score": 1.23,
+    "confidence": 0.67,
+    "screener": "Screener-3",
+    "key": "R0749xQ001-CH1",
+    "selectedAt": 767,
+    "profiler": "7764a443-1b9e-491b-ba2f-0281891cbc18",
+    "analyst": "907e754e-b35e-44b3-81b6-126d200adc1a",
+    "status": "done",
+    "writer": "33006b17-26db-4a90-9c25-abc459833b7e"
+   }
+  },
+  {
+   "key": "R0289xQ001-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Pre-bake dough warning system for an industrial bread line in Novi Sad",
+      "problem": "Primer, an industrial bakery in Novi Sad, bakes about 18,000 loaves per day, but 4 to 6 percent of production becomes scrap because the dough after fermentation varies in moisture and temperature from shift to shift, leading to low loaf volume or cracked crust. The line already measures chamber temperature and fermentation time, but not the actual dough state before the oven. The practical need is to identify which in-line dough measurements best predict bake-out quality and to turn them into an early warning that lets the baker correct the process before the dough enters the oven. Đurđica Žigić at FINS is a good fit because her work centers on fermentation kinetics, texture and microstructure of fermented food systems, and translating lab findings into industrial recommendations. Supervisors: Đurđica Žigić on the research side; a designated process engineer and production manager at Primer on the company side.",
+      "research_questions": [
+       "Which 3 to 5 measurable dough variables at the end of fermentation best predict loaf volume and crust cracking on Primer's 18,000-loaf/day line, and can they reduce scrap from 4 to 6 percent?",
+       "Can a model built from chamber temperature, fermentation time, and selected dough-state measurements predict out-of-spec dough with enough lead time to warn the baker before loading the oven?",
+       "What on-line or at-line measurement setup is robust enough for shift-to-shift use in an industrial bakery without slowing production?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Map the current line, define quality failures, and run a measurement campaign on representative batches across shifts. Compare dough temperature, moisture, fermentation time, and simple at-line indicators of fermentation state with final loaf volume and crust defects.",
+        "result": "A validated shortlist of the most informative dough measurements and a baseline dataset linking process conditions to scrap outcomes."
+       },
+       {
+        "year": 2,
+        "work": "Build and test prediction models and warning thresholds using the first-year data. Evaluate whether the model can flag risky dough before the oven and whether the recommended measurements are practical for operators.",
+        "result": "A prototype pre-bake warning tool with performance metrics and a recommended sensor/measurement set for the line."
+       },
+       {
+        "year": 3,
+        "work": "Pilot the warning tool in routine production, tune thresholds by shift, and quantify operational impact. Translate the findings into a standard operating procedure and staff training materials.",
+        "result": "Industrial validation showing reduced scrap risk, plus a deployable control protocol for Primer's bread line."
+       }
+      ],
+      "company_brings": "Primer brings the industrial bread line, daily production of about 18,000 loaves, access to shift-to-shift variation, process logs, and the operational context needed to test a warning system under real production constraints.",
+      "faculty_brings": "FINS brings Đurđica Žigić's expertise in fermentation kinetics, rheology, texture analysis, gel structure, and industrially relevant process optimization, plus the analytical tools and know-how to turn measurements into predictive indicators.",
+      "why_this_pair": "This pair fits because the company's problem is fundamentally about fermentation state, product structure, and pre-bake quality prediction, which aligns directly with Žigić's record in fermented systems, acidification and texture analysis, and industry-oriented transfer of laboratory results into process recommendations. Primer has a clear and measurable loss rate, a high daily volume, and a need for a practical pre-oven decision aid; FINS has the right scientific capability to identify measurable state variables and convert them into an industrial control approach.",
+      "first_step": "Next month, the two sides should run a one-day scoping workshop at Primer to define the failure modes, the available line data, and the smallest feasible sampling plan. Immediately after that, they should start a four-week pilot on a few production shifts to collect dough-state and quality data from batches with and without defects.",
+      "claims": [
+       {
+        "text": "Đurđica Žigić is a research associate at the Food Safety and Quality Group of the Scientific Institute for Food Technologies (FINS).",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Her field spans Food Science and Technology, Dairy Biotechnology, Rheology and Texture Analysis, and Microbiology of Fermented Foods.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Her expertise includes fermented dairy gels, acidification kinetics, exopolysaccharides, starter cultures, yoghurt texture, oscillatory rheology, gel microstructure, lactic acid bacteria, syneresis, and texture profile analysis.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03597",
+         "SYN-PUB-03598",
+         "SYN-PUB-03599",
+         "SYN-PUB-03600",
+         "SYN-PUB-03601",
+         "SYN-PUB-03602",
+         "SYN-PUB-03603",
+         "SYN-PUB-03604",
+         "SYN-PRJ-1796",
+         "SYN-PRJ-1797"
+        ]
+       },
+       {
+        "text": "She completed her degree at the Faculty of Technology, University of Novi Sad in 2011 and defended her PhD at the University of Novi Sad in 2019 in food biotechnology, on the kinetics of acidification and rheological properties of fermented milk gels.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Since 2013, she has worked in the Food Safety and Quality Group at FINS, focusing on the textural and rheological properties of fermented dairy products, especially starter cultures that produce exopolysaccharides.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She uses oscillatory rheology, texture profile analysis, and confocal laser scanning microscopy.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She participates in teaching in the master's course on technology of fermented dairy products.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She has worked with dairy-industry partners in two project contracts, including pilot tests on 50 L fermenters under production conditions.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She has experience translating laboratory findings into recommendations for industrial application in yoghurt technology.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Primer is an industrial bakery in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "Primer bakes about 18,000 loaves per day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer reports that 4 to 6 percent of production becomes scrap because of insufficient loaf volume or cracked crust.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can adjust the process.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Đurđica Žigić is a research associate at the Food Safety and Quality Group of the Scientific Institute for Food Technologies (FINS).",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her field spans Food Science and Technology, Dairy Biotechnology, Rheology and Texture Analysis, and Microbiology of Fermented Foods.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her expertise includes fermented dairy gels, acidification kinetics, exopolysaccharides, starter cultures, yoghurt texture, oscillatory rheology, gel microstructure, lactic acid bacteria, syneresis, and texture profile analysis.",
+       "evidence": [
+        "SYN-PUB-03597",
+        "SYN-PUB-03598",
+        "SYN-PUB-03599",
+        "SYN-PUB-03600",
+        "SYN-PUB-03601",
+        "SYN-PUB-03602",
+        "SYN-PUB-03603",
+        "SYN-PUB-03604",
+        "SYN-PRJ-1796",
+        "SYN-PRJ-1797"
+       ],
+       "deterministic": [],
+       "supported": false,
+       "support": 0.1
+      },
+      {
+       "claim": "She completed her degree at the Faculty of Technology, University of Novi Sad in 2011 and defended her PhD at the University of Novi Sad in 2019 in food biotechnology, on the kinetics of acidification and rheological properties of fermented milk gels.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Since 2013, she has worked in the Food Safety and Quality Group at FINS, focusing on the textural and rheological properties of fermented dairy products, especially starter cultures that produce exopolysaccharides.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She uses oscillatory rheology, texture profile analysis, and confocal laser scanning microscopy.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She participates in teaching in the master's course on technology of fermented dairy products.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She has worked with dairy-industry partners in two project contracts, including pilot tests on 50 L fermenters under production conditions.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She has experience translating laboratory findings into recommendations for industrial application in yoghurt technology.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer is an industrial bakery in Novi Sad.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer bakes about 18,000 loaves per day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer reports that 4 to 6 percent of production becomes scrap because of insufficient loaf volume or cracked crust.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can adjust the process.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "revise"
+    },
+    {
+     "attempt": 2,
+     "proposal": {
+      "title": "Pre-bake dough warning system for an industrial bread line in Novi Sad",
+      "problem": "Primer, an industrial bakery in Novi Sad, bakes about 18,000 loaves per day, but 4 to 6 percent of production becomes scrap because the dough after fermentation varies in moisture and temperature from shift to shift, leading to low loaf volume or cracked crust. The line already measures chamber temperature and fermentation time, but not the actual dough state before the oven. The practical need is to identify which in-line dough measurements best predict bake-out quality and to turn them into an early warning that lets the baker correct the process before the dough enters the oven. Đurđica Žigić at FINS is a good fit because her work centers on fermentation kinetics, texture and microstructure of fermented food systems, and translating lab findings into industrial recommendations. Supervisors: Đurđica Žigić on the research side; a designated process engineer and production manager at Primer on the company side.",
+      "research_questions": [
+       "Which 3 to 5 measurable dough variables at the end of fermentation best predict loaf volume and crust cracking on Primer's 18,000-loaf/day line, and can they reduce scrap from 4 to 6 percent?",
+       "Can a model built from chamber temperature, fermentation time, and selected dough-state measurements predict out-of-spec dough with enough lead time to warn the baker before loading the oven?",
+       "What on-line or at-line measurement setup is robust enough for shift-to-shift use in an industrial bakery without slowing production?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Map the current line, define quality failures, and run a measurement campaign on representative batches across shifts. Compare dough temperature, moisture, fermentation time, and simple at-line indicators of fermentation state with final loaf volume and crust defects.",
+        "result": "A validated shortlist of the most informative dough measurements and a baseline dataset linking process conditions to scrap outcomes."
+       },
+       {
+        "year": 2,
+        "work": "Build and test prediction models and warning thresholds using the first-year data. Evaluate whether the model can flag risky dough before the oven and whether the recommended measurements are practical for operators.",
+        "result": "A prototype pre-bake warning tool with performance metrics and a recommended sensor/measurement set for the line."
+       },
+       {
+        "year": 3,
+        "work": "Pilot the warning tool in routine production, tune thresholds by shift, and quantify operational impact. Translate the findings into a standard operating procedure and staff training materials.",
+        "result": "Industrial validation showing reduced scrap risk, plus a deployable control protocol for Primer's bread line."
+       }
+      ],
+      "company_brings": "Primer brings the industrial bread line, daily production of about 18,000 loaves, access to shift-to-shift variation, process logs, and the operational context needed to test a warning system under real production constraints.",
+      "faculty_brings": "FINS brings Đurđica Žigić's expertise in fermented milk gels, acidification kinetics, rheology, texture analysis, and microstructure characterization, plus the analytical tools and know-how to turn measurements into predictive indicators.",
+      "why_this_pair": "This pair fits because the company's problem is fundamentally about process variation, product structure, and pre-bake quality prediction, which aligns directly with Žigić's record in fermentation kinetics, texture analysis, and industrially relevant process recommendations. Primer has a clear and measurable loss rate, a high daily volume, and a need for a practical pre-oven decision aid; FINS has the right scientific capability to identify measurable state variables and convert them into an industrial control approach.",
+      "first_step": "Next month, the two sides should run a one-day scoping workshop at Primer to define the failure modes, the available line data, and the smallest feasible sampling plan. Immediately after that, they should start a four-week pilot on a few production shifts to collect dough-state and quality data from batches with and without defects.",
+      "claims": [
+       {
+        "text": "Đurđica Žigić is a research associate at the Food Safety and Quality Group of the Scientific Institute for Food Technologies (FINS).",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Her field spans Food Science and Technology, Dairy Biotechnology, Rheology and Texture Analysis, and Microbiology of Fermented Foods.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Her expertise includes fermented dairy gel formulation and acidification kinetics.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03597",
+         "SYN-PUB-03602",
+         "SYN-PUB-03604",
+         "SYN-PRJ-1797"
+        ]
+       },
+       {
+        "text": "Her expertise includes rheology, texture analysis, and gel structure of yoghurt and fermented milk.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03597",
+         "SYN-PUB-03599",
+         "SYN-PUB-03601",
+         "SYN-PUB-03603"
+        ]
+       },
+       {
+        "text": "Her expertise includes exopolysaccharide-producing starter cultures for yoghurt functionality.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03598",
+         "SYN-PUB-03599",
+         "SYN-PUB-03601",
+         "SYN-PRJ-1796"
+        ]
+       },
+       {
+        "text": "Her expertise includes microstructure characterization of fermented milk gels using confocal microscopy.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03600"
+        ]
+       },
+       {
+        "text": "Her expertise includes product optimization and reformulation, including low-fat and blended dairy systems.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03599",
+         "SYN-PUB-03603",
+         "SYN-PUB-03604",
+         "SYN-PRJ-1796"
+        ]
+       },
+       {
+        "text": "She completed her degree at the Faculty of Technology, University of Novi Sad in 2011 and defended her PhD at the University of Novi Sad in 2019 in food biotechnology, on the kinetics of acidification and rheological properties of fermented milk gels.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Since 2013, she has worked in the Food Safety and Quality Group at FINS, focusing on the textural and rheological properties of fermented dairy products, especially starter cultures that produce exopolysaccharides.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She uses oscillatory rheology, texture profile analysis, and confocal laser scanning microscopy.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She participates in teaching in the master's course on technology of fermented dairy products.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She has worked with dairy-industry partners in two project contracts, including pilot tests on 50 L fermenters under production conditions.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "She has experience translating laboratory findings into recommendations for industrial application in yoghurt technology.",
+        "about": "researcher",
+        "evidence": [
+         "R0289"
+        ]
+       },
+       {
+        "text": "Primer is an industrial bakery in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "Q001"
+        ]
+       },
+       {
+        "text": "Primer bakes about 18,000 loaves per day.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer reports that 4 to 6 percent of production becomes scrap because of insufficient loaf volume or cracked crust.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       },
+       {
+        "text": "Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can adjust the process.",
+        "about": "company",
+        "evidence": [
+         "Q001-CH1"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Đurđica Žigić is a research associate at the Food Safety and Quality Group of the Scientific Institute for Food Technologies (FINS).",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her field spans Food Science and Technology, Dairy Biotechnology, Rheology and Texture Analysis, and Microbiology of Fermented Foods.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her expertise includes fermented dairy gel formulation and acidification kinetics.",
+       "evidence": [
+        "SYN-PUB-03597",
+        "SYN-PUB-03602",
+        "SYN-PUB-03604",
+        "SYN-PRJ-1797"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Her expertise includes rheology, texture analysis, and gel structure of yoghurt and fermented milk.",
+       "evidence": [
+        "SYN-PUB-03597",
+        "SYN-PUB-03599",
+        "SYN-PUB-03601",
+        "SYN-PUB-03603"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.98
+      },
+      {
+       "claim": "Her expertise includes exopolysaccharide-producing starter cultures for yoghurt functionality.",
+       "evidence": [
+        "SYN-PUB-03598",
+        "SYN-PUB-03599",
+        "SYN-PUB-03601",
+        "SYN-PRJ-1796"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.97
+      },
+      {
+       "claim": "Her expertise includes microstructure characterization of fermented milk gels using confocal microscopy.",
+       "evidence": [
+        "SYN-PUB-03600"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.98
+      },
+      {
+       "claim": "Her expertise includes product optimization and reformulation, including low-fat and blended dairy systems.",
+       "evidence": [
+        "SYN-PUB-03599",
+        "SYN-PUB-03603",
+        "SYN-PUB-03604",
+        "SYN-PRJ-1796"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.97
+      },
+      {
+       "claim": "She completed her degree at the Faculty of Technology, University of Novi Sad in 2011 and defended her PhD at the University of Novi Sad in 2019 in food biotechnology, on the kinetics of acidification and rheological properties of fermented milk gels.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Since 2013, she has worked in the Food Safety and Quality Group at FINS, focusing on the textural and rheological properties of fermented dairy products, especially starter cultures that produce exopolysaccharides.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She uses oscillatory rheology, texture profile analysis, and confocal laser scanning microscopy.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She participates in teaching in the master's course on technology of fermented dairy products.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She has worked with dairy-industry partners in two project contracts, including pilot tests on 50 L fermenters under production conditions.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She has experience translating laboratory findings into recommendations for industrial application in yoghurt technology.",
+       "evidence": [
+        "R0289"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer is an industrial bakery in Novi Sad.",
+       "evidence": [
+        "Q001"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer bakes about 18,000 loaves per day.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer reports that 4 to 6 percent of production becomes scrap because of insufficient loaf volume or cracked crust.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can adjust the process.",
+       "evidence": [
+        "Q001-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Pre-bake dough warning system for an industrial bread line in Novi Sad",
+    "problem": "Primer, an industrial bakery in Novi Sad, bakes about 18,000 loaves per day, but 4 to 6 percent of production becomes scrap because the dough after fermentation varies in moisture and temperature from shift to shift, leading to low loaf volume or cracked crust. The line already measures chamber temperature and fermentation time, but not the actual dough state before the oven. The practical need is to identify which in-line dough measurements best predict bake-out quality and to turn them into an early warning that lets the baker correct the process before the dough enters the oven. Đurđica Žigić at FINS is a good fit because her work centers on fermentation kinetics, texture and microstructure of fermented food systems, and translating lab findings into industrial recommendations. Supervisors: Đurđica Žigić on the research side; a designated process engineer and production manager at Primer on the company side.",
+    "research_questions": [
+     "Which 3 to 5 measurable dough variables at the end of fermentation best predict loaf volume and crust cracking on Primer's 18,000-loaf/day line, and can they reduce scrap from 4 to 6 percent?",
+     "Can a model built from chamber temperature, fermentation time, and selected dough-state measurements predict out-of-spec dough with enough lead time to warn the baker before loading the oven?",
+     "What on-line or at-line measurement setup is robust enough for shift-to-shift use in an industrial bakery without slowing production?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Map the current line, define quality failures, and run a measurement campaign on representative batches across shifts. Compare dough temperature, moisture, fermentation time, and simple at-line indicators of fermentation state with final loaf volume and crust defects.",
+      "result": "A validated shortlist of the most informative dough measurements and a baseline dataset linking process conditions to scrap outcomes."
+     },
+     {
+      "year": 2,
+      "work": "Build and test prediction models and warning thresholds using the first-year data. Evaluate whether the model can flag risky dough before the oven and whether the recommended measurements are practical for operators.",
+      "result": "A prototype pre-bake warning tool with performance metrics and a recommended sensor/measurement set for the line."
+     },
+     {
+      "year": 3,
+      "work": "Pilot the warning tool in routine production, tune thresholds by shift, and quantify operational impact. Translate the findings into a standard operating procedure and staff training materials.",
+      "result": "Industrial validation showing reduced scrap risk, plus a deployable control protocol for Primer's bread line."
+     }
+    ],
+    "company_brings": "Primer brings the industrial bread line, daily production of about 18,000 loaves, access to shift-to-shift variation, process logs, and the operational context needed to test a warning system under real production constraints.",
+    "faculty_brings": "FINS brings Đurđica Žigić's expertise in fermented milk gels, acidification kinetics, rheology, texture analysis, and microstructure characterization, plus the analytical tools and know-how to turn measurements into predictive indicators.",
+    "why_this_pair": "This pair fits because the company's problem is fundamentally about process variation, product structure, and pre-bake quality prediction, which aligns directly with Žigić's record in fermentation kinetics, texture analysis, and industrially relevant process recommendations. Primer has a clear and measurable loss rate, a high daily volume, and a need for a practical pre-oven decision aid; FINS has the right scientific capability to identify measurable state variables and convert them into an industrial control approach.",
+    "first_step": "Next month, the two sides should run a one-day scoping workshop at Primer to define the failure modes, the available line data, and the smallest feasible sampling plan. Immediately after that, they should start a four-week pilot on a few production shifts to collect dough-state and quality data from batches with and without defects.",
+    "claims": [
+     {
+      "text": "Đurđica Žigić is a research associate at the Food Safety and Quality Group of the Scientific Institute for Food Technologies (FINS).",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "Her field spans Food Science and Technology, Dairy Biotechnology, Rheology and Texture Analysis, and Microbiology of Fermented Foods.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "Her expertise includes fermented dairy gel formulation and acidification kinetics.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03597",
+       "SYN-PUB-03602",
+       "SYN-PUB-03604",
+       "SYN-PRJ-1797"
+      ]
+     },
+     {
+      "text": "Her expertise includes rheology, texture analysis, and gel structure of yoghurt and fermented milk.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03597",
+       "SYN-PUB-03599",
+       "SYN-PUB-03601",
+       "SYN-PUB-03603"
+      ]
+     },
+     {
+      "text": "Her expertise includes exopolysaccharide-producing starter cultures for yoghurt functionality.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03598",
+       "SYN-PUB-03599",
+       "SYN-PUB-03601",
+       "SYN-PRJ-1796"
+      ]
+     },
+     {
+      "text": "Her expertise includes microstructure characterization of fermented milk gels using confocal microscopy.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03600"
+      ]
+     },
+     {
+      "text": "Her expertise includes product optimization and reformulation, including low-fat and blended dairy systems.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03599",
+       "SYN-PUB-03603",
+       "SYN-PUB-03604",
+       "SYN-PRJ-1796"
+      ]
+     },
+     {
+      "text": "She completed her degree at the Faculty of Technology, University of Novi Sad in 2011 and defended her PhD at the University of Novi Sad in 2019 in food biotechnology, on the kinetics of acidification and rheological properties of fermented milk gels.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "Since 2013, she has worked in the Food Safety and Quality Group at FINS, focusing on the textural and rheological properties of fermented dairy products, especially starter cultures that produce exopolysaccharides.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "She uses oscillatory rheology, texture profile analysis, and confocal laser scanning microscopy.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "She participates in teaching in the master's course on technology of fermented dairy products.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "She has worked with dairy-industry partners in two project contracts, including pilot tests on 50 L fermenters under production conditions.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "She has experience translating laboratory findings into recommendations for industrial application in yoghurt technology.",
+      "about": "researcher",
+      "evidence": [
+       "R0289"
+      ]
+     },
+     {
+      "text": "Primer is an industrial bakery in Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "Q001"
+      ]
+     },
+     {
+      "text": "Primer bakes about 18,000 loaves per day.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer reports that 4 to 6 percent of production becomes scrap because of insufficient loaf volume or cracked crust.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer currently measures chamber temperature and fermentation time, but not the dough state itself.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     },
+     {
+      "text": "Primer wants to know which data should be measured on the line and to receive an alert before the dough enters the oven so the baker can adjust the process.",
+      "about": "company",
+      "evidence": [
+       "Q001-CH1"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "Q001-CH1",
+    "companyId": "Q001",
+    "researcherId": "R0289",
+    "retrievalScore": 20.074,
+    "matchedTerms": [
+     "nost",
+     "fermentacije",
+     "kao",
+     "koje"
+    ],
+    "score": 1.56,
+    "confidence": 0.54,
+    "screener": "Screener-3",
+    "key": "R0289xQ001-CH1",
+    "selectedAt": 767,
+    "profiler": "9b5372bf-055a-46ab-a406-073c84a47a15",
+    "analyst": "d8afea18-a815-41bb-a4ef-b02e15a340d9",
+    "status": "done",
+    "writer": "c4ffe382-d04e-441d-9b60-bb80c86a642b"
+   }
+  }
+ ],
+ "jobs": [
+  {
+   "jobId": "screen-Screener-1-1",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 1,
+   "status": "done",
+   "finishedAt": 764
+  },
+  {
+   "jobId": "screen-Screener-2-1",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 24,
+   "status": "done",
+   "finishedAt": 703
+  },
+  {
+   "jobId": "screen-Screener-3-1",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 25,
+   "status": "done",
+   "finishedAt": 717
+  },
+  {
+   "jobId": "profile-R0496",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 765,
+   "status": "done",
+   "finishedAt": 10069
+  },
+  {
+   "jobId": "profile-Q001-CH1",
+   "agent": "Analyst-1",
+   "kind": "profile_company",
+   "startedAt": 767,
+   "status": "done",
+   "finishedAt": 10855
+  },
+  {
+   "jobId": "profile-R0289",
+   "agent": "Profiler-2",
+   "kind": "profile_researcher",
+   "startedAt": 767,
+   "status": "done",
+   "finishedAt": 9312
+  },
+  {
+   "jobId": "profile-R0749",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 767,
+   "status": "done",
+   "finishedAt": 7505
+  },
+  {
+   "jobId": "write-R0496xQ001-CH1",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 10855,
+   "status": "done",
+   "finishedAt": 27735
+  },
+  {
+   "jobId": "write-R0289xQ001-CH1",
+   "agent": "Writer-2",
+   "kind": "write",
+   "startedAt": 10856,
+   "status": "done",
+   "finishedAt": 30074
+  },
+  {
+   "jobId": "write-R0749xQ001-CH1",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 10856,
+   "status": "done",
+   "finishedAt": 21087
+  }
+ ]
+}

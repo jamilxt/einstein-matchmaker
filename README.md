@@ -54,7 +54,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 | --- | --- |
 | Architecture diagram | [Architecture](#architecture) below, and the **How it works** page in the web UI |
 | Trace of one full run showing where the Critic stepped in | [`docs/evidence/run-01-live/trace.jsonl`](docs/evidence/run-01-live/trace.jsonl), walked through in [The Critic in a real run](#the-critic-in-a-real-run) |
-| At least three proposals for three different pairs | [`docs/evidence/run-03-live/proposals.md`](docs/evidence/run-03-live/proposals.md). There are 12 batch proposals across four live runs, plus 6 from Reverse Search |
+| At least three proposals for three different pairs | [`docs/evidence/run-03-live/proposals.md`](docs/evidence/run-03-live/proposals.md). There are 15 batch proposals across five live runs, plus 9 from Reverse Search |
 | How it plugs into the EINSTEIN network and EINSTEIN Stars | [EINSTEIN network and EINSTEIN Stars](#einstein-network-and-einstein-stars) |
 | What it does, architecture, how to run | This README |
 
@@ -146,11 +146,11 @@ flowchart LR
 **How they coordinate on Mozaik** ([`src/agents.ts`](src/agents.ts), [`src/jobs.ts`](src/jobs.ts), [`src/runtime.ts`](src/runtime.ts)):
 
 - **Shared state, no direct calls.** All participants live on one runtime with a shared `MatchState`. They react to semantic events (`screen.batch`, `pair.screened`, `pair.selected`, `profile.requested`, `profile.ready`, `proposal.requested`, `critic.verdict`). Nobody calls anybody, and nothing waits for a whole stage to finish.
-- **Early selection.** The Matchmaker doesn't wait for all 180 scores. In run 3 it picked its first pair at 0.5 s, while the Screeners were still working, so profiling for that pair overlapped the rest of screening.
+- **Early selection.** The Matchmaker doesn't wait for all 180 scores. In every live run it picked its first pair before screening ended (0.5 to 1.9 s in, with screening ending at 2.0 to 4.3 s), so profiling overlapped the rest of screening.
 - **The Critic is an interception, not a later stage.** Each Writer job runs its loop with an `InterceptionHandler` on the model's final message. If a claim fails, the handler injects a correction listing the exact claims and reasons, and the same loop continues. True facts get re-cited to the right record, and anything no record states is removed. After 2 revisions an unfixable draft is rejected rather than shipped.
 - **One job, one fresh `ModelContext`.** Two live loops sharing one memory cross-contaminated in testing. Each job also gets a watchdog, because `runLoop` swallows failures ([mozaik#114](https://github.com/jigjoy-ai/mozaik/issues/114)), and a budget halt that ends the loop cleanly instead of redirecting to `idle` ([mozaik#113](https://github.com/jigjoy-ai/mozaik/issues/113)).
 
-**Why the Decisions API for screening and claim checks.** Screening 180 pairs with a chat model would be slow and expensive. The Decisions API answers typed questions (a 0 to 3 score, a yes/no predicate with a probability) in one request per batch, and its output is free. Three Screeners score all 180 shortlisted pairs in 2.3 to 3.6 s in the live runs. The Critic asks one predicate per claim ("using only the evidence in [[claimN]], is this statement supported?") and blocks below 0.5.
+**Why the Decisions API for screening and claim checks.** Screening 180 pairs with a chat model would be slow and expensive. The Decisions API answers typed questions (a 0 to 3 score, a yes/no predicate with a probability) in one request per batch, and its output is free. Three Screeners score all 180 shortlisted pairs in 2.0 to 4.3 s in the live runs. The Critic asks one predicate per claim ("using only the evidence in [[claimN]], is this statement supported?") and blocks below 0.5.
 
 ## Evidence
 
@@ -163,8 +163,9 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-03-live](docs/evidence/run-03-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 19.1 s | $0.054 |
 | [run-04-live-nocritic](docs/evidence/run-04-live-nocritic) | off | 9 | 21/21 | (would have: 1) | (flagged: 2) | 2 | 20.1 s | $0.056 |
 | [run-05-live](docs/evidence/run-05-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 23.6 s | $0.062 |
-| [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
-| [search-02-winery](docs/evidence/search-02-winery) | on | 4 | | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
+| [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
+| [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
+| [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
 
 What changed between runs, and why we kept every one:
 
@@ -223,7 +224,7 @@ Each proposal ends with its claims, the record IDs each one cites, and the Criti
 
 A company describes its problem in plain words. The text becomes a citable record (`Q001`, `Q001-CH1`), so every claim about the company still traces back to what the company actually wrote. The same team then runs on that one challenge: a 15-pair shortlist, three Screeners, profiles, writing and the Critic. The result is up to three researchers with a fit score, a reason and a full proposal each.
 
-The three example problems in [`examples/`](examples) are test inputs written for this demo, not real companies. The winery search is a useful honest case: the dataset has no strong wine-fermentation researcher, so the best fits are only moderate (about 1.8 of 3), and the UI labels them that way instead of overselling.
+The three example problems in [`examples/`](examples) are test inputs written for this demo, not real companies. The bakery search ([`examples/pekara-sr.json`](examples/pekara-sr.json)) is written in Serbian. All three proposals came back in English, the default, with the problem's figures carried over (18,000 loaves a day, 4 to 6 percent scrap). The input's company label starts with "Primer", Serbian for "example", and the Writer read that as the company's name. The winery search is a useful honest case: the dataset has no strong wine-fermentation researcher, so the best fits are only moderate (about 1.8 of 3), and the UI labels them that way instead of overselling.
 
 ## EINSTEIN network and EINSTEIN Stars
 

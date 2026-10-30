@@ -65,6 +65,7 @@ const LABELS: Record<string, string> = {
 	"run-05-live": "Run 5: final, all fixes",
 	"search-01-packaging": "Search: packaging line, bearing failures",
 	"search-02-winery": "Search: winery, stalled fermentations",
+	"search-03-serbian-input": "Search: bakery, problem written in Serbian",
 }
 
 function listRuns() {
