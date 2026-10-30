@@ -159,7 +159,7 @@ Two jobs in this system are judgements, not writing: "how well does this researc
 | | Decisions API | gpt-5.4-mini |
 | --- | --- | --- |
 | Requests | 106 | 121 |
-| Input tokens read | 612,622 | about 159,000 |
+| Input tokens read | 612,622 | 176,734 |
 | Cost | **$0.061 (12% of spend)** | $0.434 (88% of spend) |
 
 - The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for an eighth of the bill. Its input costs $0.10 per million tokens and its output is free.
