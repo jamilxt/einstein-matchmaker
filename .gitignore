@@ -4,3 +4,6 @@ node_modules/
 /runs/
 web/node_modules/
 runs/search-ledger.json
+
+# offline (stub) evaluation output is not evidence
+/docs/evidence/*-stub/
