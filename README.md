@@ -150,7 +150,31 @@ flowchart LR
 - **The Critic is an interception, not a later stage.** Each Writer job runs its loop with an `InterceptionHandler` on the model's final message. If a claim fails, the handler injects a correction listing the exact claims and reasons, and the same loop continues. True facts get re-cited to the right record, and anything no record states is removed. After 2 revisions an unfixable draft is rejected rather than shipped.
 - **One job, one fresh `ModelContext`.** Two live loops sharing one memory cross-contaminated in testing. Each job also gets a watchdog, because `runLoop` swallows failures ([mozaik#114](https://github.com/jigjoy-ai/mozaik/issues/114)), and a budget halt that ends the loop cleanly instead of redirecting to `idle` ([mozaik#113](https://github.com/jigjoy-ai/mozaik/issues/113)).
 
-**Why the Decisions API for screening and claim checks.** Screening 180 pairs with a chat model would be slow and expensive. The Decisions API answers typed questions (a 0 to 3 score, a yes/no predicate with a probability) in one request per batch, and its output is free. Three Screeners score all 180 shortlisted pairs in 2.0 to 4.3 s in the live runs. The Critic asks one predicate per claim ("using only the evidence in [[claimN]], is this statement supported?") and blocks below 0.5.
+### Why the Decisions API, in results and cost
+
+Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". We send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
+
+**Cost.** Across the 8 live runs in `docs/evidence`, metered from API-reported token usage:
+
+| | Decisions API | gpt-5.4-mini |
+| --- | --- | --- |
+| Requests | 106 | 121 |
+| Input tokens read | 612,622 | about 159,000 |
+| Cost | **$0.061 (12% of spend)** | $0.434 (88% of spend) |
+
+- The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for an eighth of the bill. Its input costs $0.10 per million tokens and its output is free.
+- The same 612,622 input tokens sent to `gpt-5.4-mini` would cost $0.46 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run we did: we never built a chat-model screener to compare quality.
+- The full hard Critic evaluation, 125 claims with their evidence, cost $0.007.
+
+**Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 4.3 s in the live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
+
+**Results.** The answer comes back typed: a score on a fixed scale, or a probability that a claim is supported. Nothing has to be parsed out of free text, and no answer can drift into a paragraph. That gave us:
+
+- **A threshold we can set and test.** The Critic blocks a claim when its support probability is below 0.5. That is what made the planted-error evaluation possible: 52 of 53 errors caught, 0 of 72 true claims wrongly blocked, and the one miss is visible as a number (0.55).
+- **Scores the UI can show honestly.** A fit of 1.8 of 3 is shown as moderate, as in the winery search, instead of a model's confident prose.
+- **Cheap red-teaming.** Because checks cost fractions of a cent, we could rerun the whole evaluation after each fix.
+
+The limit: a decision model only judges, so the Critic explains a block with the claim, the cited record and the score, not a written argument. The Writer gets exactly that list when a draft is sent back.
 
 ## Evidence
 
