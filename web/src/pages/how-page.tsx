@@ -143,7 +143,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 				<div className="max-w-3xl space-y-2">
 					<h2 className="text-xl font-semibold tracking-tight">Does the Critic actually work?</h2>
 					<p className="text-muted-foreground">
-						We planted subtle errors into claims about nine real researcher and company pairs, and mixed them with true claims written straight from the dataset. Then we asked the Critic
+						I planted subtle errors into claims about nine researcher and company pairs from the live runs, and mixed them with true claims written straight from the dataset. Then I asked the Critic
 						to check all of them.
 					</p>
 				</div>
@@ -170,7 +170,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 									<p className="mt-1">"{m.claim}"</p>
 									<p className="mt-1 text-muted-foreground">
 										Support {m.support.toFixed(2)}, just over the 0.50 bar. Her cited papers are on verification and covering arrays, which sit close to combinatorics, so the model
-										was unsure. A borderline case we report rather than hide.
+										was unsure. A borderline case I report rather than hide.
 									</p>
 								</div>
 							))}
@@ -197,7 +197,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 								{evals?.easy && (
 									<p className="mt-4 text-xs text-muted-foreground">
 										An earlier, easier set (invented IDs, invented company facts, large number changes): {evals.easy.summary.plantedErrors.caught}/{evals.easy.summary.plantedErrors.total} caught.
-										We replaced it with the set above because its errors were too easy and its true claims came from already-approved drafts.
+										I replaced it with the set above because its errors were too easy and its true claims came from already-approved drafts.
 									</p>
 								)}
 							</CardContent>
@@ -209,21 +209,21 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 			<section className="space-y-5">
 				<div className="max-w-3xl space-y-2">
 					<h2 className="text-xl font-semibold tracking-tight">What the Critic did in the live runs</h2>
-					<p className="text-muted-foreground">Real runs, replayable. The numbers changed as we fixed things, and we kept every run.</p>
+					<p className="text-muted-foreground">Real runs, replayable. The numbers changed as I fixed things, and I kept every run.</p>
 				</div>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 					<RunNote go={go} id="run-01-live" title="Run 1" stat="5 of 8 drafts sent back, 17 claims blocked">
 						Most blocks were true facts cited to the wrong record, such as a company's staff count cited to its challenge. The Writer re-cited them. 0 unsupported claims shipped.
 					</RunNote>
 					<RunNote go={go} id="run-02-live" title="Run 2" stat="4 of 7 drafts sent back, 10 claims blocked">
-						Exposed a bug of ours: evidence was cut at 900 characters, so some true facts looked unsupported. Fixed after this run.
+						Exposed a bug of mine: evidence was cut at 900 characters, so some true facts looked unsupported. Fixed after this run.
 					</RunNote>
 					<RunNote go={go} id="run-03-live" title="Run 3" stat="3 of 3 approved on the first draft">
 						With better evidence and Writer instructions, nothing needed blocking. The Critic still checked all 35 claims.
 					</RunNote>
 					<RunNote go={go} id="run-04-live-nocritic" title="Run 4, Critic off" stat="2 claims flagged, shipped anyway">
 						Both flags turned out to be checker false alarms (claims citing both sides of the pair), fixed afterwards. Natural runs are too small to measure the Critic, which is why
-						we test it with planted errors.
+						I test it with planted errors.
 					</RunNote>
 					<RunNote go={go} id="run-05-live" title="Run 5, final" stat="3 of 3 approved on the first draft">
 						The same three pairs as run 4, now with the Critic on and every fix in place: 51 claims checked, none blocked.

@@ -6,7 +6,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 
 - **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work.
 - **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a 3-year plan, supervisors, a first step, and a claim-by-claim source list.
-- **A Critic that we measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)).
+- **A Critic that I measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)).
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
 - **Live demo: [einstein.jamilxt.com](https://einstein.jamilxt.com).** The public site replays every recorded run at no cost. Live search is off there; run it yourself with your own key (below).
 - **A web UI** that streams a live search or replays any recorded run: agent lanes, a match map, the Critic's decisions, and proposals with clickable sources.
@@ -153,7 +153,7 @@ flowchart LR
 
 ### Why the Decisions API, in results and cost
 
-Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". We send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
+Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". I send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
 
 **Cost.** Across the 8 live runs in `docs/evidence`, metered from API-reported token usage:
 
@@ -164,16 +164,16 @@ Two jobs in this system are judgements, not writing: "how well does this researc
 | Cost | **$0.061 (12% of spend)** | $0.434 (88% of spend) |
 
 - The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for an eighth of the bill. Its input costs $0.10 per million tokens and its output is free.
-- The same 612,622 input tokens sent to `gpt-5.4-mini` would cost $0.46 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run we did: we never built a chat-model screener to compare quality.
+- The same 612,622 input tokens sent to `gpt-5.4-mini` would cost $0.46 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
 - The full hard Critic evaluation, 125 claims with their evidence, cost $0.007.
 
 **Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 4.3 s in the live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
 
 **Results.** The answer comes back typed: a score on a fixed scale, or a probability that a claim is supported. Nothing has to be parsed out of free text, and no answer can drift into a paragraph. That gave us:
 
-- **A threshold we can set and test.** The Critic blocks a claim when its support probability is below 0.5. That is what made the planted-error evaluation possible: 52 of 53 errors caught, 0 of 72 true claims wrongly blocked, and the one miss is visible as a number (0.55).
+- **A threshold I can set and test.** The Critic blocks a claim when its support probability is below 0.5. That is what made the planted-error evaluation possible: 52 of 53 errors caught, 0 of 72 true claims wrongly blocked, and the one miss is visible as a number (0.55).
 - **Scores the UI can show honestly.** A fit of 1.8 of 3 is shown as moderate, as in the winery search, instead of a model's confident prose.
-- **Cheap red-teaming.** Because checks cost fractions of a cent, we could rerun the whole evaluation after each fix.
+- **Cheap red-teaming.** Because checks cost fractions of a cent, I could rerun the whole evaluation after each fix.
 
 The limit: a decision model only judges, so the Critic explains a block with the claim, the cited record and the score, not a written argument. The Writer gets exactly that list when a draft is sent back.
 
@@ -192,16 +192,16 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
 
-What changed between runs, and why we kept every one:
+What changed between runs, and why I kept every one:
 
 - **Run 1:** most blocks were true facts cited to the wrong record, such as a company's staff count cited to its challenge text. The Writer re-cited them.
-- **Run 2:** exposed a bug of ours. Evidence records were cut at 900 characters before the Critic read them, so some true facts looked unsupported. Fixed.
+- **Run 2:** exposed a bug of mine. Evidence records were cut at 900 characters before the Critic read them, so some true facts looked unsupported. Fixed.
 - **Run 3:** with complete evidence and clearer citation rules, all three proposals passed on the first draft. The Critic still checked all 35 claims.
 - **Run 4 (Critic off):** both flagged claims turned out to be false alarms by the checker (claims that cite both sides of the pair, such as "supervised by X and Y"). Fixed afterwards.
 
 - **Run 5 (final, all fixes):** all three proposals passed on the first draft, with 51 claims checked. The Matchmaker happened to pick the same three pairs as run 4, so runs 4 and 5 compare the same pairs with the Critic off and on. The fit scores (2.0 to 2.3) are lower than run 3's (2.9 to 3.0): the Matchmaker takes the first pair over its 2.0 threshold instead of waiting for all 180 scores. That is the price of early selection. The FinPuls proposal came out in Serbian because FinPuls wrote its challenge in Serbian. Proposals are now written in English by default; pass `--lang=sr` for Serbian (Latin script).
 
-The natural runs are too small to measure the Critic, which is why we tested it directly.
+The natural runs are too small to measure the Critic, which is why I tested it directly.
 
 ### The Critic, measured
 
@@ -221,9 +221,9 @@ The natural runs are too small to measure the Critic, which is why we tested it 
 | A real paper by someone else in the same field | 8 / 8 |
 | A colleague's neighbouring field | 8 / 9 |
 
-- **The bug v1 found:** all 12 false blocks were true claims about who wrote a paper. Paper records reached the Critic without their author list. We now pass authors, project participants and patent inventors with every record.
+- **The bug v1 found:** all 12 false blocks were true claims about who wrote a paper. Paper records reached the Critic without their author list. I now pass authors, project participants and patent inventors with every record.
 - **The one miss:** "Martina Lačoková has published on discrete mathematics" scored 0.55 against a 0.50 bar. Her cited papers are on verification and covering arrays, which is close to combinatorics. It is a borderline case and a genuine miss.
-- **An earlier, easier set** (invented IDs, invented company facts, large number changes) scored 18/18 ([results](docs/evidence/critic-eval/results.md)). We replaced it because its errors were too easy and its true claims came from drafts the Critic had already approved.
+- **An earlier, easier set** (invented IDs, invented company facts, large number changes) scored 18/18 ([results](docs/evidence/critic-eval/results.md)). I replaced it because its errors were too easy and its true claims came from drafts the Critic had already approved.
 
 ### The Critic in a real run
 
@@ -267,8 +267,8 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 2. **A person approves before outreach.** An NTP or EINSTEIN coordinator approves each pair before the Writer runs or before anyone is emailed. The Critic's record makes that review quick.
 3. **Partner universities as co-supervisors.** The same search over OpenAlex profiles at the consortium's partner universities (DTU, WUR, JKU) could suggest an international co-supervisor for each industrial PhD. That fits EINSTEIN's internationalisation goal.
 4. **EINSTEIN Stars: an industrial partner for every pitch, and a wider funnel.**
-   - **Each Stars applicant pitches with a company.** We run the matcher from their research outward, so they arrive at the pitch with a named NTP company, that company's own problem statement, and a cited first-step plan. A jury of industry and investors can judge that.
-   - **More eligible researchers hear about the call.** We run it from company challenges inward: when a company problem matches an eligible PhD student's or recent PhD's work, the system can draft an invitation to apply.
+   - **Each Stars applicant pitches with a company.** Run the matcher from their research outward, and they arrive at the pitch with a named NTP company, that company's own problem statement, and a cited first-step plan. A jury of industry and investors can judge that.
+   - **More eligible researchers hear about the call.** Run it from company challenges inward: when a company problem matches an eligible PhD student's or recent PhD's work, the system can draft an invitation to apply.
    - **The jury still decides.** The system never scores or ranks applicants. It only proposes pairs and explains the fit.
 
 ## Responsible use of data
@@ -291,7 +291,7 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 
 All times are CET. The hackathon started on Friday 30 October at 10:00.
 
-- **Before kickoff:** we read the Mozaik docs and chose the approach. While reading, we reported a mismatch in the docs ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), 08:42), sent a fix that was merged ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), 09:18), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131), 09:44). The empty project on `@mozaik-ai/core` 4.2.0 was committed at 09:59:43, and the dataset was cloned at the same moment.
+- **Before kickoff:** I read the Mozaik docs and chose the approach. While reading, I reported a mismatch in the docs ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), 08:42), sent a fix that was merged ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), 09:18), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131), 09:44). The empty project on `@mozaik-ai/core` 4.2.0 was committed at 09:59:43, and the dataset was cloned at the same moment.
 - **During the hackathon:** everything else.
   - The dataset loader and shortlist (10:01).
   - The first version of the agent team (10:26). It was written quickly with an AI coding assistant, and then reshaped by what the live runs showed.
@@ -307,7 +307,7 @@ Every live run in [`docs/evidence`](docs/evidence) has a timestamped trace, and 
 - TypeScript on Node.js
 - Web UI: React 19, Tailwind CSS 4 and shadcn/ui, served by a small Node server with no framework
 
-Along the way we reported a documentation mismatch in Mozaik ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), the `context_update` event renamed to `message_received`), fixed it in the docs ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), merged), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131)).
+Along the way I reported a documentation mismatch in Mozaik ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), the `context_update` event renamed to `message_received`), fixed it in the docs ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), merged), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131)).
 
 AI coding assistants were used while building this project.
 
