@@ -1,14 +1,18 @@
 {
-	"name": "3alet-2026",
+	"name": "einstein-matchmaker",
 	"version": "0.1.0",
-	"description": "Concurrent AI agents on the Mozaik agentic environment (3alet Hackathon, Oct 30-31 2026)",
+	"description": "Concurrent Mozaik agents that match University of Novi Sad researchers with NTP Novi Sad companies and write cited industrial PhD proposals (EINSTEIN track, JigJoy x NTP Novi Sad hackathon 2026)",
 	"type": "module",
 	"scripts": {
 		"start": "tsx src/run.ts",
 		"typecheck": "tsc --noEmit",
 		"check:data": "tsx src/check-data.ts",
 		"start:nocritic": "tsx src/run.ts --no-critic",
-		"eval:critic": "tsx src/eval-critic.ts"
+		"eval:critic": "tsx src/eval-critic.ts",
+		"setup:data": "bash scripts/get-data.sh",
+		"serve": "tsx src/server.ts",
+		"eval:critic:hard": "tsx src/eval-critic-hard.ts",
+		"build:web": "bash web/scripts/build.sh"
 	},
 	"dependencies": {
 		"@mozaik-ai/core": "4.2.0",
@@ -18,5 +22,6 @@
 		"@types/node": "^20.0.0",
 		"tsx": "^4.21.0",
 		"typescript": "^5.3.3"
-	}
+	},
+	"license": "MIT"
 }

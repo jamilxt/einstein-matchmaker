@@ -1,6 +1,6 @@
 node_modules/
 .env
-data
-runs/
+/data
+/runs/
 web/node_modules/
 runs/search-ledger.json
