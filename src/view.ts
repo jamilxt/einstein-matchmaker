@@ -21,7 +21,14 @@ export type ViewProposal = {
 	title: string
 	problem: string
 	research_questions: string[]
-	plan: { year: number | string; work: string; result: string }[]
+	form: "industrial_phd" | "joint_project" | "contract_research" | null
+	consent: string | null
+	/** false when the Critic rejected the last draft: nothing is shown but the outcome and its reasons. */
+	released: boolean
+	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string }[]
+	novelty: string
+	data_status: string
+	to_agree: string
 	company_brings: string
 	faculty_brings: string
 	why_this_pair: string
@@ -130,9 +137,11 @@ export function buildView(ds: Dataset, id: string, dir: string): RunView {
 	let raw: any[]
 	if (runJson) {
 		raw = runJson.proposals.map((r: any) => {
-			const p = r.final ?? r.attempts[r.attempts.length - 1]?.proposal ?? {}
+			// A rejected draft is never shown as a proposal; only its outcome and the Critic's reasons are.
+			const p = r.final ?? {}
 			const last = r.attempts[r.attempts.length - 1]
-			return { ...p, key: r.key, claims: (last?.checks ?? []).map((c: any) => ({ claim: c.claim, evidence: c.evidence, support: c.support ?? null, supported: c.supported, deterministic: c.deterministic })) }
+			const checks = r.final ? (last?.checks ?? []).filter((c: any) => c.kind !== "prose") : []
+			return { ...p, key: r.key, form: r.pair?.form ?? p.form, consent: r.pair?.consent, released: !!r.final, claims: checks.map((c: any) => ({ claim: c.claim, evidence: c.evidence, support: c.support ?? null, supported: c.supported, deterministic: c.deterministic })) }
 		})
 	} else {
 		const md = readFileSync(join(dir, "proposals.md"), "utf-8")
@@ -156,7 +165,13 @@ export function buildView(ds: Dataset, id: string, dir: string): RunView {
 			companyId,
 			company: c.company,
 			challengeId: chid,
-			title: p.title ?? p.key,
+			form: p.form ?? null,
+			consent: p.consent ?? null,
+			released: p.released ?? true,
+			novelty: p.novelty ?? "",
+			data_status: p.data_status ?? "",
+			to_agree: p.to_agree ?? "",
+			title: p.title ?? (p.released === false ? `Not released: ${c.researcher} with ${c.company}` : p.key),
 			problem: p.problem ?? "",
 			research_questions: p.research_questions ?? [],
 			plan: p.plan ?? [],

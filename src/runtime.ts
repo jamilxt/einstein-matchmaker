@@ -17,24 +17,34 @@ export type Selection = Screened & {
 	analyst: string
 	writer?: string
 	status: "profiling" | "writing" | "done"
+	/** The collaboration form the researcher consented to, and their own wording. */
+	form: "industrial_phd" | "joint_project" | "contract_research"
+	consent: string
 }
 
 export type ResearcherProfile = { researcherId: string; summary: string; expertise: { topic: string; evidence: string[] }[] }
 export type CompanyProfile = { challengeId: string; companyId: string; summary: string; needs: { need: string; evidence: string[] }[] }
 
 export type Proposal = {
+	/** Set by the system from the researcher's consent, never by the model. */
+	form?: "industrial_phd" | "joint_project" | "contract_research"
 	title: string
 	problem: string
 	research_questions: string[]
-	plan: { year: number; work: string; result: string }[]
+	/** `period` + `pass_if` since the consent-aware Writer; older runs have `year` only. */
+	plan: { period?: string; year?: number; work: string; result: string; pass_if?: string }[]
 	company_brings: string
 	faculty_brings: string
 	why_this_pair: string
+	novelty?: string
+	data_status?: string
 	first_step: string
+	to_agree?: string
 	claims: Claim[]
 }
 
-export type ClaimCheck = { claim: string; evidence: string[]; deterministic: string[]; support?: number; supported: boolean }
+/** kind "prose": a coverage issue in the proposal text (see verify/coverage.ts), not a listed claim. */
+export type ClaimCheck = { claim: string; evidence: string[]; deterministic: string[]; support?: number; supported: boolean; kind?: "claim" | "prose" }
 
 export type ProposalRecord = {
 	key: string
@@ -69,12 +79,35 @@ export class MatchState extends RuntimeState {
 	proposals = new Map<string, ProposalRecord>()
 	jobs = new Map<string, JobRecord>()
 	spend = { usd: 0, byModel: {} as Record<string, { input: number; output: number; usd: number; calls: number }> }
+	/** USD held for model calls in flight, so concurrent calls cannot all start against the same headroom. */
+	reserved = 0
 	halted = false
 	finished = false
 	reverse = false
 
 	now(): number {
 		return Date.now() - this.t0
+	}
+
+	/**
+	 * Hold an estimated cost before a model call starts. Refuses (and halts the run) when spend plus
+	 * everything already held plus this call would pass the budget. The estimate covers input at list
+	 * price plus a fixed output allowance; Mozaik 4.2.0's OpenAI mapper does not forward
+	 * maxOutputTokens, so a single call's output is not capped by the API and the bound is an estimate.
+	 */
+	reserve(usd: number): boolean {
+		if (this.halted) return false
+		if (this.spend.usd + this.reserved + usd > BUDGET_USD) {
+			this.halted = true
+			console.log(`[budget] $${this.spend.usd.toFixed(4)} spent + $${this.reserved.toFixed(4)} held + $${usd.toFixed(4)} > cap $${BUDGET_USD}: no new model calls`)
+			return false
+		}
+		this.reserved += usd
+		return true
+	}
+
+	release(usd: number): void {
+		this.reserved = Math.max(0, this.reserved - usd)
 	}
 
 	/** Meter one model call. Halts the run once the budget is spent. */

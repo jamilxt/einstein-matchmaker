@@ -9,12 +9,12 @@ type Stage = { name: string; count?: string; model: string; job: string; tone?: 
 
 // Mirrors src/agents.ts and src/run.ts.
 const STAGES: Stage[] = [
-	{ name: "Shortlist", model: "no model", job: "Keyword search (BM25) over papers, projects and patents. Researchers not open to the collaboration type are removed first.", tone: "data" },
+	{ name: "Shortlist", model: "no model", job: "Keyword search (BM25) over papers, projects and patents. Consent comes first: each researcher gets only the collaboration form they said yes to.", tone: "data" },
 	{ name: "Screeners", count: "×3", model: "Decisions API", job: "Score each researcher and challenge pair for fit, 0 to 3, in parallel batches." },
 	{ name: "Matchmaker", model: "no model", job: "Picks a strong pair the moment its score arrives, while screening is still running." },
 	{ name: "Profilers, Analysts", count: "×2, ×2", model: "gpt-5.4-mini + tools", job: "Build a cited researcher profile and a structured company need, side by side." },
-	{ name: "Writers", count: "×2", model: "gpt-5.4-mini", job: "Draft the industrial PhD proposal and list every factual claim with the record it came from." },
-	{ name: "Critic", model: "ID checks + Decisions API", job: "Intercepts each draft. Blocks claims the cited records do not support and sends the draft back, up to twice.", tone: "gate" },
+	{ name: "Writers", count: "×2", model: "gpt-5.4-mini", job: "Draft the proposal in the consented form (industrial PhD, joint project or contract research) and list every factual claim with the record it came from." },
+	{ name: "Critic", model: "ID and text checks + Decisions API", job: "Intercepts each draft. Blocks claims the cited records do not support, and figures or names in the text that no checked claim backs. Sends the draft back up to twice, then rejects it.", tone: "gate" },
 ]
 
 type EvalSet = {
@@ -52,7 +52,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 				<h1 className="text-3xl font-semibold tracking-tight text-balance md:text-4xl">How the matchmaker works</h1>
 				<p className="text-muted-foreground">
 					Thirteen Mozaik participants share one runtime and one state. They react to each other's events instead of waiting in a fixed pipeline, so screening, profiling and writing overlap. A
-					Critic sits between the writers and the reader and checks every claim against the record it cites.
+					Critic sits between the writers and the reader. It checks every claim against the record it cites, and the text against the claims.
 				</p>
 			</section>
 
@@ -130,10 +130,10 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					</CardHeader>
 					<CardContent>
 						<ul className="space-y-3 text-sm">
-							<Rule title="Consent first">Researchers whose profile says they are not open to a form of collaboration are removed before any model sees them (46 in this dataset).</Rule>
+							<Rule title="Consent decides the form">An industrial PhD is only proposed to researchers who said yes to supervising one. Others get the joint project or contract research they agreed to, read in English and Serbian. 25 researchers open to none of these are left out before any model sees them.</Rule>
 							<Rule title="Pairs, not people">The system scores how well a pair fits a problem. It never ranks researchers against each other.</Rule>
-							<Rule title="Every claim has a source">A proposal cannot leave the system with a sentence its cited records do not support.</Rule>
-							<Rule title="Cost and abuse limits">Live searches have a hard spend cap per search and in total. Replays never call a model.</Rule>
+							<Rule title="Every claim has a source">Each listed claim is checked against its records, and every figure and named person in the text must be backed by a checked claim. A draft that still fails after two revisions is not released.</Rule>
+							<Rule title="Cost and abuse limits">Each model call reserves its estimated cost first, so a run stops before it passes its budget. Live searches have a cap per search and in total, and the public demo only replays. Search inputs are stored with their run, so use test descriptions only.</Rule>
 						</ul>
 					</CardContent>
 				</Card>

@@ -13,13 +13,14 @@ export function CriticFeed({ entries, candidates, enforcing, onSource }: { entri
 	if (!entries.length)
 		return (
 			<p className="rounded-md bg-lane px-3 py-6 text-center text-sm text-muted-foreground">
-				No drafts yet. The Critic reads each proposal before it is released and blocks any claim its cited records do not support.
+				No drafts yet. The Critic reads each proposal before it is released. It blocks any claim its cited records do not support, and any figure or name in the text that no checked claim backs.
 			</p>
 		)
 	return (
 		<ol className="space-y-3">
 			{[...entries].reverse().map((e) => {
-				const sentBack = e.verdict === "revise" || e.wouldHave === "revise"
+				const rejected = e.verdict === "reject" || (!enforcing && e.wouldHave === "reject")
+				const sentBack = rejected || e.verdict === "revise" || e.wouldHave === "revise"
 				return (
 					<li key={`${e.key}-${e.attempt}`} className="rounded-md border bg-card p-3">
 						<div className="flex items-start gap-2">
@@ -27,7 +28,7 @@ export function CriticFeed({ entries, candidates, enforcing, onSource }: { entri
 							<div className="min-w-0 flex-1">
 								<div className="flex flex-wrap items-baseline justify-between gap-x-3">
 									<p className="text-sm font-medium">
-										{sentBack ? (enforcing ? "Sent back" : "Would have sent back") : "Approved"}: draft {e.attempt}
+										{rejected ? (enforcing ? "Rejected, not released" : "Would have rejected") : sentBack ? (enforcing ? "Sent back" : "Would have sent back") : "Approved"}: draft {e.attempt}
 									</p>
 									<span className="text-xs text-muted-foreground tabular">{secs(e.t)}</span>
 								</div>

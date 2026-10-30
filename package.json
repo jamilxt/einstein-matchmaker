@@ -12,7 +12,8 @@
 		"setup:data": "bash scripts/get-data.sh",
 		"serve": "tsx src/server.ts",
 		"eval:critic:hard": "tsx src/eval-critic-hard.ts",
-		"build:web": "bash web/scripts/build.sh"
+		"build:web": "bash web/scripts/build.sh",
+		"test:guards": "tsx src/test-guards.ts"
 	},
 	"dependencies": {
 		"@mozaik-ai/core": "4.2.0",

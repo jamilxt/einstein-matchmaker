@@ -1,12 +1,12 @@
 # EINSTEIN Matchmaker
 
-A team of concurrent [Mozaik](https://github.com/jigjoy-ai/mozaik) agents that finds University of Novi Sad researchers and NTP Novi Sad companies worth an industrial PhD together, and writes a concrete, cited proposal for each pair. A Critic agent intercepts every draft and blocks any claim that the record it cites does not support.
+A team of concurrent [Mozaik](https://github.com/jigjoy-ai/mozaik) agents that finds University of Novi Sad researchers and NTP Novi Sad companies worth an industrial PhD or a joint project together, and writes a concrete, cited proposal for each pair, in the form the researcher agreed to. A Critic agent intercepts every draft. It blocks any claim that the record it cites does not support, and any figure or name in the proposal text that no checked claim backs.
 
 Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to 31 October 2026), on the official synthetic dataset.
 
 - **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work.
-- **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a 3-year plan, supervisors, a first step, and a claim-by-claim source list.
-- **A Critic that I measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)).
+- **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with a pass or fail target per period, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
+- **A Critic that I measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)). Offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past, consent, budget and timeouts.
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
 - **Live demo: [einstein.jamilxt.com](https://einstein.jamilxt.com).** The public site replays every recorded run at no cost. Live search is off there; run it yourself with your own key (below).
 - **A web UI** that streams a live search or replays any recorded run: agent lanes, a match map, the Critic's decisions, and proposals with clickable sources.
@@ -90,7 +90,7 @@ npm run serve             # http://127.0.0.1:8791
 
 The UI is prebuilt in `public/`. To rebuild it: `cd web && npm ci && cd .. && npm run build:web`.
 
-**Live run (real OpenAI APIs).** Live mode needs both the `--live` flag and `ALLOW_LIVE=1`, so nothing spends money by accident. `BUDGET_USD` is a hard stop: every model call is metered from the API-reported token usage, and the run halts when the budget is spent.
+**Live run (real OpenAI APIs).** Live mode needs both the `--live` flag and `ALLOW_LIVE=1`, so nothing spends money by accident. `BUDGET_USD` is a stop threshold: before each model call starts, its estimated cost (input at list price plus a fixed output allowance) is reserved, and a call that would take spend plus reservations past the budget is refused and the run halts. Spend is then metered from the API-reported token usage. It is an estimate, not a guaranteed ceiling: Mozaik 4.2.0's OpenAI mapper does not pass `maxOutputTokens`, so one call's output is not capped by the API.
 
 ```bash
 cp .env.example .env      # add OPENAI_API_KEY
@@ -99,14 +99,14 @@ ALLOW_LIVE=1 BUDGET_USD=0.10 npx tsx src/run.ts --live --input=examples/vinarija
 ALLOW_LIVE=1 ALLOW_LIVE_SEARCH=1 npm run serve     # turns on the search form in the UI
 ```
 
-To run the Critic evaluation: `ALLOW_LIVE=1 npm run eval:critic:hard -- --live`. It costs about $0.01.
+To run the Critic evaluation: `ALLOW_LIVE=1 npm run eval:critic:hard -- --live`. It costs about $0.01. The guard tests run offline with no key: `npm run test:guards`.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
     DS[("EINSTEIN dataset<br/>1,047 researchers · 153 companies<br/>10,779 papers · 1,823 projects · 111 patents")]
-    SL["Shortlist<br/>BM25 over papers, projects, patents<br/>open_to filter first<br/><i>no model</i>"]
+    SL["Shortlist<br/>BM25 over papers, projects, patents<br/>consent (open_to) filter first<br/><i>no model</i>"]
     CO["Coordinator<br/>splits work<br/><i>no model</i>"]
     S1["Screener 1"]
     S2["Screener 2"]
@@ -115,8 +115,8 @@ flowchart LR
     P["Profiler x2<br/>cited researcher profile<br/><i>gpt-5.4-mini + tool</i>"]
     A["Analyst x2<br/>structured company need<br/><i>gpt-5.4-mini + tool</i>"]
     W["Writer x2<br/>proposal + claims with record ids<br/><i>gpt-5.4-mini</i>"]
-    CR{"Critic<br/>intercepts each draft<br/>id checks + Decisions predicates"}
-    OUT["Proposals<br/>every claim sourced"]
+    CR{"Critic<br/>intercepts each draft<br/>id checks + Decisions predicates<br/>+ text coverage"}
+    OUT["Proposals<br/>claims and text checked"]
     AU["Auditor<br/>trace + spend meter"]
 
     DS --> SL --> CO
@@ -140,15 +140,15 @@ flowchart LR
 | Matchmaker | 1 | none | Picks a strong pair the moment its score lands, keeps researchers and companies from repeating, and assigns Profiler, Analyst and Writer work |
 | Profiler | 2 | `gpt-5.4-mini` + tool | Builds a researcher profile in which every expertise item cites the researcher's own records |
 | Analyst | 2 | `gpt-5.4-mini` + tool | Turns the company record, challenge and web pages into a structured, cited need |
-| Writer | 2 | `gpt-5.4-mini` | Writes the proposal and lists every factual claim with the dataset ID that states it |
-| Critic | 1 | ID checks + Decisions API | Intercepts the Writer's answer before it is committed. It approves the draft, or sends it back with each blocked claim and the reason |
+| Writer | 2 | `gpt-5.4-mini` | Writes the proposal in the form the researcher consented to, and lists every factual claim with the dataset ID that states it |
+| Critic | 1 | ID and text checks + Decisions API | Intercepts the Writer's answer before it is committed. It checks each claim against its records and the text against the claims, then approves the draft or sends it back with each problem and the reason |
 | Auditor | 1 | none | Writes every runtime event to `trace.jsonl` and meters spend per model |
 
 **How they coordinate on Mozaik** ([`src/agents.ts`](src/agents.ts), [`src/jobs.ts`](src/jobs.ts), [`src/runtime.ts`](src/runtime.ts)):
 
 - **Shared state, no direct calls.** All participants live on one runtime with a shared `MatchState`. They react to semantic events (`screen.batch`, `pair.screened`, `pair.selected`, `profile.requested`, `profile.ready`, `proposal.requested`, `critic.verdict`). Nobody calls anybody, and nothing waits for a whole stage to finish.
 - **Early selection.** The Matchmaker doesn't wait for all 180 scores. In every live run it picked its first pair before screening ended (0.5 to 1.9 s in, with screening ending at 2.0 to 4.3 s), so profiling overlapped the rest of screening.
-- **The Critic is an interception, not a later stage.** Each Writer job runs its loop with an `InterceptionHandler` on the model's final message. If a claim fails, the handler injects a correction listing the exact claims and reasons, and the same loop continues. True facts get re-cited to the right record, and anything no record states is removed. After 2 revisions an unfixable draft is rejected rather than shipped.
+- **The Critic is an interception, not a later stage.** Each Writer job runs its loop with an `InterceptionHandler` on the model's final message. If a claim fails, or the text carries a figure or a name that no checked claim backs, the handler injects a correction listing the exact problems and reasons, and the same loop continues. True facts get re-cited to the right record, and anything no record states is removed. After 2 revisions an unfixable draft is rejected: it is recorded with the Critic's reasons, and neither the report nor the UI shows its text as a proposal.
 - **One job, one fresh `ModelContext`.** Two live loops sharing one memory cross-contaminated in testing. Each job also gets a watchdog, because `runLoop` swallows failures ([mozaik#114](https://github.com/jigjoy-ai/mozaik/issues/114)), and a budget halt that ends the loop cleanly instead of redirecting to `idle` ([mozaik#113](https://github.com/jigjoy-ai/mozaik/issues/113)).
 
 ### Why the Decisions API, in results and cost
@@ -181,7 +181,7 @@ The limit: a decision model only judges, so the Critic explains a block with the
 
 All of it is committed under [`docs/evidence/`](docs/evidence) and can be replayed in the UI.
 
-| Run | Critic | Peak jobs at once | Jobs overlapping | Drafts sent back | Claims blocked | Unsupported shipped | Time | Cost |
+| Run | Critic | Peak jobs at once | Jobs overlapping | Drafts sent back | Claims blocked | Listed claims failing at release | Time | Cost |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [run-01-live](docs/evidence/run-01-live) | on | 9 | 21/21 | 5 of 8 | 17 | 0 | 32.6 s | $0.076 |
 | [run-02-live](docs/evidence/run-02-live) | on | 9 | 21/21 | 4 of 7 | 10 | 0 | 36.6 s | $0.092 |
@@ -235,6 +235,31 @@ From [`run-01-live/trace.jsonl`](docs/evidence/run-01-live/trace.jsonl), proposa
 
 Search the trace for `critic.verdict` to see every decision, or replay run 1 in the UI and watch the Critic lane.
 
+### Guards added after a judge-style review
+
+Before submitting, I reviewed the entry the way a judge would and found gaps that the planted-error evaluation could not show, because it only tests claims the Writer chose to list:
+
+- **Facts in the text with no claim.** A draft whose problem section said a company "has 999999 employees and owns a nuclear reactor", with an empty claims list, was approved. Now [`src/verify/coverage.ts`](src/verify/coverage.ts) checks the text itself: every figure in a fact section must appear in a claim that the Critic verifies; every named person must appear in the pair's records; no other researcher or company may be named; planned work may not be dated in the past; and a draft needs claims about both sides.
+- **Consent was too broad.** Anyone open to any collaboration got an industrial PhD proposal. Now the form follows the consent ([`src/data/consent.ts`](src/data/consent.ts)).
+- **Rejected drafts were still shown**, labelled rejected. Now only the outcome and the Critic's reasons are.
+- **The budget was checked after spending**, so concurrent calls could all start against the same headroom; a stalled job stopped being reviewed but kept running; two searches could start at once. All three are fixed (reservation before each call, the watchdog ends the loop, the search lock is taken before reading the request).
+- **Proposals were weaker than their structure.** A plan was dated before today, staffing went beyond what a company offered, and novelty over the researcher's own papers was not stated. The Writer now gets today's date, the researcher's own paper titles and the consent wording, and must fill `novelty`, `data_status`, `to_agree` and a `pass_if` target per period.
+
+`npm run test:guards` runs these attacks and controls offline, with no key:
+
+| Guard | Result |
+| --- | --- |
+| Fabricated text with an empty claims list | blocked |
+| Invented figure in the problem section | blocked |
+| Invented person, and a researcher from outside the pair | both blocked |
+| Plan dated in the past, including the real run 5 Pannonia draft ("ahead of the Q1 2026 filing") | blocked |
+| 11 approved live proposals, as controls | 11 of 11 pass |
+| PhD only with explicit PhD consent; Serbian and Cyrillic consent read | pass |
+| Two calls that together exceed the budget; a non-numeric budget | second call refused; refused |
+| A 300 ms watchdog on every job | loops end, nothing released |
+
+14 of 14 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
+
 ### Proposals
 
 From run 3 ([full text](docs/evidence/run-03-live/proposals.md)):
@@ -258,7 +283,7 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 **What exists today (built and tested here):**
 
 - **A front door for NTP companies.** Reverse Search is a form an NTP company can fill in during or after an EINSTEIN event. Within about 30 seconds it returns researchers who fit, each with a proposal the company can read. The batch mode can scan every open challenge from NTP members at once.
-- **Consent as a hard filter.** Researchers are only proposed for collaboration forms they have said yes to (`open_to`). In the network this becomes a profile setting each researcher controls.
+- **Consent decides the collaboration form.** A researcher only gets an industrial PhD proposal if they said yes to supervising one; otherwise they get the joint project or contract research they agreed to (`open_to`). In the network this becomes a profile setting each researcher controls.
 - **Proposals reviewers can verify.** Every claim cites a record, so an NTP innovation officer or a UNS tech-transfer officer can check a proposal in minutes before anyone is contacted.
 
 **How it would plug in (proposed, not built):**
@@ -274,10 +299,11 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 ## Responsible use of data
 
 - **People are never ranked.** Only researcher and challenge pairs get a fit score, and the UI says so.
-- **`open_to` is applied before any model sees a profile.** 46 researchers are excluded this way.
+- **Consent decides the form, before any model sees a profile.** `open_to` is read in English, Serbian Latin and Serbian Cyrillic ([`src/data/consent.ts`](src/data/consent.ts)). An industrial PhD is only proposed to researchers who said yes to supervising one; researchers open only to joint projects or contract research get that form instead, and their own wording is passed to the Writer so conditions in it are respected. 25 researchers whose `open_to` lists none of these (for example consulting only) are excluded.
 - **Every claim about a person or company must cite a dataset ID.** The Critic checks it against that record, and the record is one click away in the UI.
 - **Only the official synthetic dataset is used.** No real personal data is processed.
-- **Cost is capped.** Live runs need `--live` plus `ALLOW_LIVE=1`, are capped by `BUDGET_USD`, and live web search has per-search and total caps. Replays never call a model.
+- **Cost is bounded.** Live runs need `--live` plus `ALLOW_LIVE=1` and stop at `BUDGET_USD` (an estimate-based threshold, see How to run). Live web search has per-search and total caps; a search that fails before reporting its spend is counted at its cap. Replays never call a model, and the public demo cannot start a search.
+- **Search inputs are stored and replayable.** A Reverse Search keeps the company's problem text with its run, so the demo is for test inputs only, not confidential descriptions. A real deployment would keep runs private to the company that started them.
 - **No secrets are stored in the repo.** The key lives in `.env`, which is git-ignored.
 
 ## Limitations
@@ -285,6 +311,9 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 - On borderline topics the Critic can let a neighbouring-field claim through (1 of 53 planted errors).
 - Natural Critic-on versus Critic-off runs are too small to show a difference, so the planted-error evaluation is the real measurement.
 - Fit scores come from a model and are a starting point for a human conversation, not a decision.
+- The text check finds figures and names, not every kind of fact. It checks figures only in the fact sections (targets in the plan are proposals), and it recognises people by first names that occur in the dataset, so a name from outside that list is not caught. A plain-language statement with no figure or name still relies on the Writer listing it as a claim.
+- The budget reservation uses a fixed output allowance per call, so it is an estimate. A timed-out job stops its loop, but a request already in flight is not cancelled.
+- Recorded runs 1 to 5 and the three searches predate the text check and the consent-based form. Run 3's water-testing proposal names Goran Radulović as a PhD supervisor, although his `open_to` lists joint projects and contract research, not PhD supervision; the current system writes him a joint project instead.
 - Reverse Search shortlists by keywords first. A problem described in very different words from the researchers' papers can miss people, and the Decisions screening only reorders what the shortlist found.
 
 ## Timeline

@@ -129,7 +129,7 @@ export function RunStage({ trace, now, total, view, candidates, criticEnforcing,
 				<Card className="min-w-0">
 					<CardHeader>
 						<CardTitle>Proposals</CardTitle>
-						<CardDescription>Industrial PhD topics, released only after the Critic has checked every claim.</CardDescription>
+						<CardDescription>Industrial PhD or joint-project proposals, in the form each researcher agreed to. Released only after the Critic has checked the claims and the text.</CardDescription>
 					</CardHeader>
 					<CardContent>
 						{proposals.length === 0 ? (
@@ -155,7 +155,7 @@ export function RunStage({ trace, now, total, view, candidates, criticEnforcing,
 				<Card className="min-w-0">
 					<CardHeader>
 						<CardTitle>The Critic</CardTitle>
-						<CardDescription>{criticEnforcing ? "Checks every claim against its cited records before a proposal leaves the system." : "Ablation run: the Critic only records what it would have blocked."}</CardDescription>
+						<CardDescription>{criticEnforcing ? "Checks every claim against its cited records, and every figure and name in the text against the claims, before a proposal leaves the system." : "Ablation run: the Critic only records what it would have blocked."}</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<CriticFeed entries={snap.critic} candidates={snap.candidates} enforcing={criticEnforcing} onSource={show} />

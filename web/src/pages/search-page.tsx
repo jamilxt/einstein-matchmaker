@@ -105,11 +105,11 @@ export function SearchPage({ config, runs, go }: { config: ServerConfig | null; 
 				<div className="space-y-3 pt-2">
 					<h1 className="text-3xl font-semibold tracking-tight text-balance md:text-4xl">Describe a problem. Meet the researchers who can solve it.</h1>
 					<p className="max-w-[56ch] text-muted-foreground">
-						A team of AI agents searches 1,047 University of Novi Sad researchers, checks who fits, and drafts an industrial PhD proposal. Every claim links to the record it came from.
+						A team of AI agents searches 1,047 University of Novi Sad researchers, checks who fits, and drafts a proposal: an industrial PhD or a joint project, depending on what each researcher agreed to. Every claim links to the record it came from.
 					</p>
 					<div className="grid gap-4 pt-4 text-sm sm:grid-cols-2">
 						<Fact title="Fit, not fame" body="Pairs are scored on how well the expertise matches your problem. People are never ranked against each other." />
-						<Fact title="Only who said yes" body="Researchers who are not open to this kind of collaboration are left out before the search starts." />
+						<Fact title="Only who said yes" body="Each researcher only gets the kind of collaboration they said yes to. Nobody else is proposed." />
 						<Fact title="Claims you can check" body="A Critic agent blocks any sentence its sources do not support." />
 						<Fact title="Seconds, not weeks" body="Screening, profiling and writing run in parallel, so a search takes well under a minute." />
 					</div>
@@ -183,7 +183,7 @@ export function SearchPage({ config, runs, go }: { config: ServerConfig | null; 
 					)}
 
 					<div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
-						<p className="text-xs text-muted-foreground tabular">{live && config ? `Up to ${usd(config.perSearchBudgetUsd)} per search. ${usd(remaining)} left in the demo budget.` : ""}</p>
+						<p className="text-xs text-muted-foreground tabular">{live && config ? `Up to ${usd(config.perSearchBudgetUsd)} per search. ${usd(remaining)} left in the demo budget. Searches are saved and replayable, so use a test description.` : ""}</p>
 						<Button type="submit" disabled={!live || busy || tooShort} className="sm:min-w-44">
 							{busy ? <Loader2 className="size-4 animate-spin" /> : <ArrowRight className="size-4" />}
 							{busy ? "Searching" : "Find researchers"}

@@ -49,7 +49,7 @@ export function MatchMap({ snap, focusChallenges }: { snap: Snapshot; focusChall
 						{cl.nodes.map((n) => {
 							const p = snap.pairs.get(n.c.key)
 							const s = p?.score
-							const state = p?.revising ? "revise" : p?.finished ? "ok" : p?.selected ? "selected" : s !== undefined ? "screened" : "pending"
+							const state = p?.revising || (p?.finished && p?.verdict === "rejected") ? "revise" : p?.finished ? "ok" : p?.selected ? "selected" : s !== undefined ? "screened" : "pending"
 							return (
 								<line
 									key={n.c.key}
@@ -83,7 +83,7 @@ export function MatchMap({ snap, focusChallenges }: { snap: Snapshot; focusChall
 									onClick={() => setHover(n.c.key)}
 									className="cursor-pointer"
 								>
-									<circle r={on ? 10 : 7} className={cn("transition-all duration-300", on ? (p?.finished ? "fill-ok" : p?.revising ? "fill-destructive" : "fill-primary") : "fill-card stroke-muted-foreground/60")} strokeWidth={1.2} />
+									<circle r={on ? 10 : 7} className={cn("transition-all duration-300", on ? (p?.finished && p?.verdict === "rejected" ? "fill-destructive" : p?.finished ? "fill-ok" : p?.revising ? "fill-destructive" : "fill-primary") : "fill-card stroke-muted-foreground/60")} strokeWidth={1.2} />
 									<text y={n.y < cl.y - 4 ? (on ? -16 : -12) : on ? 26 : 21} textAnchor="middle" className={cn("text-[13px]", on ? "fill-foreground font-medium" : "fill-muted-foreground")}>
 										{surname(n.c.researcher)}
 									</text>

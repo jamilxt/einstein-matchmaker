@@ -77,7 +77,7 @@ function stubCompanyProfile(challengeId: string) {
 	const ds = state().ds
 	const { challenge, company } = ds.challenges.get(challengeId)!
 	return {
-		summary: `[stub] ${company.name} (${company.sector}, ${company.employees} employees). ${challenge.text}`,
+		summary: `[stub] ${company.name} (${company.sector}). ${challenge.text}`,
 		needs: [{ need: challenge.text, evidence: [challenge.id] }],
 	}
 }
@@ -86,28 +86,36 @@ function stubProposal(key: string, revising: boolean) {
 	const s = state()
 	const [researcherId, challengeId] = key.split("x")
 	const rp = s.researcherProfiles.get(researcherId)!
-	const cp = s.companyProfiles.get(challengeId)!
 	const r = s.ds.researchers.get(researcherId)!
 	const { challenge, company } = s.ds.challenges.get(challengeId)!
+	const form = s.selected.get(key)?.form ?? "industrial_phd"
 	const claims = [
 		{ text: `${company.name} states: ${challenge.text}`, about: "company" as const, evidence: [challenge.id] },
+		{ text: `${company.name} offers: ${company.rd_capacity}`, about: "company" as const, evidence: [company.id] },
+		{ text: `${r.name} is ${r.title} in the ${r.department}.`, about: "researcher" as const, evidence: [r.id] },
 		...rp.expertise.slice(0, 2).map((e) => ({ text: `${r.name} has published on ${e.topic}.`, about: "researcher" as const, evidence: e.evidence })),
 	]
-	if (!revising && hash(key) % 2 === 0) {
+	const planted = !revising && hash(key) % 2 === 0
+	if (planted) {
 		// Planted mistakes: an id that does not exist, and a real paper by someone else.
 		const foreign = [...s.ds.publications.values()].find((p) => !p.authors.some((a) => a.researcher_id === researcherId))!
 		claims.push({ text: `${r.name} also led a widely cited study on this exact problem.`, about: "researcher", evidence: ["SYN-PUB-99999"] })
 		claims.push({ text: `${r.name} authored "${foreign.title}".`, about: "researcher", evidence: [foreign.id] })
 	}
+	const periods = form === "industrial_phd" ? ["Year 1", "Year 2", "Year 3"] : form === "joint_project" ? ["Months 1 to 6", "Months 7 to 18"] : ["Months 1 to 3", "Months 4 to 9"]
 	return {
 		title: `[stub] ${rp.expertise[0]?.topic ?? r.fields[0]} for ${company.name}`,
-		problem: cp.summary,
+		// Planted prose mistake on some first drafts: a figure that no claim backs.
+		problem: challenge.text + (planted ? " The company has 999999 employees." : ""),
 		research_questions: [`[stub] Can ${r.fields[0]} methods address: ${challenge.text.slice(0, 80)}?`],
-		plan: [1, 2, 3].map((y) => ({ year: y, work: `[stub] year ${y} work`, result: `[stub] year ${y} result` })),
+		plan: periods.map((period) => ({ period, work: `[stub] ${period} work`, result: `[stub] ${period} result`, pass_if: `[stub] ${period} target met` })),
 		company_brings: `[stub] ${company.rd_capacity}`,
 		faculty_brings: `[stub] ${r.department}`,
-		why_this_pair: `[stub] ${rp.summary}`,
+		why_this_pair: `[stub] ${rp.summary.replace(/\d+/g, "")}`,
+		novelty: "[stub] what is new beyond the researcher's own papers",
+		data_status: "[stub] data the records describe, and data to collect",
 		first_step: "[stub] a two-day workshop at NTP",
+		to_agree: "[stub] funding, IP, publication delay, data access",
 		claims,
 	}
 }

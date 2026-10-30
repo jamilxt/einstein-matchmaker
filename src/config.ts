@@ -35,6 +35,16 @@ export const LANG_RULE =
 		: "Write the proposal and every claim in English, even when the company or researcher wrote in Serbian (Latin or Cyrillic). Keep names, product names and record ids exactly as written; translate quoted figures and facts faithfully. "
 
 export const BUDGET_USD = Number(process.env.BUDGET_USD ?? 1)
+if (!Number.isFinite(BUDGET_USD) || BUDGET_USD <= 0) {
+	console.error(`BUDGET_USD must be a positive number of dollars, got "${process.env.BUDGET_USD}".`)
+	process.exit(2)
+}
+
+/** Output tokens held per LLM call when reserving budget (live calls averaged about 530 output tokens). */
+export const OUTPUT_ALLOWANCE_TOKENS = 4000
+
+/** Today's date, given to the Writer and used by the Critic to block plans dated in the past. */
+export const TODAY = new Date(process.env.TODAY ?? Date.now())
 
 export const TUNING = {
 	challenges: argNum("challenges", 60), // how many company challenges to screen this run

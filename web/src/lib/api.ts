@@ -17,7 +17,14 @@ export type ViewProposal = {
 	title: string
 	problem: string
 	research_questions: string[]
-	plan: { year: number | string; work: string; result: string }[]
+	form: "industrial_phd" | "joint_project" | "contract_research" | null
+	consent: string | null
+	/** false when the Critic rejected the last draft: nothing is shown but the outcome and its reasons. */
+	released: boolean
+	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string }[]
+	novelty: string
+	data_status: string
+	to_agree: string
 	company_brings: string
 	faculty_brings: string
 	why_this_pair: string

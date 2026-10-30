@@ -21,7 +21,8 @@ import {
 	type Tool,
 } from "@mozaik-ai/core"
 import { appendFileSync } from "node:fs"
-import { CRITIC_ENFORCES, LANG_RULE, MODELS, TUNING } from "./config"
+import { CRITIC_ENFORCES, LANG_RULE, MODELS, TODAY, TUNING } from "./config"
+import { FORM_LABEL, proposalForm } from "./data/consent"
 import { tokenize } from "./data/shortlist"
 import { decider } from "./decisions"
 import { runJob } from "./jobs"
@@ -38,6 +39,7 @@ import {
 } from "./runtime"
 import { type Claim } from "./verify/citations"
 import { checkClaims } from "./verify/critic-check"
+import { checkProse } from "./verify/coverage"
 
 // ---------- small helpers ----------
 
@@ -65,6 +67,17 @@ function parseJson<T>(text: string): T {
 const busy = new Map<string, number>()
 const leastBusy = (ids: string[]) => ids.reduce((a, b) => ((busy.get(a) ?? 0) <= (busy.get(b) ?? 0) ? a : b))
 const inc = (id: string, d: number) => busy.set(id, (busy.get(id) ?? 0) + d)
+
+/** Titles of a researcher's own papers, projects and patents, so the Writer can say what is new beyond them. */
+function ownWork(researcherId: string): string {
+	const ds = state().ds
+	const r = ds.researchers.get(researcherId)!
+	return [
+		...r.publications.slice(0, 15).map((id) => `${id}: ${ds.publications.get(id)?.title ?? ""}`),
+		...r.projects.map((id) => `${id}: ${ds.projects.get(id)?.title ?? ""}`),
+		...r.patents.map((id) => `${id}: ${ds.patents.get(id)?.title ?? ""}`),
+	].join("\n")
+}
 
 // ---------- schemas ----------
 
@@ -110,7 +123,7 @@ const proposalSchema = {
 	schema: {
 		type: "object",
 		additionalProperties: false,
-		required: ["title", "problem", "research_questions", "plan", "company_brings", "faculty_brings", "why_this_pair", "first_step", "claims"],
+		required: ["title", "problem", "research_questions", "plan", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status", "first_step", "to_agree", "claims"],
 		properties: {
 			title: { type: "string" },
 			problem: { type: "string" },
@@ -120,14 +133,17 @@ const proposalSchema = {
 				items: {
 					type: "object",
 					additionalProperties: false,
-					required: ["year", "work", "result"],
-					properties: { year: { type: "integer" }, work: { type: "string" }, result: { type: "string" } },
+					required: ["period", "work", "result", "pass_if"],
+					properties: { period: { type: "string" }, work: { type: "string" }, result: { type: "string" }, pass_if: { type: "string" } },
 				},
 			},
 			company_brings: { type: "string" },
 			faculty_brings: { type: "string" },
 			why_this_pair: { type: "string" },
+			novelty: { type: "string" },
+			data_status: { type: "string" },
 			first_step: { type: "string" },
+			to_agree: { type: "string" },
 			claims: {
 				type: "array",
 				items: {
@@ -322,7 +338,8 @@ export function buildTeam(tracePath: string): Team {
 		const analyst = leastBusy(analysts.map((a) => a.getId()))
 		inc(profiler, 1)
 		inc(analyst, 1)
-		const sel: Selection = { ...c, key, selectedAt: s.now(), profiler, analyst, status: "profiling" }
+		const consent = proposalForm(s.ds.researchers.get(c.researcherId)!)!
+		const sel: Selection = { ...c, key, selectedAt: s.now(), profiler, analyst, status: "profiling", form: consent.form, consent: consent.wording }
 		s.selected.set(key, sel)
 		emit("pair.selected", self.id, { key, score: c.score, screener: c.screener })
 		if (!s.researcherProfiles.has(c.researcherId) && !s.profileInFlight.has(c.researcherId)) {
@@ -397,15 +414,23 @@ export function buildTeam(tracePath: string): Team {
 				name: `Writer-${i + 1}`,
 				capabilities: ["proposal"],
 				instruction:
-					"[role:writer] You write a one-page industrial PhD or joint-project proposal for one researcher-company pair, in the shape of a good industrial PhD topic: " +
-					"the concrete problem, 2 to 3 measurable research questions, a 3-year plan, what each side brings, why this pair and not another, and a first step they could take next month. " +
-					"Be as specific as the example: use the company's own numbers and constraints from the challenge text (volumes, error rates, deadlines, tools) in the problem and research questions. " +
-					"Add who supervises on each side and an 'agreed up front' line on publication and IP. " +
-					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). " +
+					"[role:writer] You write a one-page collaboration proposal for one researcher-company pair, in the shape of a good industrial PhD topic. " +
+					"The FORM (industrial PhD, joint research project or contract research) is given to you from the researcher's own consent: write exactly that form, never a different one. " +
+					"Only an industrial PhD has a doctoral candidate and a faculty PhD supervisor; a joint project or contract research names a project lead on each side instead. " +
+					"Sections: the concrete problem; 2 to 3 measurable research questions; a plan in periods (Year 1 to 3 for a PhD, months for a project); what each side brings; why this pair; " +
+					"`novelty`: what is new beyond the researcher's own published work listed to you (name the closest of their papers and cite it in claims); " +
+					"`data_status`: what data the records say exists today, and what would have to be collected (never call data available unless a record says so); " +
+					"a first step for next month; `to_agree`: what still has to be agreed (funding and who pays for the candidate or staff time, IP in new results and background IP, publication delay, data access). " +
+					"Every plan period has a `pass_if`: a measurable pass or fail target. Targets are proposals, not facts. " +
+					"Be as specific as the example: use the company's own numbers and constraints from the challenge text. " +
+					"Commit only the company staff, time, equipment and data the records offer, with their own limits (for example 'up to three months'); if the plan needs more, put it in `to_agree`. " +
+					"You are told today's date: never plan work for a date that has passed; if the company names a deadline that is already past, say so and plan for the next cycle. " +
+					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). Name only people who appear in the records given to you. " +
 					LANG_RULE +
 					"List every factual statement about either party in `claims` with the dataset id of the record that states it: " +
 					"company size, location, sector, products or capacity -> the company id (e.g. C003); the company's problem -> the challenge id (e.g. C003-CH2); " +
 					"a researcher's title, department or role -> the researcher id (e.g. R0995); a researcher's expertise -> their publication, project or patent ids. Use only ids given to you. " +
+					"Every figure that appears in the title, problem, what each side brings, why this pair, novelty or data status must also appear in one of your claims. " +
 					"Propose a collaboration; never rank or grade people. If a Critic sends the draft back, fix exactly what it lists.",
 				tools: [],
 				handlers: [],
@@ -422,8 +447,17 @@ export function buildTeam(tracePath: string): Team {
 		const proposal = parseJson<Proposal>(text)
 		emit("critic.review.started", critic.getId(), { key, attempt, claims: proposal.claims?.length ?? 0 })
 		const pair = { researcherId: sel.researcherId, companyId: sel.companyId }
+		proposal.form = sel.form
 		const claims: Claim[] = proposal.claims ?? []
-		const checks: ClaimCheck[] = await checkClaims(s.ds, pair, claims)
+		// Two checks: the listed claims against their records, and the text against the claims (verify/coverage.ts).
+		const prose: ClaimCheck[] = checkProse(s.ds, { ...pair, challengeId: sel.challengeId }, proposal as any, TODAY).map((i) => ({
+			claim: i.excerpt ? `[${i.field}] ${i.excerpt}` : `[${i.field}]`,
+			evidence: [],
+			deterministic: [i.why],
+			supported: false,
+			kind: "prose" as const,
+		}))
+		const checks: ClaimCheck[] = [...(await checkClaims(s.ds, pair, claims)), ...prose]
 		const failed = checks.filter((c) => !c.supported)
 		const rec = s.proposals.get(key) ?? { key, attempts: [] }
 		s.proposals.set(key, rec)
@@ -449,13 +483,17 @@ export function buildTeam(tracePath: string): Team {
 		}
 		if (verdict === "reject") {
 			rec.verdict = "rejected"
-			return { accept: true as const } // end the loop; the proposal is recorded as rejected and not published
+			return { accept: true as const } // end the loop; recorded as rejected, never released as a proposal
 		}
-		const lines = failed.map((f, n) => `${n + 1}. "${f.claim}" cites ${f.evidence.join(", ") || "nothing"}: ${f.deterministic[0] ?? `the cited record does not support it (p=${f.support})`}`)
+		const bad = failed.filter((f) => f.kind !== "prose")
+		const lines = bad.map((f, n) => `${n + 1}. "${f.claim}" cites ${f.evidence.join(", ") || "nothing"}: ${f.deterministic[0] ?? `the cited record does not support it (p=${f.support})`}`)
+		const proseLines = failed.filter((f) => f.kind === "prose").map((f, n) => `${n + 1}. ${f.deterministic[0]}${f.claim.includes("]") && f.claim.length > 12 ? `: ${f.claim}` : ""}`)
 		return {
 			accept: false as const,
 			correction:
-				`CRITIC: revise the proposal. These claims are not supported by the records they cite:\n${lines.join("\n")}\n` +
+				`CRITIC: revise the proposal.\n` +
+				(lines.length ? `These claims are not supported by the records they cite:\n${lines.join("\n")}\n` : "") +
+				(proseLines.length ? `These problems are in the proposal text itself:\n${proseLines.join("\n")}\nEvery figure and person in the text needs a claim with its source; otherwise remove it.\n` : "") +
 				`If a claim is true, re-cite the record that actually states it (company facts: ${sel.companyId}; the problem: ${sel.challengeId}; the researcher's role: ${sel.researcherId}; expertise: their publication/project/patent ids). ` +
 				`If no record states it, remove it. Return the full corrected proposal.`,
 		}
@@ -535,7 +573,10 @@ export function buildTeam(tracePath: string): Team {
 					agent: w,
 					model: MODELS.writer,
 					message:
-						`TARGET: ${pl.key}\nResearcher ${sel.researcherId}:\n${s.ds.evidenceText(sel.researcherId)}\nResearcher profile (cited):\n${JSON.stringify(rp)}\n\n` +
+						`TARGET: ${pl.key}\nToday is ${TODAY.toISOString().slice(0, 10)}.\n` +
+						`FORM: ${FORM_LABEL[sel.form]}. The researcher's consent, in their own words: "${sel.consent}". Respect any condition in it.\n` +
+						`Researcher's own published work (for novelty):\n${ownWork(sel.researcherId)}\n\n` +
+						`Researcher ${sel.researcherId}:\n${s.ds.evidenceText(sel.researcherId)}\nResearcher profile (cited):\n${JSON.stringify(rp)}\n\n` +
 						`Company ${sel.companyId}:\n${s.ds.evidenceText(sel.companyId)}\nChallenge ${sel.challengeId}:\n${s.ds.evidenceText(sel.challengeId)}\n` +
 						`Company challenge profile (cited):\n${JSON.stringify(cp)}\n\nWrite the proposal.`,
 					structuredOutput: proposalSchema,

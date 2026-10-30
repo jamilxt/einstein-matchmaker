@@ -78,7 +78,7 @@ export function derive(trace: TraceEvent[], now: number, fallbackCandidates: Can
 			case "critic.verdict": {
 				critic.push({ t: e.t, key: d.key, attempt: d.attempt, verdict: d.verdict, wouldHave: d.wouldHave, blocked: d.blocked ?? [] })
 				const b = bars.get(`critic-${d.key}-${d.attempt}`)
-				const sentBack = d.verdict === "revise" || d.wouldHave === "revise"
+				const sentBack = d.verdict === "revise" || d.verdict === "reject" || d.wouldHave === "revise" || d.wouldHave === "reject"
 				if (b) Object.assign(b, { end: Math.max(e.t, b.start + 1), running: false, tone: sentBack ? "revise" : "approve" })
 				const p = pairs.get(d.key)
 				if (p) p.revising = d.verdict === "revise"

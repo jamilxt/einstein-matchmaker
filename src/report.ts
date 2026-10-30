@@ -4,6 +4,7 @@ import { writeFileSync } from "node:fs"
 import { join } from "node:path"
 import { BUDGET_USD, CRITIC_ENFORCES, MODELS, TUNING } from "./config"
 import { state } from "./runtime"
+import { FORM_LABEL } from "./data/consent"
 
 export function writeReport(runDir: string, live: boolean) {
 	const s = state()
@@ -30,7 +31,8 @@ export function writeReport(runDir: string, live: boolean) {
 
 	const recs = [...s.proposals.values()]
 	const attempts = recs.flatMap((r) => r.attempts)
-	const blockedClaims = attempts.flatMap((a) => a.checks.filter((c) => !c.supported))
+	const blockedClaims = attempts.flatMap((a) => a.checks.filter((c) => !c.supported && c.kind !== "prose"))
+	const proseIssues = attempts.flatMap((a) => a.checks.filter((c) => !c.supported && c.kind === "prose"))
 	const shippedUnsupported = recs
 		.filter((r) => r.final)
 		.flatMap((r) => r.attempts[r.attempts.length - 1].checks.filter((c) => !c.supported))
@@ -50,6 +52,8 @@ export function writeReport(runDir: string, live: boolean) {
 			revisionsRequested: attempts.filter((a) => a.verdict === "revise").length,
 			claimsChecked: attempts.reduce((n, a) => n + a.checks.length, 0),
 			claimsBlocked: blockedClaims.length,
+			proseIssuesBlocked: proseIssues.length,
+			rejected: recs.filter((r) => r.verdict === "rejected").length,
 			unsupportedClaimsInFinalProposals: shippedUnsupported.length,
 			outcomes: recs.map((r) => ({ key: r.key, verdict: r.verdict, drafts: r.attempts.length })),
 		},
@@ -85,18 +89,27 @@ export function writeReport(runDir: string, live: boolean) {
 		const sel = s.selected.get(r.key)!
 		const researcher = s.ds.researchers.get(sel.researcherId)!
 		const { company, challenge } = s.ds.challenges.get(sel.challengeId)!
-		const p = r.final ?? r.attempts[r.attempts.length - 1]?.proposal
-		md.push(`## ${p?.title ?? r.key}`, "")
-		md.push(`**Pair:** ${researcher.name} (${researcher.id}, ${researcher.department}) with ${company.name} (${company.id}), challenge ${challenge.id}`)
-		md.push(`**Critic:** ${r.verdict} after ${r.attempts.length} draft(s). Screening score ${sel.score.toFixed(2)} / 3.`, "")
-		if (!p) continue
-		md.push(`### The problem`, p.problem, "", `### Research questions`, ...p.research_questions.map((q, i) => `${i + 1}. ${q}`), "")
-		md.push(`### Plan`, "| Year | Work | Result |", "| --- | --- | --- |", ...p.plan.map((x) => `| ${x.year} | ${x.work} | ${x.result} |`), "")
-		md.push(`### What each side brings`, `- **Company:** ${p.company_brings}`, `- **Faculty:** ${p.faculty_brings}`, "")
-		md.push(`### Why this pair`, p.why_this_pair, "", `### First step`, p.first_step, "")
-		md.push(`### Claims and sources`)
+		// Only an approved (or, in the ablation, unchecked) proposal is released. A rejected draft is not.
+		const p = r.final
 		const last = r.attempts[r.attempts.length - 1]
-		for (const c of last.checks) md.push(`- ${c.supported ? "supported" : "NOT supported"}${c.support !== undefined ? ` (p=${c.support})` : ""}: ${c.claim} [${c.evidence.join(", ")}]`)
+		md.push(`## ${p?.title ?? `Not released: ${researcher.name} with ${company.name}`}`, "")
+		md.push(`**Pair:** ${researcher.name} (${researcher.id}, ${researcher.department}) with ${company.name} (${company.id}), challenge ${challenge.id}`)
+		md.push(`**Form:** ${FORM_LABEL[sel.form]}, from the researcher's consent: "${sel.consent}"`)
+		md.push(`**Critic:** ${r.verdict} after ${r.attempts.length} draft(s). Screening score ${sel.score.toFixed(2)} / 3.`, "")
+		if (!p) {
+			if (last) md.push("The Critic rejected the last draft, so no proposal was released. What it still found:", ...last.checks.filter((c) => !c.supported).map((c) => `- ${c.claim}: ${c.deterministic[0] ?? `support ${c.support}`}`), "")
+			continue
+		}
+		md.push(`### The problem`, p.problem, "", `### Research questions`, ...p.research_questions.map((q, i) => `${i + 1}. ${q}`), "")
+		md.push(`### Plan`, "| Period | Work | Result | Pass if |", "| --- | --- | --- | --- |", ...p.plan.map((x) => `| ${x.period ?? `Year ${x.year}`} | ${x.work} | ${x.result} | ${x.pass_if ?? ""} |`), "")
+		md.push(`### What each side brings`, `- **Company:** ${p.company_brings}`, `- **Faculty:** ${p.faculty_brings}`, "")
+		md.push(`### Why this pair`, p.why_this_pair, "")
+		if (p.novelty) md.push(`### What is new`, p.novelty, "")
+		if (p.data_status) md.push(`### Data: what exists and what to collect`, p.data_status, "")
+		md.push(`### First step`, p.first_step, "")
+		if (p.to_agree) md.push(`### Still to agree`, p.to_agree, "")
+		md.push(`### Claims and sources`)
+		for (const c of last.checks.filter((c) => c.kind !== "prose")) md.push(`- ${c.supported ? "supported" : "NOT supported"}${c.support !== undefined ? ` (p=${c.support})` : ""}: ${c.claim} [${c.evidence.join(", ")}]`)
 		md.push("")
 	}
 
@@ -130,7 +143,7 @@ export function writeReport(runDir: string, live: boolean) {
 		`\npeak in flight: ${peak} jobs at ${(peakAt / 1000).toFixed(1)}s (${inFlightAtPeak.join(", ")})` +
 			`\njobs overlapping another agent: ${overlapping}/${jobs.length}` +
 			(CRITIC_ENFORCES
-				? `\ncritic: ${summary.critic_record.drafts} drafts, ${summary.critic_record.revisionsRequested} sent back, ${summary.critic_record.claimsBlocked} claims blocked, `
+				? `\ncritic: ${summary.critic_record.drafts} drafts, ${summary.critic_record.revisionsRequested} sent back, ${summary.critic_record.claimsBlocked} claims blocked, ${proseIssues.length} text problems blocked, ${summary.critic_record.rejected} rejected, `
 				: `\ncritic OFF (ablation): ${summary.critic_record.drafts} drafts, would have sent back ${summary.critic_record.revisionsRequested}, flagged ${summary.critic_record.claimsBlocked} claims but blocked none, `) +
 			`${summary.critic_record.unsupportedClaimsInFinalProposals} unsupported claims in final proposals` +
 			`\nspend: $${summary.spend.usd} (${summary.spend.note})`,

@@ -1,6 +1,6 @@
 // OpenAI Decisions API client (POST /v1/decisions), plus an offline stub with the same shape.
 // Decisions return typed answers (probability / score) instead of text: fast, cheap checks.
-import { LIVE, MODELS } from "./config"
+import { LIVE, MODELS, PRICES } from "./config"
 import { tokenize } from "./data/shortlist"
 import { state } from "./runtime"
 
@@ -18,9 +18,24 @@ export interface Decider {
 	decide(input: string, questions: Question[]): Promise<Answer[]>
 }
 
+/** Hold the request's input cost (Decisions output is free) before it starts; refuse once the budget is spent. */
+async function withBudget<T>(input: string, questions: Question[], call: () => Promise<T>): Promise<T> {
+	const s = state()
+	const est = (((input.length + JSON.stringify(questions).length) / 4) * 1.25 * PRICES[`decisions:${MODELS.decisions}`].input) / 1_000_000
+	if (!s.reserve(est)) throw new Error("budget spent: Decisions request not sent")
+	try {
+		return await call()
+	} finally {
+		s.release(est)
+	}
+}
+
 class LiveDecider implements Decider {
 	readonly live = true
-	async decide(input: string, questions: Question[]): Promise<Answer[]> {
+	decide(input: string, questions: Question[]): Promise<Answer[]> {
+		return withBudget(input, questions, () => this.send(input, questions))
+	}
+	private async send(input: string, questions: Question[]): Promise<Answer[]> {
 		const res = await fetch("https://api.openai.com/v1/decisions", {
 			method: "POST",
 			headers: { "Content-Type": "application/json", Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
@@ -39,7 +54,10 @@ class LiveDecider implements Decider {
  */
 class StubDecider implements Decider {
 	readonly live = false
-	async decide(input: string, questions: Question[]): Promise<Answer[]> {
+	decide(input: string, questions: Question[]): Promise<Answer[]> {
+		return withBudget(input, questions, () => this.answer(input, questions))
+	}
+	private async answer(input: string, questions: Question[]): Promise<Answer[]> {
 		await new Promise((r) => setTimeout(r, 120 + Math.random() * 380))
 		state().charge(`decisions:${MODELS.decisions}`, Math.ceil((input.length + JSON.stringify(questions).length) / 4), 0)
 		return questions.map((q) => {

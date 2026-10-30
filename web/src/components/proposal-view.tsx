@@ -5,8 +5,12 @@ import type { ViewProposal } from "@/lib/api"
 import { SourceChip } from "@/components/source"
 
 /** One proposal laid out like the EINSTEIN example topic, with every claim and its sources. */
+const FORM: Record<string, string> = { industrial_phd: "Industrial PhD", joint_project: "Joint research project", contract_research: "Contract research" }
+
 export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: string) => void }) {
 	const approved = p.verdict === "approved"
+	if (!p.released) return <NotReleased p={p} />
+	const periodic = p.plan.some((x) => x.period)
 	return (
 		<article className="space-y-6">
 			<header className="space-y-3">
@@ -14,6 +18,7 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 					<Badge variant={approved ? "default" : "outline"} className={approved ? "bg-ok text-ok-foreground" : ""}>
 						{approved ? "Critic approved" : p.verdict === "shipped_unchecked" ? "Critic off" : p.verdict}
 					</Badge>
+					{p.form && <Badge variant="secondary">{FORM[p.form]}</Badge>}
 					<span className="text-xs text-muted-foreground tabular">
 						{p.drafts} draft{p.drafts === 1 ? "" : "s"}
 						{p.score !== null && <> · fit {p.score.toFixed(2)} / 3 ({fitWord(p.score)})</>}
@@ -34,6 +39,11 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 						<dd className="font-mono text-xs text-muted-foreground">challenge {p.challengeId}</dd>
 					</div>
 				</dl>
+				{p.consent && (
+					<p className="text-xs text-muted-foreground">
+						<span className="font-medium text-foreground">Why this form:</span> the researcher said they are open to "{p.consent}".
+					</p>
+				)}
 			</header>
 
 			<Section title="The problem">
@@ -46,16 +56,21 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 					))}
 				</ol>
 			</Section>
-			<Section title="Three-year plan">
+			<Section title={periodic ? "Plan" : "Three-year plan"}>
 				<ol className="space-y-3">
-					{p.plan.map((y) => (
-						<li key={String(y.year)} className="grid gap-1 sm:grid-cols-[4.5rem_1fr]">
-							<span className="text-xs font-medium text-primary tabular sm:pt-0.5">Year {y.year}</span>
+					{p.plan.map((y, i) => (
+						<li key={i} className="grid gap-1 sm:grid-cols-[7rem_1fr]">
+							<span className="text-xs font-medium text-primary tabular sm:pt-0.5">{y.period ?? `Year ${y.year}`}</span>
 							<div>
 								<p>{y.work}</p>
 								<p className="mt-1 text-muted-foreground">
 									<span className="font-medium text-foreground">Result:</span> {y.result}
 								</p>
+								{y.pass_if && (
+									<p className="mt-1 text-muted-foreground">
+										<span className="font-medium text-foreground">Pass if:</span> {y.pass_if}
+									</p>
+								)}
 							</div>
 						</li>
 					))}
@@ -76,9 +91,24 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 			<Section title="Why this pair">
 				<p>{p.why_this_pair}</p>
 			</Section>
+			{p.novelty && (
+				<Section title="What is new">
+					<p>{p.novelty}</p>
+				</Section>
+			)}
+			{p.data_status && (
+				<Section title="Data: what exists and what to collect">
+					<p>{p.data_status}</p>
+				</Section>
+			)}
 			<Section title="First step">
 				<p>{p.first_step}</p>
 			</Section>
+			{p.to_agree && (
+				<Section title="Still to agree">
+					<p>{p.to_agree}</p>
+				</Section>
+			)}
 
 			<Separator />
 			<section className="space-y-3">
@@ -104,6 +134,37 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 					))}
 				</ul>
 			</section>
+		</article>
+	)
+}
+
+/** A rejected proposal is not shown. Only the outcome and the Critic's last reasons are. */
+function NotReleased({ p }: { p: ViewProposal }) {
+	const last = p.attempts[p.attempts.length - 1]
+	return (
+		<article className="space-y-4">
+			<div className="flex flex-wrap items-center gap-2">
+				<Badge variant="destructive">Not released</Badge>
+				<span className="text-xs text-muted-foreground tabular">
+					{p.drafts} draft{p.drafts === 1 ? "" : "s"}, rejected by the Critic
+				</span>
+			</div>
+			<h3 className="text-lg font-semibold leading-snug">
+				{p.researcher} with {p.company}
+			</h3>
+			<p className="max-w-[72ch] text-sm text-muted-foreground">
+				After the allowed revisions, the last draft still had problems, so it was not released as a proposal. What the Critic still found:
+			</p>
+			<ul className="space-y-2 text-sm">
+				{(last?.blocked ?? []).map((b, i) => (
+					<li key={i} className="flex gap-2.5">
+						<CircleAlert className="mt-0.5 size-4 shrink-0 text-destructive" strokeWidth={1.75} />
+						<span>
+							{b.claim} <span className="text-muted-foreground">({b.why})</span>
+						</span>
+					</li>
+				))}
+			</ul>
 		</article>
 	)
 }

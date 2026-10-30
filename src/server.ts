@@ -148,21 +148,26 @@ async function startSearch(req: IncomingMessage, res: ServerResponse) {
 	if (activeSearch) return json(res, 409, { error: "A search is already running. Try again when it finishes.", id: activeSearch })
 	const l = ledger()
 	if (l.spentUsd + PER_SEARCH_BUDGET > TOTAL_SEARCH_BUDGET) return json(res, 402, { error: "The search budget for this demo is used up." })
+	// Take the lock before awaiting the body, so two requests cannot both pass the checks above.
+	const id = `search-${new Date().toISOString().replace(/[:.]/g, "-")}`
+	activeSearch = id
 	let body: { company?: string; problem?: string }
 	try {
 		body = JSON.parse(await readBody(req))
 	} catch {
+		activeSearch = null
 		return json(res, 400, { error: "Send JSON with company and problem." })
 	}
 	const company = String(body.company ?? "").trim()
 	const problem = String(body.problem ?? "").trim()
-	if (problem.length < 80) return json(res, 400, { error: "Describe the problem in at least a few sentences (80+ characters)." })
-	const id = `search-${new Date().toISOString().replace(/[:.]/g, "-")}`
+	if (problem.length < 80) {
+		activeSearch = null
+		return json(res, 400, { error: "Describe the problem in at least a few sentences (80+ characters)." })
+	}
 	const dir = join("runs", id)
 	mkdirSync(dir, { recursive: true })
 	writeFileSync(join(dir, "input.json"), JSON.stringify({ company: company || "Unnamed company", problem }, null, 2))
 	writeFileSync(join(dir, "trace.jsonl"), "")
-	activeSearch = id
 	const child = spawn(process.execPath, ["--import", "tsx", "src/run.ts", "--live", `--input=${join(dir, "input.json")}`, `--out=${dir}`], {
 		env: { ...process.env, ALLOW_LIVE: "1", BUDGET_USD: String(PER_SEARCH_BUDGET) },
 		stdio: ["ignore", "pipe", "pipe"],
@@ -172,13 +177,15 @@ async function startSearch(req: IncomingMessage, res: ServerResponse) {
 	child.stderr.on("data", (d) => log.push(String(d)))
 	child.on("exit", (code) => {
 		writeFileSync(join(dir, "process.log"), log.join(""))
+		// A search that died before writing its report may still have spent money: count it at its cap.
+		let spent = PER_SEARCH_BUDGET
 		try {
-			const run = JSON.parse(readFileSync(join(dir, "run.json"), "utf-8"))
-			const now = ledger()
-			writeFileSync(LEDGER, JSON.stringify({ spentUsd: now.spentUsd + run.summary.spend.usd, searches: now.searches + 1 }, null, 2))
+			spent = JSON.parse(readFileSync(join(dir, "run.json"), "utf-8")).summary.spend.usd
 		} catch {
-			writeFileSync(join(dir, "failed.json"), JSON.stringify({ code }))
+			writeFileSync(join(dir, "failed.json"), JSON.stringify({ code, countedAtCapUsd: PER_SEARCH_BUDGET }))
 		}
+		const now = ledger()
+		writeFileSync(LEDGER, JSON.stringify({ spentUsd: now.spentUsd + spent, searches: now.searches + 1 }, null, 2))
 		activeSearch = null
 	})
 	json(res, 202, { id })

@@ -15,12 +15,9 @@ export function tokenize(text: string): string[] {
 		.filter((t) => t.length > 2 && !STOP.has(t))
 }
 
-/** Researchers who said they are open to work a company collaboration could become. */
-export const COLLAB_FORMS = ["joint projects", "industrial PhD supervision", "contract research"]
-
-export function isOpenToCollaboration(r: Researcher): boolean {
-	return (r.open_to ?? []).some((o) => COLLAB_FORMS.some((f) => o.toLowerCase().includes(f.toLowerCase())))
-}
+// Consent is read in src/data/consent.ts (English, Serbian Latin and Cyrillic wording).
+import { isOpenToCollaboration } from "./consent"
+export { isOpenToCollaboration }
 
 type Doc = { id: string; tf: Map<string, number>; len: number }
 
