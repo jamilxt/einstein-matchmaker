@@ -1,0 +1,11 @@
+Analyst-1    | ppppppppppppppppppppppp                                                |
+Analyst-2    | ppppppppppppppp                                                        |
+Profiler-1   | pppppppppppppp                                                         |
+Profiler-2   | ppppppppppp                                                            |
+Screener-1   |ssssss                                                                  |
+Screener-2   |sssss                                                                   |
+Screener-3   |ssssss                                                                  |
+Writer-1     |               WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW|
+Writer-2     |                 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                       |
+              0                                                                36.6s
+s = Decisions screening, p = profiling (LLM + tool), W = writing (LLM, Critic-gated)

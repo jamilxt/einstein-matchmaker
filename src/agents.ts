@@ -428,7 +428,7 @@ export function buildTeam(tracePath: string): Team {
 		// Semantic check only for claims whose ids are all real and owned: does the cited record say this?
 		const toAsk = checks.map((c, i) => ({ c, i })).filter(({ c }) => c.deterministic.length === 0)
 		if (toAsk.length) {
-			const blocks = toAsk.map(({ c, i }) => `### claim${i}\n${c.evidence.map((id) => s.ds.evidenceText(id)?.slice(0, 900)).join("\n")}`)
+			const blocks = toAsk.map(({ c, i }) => `### claim${i}\n${c.evidence.map((id) => s.ds.evidenceText(id)?.slice(0, 4000)).join("\n")}`)
 			const questions = toAsk.map(({ c, i }) => ({
 				type: "predicate" as const,
 				name: `claim${i}`,
