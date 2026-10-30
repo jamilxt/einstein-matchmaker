@@ -10,6 +10,29 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
 - **A web UI** that streams a live search or replays any recorded run: agent lanes, a match map, the Critic's decisions, and proposals with clickable sources.
 
+## Screenshots
+
+**Agents at work.** A replay of live run 1 at 17 s. The lanes are real job start and end times from the trace. The dashed line marks the peak, 9 jobs at once, and the Critic lane shows one draft sent back (red) and one approved (green).
+
+![Agent lanes and match map during a replay of run 1](docs/screenshots/02-agents-at-work.png)
+
+**Proposals and the Critic.** Each proposal is laid out like the EINSTEIN example topic. The Critic feed lists every draft it sent back, the exact claim it blocked, and why.
+
+![A proposal next to the Critic's decisions](docs/screenshots/03-proposal-and-critic.png)
+
+**Every source is one click away.** This is the record exactly as the Critic read it.
+
+![The source record sheet](docs/screenshots/04-source-record.png)
+
+| | |
+| --- | --- |
+| ![Reverse Search form](docs/screenshots/01-find-researchers.png) **Reverse Search:** a company describes its problem. | ![Reverse Search running](docs/screenshots/05-reverse-search.png) **The same team on one problem:** 15 candidates around it, the chosen three in bold. |
+| ![How it works page](docs/screenshots/06-how-it-works.png) **How it works:** the architecture in the app. | ![Critic evaluation](docs/screenshots/07-critic-evaluation.png) **The Critic evaluation**, including the bug it found and the one miss. |
+
+| | |
+| --- | --- |
+| ![Mobile, dark mode, run summary](docs/screenshots/08-mobile-dark-run.png) | ![Mobile, dark mode, proposal](docs/screenshots/09-mobile-dark-proposal.png) |
+
 ## What the brief asks for, and where it is
 
 | Deliverable | Where |

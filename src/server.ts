@@ -60,7 +60,7 @@ function ledger(): { spentUsd: number; searches: number } {
 const LABELS: Record<string, string> = {
 	"run-01-live": "Run 1: first live run",
 	"run-02-live": "Run 2: richer Writer evidence",
-	"run-03-live": "Run 3: all fixes, Critic on",
+	"run-03-live": "Run 3: strongest pairs, first-draft approvals",
 	"run-04-live-nocritic": "Run 4: Critic off (ablation)",
 	"run-05-live": "Run 5: final, all fixes",
 	"search-01-packaging": "Search: packaging line, bearing failures",
@@ -82,6 +82,7 @@ function listRuns() {
 				// Batch runs worth replaying are curated in docs/evidence; from runs/ only searches are listed.
 				if (root === "runs" && !input && process.env.SHOW_STUB_RUNS !== "1") continue
 				out.push({
+					runId: summary.runId,
 					id,
 					label: LABELS[id] ?? (input ? `Search: ${input.company}` : id),
 					reverse: !!raw.reverse || !!input,
@@ -103,7 +104,9 @@ function listRuns() {
 	const seen = new Set<string>()
 	return out
 		.filter((r) => r.live || process.env.SHOW_STUB_RUNS === "1")
-		.filter((r) => (seen.has(r.id) ? false : (seen.add(r.id), true)))
+		// The same run can sit in runs/ and in docs/evidence; keep the curated copy (listed first).
+		.sort((a, b) => Number(b.evidence) - Number(a.evidence))
+		.filter((r) => (seen.has(r.runId ?? r.id) ? false : (seen.add(r.runId ?? r.id), true)))
 		.sort((a, b) => Number(b.evidence) - Number(a.evidence) || a.id.localeCompare(b.id))
 }
 

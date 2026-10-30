@@ -211,7 +211,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					<h2 className="text-xl font-semibold tracking-tight">What the Critic did in the live runs</h2>
 					<p className="text-muted-foreground">Real runs, replayable. The numbers changed as we fixed things, and we kept every run.</p>
 				</div>
-				<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 					<RunNote go={go} id="run-01-live" title="Run 1" stat="5 of 8 drafts sent back, 17 claims blocked">
 						Most blocks were true facts cited to the wrong record, such as a company's staff count cited to its challenge. The Writer re-cited them. 0 unsupported claims shipped.
 					</RunNote>
@@ -224,6 +224,9 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					<RunNote go={go} id="run-04-live-nocritic" title="Run 4, Critic off" stat="2 claims flagged, shipped anyway">
 						Both flags turned out to be checker false alarms (claims citing both sides of the pair), fixed afterwards. Natural runs are too small to measure the Critic, which is why
 						we test it with planted errors.
+					</RunNote>
+					<RunNote go={go} id="run-05-live" title="Run 5, final" stat="3 of 3 approved on the first draft">
+						The same three pairs as run 4, now with the Critic on and every fix in place: 51 claims checked, none blocked.
 					</RunNote>
 				</div>
 			</section>
