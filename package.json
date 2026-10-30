@@ -1,0 +1,19 @@
+{
+	"name": "3alet-2026",
+	"version": "0.1.0",
+	"description": "Concurrent AI agents on the Mozaik agentic environment (3alet Hackathon, Oct 30-31 2026)",
+	"type": "module",
+	"scripts": {
+		"start": "tsx src/index.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@mozaik-ai/core": "4.2.0",
+		"dotenv": "^17.2.3"
+	},
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.3.3"
+	}
+}
