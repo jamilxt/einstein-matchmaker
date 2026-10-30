@@ -396,7 +396,11 @@ export function buildTeam(tracePath: string): Team {
 				instruction:
 					"[role:writer] You write a one-page industrial PhD or joint-project proposal for one researcher-company pair, in the shape of a good industrial PhD topic: " +
 					"the concrete problem, 2 to 3 measurable research questions, a 3-year plan, what each side brings, why this pair and not another, and a first step they could take next month. " +
-					"List every factual statement about either party in `claims`, each citing the dataset ids from the profiles you were given. Use only ids from the profiles. " +
+					"Be as specific as the example: use the company's own numbers and constraints from the challenge text (volumes, error rates, deadlines, tools) in the problem and research questions. " +
+					"Add who supervises on each side and an 'agreed up front' line on publication and IP. " +
+					"List every factual statement about either party in `claims` with the dataset id of the record that states it: " +
+					"company size, location, sector, products or capacity -> the company id (e.g. C003); the company's problem -> the challenge id (e.g. C003-CH2); " +
+					"a researcher's title, department or role -> the researcher id (e.g. R0995); a researcher's expertise -> their publication, project or patent ids. Use only ids given to you. " +
 					"Propose a collaboration; never rank or grade people. If a Critic sends the draft back, fix exactly what it lists.",
 				tools: [],
 				handlers: [],
@@ -468,7 +472,10 @@ export function buildTeam(tracePath: string): Team {
 		const lines = failed.map((f, n) => `${n + 1}. "${f.claim}" cites ${f.evidence.join(", ") || "nothing"}: ${f.deterministic[0] ?? `the cited record does not support it (p=${f.support})`}`)
 		return {
 			accept: false as const,
-			correction: `CRITIC: revise the proposal. These claims are not supported by their cited records. Remove each one or replace it with a claim the cited ids actually support:\n${lines.join("\n")}\nReturn the full corrected proposal.`,
+			correction:
+				`CRITIC: revise the proposal. These claims are not supported by the records they cite:\n${lines.join("\n")}\n` +
+				`If a claim is true, re-cite the record that actually states it (company facts: ${sel.companyId}; the problem: ${sel.challengeId}; the researcher's role: ${sel.researcherId}; expertise: their publication/project/patent ids). ` +
+				`If no record states it, remove it. Return the full corrected proposal.`,
 		}
 	}
 
@@ -545,7 +552,10 @@ export function buildTeam(tracePath: string): Team {
 					kind: "write",
 					agent: w,
 					model: MODELS.writer,
-					message: `TARGET: ${pl.key}\nResearcher profile:\n${JSON.stringify(rp)}\n\nCompany challenge profile:\n${JSON.stringify(cp)}\n\nWrite the proposal.`,
+					message:
+						`TARGET: ${pl.key}\nResearcher ${sel.researcherId}:\n${s.ds.evidenceText(sel.researcherId)}\nResearcher profile (cited):\n${JSON.stringify(rp)}\n\n` +
+						`Company ${sel.companyId}:\n${s.ds.evidenceText(sel.companyId)}\nChallenge ${sel.challengeId}:\n${s.ds.evidenceText(sel.challengeId)}\n` +
+						`Company challenge profile (cited):\n${JSON.stringify(cp)}\n\nWrite the proposal.`,
 					structuredOutput: proposalSchema,
 					review: (text, attempt) => review(pl.key, text, attempt),
 					done: (status) => {
