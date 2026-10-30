@@ -15,6 +15,7 @@ import { createReadStream, existsSync, mkdirSync, readdirSync, readFileSync, sta
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http"
 import { extname, join, resolve } from "node:path"
 import { Dataset } from "./data/dataset"
+import { buildView } from "./view"
 
 const PORT = Number(process.env.PORT ?? 8791)
 const HOST = process.env.HOST ?? "127.0.0.1"
@@ -56,34 +57,51 @@ function ledger(): { spentUsd: number; searches: number } {
 	}
 }
 
+const LABELS: Record<string, string> = {
+	"run-01-live": "Run 1: first live run",
+	"run-02-live": "Run 2: richer Writer evidence",
+	"run-03-live": "Run 3: all fixes, Critic on",
+	"run-04-live-nocritic": "Run 4: Critic off (ablation)",
+}
+
 function listRuns() {
 	const out: any[] = []
 	for (const root of ROOTS) {
 		if (!existsSync(root)) continue
 		for (const id of readdirSync(root)) {
 			const d = join(root, id)
-			if (!existsSync(join(d, "run.json"))) continue
+			const sumPath = existsSync(join(d, "run.json")) ? join(d, "run.json") : join(d, "summary.json")
+			if (!existsSync(sumPath) || !existsSync(join(d, "trace.jsonl"))) continue
 			try {
-				const run = JSON.parse(readFileSync(join(d, "run.json"), "utf-8"))
+				const raw = JSON.parse(readFileSync(sumPath, "utf-8"))
+				const summary = raw.summary ?? raw
 				const input = existsSync(join(d, "input.json")) ? JSON.parse(readFileSync(join(d, "input.json"), "utf-8")) : null
+				// Batch runs worth replaying are curated in docs/evidence; from runs/ only searches are listed.
+				if (root === "runs" && !input && process.env.SHOW_STUB_RUNS !== "1") continue
 				out.push({
 					id,
-					reverse: !!run.reverse,
-					mode: run.summary.mode,
-					critic: run.summary.critic,
-					proposals: run.proposals.length,
-					peakInFlight: run.summary.concurrency.peakInFlight,
-					wallClockMs: run.summary.wallClockMs,
-					spendUsd: run.summary.spend.usd,
+					label: LABELS[id] ?? (input ? `Search: ${input.company}` : id),
+					reverse: !!raw.reverse || !!input,
+					live: summary.mode === "live",
+					criticEnforcing: summary.critic === "enforcing",
+					proposals: summary.critic_record.outcomes.length,
+					peakInFlight: summary.concurrency.peakInFlight,
+					wallClockMs: summary.wallClockMs,
+					spendUsd: summary.spend.usd,
 					company: input?.company ?? null,
-					modified: statSync(join(d, "run.json")).mtimeMs,
+					evidence: root === "docs/evidence",
+					modified: statSync(sumPath).mtimeMs,
 				})
 			} catch {
 				/* skip unreadable runs */
 			}
 		}
 	}
-	return out.filter((r) => r.mode === "live" || process.env.SHOW_STUB_RUNS === "1").sort((a, b) => b.modified - a.modified)
+	const seen = new Set<string>()
+	return out
+		.filter((r) => r.live || process.env.SHOW_STUB_RUNS === "1")
+		.filter((r) => (seen.has(r.id) ? false : (seen.add(r.id), true)))
+		.sort((a, b) => Number(b.evidence) - Number(a.evidence) || a.id.localeCompare(b.id))
 }
 
 function readBody(req: IncomingMessage): Promise<string> {
@@ -159,7 +177,7 @@ function stream(id: string, res: ServerResponse) {
 			for (const line of lines) if (line.trim()) res.write(`event: trace\ndata: ${line}\n\n`)
 		}
 		if (existsSync(join(dir, "run.json"))) {
-			res.write(`event: done\ndata: ${readFileSync(join(dir, "run.json"), "utf-8").replace(/\n/g, "")}\n\n`)
+			res.write(`event: done\ndata: {}\n\n`)
 			clearInterval(timer)
 			res.end()
 		} else if (existsSync(join(dir, "failed.json"))) {
@@ -203,10 +221,8 @@ createServer(async (req, res) => {
 		if (req.method === "GET" && p.startsWith("/api/runs/")) {
 			const id = p.slice("/api/runs/".length)
 			const dir = runDir(id)
-			if (!dir || !existsSync(join(dir, "run.json"))) return json(res, 404, { error: "unknown run" })
-			const trace = readFileSync(join(dir, "trace.jsonl"), "utf-8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
-			const input = existsSync(join(dir, "input.json")) ? JSON.parse(readFileSync(join(dir, "input.json"), "utf-8")) : null
-			return json(res, 200, { id, input, run: JSON.parse(readFileSync(join(dir, "run.json"), "utf-8")), trace })
+			if (!dir || !(existsSync(join(dir, "run.json")) || existsSync(join(dir, "summary.json")))) return json(res, 404, { error: "unknown run" })
+			return json(res, 200, buildView(ds, id, dir))
 		}
 		if (req.method === "GET" && p.startsWith("/api/record/")) return record(decodeURIComponent(p.slice("/api/record/".length)), url.searchParams.get("run"), res)
 		if (req.method === "POST" && p === "/api/search") return startSearch(req, res)
