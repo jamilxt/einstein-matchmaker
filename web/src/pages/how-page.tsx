@@ -211,7 +211,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					<h2 className="text-xl font-semibold tracking-tight">What the Critic did in the live runs</h2>
 					<p className="text-muted-foreground">Real runs, replayable. The numbers changed as I fixed things, and I kept every run.</p>
 				</div>
-				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 					<RunNote go={go} id="run-01-live" title="Run 1" stat="5 of 8 drafts sent back, 17 claims blocked">
 						Most blocks were true facts cited to the wrong record, such as a company's staff count cited to its challenge. The Writer re-cited them. 0 unsupported claims shipped.
 					</RunNote>
@@ -225,8 +225,11 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 						Both flags turned out to be checker false alarms (claims citing both sides of the pair), fixed afterwards. Natural runs are too small to measure the Critic, which is why
 						I test it with planted errors.
 					</RunNote>
-					<RunNote go={go} id="run-05-live" title="Run 5, final" stat="3 of 3 approved on the first draft">
-						The same three pairs as run 4, now with the Critic on and every fix in place: 51 claims checked, none blocked.
+					<RunNote go={go} id="run-05-live" title="Run 5" stat="3 of 3 approved on the first draft">
+						The same three pairs as run 4, with the Critic on: 51 claims checked, none blocked. One plan was dated in the past, which the later text check now catches.
+					</RunNote>
+					<RunNote go={go} id="run-06-live" title="Run 6, final" stat="60 claims and 3 texts checked">
+						First run with the text check, consent-based forms and the new proposal sections. All three passed on the first draft; one wrong role in a first step is a slip no check covers.
 					</RunNote>
 				</div>
 			</section>

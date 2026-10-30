@@ -4,7 +4,7 @@ A team of concurrent [Mozaik](https://github.com/jigjoy-ai/mozaik) agents that f
 
 Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to 31 October 2026), on the official synthetic dataset.
 
-- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work.
+- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work (six runs).
 - **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with a pass or fail target per period, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
 - **A Critic that I measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)). Offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past, consent, budget and timeouts.
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
@@ -20,6 +20,10 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 **Proposals and the Critic.** Each proposal is laid out like the EINSTEIN example topic. The Critic feed lists every draft it sent back, the exact claim it blocked, and why.
 
 ![A proposal next to the Critic's decisions](docs/screenshots/03-proposal-and-critic.png)
+
+**The final proposal format (run 6).** The collaboration form comes from the researcher's own consent, quoted under the pair. Further down: a plan with a pass or fail target per year, what is new, what data exists, and what is still to agree.
+
+![A run 6 proposal with its form and consent](docs/screenshots/10-final-proposal.png)
 
 **Every source is one click away.** This is the record exactly as the Critic read it.
 
@@ -55,7 +59,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 | --- | --- |
 | Architecture diagram | [Architecture](#architecture) below, and the **How it works** page in the web UI |
 | Trace of one full run showing where the Critic stepped in | [`docs/evidence/run-01-live/trace.jsonl`](docs/evidence/run-01-live/trace.jsonl), walked through in [The Critic in a real run](#the-critic-in-a-real-run) |
-| At least three proposals for three different pairs | [`docs/evidence/run-03-live/proposals.md`](docs/evidence/run-03-live/proposals.md). There are 15 batch proposals across five live runs, plus 9 from Reverse Search |
+| At least three proposals for three different pairs | [`docs/evidence/run-06-live/proposals.md`](docs/evidence/run-06-live/proposals.md). There are 18 batch proposals across six live runs, plus 9 from Reverse Search |
 | How it plugs into the EINSTEIN network and EINSTEIN Stars | [EINSTEIN network and EINSTEIN Stars](#einstein-network-and-einstein-stars) |
 | What it does, architecture, how to run | This README |
 
@@ -147,7 +151,7 @@ flowchart LR
 **How they coordinate on Mozaik** ([`src/agents.ts`](src/agents.ts), [`src/jobs.ts`](src/jobs.ts), [`src/runtime.ts`](src/runtime.ts)):
 
 - **Shared state, no direct calls.** All participants live on one runtime with a shared `MatchState`. They react to semantic events (`screen.batch`, `pair.screened`, `pair.selected`, `profile.requested`, `profile.ready`, `proposal.requested`, `critic.verdict`). Nobody calls anybody, and nothing waits for a whole stage to finish.
-- **Early selection.** The Matchmaker doesn't wait for all 180 scores. In every live run it picked its first pair before screening ended (0.5 to 1.9 s in, with screening ending at 2.0 to 4.3 s), so profiling overlapped the rest of screening.
+- **Early selection.** The Matchmaker doesn't wait for all 180 scores. In every live batch run it picked its first pair before screening ended (0.5 to 3.2 s in, with screening ending at 2.0 to 5.3 s), so profiling overlapped the rest of screening.
 - **The Critic is an interception, not a later stage.** Each Writer job runs its loop with an `InterceptionHandler` on the model's final message. If a claim fails, or the text carries a figure or a name that no checked claim backs, the handler injects a correction listing the exact problems and reasons, and the same loop continues. True facts get re-cited to the right record, and anything no record states is removed. After 2 revisions an unfixable draft is rejected: it is recorded with the Critic's reasons, and neither the report nor the UI shows its text as a proposal.
 - **One job, one fresh `ModelContext`.** Two live loops sharing one memory cross-contaminated in testing. Each job also gets a watchdog, because `runLoop` swallows failures ([mozaik#114](https://github.com/jigjoy-ai/mozaik/issues/114)), and a budget halt that ends the loop cleanly instead of redirecting to `idle` ([mozaik#113](https://github.com/jigjoy-ai/mozaik/issues/113)).
 
@@ -155,19 +159,19 @@ flowchart LR
 
 Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". I send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
 
-**Cost.** Across the 8 live runs in `docs/evidence`, metered from API-reported token usage:
+**Cost.** Across the 9 live runs in `docs/evidence`, metered from API-reported token usage:
 
 | | Decisions API | gpt-5.4-mini |
 | --- | --- | --- |
-| Requests | 106 | 121 |
-| Input tokens read | 612,622 | 176,734 |
-| Cost | **$0.061 (12% of spend)** | $0.434 (88% of spend) |
+| Requests | 121 | 136 |
+| Input tokens read | 706,235 | 196,962 |
+| Cost | **$0.071 (13% of spend)** | $0.489 (87% of spend) |
 
 - The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for an eighth of the bill. Its input costs $0.10 per million tokens and its output is free.
-- The same 612,622 input tokens sent to `gpt-5.4-mini` would cost $0.46 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
+- The same 706,235 input tokens sent to `gpt-5.4-mini` would cost $0.53 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
 - The full hard Critic evaluation, 125 claims with their evidence, cost $0.007.
 
-**Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 4.3 s in the live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
+**Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 5.3 s in the live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
 
 **Results.** The answer comes back typed: a score on a fixed scale, or a probability that a claim is supported. Nothing has to be parsed out of free text, and no answer can drift into a paragraph. That gave us:
 
@@ -188,6 +192,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-03-live](docs/evidence/run-03-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 19.1 s | $0.054 |
 | [run-04-live-nocritic](docs/evidence/run-04-live-nocritic) | off | 9 | 21/21 | (would have: 1) | (flagged: 2) | 2 | 20.1 s | $0.056 |
 | [run-05-live](docs/evidence/run-05-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 23.6 s | $0.062 |
+| [run-06-live](docs/evidence/run-06-live) | on, with text check | 9 | 21/21 | 0 of 3 | 0 | 0 | 27.6 s | $0.065 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
@@ -200,6 +205,8 @@ What changed between runs, and why I kept every one:
 - **Run 4 (Critic off):** both flagged claims turned out to be false alarms by the checker (claims that cite both sides of the pair, such as "supervised by X and Y"). Fixed afterwards.
 
 - **Run 5 (final, all fixes):** all three proposals passed on the first draft, with 51 claims checked. The Matchmaker happened to pick the same three pairs as run 4, so runs 4 and 5 compare the same pairs with the Critic off and on. The fit scores (2.0 to 2.3) are lower than run 3's (2.9 to 3.0): the Matchmaker takes the first pair over its 2.0 threshold instead of waiting for all 180 scores. That is the price of early selection. The FinPuls proposal came out in Serbian because FinPuls wrote its challenge in Serbian. Proposals are now written in English by default; pass `--lang=sr` for Serbian (Latin script).
+
+- **Run 6 (after the judge-style review):** the first run with the text check, consent-based forms and the new proposal sections. All three researchers had consented to industrial PhD supervision, so all three are PhDs (the consent change shows in the guard tests, not in this run). The Critic checked 60 claims and the text of all three drafts and approved each on the first draft. Fit scores were 2.86 to 3.00. The Matchmaker picked the same three pairs as run 1, so runs 1 and 6 show the same pairs before and after all the fixes: run 1 needed 8 drafts and 17 blocked claims to reach three approvals, run 6 needed 3 drafts and none. Reading them as a company CTO, one factual slip remains that no check caught: the AutomVoj first step calls Dragan Ilić the chief engineer, while the record names him as the senior PLC programmer. The text check confirms that a named person is in the pair's records, not what role the text gives them.
 
 The natural runs are too small to measure the Critic, which is why I tested it directly.
 
@@ -262,13 +269,13 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 
 ### Proposals
 
-From run 3 ([full text](docs/evidence/run-03-live/proposals.md)):
+From run 6, the first run with every fix ([full text](docs/evidence/run-06-live/proposals.md)). Each one has research questions, a plan with a pass or fail target per year, what is new beyond the researcher's own papers, what data exists and what must be collected, what is still to agree, and every claim with its sources (60 claims, all supported).
 
-1. **Condition window and pre-conditioning strategy for reliable sunflower-husk pelletising at Suncokret Eko d.o.o.** Veljko Savić (R0135, Production Engineering) with Suncokret Eko (C007). The press breaks down about once a month at roughly 15,000 EUR per incident because husk moisture ranges from 8% to 22%.
-2. **Matrix-robust field calibration for portable turbidity and nitrate testing in hard Banat groundwater.** Goran Radulović (R0679, Applied and Engineering Chemistry) with Kristal Voda (C015). The kits were specified for up to about 300 mg/L CaCO3, but wells reach 550 mg/L and turbidity reads 20 to 30% high.
-3. **Site-specific unsupervised anomaly detection for Modbus and BACnet traffic on embedded OT appliances.** Krisztina Kiss (R1008, Computing and Control Engineering) with ArmaturaSec (C001).
+1. **Incremental PLC software product-line reuse for AutomVoj's 38 TIA Portal codebases.** Veljko Pantelić (R0995, Computing and Control Engineering) with AutomVoj (C003). A safety patch takes three engineers two full weeks across 38 diverged ladder-logic codebases; the Year 3 target is to halve that. *Weak spots a CTO would raise:* the faculty lab runs Wago and Beckhoff controllers while AutomVoj runs Siemens S7, and the first step gives Dragan Ilić the wrong role.
+2. **Contract-driven test generation for multi-supplier CAN integration at DriveLogic Vojvodina.** Martina Lačoková (R0919, Computing and Control Engineering) with DriveLogic (C018). Three of the last four delivered projects came back with CAN faults despite 87 to 89% branch coverage. Her consent is limited to PhD candidates from embedded systems companies, which DriveLogic is, and the plan keeps to the company's €40,000 first-phase cap and its offer of one senior engineer at about 40%. *Weak spot:* her own project SYN-PRJ-0434 already covers contract-based CAN integration testing, so the new contribution (targeting DriveLogic's observed boundary faults) is narrower than the title suggests.
+3. **Plain-language explanations for automated SME credit decisions at Kredo Fintech.** Branislav Žarković (R0801, Finance and Banking) with Kredo Fintech (C010). Borrower-facing explanations in Serbian and Macedonian, generated and stored at decision time. *Weak spot:* the company wants production use within about six months, and the plan does not say what ships at month six inside a three-year PhD.
 
-Each proposal ends with its claims, the record IDs each one cites, and the Critic's support score.
+The earlier showcase, run 3 ([full text](docs/evidence/run-03-live/proposals.md)), has stronger industrial detail in places (Suncokret Eko's moisture ranges and incident cost) but predates the fixes.
 
 ## Reverse Search
 
