@@ -287,6 +287,19 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 - Fit scores come from a model and are a starting point for a human conversation, not a decision.
 - Reverse Search shortlists by keywords first. A problem described in very different words from the researchers' papers can miss people, and the Decisions screening only reorders what the shortlist found.
 
+## Timeline
+
+All times are CET. The hackathon started on Friday 30 October at 10:00.
+
+- **Before kickoff:** we read the Mozaik docs and chose the approach. While reading, we reported a mismatch in the docs ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), 08:42), sent a fix that was merged ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), 09:18), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131), 09:44). The empty project on `@mozaik-ai/core` 4.2.0 was committed at 09:59:43, and the dataset was cloned at the same moment.
+- **During the hackathon:** everything else.
+  - The dataset loader and shortlist (10:01).
+  - The first version of the agent team (10:26). It was written quickly with an AI coding assistant, and then reshaped by what the live runs showed.
+  - Every Critic fix found in the live runs, and both Critic evaluations.
+  - Reverse Search, the web UI and server, the deployment, and this README.
+
+Every live run in [`docs/evidence`](docs/evidence) has a timestamped trace, and the commit history is public.
+
 ## Built with
 
 - [`@mozaik-ai/core`](https://www.npmjs.com/package/@mozaik-ai/core) 4.2.0
@@ -294,7 +307,7 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 - TypeScript on Node.js
 - Web UI: React 19, Tailwind CSS 4 and shadcn/ui, served by a small Node server with no framework
 
-While building this we reported a documentation mismatch in Mozaik ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), the `context_update` event renamed to `message_received`), fixed it in the docs ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), merged), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131)).
+Along the way we reported a documentation mismatch in Mozaik ([mozaik#130](https://github.com/jigjoy-ai/mozaik/issues/130), the `context_update` event renamed to `message_received`), fixed it in the docs ([mozaik-docs#2](https://github.com/jigjoy-ai/mozaik-docs/pull/2), merged), and proposed first-class support for decision models ([mozaik#131](https://github.com/jigjoy-ai/mozaik/issues/131)).
 
 AI coding assistants were used while building this project.
 
