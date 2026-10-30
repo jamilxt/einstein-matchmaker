@@ -1,0 +1,4166 @@
+{
+ "summary": {
+  "runId": "2026-10-30T10-54-14-887Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+   "profiler": "gpt-5.4-mini",
+   "analyst": "gpt-5.4-mini",
+   "writer": "gpt-5.4-mini",
+   "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 23596,
+  "shortlist": {
+   "pairs": 180,
+   "challenges": 60
+  },
+  "screened": 180,
+  "selected": [
+   {
+    "key": "R0641xC005-CH2",
+    "score": 2.28,
+    "screener": "Screener-3",
+    "selectedAtMs": 1880
+   },
+   {
+    "key": "R0271xC013-CH1",
+    "score": 2.02,
+    "screener": "Screener-3",
+    "selectedAtMs": 1885
+   },
+   {
+    "key": "R0217xC021-CH1",
+    "score": 2.03,
+    "screener": "Screener-3",
+    "selectedAtMs": 1886
+   }
+  ],
+  "concurrency": {
+   "jobs": 21,
+   "peakInFlight": 9,
+   "peakAtMs": 1886,
+   "inFlightAtPeak": [
+    "Screener-1:screen",
+    "Screener-2:screen",
+    "Screener-3:screen",
+    "Profiler-1:profile_researcher",
+    "Analyst-1:profile_company",
+    "Profiler-2:profile_researcher",
+    "Analyst-2:profile_company",
+    "Profiler-1:profile_researcher",
+    "Analyst-1:profile_company"
+   ],
+   "jobsOverlappingAnotherAgent": 21
+  },
+  "critic_record": {
+   "drafts": 3,
+   "revisionsRequested": 0,
+   "claimsChecked": 51,
+   "claimsBlocked": 0,
+   "unsupportedClaimsInFinalProposals": 0,
+   "outcomes": [
+    {
+     "key": "R0271xC013-CH1",
+     "verdict": "approved",
+     "drafts": 1
+    },
+    {
+     "key": "R0641xC005-CH2",
+     "verdict": "approved",
+     "drafts": 1
+    },
+    {
+     "key": "R0217xC021-CH1",
+     "verdict": "approved",
+     "drafts": 1
+    }
+   ]
+  },
+  "spend": {
+   "usd": 0.06162,
+   "budgetUsd": 0.5,
+   "halted": false,
+   "byModel": {
+    "decisions:gpt-6-luna": {
+     "input": 100257,
+     "output": 0,
+     "usd": 0.0100257,
+     "calls": 15
+    },
+    "gpt-5.4-mini": {
+     "input": 20724,
+     "output": 8011,
+     "usd": 0.0515925,
+     "calls": 15
+    }
+   },
+   "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+   "challenges": 60,
+   "perChallenge": 3,
+   "proposals": 3,
+   "screeners": 3,
+   "profilers": 2,
+   "analysts": 2,
+   "writers": 2,
+   "selectThreshold": 2,
+   "supportThreshold": 0.5,
+   "maxRevisions": 2,
+   "jobTimeoutMs": 90000,
+   "runTimeoutMs": 600000,
+   "screenBatch": 6
+  }
+ },
+ "reverse": false,
+ "candidates": [
+  {
+   "key": "R1008xC001-CH1",
+   "researcherId": "R1008",
+   "researcher": "Krisztina Kiss",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C001-CH1",
+   "companyId": "C001",
+   "company": "ArmaturaSec d.o.o.",
+   "score": 2.97
+  },
+  {
+   "key": "R0416xC001-CH1",
+   "researcherId": "R0416",
+   "researcher": "Ksenija Hadžić",
+   "title": "Associate Professor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C001-CH1",
+   "companyId": "C001",
+   "company": "ArmaturaSec d.o.o.",
+   "score": 2.01
+  },
+  {
+   "key": "R0564xC001-CH1",
+   "researcherId": "R0564",
+   "researcher": "Árpád Nagy",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C001-CH1",
+   "companyId": "C001",
+   "company": "ArmaturaSec d.o.o.",
+   "score": 1.02
+  },
+  {
+   "key": "R0246xC003-CH2",
+   "researcherId": "R0246",
+   "researcher": "Vuk Todić",
+   "title": "Assistant Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "company": "AutomVoj a.d.",
+   "score": 0.34
+  },
+  {
+   "key": "R0995xC003-CH2",
+   "researcherId": "R0995",
+   "researcher": "Veljko Pantelić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "company": "AutomVoj a.d.",
+   "score": 2.99
+  },
+  {
+   "key": "R0666xC003-CH2",
+   "researcherId": "R0666",
+   "researcher": "Jelena Jokić",
+   "title": "Associate Professor",
+   "department": "Department of Mechanical Engineering",
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "company": "AutomVoj a.d.",
+   "score": 0.13
+  },
+  {
+   "key": "R0641xC005-CH2",
+   "researcherId": "R0641",
+   "researcher": "Branislav Stojanović",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C005-CH2",
+   "companyId": "C005",
+   "company": "Kardiolink a.d.",
+   "score": 2.28
+  },
+  {
+   "key": "R0905xC005-CH2",
+   "researcherId": "R0905",
+   "researcher": "Filip Mijatović",
+   "title": "Assistant Professor",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C005-CH2",
+   "companyId": "C005",
+   "company": "Kardiolink a.d.",
+   "score": 1.91
+  },
+  {
+   "key": "R0148xC005-CH2",
+   "researcherId": "R0148",
+   "researcher": "Rastko Zorić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C005-CH2",
+   "companyId": "C005",
+   "company": "Kardiolink a.d.",
+   "score": 0.99
+  },
+  {
+   "key": "R0135xC007-CH3",
+   "researcherId": "R0135",
+   "researcher": "Veljko Savić",
+   "title": "Associate Professor",
+   "department": "Department of Production Engineering",
+   "challengeId": "C007-CH3",
+   "companyId": "C007",
+   "company": "Suncokret Eko d.o.o.",
+   "score": 2.99
+  },
+  {
+   "key": "R0753xC007-CH3",
+   "researcherId": "R0753",
+   "researcher": "Đorđe Cvetković",
+   "title": "Associate Professor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C007-CH3",
+   "companyId": "C007",
+   "company": "Suncokret Eko d.o.o.",
+   "score": 0.82
+  },
+  {
+   "key": "R0992xC007-CH3",
+   "researcherId": "R0992",
+   "researcher": "Đorđe Vukelić",
+   "title": "Associate Professor",
+   "department": "Department of Applied and Engineering Chemistry",
+   "challengeId": "C007-CH3",
+   "companyId": "C007",
+   "company": "Suncokret Eko d.o.o.",
+   "score": 1.24
+  },
+  {
+   "key": "R0801xC010-CH2",
+   "researcherId": "R0801",
+   "researcher": "Branislav Žarković",
+   "title": "Full Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "company": "Kredo Fintech",
+   "score": 2.86
+  },
+  {
+   "key": "R0251xC010-CH2",
+   "researcherId": "R0251",
+   "researcher": "Tibor Takács",
+   "title": "Associate Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "company": "Kredo Fintech",
+   "score": 2.96
+  },
+  {
+   "key": "R0648xC010-CH2",
+   "researcherId": "R0648",
+   "researcher": "Róbert Pásztor",
+   "title": "Full Professor",
+   "department": "Department of Administrative and Public Law",
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "company": "Kredo Fintech",
+   "score": 2.96
+  },
+  {
+   "key": "R0271xC013-CH1",
+   "researcherId": "R0271",
+   "researcher": "Željko Mamužić",
+   "title": "Senior Research Associate",
+   "department": "Department of Traffic Engineering",
+   "challengeId": "C013-CH1",
+   "companyId": "C013",
+   "company": "Pannonia Osiguranje-Tech a.d.",
+   "score": 2.02
+  },
+  {
+   "key": "R0387xC013-CH1",
+   "researcherId": "R0387",
+   "researcher": "Andrea Molnár",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C013-CH1",
+   "companyId": "C013",
+   "company": "Pannonia Osiguranje-Tech a.d.",
+   "score": 1.03
+  },
+  {
+   "key": "R0589xC013-CH1",
+   "researcherId": "R0589",
+   "researcher": "Đorđe Nikolić",
+   "title": "Assistant Professor",
+   "department": "Department of Traffic Engineering",
+   "challengeId": "C013-CH1",
+   "companyId": "C013",
+   "company": "Pannonia Osiguranje-Tech a.d.",
+   "score": 1.04
+  },
+  {
+   "key": "R0679xC015-CH2",
+   "researcherId": "R0679",
+   "researcher": "Goran Radulović",
+   "title": "Associate Professor",
+   "department": "Department of Applied and Engineering Chemistry",
+   "challengeId": "C015-CH2",
+   "companyId": "C015",
+   "company": "Kristal Voda preduzetnik",
+   "score": 2.94
+  },
+  {
+   "key": "R0507xC015-CH2",
+   "researcherId": "R0507",
+   "researcher": "Spasoje Rajić",
+   "title": "Teaching Assistant",
+   "department": "Department of Chemistry, Biochemistry and Environmental Protection",
+   "challengeId": "C015-CH2",
+   "companyId": "C015",
+   "company": "Kristal Voda preduzetnik",
+   "score": 0.85
+  },
+  {
+   "key": "R0953xC015-CH2",
+   "researcherId": "R0953",
+   "researcher": "Marija Lazić",
+   "title": "Associate Professor",
+   "department": "Department of Environmental Engineering and Occupational Safety",
+   "challengeId": "C015-CH2",
+   "companyId": "C015",
+   "company": "Kristal Voda preduzetnik",
+   "score": 0.91
+  },
+  {
+   "key": "R0948xC018-CH2",
+   "researcherId": "R0948",
+   "researcher": "Mirjana Vidaković",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "company": "DriveLogic Vojvodina d.o.o.",
+   "score": 1.2
+  },
+  {
+   "key": "R0919xC018-CH2",
+   "researcherId": "R0919",
+   "researcher": "Martina Lačoková",
+   "title": "Senior Research Associate",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "company": "DriveLogic Vojvodina d.o.o.",
+   "score": 3
+  },
+  {
+   "key": "R0375xC018-CH2",
+   "researcherId": "R0375",
+   "researcher": "Stefan Kostić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "company": "DriveLogic Vojvodina d.o.o.",
+   "score": 1.99
+  },
+  {
+   "key": "R0651xC021-CH1",
+   "researcherId": "R0651",
+   "researcher": "Radovan Bajić",
+   "title": "docent",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C021-CH1",
+   "companyId": "C021",
+   "company": "FinPuls Tehnologije d.o.o.",
+   "score": 0.11
+  },
+  {
+   "key": "R0217xC021-CH1",
+   "researcherId": "R0217",
+   "researcher": "Andrea Malešević",
+   "title": "docent",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C021-CH1",
+   "companyId": "C021",
+   "company": "FinPuls Tehnologije d.o.o.",
+   "score": 2.03
+  },
+  {
+   "key": "R0349xC021-CH1",
+   "researcherId": "R0349",
+   "researcher": "Stefan Dragić",
+   "title": "redovni profesor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C021-CH1",
+   "companyId": "C021",
+   "company": "FinPuls Tehnologije d.o.o.",
+   "score": 0.11
+  },
+  {
+   "key": "R0979xC024-CH1",
+   "researcherId": "R0979",
+   "researcher": "Vukica Ognjanov",
+   "title": "Research Associate",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C024-CH1",
+   "companyId": "C024",
+   "company": "Elektro Bačka a.d.",
+   "score": 0.93
+  },
+  {
+   "key": "R0333xC024-CH1",
+   "researcherId": "R0333",
+   "researcher": "Petar Krstić",
+   "title": "Full Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C024-CH1",
+   "companyId": "C024",
+   "company": "Elektro Bačka a.d.",
+   "score": 1.99
+  },
+  {
+   "key": "R0805xC024-CH1",
+   "researcherId": "R0805",
+   "researcher": "Stefan Dimitrijević",
+   "title": "Assistant Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C024-CH1",
+   "companyId": "C024",
+   "company": "Elektro Bačka a.d.",
+   "score": 0.85
+  },
+  {
+   "key": "R0936xC026-CH2",
+   "researcherId": "R0936",
+   "researcher": "Natalija Lekić",
+   "title": "Full Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C026-CH2",
+   "companyId": "C026",
+   "company": "Zelena Petlja a.d.",
+   "score": 1.04
+  },
+  {
+   "key": "R0543xC026-CH2",
+   "researcherId": "R0543",
+   "researcher": "Srđan Sabo",
+   "title": "Associate Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C026-CH2",
+   "companyId": "C026",
+   "company": "Zelena Petlja a.d.",
+   "score": 1.97
+  },
+  {
+   "key": "R0970xC026-CH2",
+   "researcherId": "R0970",
+   "researcher": "Rita Bálint",
+   "title": "Full Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C026-CH2",
+   "companyId": "C026",
+   "company": "Zelena Petlja a.d.",
+   "score": 1.01
+  },
+  {
+   "key": "R0798xC028-CH3",
+   "researcherId": "R0798",
+   "researcher": "Ana Vojnović",
+   "title": "Full Professor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C028-CH3",
+   "companyId": "C028",
+   "company": "PlastiPak Vojvodina a.d.",
+   "score": 1.31
+  },
+  {
+   "key": "R0874xC028-CH3",
+   "researcherId": "R0874",
+   "researcher": "Vladimir Kecman",
+   "title": "Full Professor",
+   "department": "Department of Materials Engineering",
+   "challengeId": "C028-CH3",
+   "companyId": "C028",
+   "company": "PlastiPak Vojvodina a.d.",
+   "score": 1.01
+  },
+  {
+   "key": "R0048xC028-CH3",
+   "researcherId": "R0048",
+   "researcher": "Marija Tadić",
+   "title": "Full Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C028-CH3",
+   "companyId": "C028",
+   "company": "PlastiPak Vojvodina a.d.",
+   "score": 1.19
+  },
+  {
+   "key": "R0951xC030-CH3",
+   "researcherId": "R0951",
+   "researcher": "Aleksa Mamužić",
+   "title": "vanredni profesor",
+   "department": "Department of Administrative and Public Law",
+   "challengeId": "C030-CH3",
+   "companyId": "C030",
+   "company": "GridLogic Systems d.o.o.",
+   "score": 1.93
+  },
+  {
+   "key": "R0020xC030-CH3",
+   "researcherId": "R0020",
+   "researcher": "Dejan Žigić",
+   "title": "naučni saradnik",
+   "department": "Department of Commercial Law",
+   "challengeId": "C030-CH3",
+   "companyId": "C030",
+   "company": "GridLogic Systems d.o.o.",
+   "score": 0.42
+  },
+  {
+   "key": "R0349xC030-CH3",
+   "researcherId": "R0349",
+   "researcher": "Stefan Dragić",
+   "title": "redovni profesor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C030-CH3",
+   "companyId": "C030",
+   "company": "GridLogic Systems d.o.o.",
+   "score": 0.02
+  },
+  {
+   "key": "R1018xC033-CH1",
+   "researcherId": "R1018",
+   "researcher": "Andrea Kovács",
+   "title": "Full Professor",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C033-CH1",
+   "companyId": "C033",
+   "company": "Senzorika Petković i sinovi preduzetnik",
+   "score": 3
+  },
+  {
+   "key": "R0811xC033-CH1",
+   "researcherId": "R0811",
+   "researcher": "Branislava Janković",
+   "title": "Full Professor",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C033-CH1",
+   "companyId": "C033",
+   "company": "Senzorika Petković i sinovi preduzetnik",
+   "score": 2.67
+  },
+  {
+   "key": "R0800xC033-CH1",
+   "researcherId": "R0800",
+   "researcher": "Tihomir Urošević",
+   "title": "Research Associate",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C033-CH1",
+   "companyId": "C033",
+   "company": "Senzorika Petković i sinovi preduzetnik",
+   "score": 2.83
+  },
+  {
+   "key": "R0055xC035-CH3",
+   "researcherId": "R0055",
+   "researcher": "Dejan Filipović",
+   "title": "Assistant Professor",
+   "department": "Department of Environmental Engineering and Occupational Safety",
+   "challengeId": "C035-CH3",
+   "companyId": "C035",
+   "company": "Indigo Atelier Studio d.o.o.",
+   "score": 3
+  },
+  {
+   "key": "R0449xC035-CH3",
+   "researcherId": "R0449",
+   "researcher": "Luka Ristić",
+   "title": "Associate Professor",
+   "department": "Department of Management",
+   "challengeId": "C035-CH3",
+   "companyId": "C035",
+   "company": "Indigo Atelier Studio d.o.o.",
+   "score": 1.01
+  },
+  {
+   "key": "R0752xC035-CH3",
+   "researcherId": "R0752",
+   "researcher": "Velimir Tešić",
+   "title": "Research Associate",
+   "department": "Department of Environmental Engineering and Occupational Safety",
+   "challengeId": "C035-CH3",
+   "companyId": "C035",
+   "company": "Indigo Atelier Studio d.o.o.",
+   "score": 1.98
+  },
+  {
+   "key": "R0648xC038-CH3",
+   "researcherId": "R0648",
+   "researcher": "Róbert Pásztor",
+   "title": "Full Professor",
+   "department": "Department of Administrative and Public Law",
+   "challengeId": "C038-CH3",
+   "companyId": "C038",
+   "company": "TalentMost d.o.o.",
+   "score": 1.96
+  },
+  {
+   "key": "R0764xC038-CH3",
+   "researcherId": "R0764",
+   "researcher": "Nebojša Novaković",
+   "title": "Associate Professor",
+   "department": "Department of Commercial Law",
+   "challengeId": "C038-CH3",
+   "companyId": "C038",
+   "company": "TalentMost d.o.o.",
+   "score": 2.98
+  },
+  {
+   "key": "R0552xC038-CH3",
+   "researcherId": "R0552",
+   "researcher": "Ksenija Mitrović",
+   "title": "redovni profesor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C038-CH3",
+   "companyId": "C038",
+   "company": "TalentMost d.o.o.",
+   "score": 1.59
+  },
+  {
+   "key": "R0960xC040-CH3",
+   "researcherId": "R0960",
+   "researcher": "Kristina Ilić",
+   "title": "Senior Research Associate",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C040-CH3",
+   "companyId": "C040",
+   "company": "MedVizion d.o.o.",
+   "score": 2.96
+  },
+  {
+   "key": "R0071xC040-CH3",
+   "researcherId": "R0071",
+   "researcher": "Olivera Rakić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C040-CH3",
+   "companyId": "C040",
+   "company": "MedVizion d.o.o.",
+   "score": 1.07
+  },
+  {
+   "key": "R0575xC040-CH3",
+   "researcherId": "R0575",
+   "researcher": "Ivan Zarić",
+   "title": "Senior Research Associate",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C040-CH3",
+   "companyId": "C040",
+   "company": "MedVizion d.o.o.",
+   "score": 1.01
+  },
+  {
+   "key": "R0669xC043-CH1",
+   "researcherId": "R0669",
+   "researcher": "Tatjana Vučković",
+   "title": "docent",
+   "department": "Department of Traffic Engineering",
+   "challengeId": "C043-CH1",
+   "companyId": "C043",
+   "company": "KartografTech preduzetnik",
+   "score": 1.09
+  },
+  {
+   "key": "R0223xC043-CH1",
+   "researcherId": "R0223",
+   "researcher": "Milena Dimitrijević",
+   "title": "vanredni profesor",
+   "department": "Department of Agricultural Engineering",
+   "challengeId": "C043-CH1",
+   "companyId": "C043",
+   "company": "KartografTech preduzetnik",
+   "score": 0.01
+  },
+  {
+   "key": "R0349xC043-CH1",
+   "researcherId": "R0349",
+   "researcher": "Stefan Dragić",
+   "title": "redovni profesor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C043-CH1",
+   "companyId": "C043",
+   "company": "KartografTech preduzetnik",
+   "score": 0.24
+  },
+  {
+   "key": "R1020xC045-CH3",
+   "researcherId": "R1020",
+   "researcher": "Predrag Nedić",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C045-CH3",
+   "companyId": "C045",
+   "company": "Adrialink Technologies a.d.",
+   "score": 1.83
+  },
+  {
+   "key": "R0966xC045-CH3",
+   "researcherId": "R0966",
+   "researcher": "Bojana Sabo",
+   "title": "Associate Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C045-CH3",
+   "companyId": "C045",
+   "company": "Adrialink Technologies a.d.",
+   "score": 1.07
+  },
+  {
+   "key": "R0099xC045-CH3",
+   "researcherId": "R0099",
+   "researcher": "Aleksa Popović",
+   "title": "Associate Professor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C045-CH3",
+   "companyId": "C045",
+   "company": "Adrialink Technologies a.d.",
+   "score": 2.96
+  },
+  {
+   "key": "R0217xC048-CH2",
+   "researcherId": "R0217",
+   "researcher": "Andrea Malešević",
+   "title": "docent",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C048-CH2",
+   "companyId": "C048",
+   "company": "Agrosan IoT preduzetnik",
+   "score": 0.32
+  },
+  {
+   "key": "R0862xC048-CH2",
+   "researcherId": "R0862",
+   "researcher": "Marina Stevanović",
+   "title": "vanredni profesor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C048-CH2",
+   "companyId": "C048",
+   "company": "Agrosan IoT preduzetnik",
+   "score": 0.15
+  },
+  {
+   "key": "R0214xC048-CH2",
+   "researcherId": "R0214",
+   "researcher": "Vladimir Ristić",
+   "title": "docent",
+   "department": "Department of Information Technology",
+   "challengeId": "C048-CH2",
+   "companyId": "C048",
+   "company": "Agrosan IoT preduzetnik",
+   "score": 1.71
+  },
+  {
+   "key": "R0290xC050-CH4",
+   "researcherId": "R0290",
+   "researcher": "Milica Ostojić",
+   "title": "Full Professor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C050-CH4",
+   "companyId": "C050",
+   "company": "MojaKutija Commerce d.o.o.",
+   "score": 2.91
+  },
+  {
+   "key": "R0798xC050-CH4",
+   "researcherId": "R0798",
+   "researcher": "Ana Vojnović",
+   "title": "Full Professor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C050-CH4",
+   "companyId": "C050",
+   "company": "MojaKutija Commerce d.o.o.",
+   "score": 1.23
+  },
+  {
+   "key": "R0438xC050-CH4",
+   "researcherId": "R0438",
+   "researcher": "Saša Pekez",
+   "title": "Assistant Professor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C050-CH4",
+   "companyId": "C050",
+   "company": "MojaKutija Commerce d.o.o.",
+   "score": 2.32
+  },
+  {
+   "key": "R1047xC052-CH4",
+   "researcherId": "R1047",
+   "researcher": "Milena Pantelić",
+   "title": "naučni saradnik",
+   "department": "Department of Water Management",
+   "challengeId": "C052-CH4",
+   "companyId": "C052",
+   "company": "NebulaFly Agro a.d.",
+   "score": 0.91
+  },
+  {
+   "key": "R0252xC052-CH4",
+   "researcherId": "R0252",
+   "researcher": "Gordana Radić",
+   "title": "vanredni profesor",
+   "department": "Department of Food Preservation Engineering",
+   "challengeId": "C052-CH4",
+   "companyId": "C052",
+   "company": "NebulaFly Agro a.d.",
+   "score": 0.36
+  },
+  {
+   "key": "R0284xC052-CH4",
+   "researcherId": "R0284",
+   "researcher": "Milena Vidaković",
+   "title": "docent",
+   "department": "Department of Biology and Ecology",
+   "challengeId": "C052-CH4",
+   "companyId": "C052",
+   "company": "NebulaFly Agro a.d.",
+   "score": 0.22
+  },
+  {
+   "key": "R0246xC055-CH2",
+   "researcherId": "R0246",
+   "researcher": "Vuk Todić",
+   "title": "Assistant Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C055-CH2",
+   "companyId": "C055",
+   "company": "Roboteks d.o.o.",
+   "score": 1.01
+  },
+  {
+   "key": "R0593xC055-CH2",
+   "researcherId": "R0593",
+   "researcher": "Đuro Simić",
+   "title": "Assistant Professor",
+   "department": "Department of Production Engineering",
+   "challengeId": "C055-CH2",
+   "companyId": "C055",
+   "company": "Roboteks d.o.o.",
+   "score": 0.78
+  },
+  {
+   "key": "R0463xC055-CH2",
+   "researcherId": "R0463",
+   "researcher": "Jana Turčanová",
+   "title": "Senior Research Associate",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C055-CH2",
+   "companyId": "C055",
+   "company": "Roboteks d.o.o.",
+   "score": 0.98
+  },
+  {
+   "key": "R0862xC058-CH2",
+   "researcherId": "R0862",
+   "researcher": "Marina Stevanović",
+   "title": "vanredni profesor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C058-CH2",
+   "companyId": "C058",
+   "company": "FlexiPack Solutions d.o.o.",
+   "score": 0.98
+  },
+  {
+   "key": "R0597xC058-CH2",
+   "researcherId": "R0597",
+   "researcher": "Aleksandra Urošević",
+   "title": "asistent",
+   "department": "Department of Mechanical Engineering",
+   "challengeId": "C058-CH2",
+   "companyId": "C058",
+   "company": "FlexiPack Solutions d.o.o.",
+   "score": 0.65
+  },
+  {
+   "key": "R0252xC058-CH2",
+   "researcherId": "R0252",
+   "researcher": "Gordana Radić",
+   "title": "vanredni profesor",
+   "department": "Department of Food Preservation Engineering",
+   "challengeId": "C058-CH2",
+   "companyId": "C058",
+   "company": "FlexiPack Solutions d.o.o.",
+   "score": 0.36
+  },
+  {
+   "key": "R0146xC060-CH3",
+   "researcherId": "R0146",
+   "researcher": "Bojana Novaković",
+   "title": "Assistant Professor",
+   "department": "Department of Traffic Engineering",
+   "challengeId": "C060-CH3",
+   "companyId": "C060",
+   "company": "Subotička Mobilnost a.d.",
+   "score": 0.56
+  },
+  {
+   "key": "R0804xC060-CH3",
+   "researcherId": "R0804",
+   "researcher": "Vladan Ivanović",
+   "title": "Associate Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C060-CH3",
+   "companyId": "C060",
+   "company": "Subotička Mobilnost a.d.",
+   "score": 1.1
+  },
+  {
+   "key": "R0374xC060-CH3",
+   "researcherId": "R0374",
+   "researcher": "Luka Zarić",
+   "title": "Associate Professor",
+   "department": "Department of Geography, Tourism and Hotel Management",
+   "challengeId": "C060-CH3",
+   "companyId": "C060",
+   "company": "Subotička Mobilnost a.d.",
+   "score": 0.99
+  },
+  {
+   "key": "R0763xC063-CH2",
+   "researcherId": "R0763",
+   "researcher": "Lazar Marković",
+   "title": "Associate Professor",
+   "department": "Department of Production Engineering",
+   "challengeId": "C063-CH2",
+   "companyId": "C063",
+   "company": "Orbita Inženjering d.o.o.",
+   "score": 1.17
+  },
+  {
+   "key": "R0399xC063-CH2",
+   "researcherId": "R0399",
+   "researcher": "Sara Nedeljković",
+   "title": "Senior Research Associate",
+   "department": "Department of Mechanical Engineering (Machine Design and Mechanics)",
+   "challengeId": "C063-CH2",
+   "companyId": "C063",
+   "company": "Orbita Inženjering d.o.o.",
+   "score": 2.99
+  },
+  {
+   "key": "R0743xC063-CH2",
+   "researcherId": "R0743",
+   "researcher": "Dejan Jeremić",
+   "title": "Assistant Professor",
+   "department": "Department of Production Engineering",
+   "challengeId": "C063-CH2",
+   "companyId": "C063",
+   "company": "Orbita Inženjering d.o.o.",
+   "score": 1.49
+  },
+  {
+   "key": "R0543xC065-CH3",
+   "researcherId": "R0543",
+   "researcher": "Srđan Sabo",
+   "title": "Associate Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C065-CH3",
+   "companyId": "C065",
+   "company": "Harmat Szoftver d.o.o.",
+   "score": 1.06
+  },
+  {
+   "key": "R0120xC065-CH3",
+   "researcherId": "R0120",
+   "researcher": "Andrea Bálint",
+   "title": "Associate Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C065-CH3",
+   "companyId": "C065",
+   "company": "Harmat Szoftver d.o.o.",
+   "score": 2.22
+  },
+  {
+   "key": "R0111xC065-CH3",
+   "researcherId": "R0111",
+   "researcher": "Radmila Gligorić",
+   "title": "Associate Professor",
+   "department": "Department of Accounting and Audit",
+   "challengeId": "C065-CH3",
+   "companyId": "C065",
+   "company": "Harmat Szoftver d.o.o.",
+   "score": 0.89
+  },
+  {
+   "key": "R0506xC068-CH2",
+   "researcherId": "R0506",
+   "researcher": "Andrea Kuzmanović",
+   "title": "Assistant Professor",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C068-CH2",
+   "companyId": "C068",
+   "company": "OrtoPrint Solutions a.d.",
+   "score": 3
+  },
+  {
+   "key": "R0142xC068-CH2",
+   "researcherId": "R0142",
+   "researcher": "Jovana Đukić",
+   "title": "Assistant Professor",
+   "department": "Department of Mechanical Engineering (Machine Design and Mechanics)",
+   "challengeId": "C068-CH2",
+   "companyId": "C068",
+   "company": "OrtoPrint Solutions a.d.",
+   "score": 2.46
+  },
+  {
+   "key": "R0500xC068-CH2",
+   "researcherId": "R0500",
+   "researcher": "Sara Vulin",
+   "title": "Full Professor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C068-CH2",
+   "companyId": "C068",
+   "company": "OrtoPrint Solutions a.d.",
+   "score": 0.08
+  },
+  {
+   "key": "R0297xC070-CH2",
+   "researcherId": "R0297",
+   "researcher": "Katarina Nedeljković",
+   "title": "Full Professor",
+   "department": "Department of Psychology",
+   "challengeId": "C070-CH2",
+   "companyId": "C070",
+   "company": "NovaByte Simulations d.o.o.",
+   "score": 3
+  },
+  {
+   "key": "R0856xC070-CH2",
+   "researcherId": "R0856",
+   "researcher": "Dragana Tadić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C070-CH2",
+   "companyId": "C070",
+   "company": "NovaByte Simulations d.o.o.",
+   "score": 1.95
+  },
+  {
+   "key": "R0014xC070-CH2",
+   "researcherId": "R0014",
+   "researcher": "Csaba Fehér",
+   "title": "Associate Professor",
+   "department": "Department of Biomedical Engineering",
+   "challengeId": "C070-CH2",
+   "companyId": "C070",
+   "company": "NovaByte Simulations d.o.o.",
+   "score": 2.5
+  },
+  {
+   "key": "R1042xC072-CH2",
+   "researcherId": "R1042",
+   "researcher": "Biljana Petrović",
+   "title": "Assistant Professor",
+   "department": "Department of Architecture and Urban Planning",
+   "challengeId": "C072-CH2",
+   "companyId": "C072",
+   "company": "Subotica Interactive preduzetnik",
+   "score": 2.98
+  },
+  {
+   "key": "R0442xC072-CH2",
+   "researcherId": "R0442",
+   "researcher": "Ivan Radulović",
+   "title": "Assistant Professor",
+   "department": "Department of Music Production and Sound Design",
+   "challengeId": "C072-CH2",
+   "companyId": "C072",
+   "company": "Subotica Interactive preduzetnik",
+   "score": 0.13
+  },
+  {
+   "key": "R0100xC072-CH2",
+   "researcherId": "R0100",
+   "researcher": "Luka Žarković",
+   "title": "Associate Professor",
+   "department": "Department of Music Production and Sound Design",
+   "challengeId": "C072-CH2",
+   "companyId": "C072",
+   "company": "Subotica Interactive preduzetnik",
+   "score": 0.49
+  },
+  {
+   "key": "R0539xC074-CH4",
+   "researcherId": "R0539",
+   "researcher": "Mirjana Jeremić",
+   "title": "Associate Professor",
+   "department": "Department of Civil Engineering and Geodesy",
+   "challengeId": "C074-CH4",
+   "companyId": "C074",
+   "company": "GeoStruct Inženjering d.o.o.",
+   "score": 0.89
+  },
+  {
+   "key": "R0977xC074-CH4",
+   "researcherId": "R0977",
+   "researcher": "Marko Vlaisavljević",
+   "title": "Associate Professor",
+   "department": "Department of Civil Engineering and Geodesy",
+   "challengeId": "C074-CH4",
+   "companyId": "C074",
+   "company": "GeoStruct Inženjering d.o.o.",
+   "score": 0.93
+  },
+  {
+   "key": "R0087xC074-CH4",
+   "researcherId": "R0087",
+   "researcher": "Dejan Lalić",
+   "title": "Full Professor",
+   "department": "Department of Geography, Tourism and Hotel Management",
+   "challengeId": "C074-CH4",
+   "companyId": "C074",
+   "company": "GeoStruct Inženjering d.o.o.",
+   "score": 0.93
+  },
+  {
+   "key": "R0087xC076-CH4",
+   "researcherId": "R0087",
+   "researcher": "Dejan Lalić",
+   "title": "Full Professor",
+   "department": "Department of Geography, Tourism and Hotel Management",
+   "challengeId": "C076-CH4",
+   "companyId": "C076",
+   "company": "UrbanVizion d.o.o.",
+   "score": 0
+  },
+  {
+   "key": "R0703xC076-CH4",
+   "researcherId": "R0703",
+   "researcher": "Róbert Horváth",
+   "title": "Assistant Professor",
+   "department": "Department of Accounting and Audit",
+   "challengeId": "C076-CH4",
+   "companyId": "C076",
+   "company": "UrbanVizion d.o.o.",
+   "score": 0.9
+  },
+  {
+   "key": "R0971xC076-CH4",
+   "researcherId": "R0971",
+   "researcher": "Katarina Đorđević",
+   "title": "Associate Professor",
+   "department": "Department of Civil Engineering and Geodesy",
+   "challengeId": "C076-CH4",
+   "companyId": "C076",
+   "company": "UrbanVizion d.o.o.",
+   "score": 0.06
+  },
+  {
+   "key": "R0926xC078-CH4",
+   "researcherId": "R0926",
+   "researcher": "Sofija Ristić",
+   "title": "Full Professor",
+   "department": "Department of Mechanical Engineering (Machine Design and Mechanics)",
+   "challengeId": "C078-CH4",
+   "companyId": "C078",
+   "company": "Aroma Natura a.d.",
+   "score": 1.19
+  },
+  {
+   "key": "R0661xC078-CH4",
+   "researcherId": "R0661",
+   "researcher": "Enikő Varga",
+   "title": "viši naučni saradnik",
+   "department": "Department of Chemical Engineering",
+   "challengeId": "C078-CH4",
+   "companyId": "C078",
+   "company": "Aroma Natura a.d.",
+   "score": 0.07
+  },
+  {
+   "key": "R0522xC078-CH4",
+   "researcherId": "R0522",
+   "researcher": "Ivona Ivković",
+   "title": "Associate Professor",
+   "department": "Department of Mechanical Engineering (Machine Design and Mechanics)",
+   "challengeId": "C078-CH4",
+   "companyId": "C078",
+   "company": "Aroma Natura a.d.",
+   "score": 2.26
+  },
+  {
+   "key": "R0343xC081-CH1",
+   "researcherId": "R0343",
+   "researcher": "Dimitrije Puzović",
+   "title": "Assistant Professor",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C081-CH1",
+   "companyId": "C081",
+   "company": "Lumetek Systems d.o.o.",
+   "score": 2.99
+  },
+  {
+   "key": "R0349xC081-CH1",
+   "researcherId": "R0349",
+   "researcher": "Stefan Dragić",
+   "title": "redovni profesor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C081-CH1",
+   "companyId": "C081",
+   "company": "Lumetek Systems d.o.o.",
+   "score": 0.01
+  },
+  {
+   "key": "R0344xC081-CH1",
+   "researcherId": "R0344",
+   "researcher": "Radomir Bogdanović",
+   "title": "docent",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C081-CH1",
+   "companyId": "C081",
+   "company": "Lumetek Systems d.o.o.",
+   "score": 1.41
+  },
+  {
+   "key": "R0117xC083-CH2",
+   "researcherId": "R0117",
+   "researcher": "László Szabó",
+   "title": "Full Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C083-CH2",
+   "companyId": "C083",
+   "company": "RouteWise",
+   "score": 2.99
+  },
+  {
+   "key": "R0087xC083-CH2",
+   "researcherId": "R0087",
+   "researcher": "Dejan Lalić",
+   "title": "Full Professor",
+   "department": "Department of Geography, Tourism and Hotel Management",
+   "challengeId": "C083-CH2",
+   "companyId": "C083",
+   "company": "RouteWise",
+   "score": 0.42
+  },
+  {
+   "key": "R0004xC083-CH2",
+   "researcherId": "R0004",
+   "researcher": "Saša Paunović",
+   "title": "Research Associate",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C083-CH2",
+   "companyId": "C083",
+   "company": "RouteWise",
+   "score": 1.81
+  },
+  {
+   "key": "R0217xC086-CH2",
+   "researcherId": "R0217",
+   "researcher": "Andrea Malešević",
+   "title": "docent",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C086-CH2",
+   "companyId": "C086",
+   "company": "Kriptolog a.d.",
+   "score": 2.99
+  },
+  {
+   "key": "R0087xC086-CH2",
+   "researcherId": "R0087",
+   "researcher": "Dejan Lalić",
+   "title": "Full Professor",
+   "department": "Department of Geography, Tourism and Hotel Management",
+   "challengeId": "C086-CH2",
+   "companyId": "C086",
+   "company": "Kriptolog a.d.",
+   "score": 1
+  },
+  {
+   "key": "R0019xC086-CH2",
+   "researcherId": "R0019",
+   "researcher": "Petar Hadžić",
+   "title": "Assistant Professor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C086-CH2",
+   "companyId": "C086",
+   "company": "Kriptolog a.d.",
+   "score": 1.45
+  },
+  {
+   "key": "R0533xC089-CH1",
+   "researcherId": "R0533",
+   "researcher": "Darko Andrić",
+   "title": "Full Professor",
+   "department": "Department of Chemistry, Biochemistry and Environmental Protection",
+   "challengeId": "C089-CH1",
+   "companyId": "C089",
+   "company": "Bela Ruža Kozmetika preduzetnik",
+   "score": 3
+  },
+  {
+   "key": "R0105xC089-CH1",
+   "researcherId": "R0105",
+   "researcher": "Veljko Lazić",
+   "title": "Associate Professor",
+   "department": "Department of Chemistry, Biochemistry and Environmental Protection",
+   "challengeId": "C089-CH1",
+   "companyId": "C089",
+   "company": "Bela Ruža Kozmetika preduzetnik",
+   "score": 0.62
+  },
+  {
+   "key": "R0816xC089-CH1",
+   "researcherId": "R0816",
+   "researcher": "Branislava Erić",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C089-CH1",
+   "companyId": "C089",
+   "company": "Bela Ruža Kozmetika preduzetnik",
+   "score": 0.07
+  },
+  {
+   "key": "R0721xC091-CH2",
+   "researcherId": "R0721",
+   "researcher": "Goran Tomić",
+   "title": "Full Professor",
+   "department": "Department of Internal Medicine (Cardiology)",
+   "challengeId": "C091-CH2",
+   "companyId": "C091",
+   "company": "CardioTrack d.o.o.",
+   "score": 2.97
+  },
+  {
+   "key": "R0648xC091-CH2",
+   "researcherId": "R0648",
+   "researcher": "Róbert Pásztor",
+   "title": "Full Professor",
+   "department": "Department of Administrative and Public Law",
+   "challengeId": "C091-CH2",
+   "companyId": "C091",
+   "company": "CardioTrack d.o.o.",
+   "score": 0.84
+  },
+  {
+   "key": "R0641xC091-CH2",
+   "researcherId": "R0641",
+   "researcher": "Branislav Stojanović",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C091-CH2",
+   "companyId": "C091",
+   "company": "CardioTrack d.o.o.",
+   "score": 0.17
+  },
+  {
+   "key": "R0826xC093-CH4",
+   "researcherId": "R0826",
+   "researcher": "Vuk Bačić",
+   "title": "Research Associate",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C093-CH4",
+   "companyId": "C093",
+   "company": "EkoTok Solutions d.o.o.",
+   "score": 0.96
+  },
+  {
+   "key": "R0199xC093-CH4",
+   "researcherId": "R0199",
+   "researcher": "Ivan Vlaisavljević",
+   "title": "Associate Professor",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C093-CH4",
+   "companyId": "C093",
+   "company": "EkoTok Solutions d.o.o.",
+   "score": 0.87
+  },
+  {
+   "key": "R0754xC093-CH4",
+   "researcherId": "R0754",
+   "researcher": "Žarko Jakovljević",
+   "title": "Research Associate",
+   "department": "Sensors and Microsystems Group",
+   "challengeId": "C093-CH4",
+   "companyId": "C093",
+   "company": "EkoTok Solutions d.o.o.",
+   "score": 0.8
+  },
+  {
+   "key": "R0331xC096-CH4",
+   "researcherId": "R0331",
+   "researcher": "Đorđe Novaković",
+   "title": "Senior Research Associate",
+   "department": "Department of Production Engineering",
+   "challengeId": "C096-CH4",
+   "companyId": "C096",
+   "company": "PrecizMeh d.o.o.",
+   "score": 0.43
+  },
+  {
+   "key": "R1001xC096-CH4",
+   "researcherId": "R1001",
+   "researcher": "Marko Filipović",
+   "title": "Associate Professor",
+   "department": "Department of Applied and Engineering Chemistry",
+   "challengeId": "C096-CH4",
+   "companyId": "C096",
+   "company": "PrecizMeh d.o.o.",
+   "score": 2.99
+  },
+  {
+   "key": "R0259xC096-CH4",
+   "researcherId": "R0259",
+   "researcher": "Vesna Todorović",
+   "title": "PhD student",
+   "department": "Department of Production Engineering",
+   "challengeId": "C096-CH4",
+   "companyId": "C096",
+   "company": "PrecizMeh d.o.o.",
+   "score": 0.16
+  },
+  {
+   "key": "R0559xC099-CH1",
+   "researcherId": "R0559",
+   "researcher": "Sara Despotović",
+   "title": "Associate Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C099-CH1",
+   "companyId": "C099",
+   "company": "Datavox Consulting d.o.o.",
+   "score": 2.96
+  },
+  {
+   "key": "R0387xC099-CH1",
+   "researcherId": "R0387",
+   "researcher": "Andrea Molnár",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C099-CH1",
+   "companyId": "C099",
+   "company": "Datavox Consulting d.o.o.",
+   "score": 0.99
+  },
+  {
+   "key": "R0087xC099-CH1",
+   "researcherId": "R0087",
+   "researcher": "Dejan Lalić",
+   "title": "Full Professor",
+   "department": "Department of Geography, Tourism and Hotel Management",
+   "challengeId": "C099-CH1",
+   "companyId": "C099",
+   "company": "Datavox Consulting d.o.o.",
+   "score": 0.05
+  },
+  {
+   "key": "R0522xC102-CH1",
+   "researcherId": "R0522",
+   "researcher": "Ivona Ivković",
+   "title": "Associate Professor",
+   "department": "Department of Mechanical Engineering (Machine Design and Mechanics)",
+   "challengeId": "C102-CH1",
+   "companyId": "C102",
+   "company": "Pulmoteh d.o.o.",
+   "score": 2.69
+  },
+  {
+   "key": "R0124xC102-CH1",
+   "researcherId": "R0124",
+   "researcher": "Anja Babić",
+   "title": "Full Professor",
+   "department": "Department of Production Engineering",
+   "challengeId": "C102-CH1",
+   "companyId": "C102",
+   "company": "Pulmoteh d.o.o.",
+   "score": 2.47
+  },
+  {
+   "key": "R0048xC102-CH1",
+   "researcherId": "R0048",
+   "researcher": "Marija Tadić",
+   "title": "Full Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C102-CH1",
+   "companyId": "C102",
+   "company": "Pulmoteh d.o.o.",
+   "score": 1.6
+  },
+  {
+   "key": "R0962xC104-CH3",
+   "researcherId": "R0962",
+   "researcher": "Danilo Uzelac",
+   "title": "Assistant Professor",
+   "department": "Department of Power, Electronics and Telecommunications",
+   "challengeId": "C104-CH3",
+   "companyId": "C104",
+   "company": "Poljoelektronika Kovačević",
+   "score": 1.04
+  },
+  {
+   "key": "R1007xC104-CH3",
+   "researcherId": "R1007",
+   "researcher": "Martin Struhár",
+   "title": "Full Professor",
+   "department": "Department of Field and Vegetable Crops",
+   "challengeId": "C104-CH3",
+   "companyId": "C104",
+   "company": "Poljoelektronika Kovačević",
+   "score": 1.84
+  },
+  {
+   "key": "R0713xC104-CH3",
+   "researcherId": "R0713",
+   "researcher": "Milena Janković",
+   "title": "Research Associate",
+   "department": "Sensors and Microsystems Group",
+   "challengeId": "C104-CH3",
+   "companyId": "C104",
+   "company": "Poljoelektronika Kovačević",
+   "score": 1.28
+  },
+  {
+   "key": "R0276xC107-CH1",
+   "researcherId": "R0276",
+   "researcher": "Dejan Bogdanović",
+   "title": "Full Professor",
+   "department": "Department of Production Engineering",
+   "challengeId": "C107-CH1",
+   "companyId": "C107",
+   "company": "PrintMetal 3D",
+   "score": 3
+  },
+  {
+   "key": "R0525xC107-CH1",
+   "researcherId": "R0525",
+   "researcher": "Goran Žigić",
+   "title": "Assistant Professor",
+   "department": "Department of Mechanical Engineering (Machine Design and Mechanics)",
+   "challengeId": "C107-CH1",
+   "companyId": "C107",
+   "company": "PrintMetal 3D",
+   "score": 0.94
+  },
+  {
+   "key": "R0463xC107-CH1",
+   "researcherId": "R0463",
+   "researcher": "Jana Turčanová",
+   "title": "Senior Research Associate",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C107-CH1",
+   "companyId": "C107",
+   "company": "PrintMetal 3D",
+   "score": 1
+  },
+  {
+   "key": "R0387xC110-CH3",
+   "researcherId": "R0387",
+   "researcher": "Andrea Molnár",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C110-CH3",
+   "companyId": "C110",
+   "company": "Kognitiva a.d.",
+   "score": 0.58
+  },
+  {
+   "key": "R0422xC110-CH3",
+   "researcherId": "R0422",
+   "researcher": "Attila Bálint",
+   "title": "Full Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C110-CH3",
+   "companyId": "C110",
+   "company": "Kognitiva a.d.",
+   "score": 0.42
+  },
+  {
+   "key": "R0120xC110-CH3",
+   "researcherId": "R0120",
+   "researcher": "Andrea Bálint",
+   "title": "Associate Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C110-CH3",
+   "companyId": "C110",
+   "company": "Kognitiva a.d.",
+   "score": 0.41
+  },
+  {
+   "key": "R1047xC112-CH4",
+   "researcherId": "R1047",
+   "researcher": "Milena Pantelić",
+   "title": "naučni saradnik",
+   "department": "Department of Water Management",
+   "challengeId": "C112-CH4",
+   "companyId": "C112",
+   "company": "Solareks d.o.o.",
+   "score": 1
+  },
+  {
+   "key": "R0252xC112-CH4",
+   "researcherId": "R0252",
+   "researcher": "Gordana Radić",
+   "title": "vanredni profesor",
+   "department": "Department of Food Preservation Engineering",
+   "challengeId": "C112-CH4",
+   "companyId": "C112",
+   "company": "Solareks d.o.o.",
+   "score": 0.67
+  },
+  {
+   "key": "R0496xC112-CH4",
+   "researcherId": "R0496",
+   "researcher": "Saša Kosanović",
+   "title": "viši naučni saradnik",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C112-CH4",
+   "companyId": "C112",
+   "company": "Solareks d.o.o.",
+   "score": 0.14
+  },
+  {
+   "key": "R0170xC115-CH2",
+   "researcherId": "R0170",
+   "researcher": "Bojan Ćirić",
+   "title": "naučni saradnik",
+   "department": "Department of Internal Medicine",
+   "challengeId": "C115-CH2",
+   "companyId": "C115",
+   "company": "VoxelRealm a.d.",
+   "score": 0.03
+  },
+  {
+   "key": "R0749xC115-CH2",
+   "researcherId": "R0749",
+   "researcher": "Emilija Vranješ",
+   "title": "docent",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C115-CH2",
+   "companyId": "C115",
+   "company": "VoxelRealm a.d.",
+   "score": 1.4
+  },
+  {
+   "key": "R0252xC115-CH2",
+   "researcherId": "R0252",
+   "researcher": "Gordana Radić",
+   "title": "vanredni profesor",
+   "department": "Department of Food Preservation Engineering",
+   "challengeId": "C115-CH2",
+   "companyId": "C115",
+   "company": "VoxelRealm a.d.",
+   "score": 0
+  },
+  {
+   "key": "R0496xC117-CH2",
+   "researcherId": "R0496",
+   "researcher": "Saša Kosanović",
+   "title": "viši naučni saradnik",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C117-CH2",
+   "companyId": "C117",
+   "company": "VeloSoft Inženjering d.o.o.",
+   "score": 0.79
+  },
+  {
+   "key": "R0694xC117-CH2",
+   "researcherId": "R0694",
+   "researcher": "Radovan Radulović",
+   "title": "redovni profesor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C117-CH2",
+   "companyId": "C117",
+   "company": "VeloSoft Inženjering d.o.o.",
+   "score": 0.96
+  },
+  {
+   "key": "R0260xC117-CH2",
+   "researcherId": "R0260",
+   "researcher": "Nebojša Tomić",
+   "title": "redovni profesor",
+   "department": "Department of Applied and Engineering Chemistry",
+   "challengeId": "C117-CH2",
+   "companyId": "C117",
+   "company": "VeloSoft Inženjering d.o.o.",
+   "score": 0.07
+  },
+  {
+   "key": "R0496xC120-CH2",
+   "researcherId": "R0496",
+   "researcher": "Saša Kosanović",
+   "title": "viši naučni saradnik",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C120-CH2",
+   "companyId": "C120",
+   "company": "Analitika Petrović preduzetnik",
+   "score": 1
+  },
+  {
+   "key": "R0349xC120-CH2",
+   "researcherId": "R0349",
+   "researcher": "Stefan Dragić",
+   "title": "redovni profesor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C120-CH2",
+   "companyId": "C120",
+   "company": "Analitika Petrović preduzetnik",
+   "score": 0.44
+  },
+  {
+   "key": "R0669xC120-CH2",
+   "researcherId": "R0669",
+   "researcher": "Tatjana Vučković",
+   "title": "docent",
+   "department": "Department of Traffic Engineering",
+   "challengeId": "C120-CH2",
+   "companyId": "C120",
+   "company": "Analitika Petrović preduzetnik",
+   "score": 0.09
+  },
+  {
+   "key": "R0417xC123-CH1",
+   "researcherId": "R0417",
+   "researcher": "Aleksandra Vranješ",
+   "title": "Full Professor",
+   "department": "Department of Carbohydrate Food Engineering",
+   "challengeId": "C123-CH1",
+   "companyId": "C123",
+   "company": "FermenTech Vojvodina d.o.o.",
+   "score": 2.41
+  },
+  {
+   "key": "R1036xC123-CH1",
+   "researcherId": "R1036",
+   "researcher": "Luka Ostojić",
+   "title": "Associate Professor",
+   "department": "Department of Biotechnology",
+   "challengeId": "C123-CH1",
+   "companyId": "C123",
+   "company": "FermenTech Vojvodina d.o.o.",
+   "score": 2.47
+  },
+  {
+   "key": "R0535xC123-CH1",
+   "researcherId": "R0535",
+   "researcher": "Anja Rakić",
+   "title": "Research Associate",
+   "department": "Department of Biotechnology",
+   "challengeId": "C123-CH1",
+   "companyId": "C123",
+   "company": "FermenTech Vojvodina d.o.o.",
+   "score": 2.86
+  },
+  {
+   "key": "R0824xC125-CH3",
+   "researcherId": "R0824",
+   "researcher": "Nenad Pavlović",
+   "title": "Associate Professor",
+   "department": "Department of Materials Engineering",
+   "challengeId": "C125-CH3",
+   "companyId": "C125",
+   "company": "AquaVoj d.o.o.",
+   "score": 3
+  },
+  {
+   "key": "R0254xC125-CH3",
+   "researcherId": "R0254",
+   "researcher": "Strahinja Todorović",
+   "title": "Associate Professor",
+   "department": "Department of Chemical Engineering",
+   "challengeId": "C125-CH3",
+   "companyId": "C125",
+   "company": "AquaVoj d.o.o.",
+   "score": 0.96
+  },
+  {
+   "key": "R0598xC125-CH3",
+   "researcherId": "R0598",
+   "researcher": "Vladimir Vulin",
+   "title": "Assistant Professor",
+   "department": "Department of Biology and Ecology",
+   "challengeId": "C125-CH3",
+   "companyId": "C125",
+   "company": "AquaVoj d.o.o.",
+   "score": 1.97
+  },
+  {
+   "key": "R0758xC128-CH1",
+   "researcherId": "R0758",
+   "researcher": "Đurđica Ljubojević",
+   "title": "Senior Research Associate",
+   "department": "Cereal and Feed Technology Group",
+   "challengeId": "C128-CH1",
+   "companyId": "C128",
+   "company": "Bačka Mlin Savremeni a.d.",
+   "score": 2.84
+  },
+  {
+   "key": "R0425xC128-CH1",
+   "researcherId": "R0425",
+   "researcher": "Goran Todić",
+   "title": "PhD student",
+   "department": "Cereal and Feed Technology Group",
+   "challengeId": "C128-CH1",
+   "companyId": "C128",
+   "company": "Bačka Mlin Savremeni a.d.",
+   "score": 1
+  },
+  {
+   "key": "R0154xC128-CH1",
+   "researcherId": "R0154",
+   "researcher": "Ildikó Balogh",
+   "title": "Assistant Professor",
+   "department": "Department of Chemistry, Biochemistry and Environmental Protection",
+   "challengeId": "C128-CH1",
+   "companyId": "C128",
+   "company": "Bačka Mlin Savremeni a.d.",
+   "score": 2.32
+  },
+  {
+   "key": "R0455xC130-CH1",
+   "researcherId": "R0455",
+   "researcher": "Saša Zec",
+   "title": "Research Associate",
+   "department": "Food Safety and Quality Group",
+   "challengeId": "C130-CH1",
+   "companyId": "C130",
+   "company": "Konverzija Labs d.o.o.",
+   "score": 0.07
+  },
+  {
+   "key": "R0387xC130-CH1",
+   "researcherId": "R0387",
+   "researcher": "Andrea Molnár",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C130-CH1",
+   "companyId": "C130",
+   "company": "Konverzija Labs d.o.o.",
+   "score": 0.93
+  },
+  {
+   "key": "R0565xC130-CH1",
+   "researcherId": "R0565",
+   "researcher": "Nenad Fejsa",
+   "title": "Full Professor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C130-CH1",
+   "companyId": "C130",
+   "company": "Konverzija Labs d.o.o.",
+   "score": 1.92
+  },
+  {
+   "key": "R0387xC132-CH3",
+   "researcherId": "R0387",
+   "researcher": "Andrea Molnár",
+   "title": "Assistant Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C132-CH3",
+   "companyId": "C132",
+   "company": "Lex Automatika d.o.o.",
+   "score": 0.89
+  },
+  {
+   "key": "R0333xC132-CH3",
+   "researcherId": "R0333",
+   "researcher": "Petar Krstić",
+   "title": "Full Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C132-CH3",
+   "companyId": "C132",
+   "company": "Lex Automatika d.o.o.",
+   "score": 0.99
+  },
+  {
+   "key": "R0460xC132-CH3",
+   "researcherId": "R0460",
+   "researcher": "Predrag Ljubojević",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C132-CH3",
+   "companyId": "C132",
+   "company": "Lex Automatika d.o.o.",
+   "score": 0.63
+  },
+  {
+   "key": "R0120xC135-CH3",
+   "researcherId": "R0120",
+   "researcher": "Andrea Bálint",
+   "title": "Associate Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C135-CH3",
+   "companyId": "C135",
+   "company": "Korventa IT j.d.o.o.",
+   "score": 1.09
+  },
+  {
+   "key": "R0161xC135-CH3",
+   "researcherId": "R0161",
+   "researcher": "Milana Lekić",
+   "title": "Assistant Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C135-CH3",
+   "companyId": "C135",
+   "company": "Korventa IT j.d.o.o.",
+   "score": 1.17
+  },
+  {
+   "key": "R0513xC135-CH3",
+   "researcherId": "R0513",
+   "researcher": "Nikola Orlović",
+   "title": "Full Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C135-CH3",
+   "companyId": "C135",
+   "company": "Korventa IT j.d.o.o.",
+   "score": 0.8
+  },
+  {
+   "key": "R0862xC138-CH2",
+   "researcherId": "R0862",
+   "researcher": "Marina Stevanović",
+   "title": "vanredni profesor",
+   "department": "Department of Graphic Engineering and Design",
+   "challengeId": "C138-CH2",
+   "companyId": "C138",
+   "company": "PakTeh d.o.o.",
+   "score": 2.86
+  },
+  {
+   "key": "R0570xC138-CH2",
+   "researcherId": "R0570",
+   "researcher": "Dimitrije Vlaisavljević",
+   "title": "docent",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C138-CH2",
+   "companyId": "C138",
+   "company": "PakTeh d.o.o.",
+   "score": 1.53
+  },
+  {
+   "key": "R0252xC138-CH2",
+   "researcherId": "R0252",
+   "researcher": "Gordana Radić",
+   "title": "vanredni profesor",
+   "department": "Department of Food Preservation Engineering",
+   "challengeId": "C138-CH2",
+   "companyId": "C138",
+   "company": "PakTeh d.o.o.",
+   "score": 0.65
+  },
+  {
+   "key": "R0307xC140-CH4",
+   "researcherId": "R0307",
+   "researcher": "Žarko Sabo",
+   "title": "PhD student",
+   "department": "Department of Management",
+   "challengeId": "C140-CH4",
+   "companyId": "C140",
+   "company": "Paladin Osiguranje Tehnologije d.o.o.",
+   "score": 2.96
+  },
+  {
+   "key": "R0330xC140-CH4",
+   "researcherId": "R0330",
+   "researcher": "Maja Mladenović",
+   "title": "Research Associate",
+   "department": "Department of Civil Law",
+   "challengeId": "C140-CH4",
+   "companyId": "C140",
+   "company": "Paladin Osiguranje Tehnologije d.o.o.",
+   "score": 0.05
+  },
+  {
+   "key": "R0271xC140-CH4",
+   "researcherId": "R0271",
+   "researcher": "Željko Mamužić",
+   "title": "Senior Research Associate",
+   "department": "Department of Traffic Engineering",
+   "challengeId": "C140-CH4",
+   "companyId": "C140",
+   "company": "Paladin Osiguranje Tehnologije d.o.o.",
+   "score": 0.05
+  },
+  {
+   "key": "R0217xC143-CH1",
+   "researcherId": "R0217",
+   "researcher": "Andrea Malešević",
+   "title": "docent",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C143-CH1",
+   "companyId": "C143",
+   "company": "Voltis Pay d.o.o.",
+   "score": 1.06
+  },
+  {
+   "key": "R0496xC143-CH1",
+   "researcherId": "R0496",
+   "researcher": "Saša Kosanović",
+   "title": "viši naučni saradnik",
+   "department": "Department of Mechatronics, Robotics and Automation",
+   "challengeId": "C143-CH1",
+   "companyId": "C143",
+   "company": "Voltis Pay d.o.o.",
+   "score": 0.7
+  },
+  {
+   "key": "R0137xC143-CH1",
+   "researcherId": "R0137",
+   "researcher": "Zorica Marić",
+   "title": "istraživač saradnik",
+   "department": "Data Science and Bioinformatics Group",
+   "challengeId": "C143-CH1",
+   "companyId": "C143",
+   "company": "Voltis Pay d.o.o.",
+   "score": 0.74
+  },
+  {
+   "key": "R0273xC145-CH1",
+   "researcherId": "R0273",
+   "researcher": "Ivona Pejić",
+   "title": "Associate Professor",
+   "department": "Department of Business Informatics",
+   "challengeId": "C145-CH1",
+   "companyId": "C145",
+   "company": "Mediavox a.d.",
+   "score": 1.99
+  },
+  {
+   "key": "R0748xC145-CH1",
+   "researcherId": "R0748",
+   "researcher": "Radovan Gavrilović",
+   "title": "Full Professor",
+   "department": "Department of Media Studies",
+   "challengeId": "C145-CH1",
+   "companyId": "C145",
+   "company": "Mediavox a.d.",
+   "score": 0.99
+  },
+  {
+   "key": "R1006xC145-CH1",
+   "researcherId": "R1006",
+   "researcher": "Danilo Mitrović",
+   "title": "Assistant Professor",
+   "department": "Department of Mathematics and Informatics",
+   "challengeId": "C145-CH1",
+   "companyId": "C145",
+   "company": "Mediavox a.d.",
+   "score": 1.34
+  },
+  {
+   "key": "R0511xC148-CH1",
+   "researcherId": "R0511",
+   "researcher": "Róbert Fehér",
+   "title": "Assistant Professor",
+   "department": "Department of Internal Medicine",
+   "challengeId": "C148-CH1",
+   "companyId": "C148",
+   "company": "MediSoft Vojvodina d.o.o.",
+   "score": 2.85
+  },
+  {
+   "key": "R0263xC148-CH1",
+   "researcherId": "R0263",
+   "researcher": "Vera Vuković",
+   "title": "Principal Research Fellow",
+   "department": "Data Science and Bioinformatics Group",
+   "challengeId": "C148-CH1",
+   "companyId": "C148",
+   "company": "MediSoft Vojvodina d.o.o.",
+   "score": 2.94
+  },
+  {
+   "key": "R0049xC148-CH1",
+   "researcherId": "R0049",
+   "researcher": "Nataša Fejsa",
+   "title": "Full Professor",
+   "department": "Department of Information Technology",
+   "challengeId": "C148-CH1",
+   "companyId": "C148",
+   "company": "MediSoft Vojvodina d.o.o.",
+   "score": 1.21
+  }
+ ],
+ "selected": [
+  {
+   "challengeId": "C005-CH2",
+   "companyId": "C005",
+   "researcherId": "R0641",
+   "retrievalScore": 75.328,
+   "matchedTerms": [
+    "ecg",
+    "signal",
+    "devices",
+    "compression",
+    "device",
+    "wear",
+    "operating",
+    "lossy",
+    "study",
+    "technical",
+    "signals",
+    "wearable"
+   ],
+   "score": 2.28,
+   "confidence": 0.72,
+   "screener": "Screener-3",
+   "key": "R0641xC005-CH2",
+   "selectedAt": 1880,
+   "profiler": "886d2ef6-67b6-4e6d-bb31-f6ab538c82d9",
+   "analyst": "752ae7a8-4762-4093-930a-4de26a7def66",
+   "status": "done",
+   "writer": "17e76f40-f1a1-4c28-88b6-042e73f8f92c"
+  },
+  {
+   "challengeId": "C013-CH1",
+   "companyId": "C013",
+   "researcherId": "R0271",
+   "retrievalScore": 55.711,
+   "matchedTerms": [
+    "telematics",
+    "model",
+    "events",
+    "time",
+    "group",
+    "vehicle",
+    "road",
+    "map",
+    "access",
+    "data",
+    "agreement",
+    "event"
+   ],
+   "score": 2.02,
+   "confidence": 0.96,
+   "screener": "Screener-3",
+   "key": "R0271xC013-CH1",
+   "selectedAt": 1885,
+   "profiler": "061c2757-f3ed-43b9-93a0-7d452302cb3c",
+   "analyst": "f6f95191-a4c9-4f88-a62c-89e97a04ff05",
+   "status": "done",
+   "writer": "3cf463bb-7581-4cba-9100-dda4488244a3"
+  },
+  {
+   "challengeId": "C021-CH1",
+   "companyId": "C021",
+   "researcherId": "R0217",
+   "retrievalScore": 46.113,
+   "matchedTerms": [
+    "kao",
+    "ima",
+    "podataka",
+    "imaju",
+    "nije",
+    "pristupa",
+    "enje",
+    "bez",
+    "apache"
+   ],
+   "score": 2.03,
+   "confidence": 0.95,
+   "screener": "Screener-3",
+   "key": "R0217xC021-CH1",
+   "selectedAt": 1886,
+   "profiler": "886d2ef6-67b6-4e6d-bb31-f6ab538c82d9",
+   "analyst": "752ae7a8-4762-4093-930a-4de26a7def66",
+   "status": "done",
+   "writer": "17e76f40-f1a1-4c28-88b6-042e73f8f92c"
+  }
+ ],
+ "researcherProfiles": {
+  "R0641": {
+   "researcherId": "R0641",
+   "summary": "Branislav Stojanović is a full professor in embedded systems and IoT whose work centers on signal processing and data compression for resource-constrained devices. His research consistently targets microcontroller-class platforms, with a strong emphasis on preserving diagnostic or anomaly information in compressed sensor data, especially for industrial monitoring, wearables, and IoT networks.",
+   "expertise": [
+    {
+     "topic": "Embedded signal compression for resource-constrained sensor nodes",
+     "evidence": [
+      "SYN-PUB-07294",
+      "SYN-PUB-07295",
+      "SYN-PUB-03183",
+      "SYN-PUB-07297",
+      "SYN-PUB-07298",
+      "SYN-PUB-00967",
+      "SYN-PUB-07301",
+      "SYN-PUB-04195",
+      "SYN-PRJ-0150",
+      "SYN-PAT-009"
+     ]
+    },
+    {
+     "topic": "Anomaly-preserving and fault-aware lossy compression",
+     "evidence": [
+      "SYN-PUB-07297",
+      "SYN-PUB-07302",
+      "SYN-PUB-04195",
+      "SYN-PRJ-0150",
+      "SYN-PAT-009"
+     ]
+    },
+    {
+     "topic": "Adaptive sampling, edge processing, and low-power IoT sensing",
+     "evidence": [
+      "SYN-PUB-07296",
+      "SYN-PUB-07299",
+      "SYN-PUB-07300",
+      "SYN-PRJ-0151"
+     ]
+    },
+    {
+     "topic": "Embedded implementations on microcontrollers and fixed-point DSP",
+     "evidence": [
+      "SYN-PUB-07294",
+      "SYN-PUB-03183",
+      "SYN-PUB-07298",
+      "SYN-PUB-07301"
+     ]
+    },
+    {
+     "topic": "Industrial, structural health, and vibration monitoring applications",
+     "evidence": [
+      "SYN-PUB-07295",
+      "SYN-PUB-07297",
+      "SYN-PUB-04195",
+      "SYN-PRJ-0150",
+      "SYN-PUB-00967"
+     ]
+    }
+   ]
+  },
+  "R0271": {
+   "researcherId": "R0271",
+   "summary": "Željko Mamužić is a Senior Research Associate in Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad, with a profile centered on intelligent transport systems, telematics data integration, and trajectory-based mobility analytics. His work combines GPS/vehicle sensor data, transport standards, and predictive models for real-time operations in freight and public transport.",
+   "expertise": [
+    {
+     "topic": "Vehicle telematics data integration and interoperability",
+     "evidence": [
+      "SYN-PUB-03399",
+      "SYN-PUB-03400",
+      "SYN-PUB-03231",
+      "SYN-PUB-03404",
+      "SYN-PRJ-0034"
+     ]
+    },
+    {
+     "topic": "GPS trajectory analytics and map matching",
+     "evidence": [
+      "SYN-PUB-03398",
+      "SYN-PUB-03403",
+      "SYN-PUB-03406"
+     ]
+    },
+    {
+     "topic": "ETA estimation and real-time transit prediction",
+     "evidence": [
+      "SYN-PUB-03401",
+      "SYN-PUB-03402",
+      "SYN-PUB-03405",
+      "SYN-PRJ-0035"
+     ]
+    },
+    {
+     "topic": "Multisource sensor fusion and uncertainty-aware transport modeling",
+     "evidence": [
+      "SYN-PUB-03230",
+      "SYN-PUB-03402",
+      "SYN-PUB-03406"
+     ]
+    },
+    {
+     "topic": "Cross-border freight telematics and federated data exchange",
+     "evidence": [
+      "SYN-PUB-03404",
+      "SYN-PRJ-0034"
+     ]
+    }
+   ]
+  },
+  "R0217": {
+   "researcherId": "R0217",
+   "summary": "Andrea Malešević (R0217) works in distributed systems and databases with a strong focus on certificate-status infrastructure, OCSP scaling, and data-structure design for high-throughput systems. Her evidence shows sustained work on PKI/OCSP performance, distributed database optimization, and scalable algorithmic structures, including both academic publications and active research projects.",
+   "expertise": [
+    {
+     "topic": "Distributed databases and high-throughput query processing",
+     "evidence": [
+      "SYN-PRJ-0504",
+      "SYN-PRJ-0505",
+      "SYN-PUB-02772",
+      "SYN-PUB-02773"
+     ]
+    },
+    {
+     "topic": "OCSP and certificate-status infrastructure optimization",
+     "evidence": [
+      "SYN-PRJ-0504",
+      "SYN-PUB-02768",
+      "SYN-PUB-01685",
+      "SYN-PUB-02770",
+      "SYN-PUB-02771"
+     ]
+    },
+    {
+     "topic": "Distributed systems architecture for PKI and certificate management",
+     "evidence": [
+      "SYN-PRJ-0505",
+      "SYN-PUB-02766",
+      "SYN-PUB-02767",
+      "SYN-PUB-02770"
+     ]
+    },
+    {
+     "topic": "Scalable data structures and data-structure analysis",
+     "evidence": [
+      "SYN-PUB-02765",
+      "SYN-PUB-02769",
+      "SYN-PUB-02750"
+     ]
+    },
+    {
+     "topic": "Performance benchmarking and load-balancing strategies in distributed environments",
+     "evidence": [
+      "SYN-PUB-02766",
+      "SYN-PUB-02768",
+      "SYN-PUB-02772",
+      "SYN-PUB-01685"
+     ]
+    }
+   ]
+  }
+ },
+ "companyProfiles": {
+  "C021-CH1": {
+   "challengeId": "C021-CH1",
+   "companyId": "C021",
+   "summary": "FinPuls Tehnologije d.o.o. is a 12-person fintech company in Novi Sad building cloud-native B2B payment reconciliation infrastructure for e-commerce merchants using multiple payment providers. They already ingest transaction data from Stripe, Adyen, Klarna, and local acquirers, but their current Spark batch pipeline cannot close daily numbers fast enough for clients’ morning finance deadlines.",
+   "needs": []
+  },
+  "C013-CH1": {
+   "challengeId": "C013-CH1",
+   "companyId": "C013",
+   "summary": "Pannonia Osiguranje-Tech a.d. is a mid-size insurtech insurer in Subotica with 187 employees, focused on usage-based motor and property insurance across Serbia and nearby markets. It already collects large volumes of telematics data from about 9,400 devices and wants to turn that raw trip data into pricing inputs for its motor business.",
+   "needs": [
+    {
+     "need": "Build a per-driver telematics risk scoring model from raw trip events that can be mapped directly to a loading or discount.",
+     "evidence": [
+      "C013-CH1"
+     ]
+    },
+    {
+     "need": "Incorporate trip length and inferred road type into the score using the available PostgreSQL telematics warehouse data.",
+     "evidence": [
+      "C013-CH1"
+     ]
+    },
+    {
+     "need": "Deploy the scoring output into the existing rating engine before the next annual product filing in Q1 2026.",
+     "evidence": [
+      "C013-CH1"
+     ]
+    }
+   ]
+  },
+  "C005-CH2": {
+   "challengeId": "C005-CH2",
+   "companyId": "C005",
+   "summary": "Kardiolink a.d. is a Novi Sad-based medtech and digital health company that designs and manufactures wearable cardiac monitoring devices and cloud software. It has 112 employees and builds the KL-Patch line for remote ECG monitoring across EU markets. The company’s challenge is high cloud storage cost from large volumes of raw ECG data, with a need to keep a lossless workflow due to regulatory constraints.",
+   "needs": []
+  }
+ },
+ "proposals": [
+  {
+   "key": "R0271xC013-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "A per-driver telematics risk score for Pannonia Osiguranje-Tech’s motor pricing engine",
+      "problem": "Pannonia Osiguranje-Tech a.d. already records detailed telematics events from about 9,400 black-box devices, but its pricing engine still treats drivers only by age band and vehicle category. The company’s PostgreSQL warehouse holds roughly 380 million trip-event rows over four years, including speed samples every two seconds plus hard-brake, sharp-cornering and night-driving flags, yet the pricing team of four has not been able to convert those raw events into a single per-driver risk score that can be mapped directly to a loading or discount. A first in-house points score did not materially move the loss ratio, and the company wants a better model that also accounts for trip length and inferred road type, with something operational before the next annual product filing in Q1 2026.",
+      "research_questions": [
+       "Can a per-driver risk score built from trip-event data, trip length and inferred road type predict future claim risk better than the current age-band/vehicle-category pricing rule, and by how much on holdout data?",
+       "Which aggregation of raw events into driver-level features gives the most stable and pricing-ready score: trip-level counts, exposure-normalised rates, or journey-context features derived from map matching and road-type inference?",
+       "How can the model output be calibrated into a single score that maps cleanly to a loading or discount and can be refreshed within the company’s quarterly rating process?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Clean and structure the telematics warehouse; define driver, trip and exposure variables; build road-type inference and baseline scoring models from the 380 million event rows; compare simple points scoring with statistically grounded alternatives.",
+        "result": "A validated feature set and benchmark model, plus a reproducible data pipeline for driver-level scoring."
+       },
+       {
+        "year": 2,
+        "work": "Develop and test stronger predictive models using trip length, route context and driving-event patterns; calibrate the score into pricing bands; run back-testing against claims and loss ratio outcomes on historical cohorts.",
+        "result": "A calibrated per-driver telematics score with measurable lift over the current rule set."
+       },
+       {
+        "year": 3,
+        "work": "Integrate the final score into the rating workflow; document governance, monitoring and refresh procedures; support a pilot release ahead of the Q1 2026 filing and evaluate production performance.",
+        "result": "A deployable scoring module and implementation package for the rating engine."
+       }
+      ],
+      "company_brings": "Pannonia Osiguranje-Tech a.d. brings access to the anonymised telematics warehouse, domain knowledge of its current rating engine and underwriting process, and operational support from its pricing and IT teams. The company can provide the raw trip-event history, the telematics hardware context, and a realistic deployment path into the existing quarterly pricing cycle.",
+      "faculty_brings": "The Faculty of Technical Sciences, University of Novi Sad, brings Željko Mamužić’s expertise in vehicle telematics data integration, GPS trajectory analytics, ETA and real-time prediction, and transport data standards. His group also brings a telematics laboratory, instrumented vehicles, GPU-based trajectory processing, and access to the shared HPC cluster for large-scale experimentation.",
+      "why_this_pair": "This pair is a strong fit because the company’s problem is exactly a data-to-model translation problem in vehicle telematics, and Željko Mamužić has deep expertise in telematics interoperability, GPS trajectory analytics and real-time transport modelling. Pannonia Osiguranje-Tech already has the volume of data needed for a robust model, while the Faculty has the methods and infrastructure to turn that data into a deployable scoring system. They have also worked together before on a flood-risk mapping prototype, so there is an existing basis for collaboration.",
+      "first_step": "Next month, the two sides should run a one-day scoping workshop led by Mirela Bogdanović and Dragan Fekete for Pannonia Osiguranje-Tech, and by Željko Mamužić for the Faculty, to agree the data schema, define the training target, select the first 12 months of telematics history, and specify the score-to-pricing mapping for a pilot cohort.",
+      "claims": [
+       {
+        "text": "Željko Mamužić is a Senior Research Associate in the Department of Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad.",
+        "about": "researcher",
+        "evidence": [
+         "R0271"
+        ]
+       },
+       {
+        "text": "Željko Mamužić’s expertise includes vehicle telematics data integration and interoperability, GPS trajectory analytics and map matching, ETA estimation and real-time transit prediction, multisource sensor fusion and uncertainty-aware transport modeling, and cross-border freight telematics and federated data exchange.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03399",
+         "SYN-PUB-03400",
+         "SYN-PUB-03231",
+         "SYN-PUB-03404",
+         "SYN-PRJ-0034",
+         "SYN-PUB-03398",
+         "SYN-PUB-03403",
+         "SYN-PUB-03406",
+         "SYN-PUB-03401",
+         "SYN-PUB-03402",
+         "SYN-PUB-03405",
+         "SYN-PRJ-0035",
+         "SYN-PUB-03230"
+        ]
+       },
+       {
+        "text": "Pannonia Osiguranje-Tech a.d. is an insurtech company based in Subotica, founded in 2009, with 187 employees.",
+        "about": "company",
+        "evidence": [
+         "C013"
+        ]
+       },
+       {
+        "text": "Pannonia Osiguranje-Tech a.d. offers usage-based motor insurance with a telematics black-box device, smart-home property insurance, agricultural property insurance, group motor fleet policies for SME fleets up to 50 vehicles, and expat and short-stay property cover.",
+        "about": "company",
+        "evidence": [
+         "C013"
+        ]
+       },
+       {
+        "text": "Pannonia Osiguranje-Tech a.d. uses proprietary PanTrack G2 telematics hardware, a PostgreSQL data warehouse, a Python-based batch scoring pipeline, Guidewire PolicyCenter, OpenStreetMap and QGIS, a REST API to MeteoVoj d.o.o., Power BI dashboards, and Salesforce CRM.",
+        "about": "company",
+        "evidence": [
+         "C013"
+        ]
+       },
+       {
+        "text": "Pannonia Osiguranje-Tech a.d. has about 9,400 telematics devices and roughly 41,000 active policyholders.",
+        "about": "company",
+        "evidence": [
+         "C013"
+        ]
+       },
+       {
+        "text": "Pannonia Osiguranje-Tech a.d. stores roughly 380 million trip-event rows covering the last four years and wants a per-driver telematics risk score that can be mapped directly to a loading or discount.",
+        "about": "company",
+        "evidence": [
+         "C013-CH1"
+        ]
+       },
+       {
+        "text": "The company wants the score to account for trip length and inferred road type and to run in the rating engine before the next annual product filing in Q1 2026.",
+        "about": "company",
+        "evidence": [
+         "C013-CH1"
+        ]
+       },
+       {
+        "text": "Pannonia Osiguranje-Tech a.d. previously completed a small ERASMUS+ project with the Faculty of Technical Sciences in 2021 to prototype a flood-risk mapping tool for the Sava floodplain.",
+        "about": "company",
+        "evidence": [
+         "C013"
+        ]
+       },
+       {
+        "text": "Željko Mamužić completed undergraduate and master’s studies in Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad, and earned a PhD in 2013 on interoperability protocols for heterogeneous vehicle telematics systems.",
+        "about": "researcher",
+        "evidence": [
+         "R0271"
+        ]
+       },
+       {
+        "text": "Željko Mamužić joined the department as a Research Associate in 2014 and was promoted to Senior Research Associate in 2019.",
+        "about": "researcher",
+        "evidence": [
+         "R0271"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Željko Mamužić is a Senior Research Associate in the Department of Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad.",
+       "evidence": [
+        "R0271"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Željko Mamužić’s expertise includes vehicle telematics data integration and interoperability, GPS trajectory analytics and map matching, ETA estimation and real-time transit prediction, multisource sensor fusion and uncertainty-aware transport modeling, and cross-border freight telematics and federated data exchange.",
+       "evidence": [
+        "SYN-PUB-03399",
+        "SYN-PUB-03400",
+        "SYN-PUB-03231",
+        "SYN-PUB-03404",
+        "SYN-PRJ-0034",
+        "SYN-PUB-03398",
+        "SYN-PUB-03403",
+        "SYN-PUB-03406",
+        "SYN-PUB-03401",
+        "SYN-PUB-03402",
+        "SYN-PUB-03405",
+        "SYN-PRJ-0035",
+        "SYN-PUB-03230"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Pannonia Osiguranje-Tech a.d. is an insurtech company based in Subotica, founded in 2009, with 187 employees.",
+       "evidence": [
+        "C013"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Pannonia Osiguranje-Tech a.d. offers usage-based motor insurance with a telematics black-box device, smart-home property insurance, agricultural property insurance, group motor fleet policies for SME fleets up to 50 vehicles, and expat and short-stay property cover.",
+       "evidence": [
+        "C013"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Pannonia Osiguranje-Tech a.d. uses proprietary PanTrack G2 telematics hardware, a PostgreSQL data warehouse, a Python-based batch scoring pipeline, Guidewire PolicyCenter, OpenStreetMap and QGIS, a REST API to MeteoVoj d.o.o., Power BI dashboards, and Salesforce CRM.",
+       "evidence": [
+        "C013"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Pannonia Osiguranje-Tech a.d. has about 9,400 telematics devices and roughly 41,000 active policyholders.",
+       "evidence": [
+        "C013"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Pannonia Osiguranje-Tech a.d. stores roughly 380 million trip-event rows covering the last four years and wants a per-driver telematics risk score that can be mapped directly to a loading or discount.",
+       "evidence": [
+        "C013-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company wants the score to account for trip length and inferred road type and to run in the rating engine before the next annual product filing in Q1 2026.",
+       "evidence": [
+        "C013-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Pannonia Osiguranje-Tech a.d. previously completed a small ERASMUS+ project with the Faculty of Technical Sciences in 2021 to prototype a flood-risk mapping tool for the Sava floodplain.",
+       "evidence": [
+        "C013"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Željko Mamužić completed undergraduate and master’s studies in Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad, and earned a PhD in 2013 on interoperability protocols for heterogeneous vehicle telematics systems.",
+       "evidence": [
+        "R0271"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Željko Mamužić joined the department as a Research Associate in 2014 and was promoted to Senior Research Associate in 2019.",
+       "evidence": [
+        "R0271"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "A per-driver telematics risk score for Pannonia Osiguranje-Tech’s motor pricing engine",
+    "problem": "Pannonia Osiguranje-Tech a.d. already records detailed telematics events from about 9,400 black-box devices, but its pricing engine still treats drivers only by age band and vehicle category. The company’s PostgreSQL warehouse holds roughly 380 million trip-event rows over four years, including speed samples every two seconds plus hard-brake, sharp-cornering and night-driving flags, yet the pricing team of four has not been able to convert those raw events into a single per-driver risk score that can be mapped directly to a loading or discount. A first in-house points score did not materially move the loss ratio, and the company wants a better model that also accounts for trip length and inferred road type, with something operational before the next annual product filing in Q1 2026.",
+    "research_questions": [
+     "Can a per-driver risk score built from trip-event data, trip length and inferred road type predict future claim risk better than the current age-band/vehicle-category pricing rule, and by how much on holdout data?",
+     "Which aggregation of raw events into driver-level features gives the most stable and pricing-ready score: trip-level counts, exposure-normalised rates, or journey-context features derived from map matching and road-type inference?",
+     "How can the model output be calibrated into a single score that maps cleanly to a loading or discount and can be refreshed within the company’s quarterly rating process?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Clean and structure the telematics warehouse; define driver, trip and exposure variables; build road-type inference and baseline scoring models from the 380 million event rows; compare simple points scoring with statistically grounded alternatives.",
+      "result": "A validated feature set and benchmark model, plus a reproducible data pipeline for driver-level scoring."
+     },
+     {
+      "year": 2,
+      "work": "Develop and test stronger predictive models using trip length, route context and driving-event patterns; calibrate the score into pricing bands; run back-testing against claims and loss ratio outcomes on historical cohorts.",
+      "result": "A calibrated per-driver telematics score with measurable lift over the current rule set."
+     },
+     {
+      "year": 3,
+      "work": "Integrate the final score into the rating workflow; document governance, monitoring and refresh procedures; support a pilot release ahead of the Q1 2026 filing and evaluate production performance.",
+      "result": "A deployable scoring module and implementation package for the rating engine."
+     }
+    ],
+    "company_brings": "Pannonia Osiguranje-Tech a.d. brings access to the anonymised telematics warehouse, domain knowledge of its current rating engine and underwriting process, and operational support from its pricing and IT teams. The company can provide the raw trip-event history, the telematics hardware context, and a realistic deployment path into the existing quarterly pricing cycle.",
+    "faculty_brings": "The Faculty of Technical Sciences, University of Novi Sad, brings Željko Mamužić’s expertise in vehicle telematics data integration, GPS trajectory analytics, ETA and real-time prediction, and transport data standards. His group also brings a telematics laboratory, instrumented vehicles, GPU-based trajectory processing, and access to the shared HPC cluster for large-scale experimentation.",
+    "why_this_pair": "This pair is a strong fit because the company’s problem is exactly a data-to-model translation problem in vehicle telematics, and Željko Mamužić has deep expertise in telematics interoperability, GPS trajectory analytics and real-time transport modelling. Pannonia Osiguranje-Tech already has the volume of data needed for a robust model, while the Faculty has the methods and infrastructure to turn that data into a deployable scoring system. They have also worked together before on a flood-risk mapping prototype, so there is an existing basis for collaboration.",
+    "first_step": "Next month, the two sides should run a one-day scoping workshop led by Mirela Bogdanović and Dragan Fekete for Pannonia Osiguranje-Tech, and by Željko Mamužić for the Faculty, to agree the data schema, define the training target, select the first 12 months of telematics history, and specify the score-to-pricing mapping for a pilot cohort.",
+    "claims": [
+     {
+      "text": "Željko Mamužić is a Senior Research Associate in the Department of Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad.",
+      "about": "researcher",
+      "evidence": [
+       "R0271"
+      ]
+     },
+     {
+      "text": "Željko Mamužić’s expertise includes vehicle telematics data integration and interoperability, GPS trajectory analytics and map matching, ETA estimation and real-time transit prediction, multisource sensor fusion and uncertainty-aware transport modeling, and cross-border freight telematics and federated data exchange.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03399",
+       "SYN-PUB-03400",
+       "SYN-PUB-03231",
+       "SYN-PUB-03404",
+       "SYN-PRJ-0034",
+       "SYN-PUB-03398",
+       "SYN-PUB-03403",
+       "SYN-PUB-03406",
+       "SYN-PUB-03401",
+       "SYN-PUB-03402",
+       "SYN-PUB-03405",
+       "SYN-PRJ-0035",
+       "SYN-PUB-03230"
+      ]
+     },
+     {
+      "text": "Pannonia Osiguranje-Tech a.d. is an insurtech company based in Subotica, founded in 2009, with 187 employees.",
+      "about": "company",
+      "evidence": [
+       "C013"
+      ]
+     },
+     {
+      "text": "Pannonia Osiguranje-Tech a.d. offers usage-based motor insurance with a telematics black-box device, smart-home property insurance, agricultural property insurance, group motor fleet policies for SME fleets up to 50 vehicles, and expat and short-stay property cover.",
+      "about": "company",
+      "evidence": [
+       "C013"
+      ]
+     },
+     {
+      "text": "Pannonia Osiguranje-Tech a.d. uses proprietary PanTrack G2 telematics hardware, a PostgreSQL data warehouse, a Python-based batch scoring pipeline, Guidewire PolicyCenter, OpenStreetMap and QGIS, a REST API to MeteoVoj d.o.o., Power BI dashboards, and Salesforce CRM.",
+      "about": "company",
+      "evidence": [
+       "C013"
+      ]
+     },
+     {
+      "text": "Pannonia Osiguranje-Tech a.d. has about 9,400 telematics devices and roughly 41,000 active policyholders.",
+      "about": "company",
+      "evidence": [
+       "C013"
+      ]
+     },
+     {
+      "text": "Pannonia Osiguranje-Tech a.d. stores roughly 380 million trip-event rows covering the last four years and wants a per-driver telematics risk score that can be mapped directly to a loading or discount.",
+      "about": "company",
+      "evidence": [
+       "C013-CH1"
+      ]
+     },
+     {
+      "text": "The company wants the score to account for trip length and inferred road type and to run in the rating engine before the next annual product filing in Q1 2026.",
+      "about": "company",
+      "evidence": [
+       "C013-CH1"
+      ]
+     },
+     {
+      "text": "Pannonia Osiguranje-Tech a.d. previously completed a small ERASMUS+ project with the Faculty of Technical Sciences in 2021 to prototype a flood-risk mapping tool for the Sava floodplain.",
+      "about": "company",
+      "evidence": [
+       "C013"
+      ]
+     },
+     {
+      "text": "Željko Mamužić completed undergraduate and master’s studies in Traffic Engineering at the Faculty of Technical Sciences, University of Novi Sad, and earned a PhD in 2013 on interoperability protocols for heterogeneous vehicle telematics systems.",
+      "about": "researcher",
+      "evidence": [
+       "R0271"
+      ]
+     },
+     {
+      "text": "Željko Mamužić joined the department as a Research Associate in 2014 and was promoted to Senior Research Associate in 2019.",
+      "about": "researcher",
+      "evidence": [
+       "R0271"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "C013-CH1",
+    "companyId": "C013",
+    "researcherId": "R0271",
+    "retrievalScore": 55.711,
+    "matchedTerms": [
+     "telematics",
+     "model",
+     "events",
+     "time",
+     "group",
+     "vehicle",
+     "road",
+     "map",
+     "access",
+     "data",
+     "agreement",
+     "event"
+    ],
+    "score": 2.02,
+    "confidence": 0.96,
+    "screener": "Screener-3",
+    "key": "R0271xC013-CH1",
+    "selectedAt": 1885,
+    "profiler": "061c2757-f3ed-43b9-93a0-7d452302cb3c",
+    "analyst": "f6f95191-a4c9-4f88-a62c-89e97a04ff05",
+    "status": "done",
+    "writer": "3cf463bb-7581-4cba-9100-dda4488244a3"
+   }
+  },
+  {
+   "key": "R0641xC005-CH2",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Lossless, ECG-aware compression for KL-Patch data to cut cloud storage without changing the regulated workflow",
+      "problem": "Kardiolink a.d. in Novi Sad is generating roughly 2 TB of raw ECG data per month from KL-Patch devices, and its current lossless pipeline only achieves about 3:1 compression. That leaves the company spending about €7,400 per month on cloud storage today, with usage projected to rise to around 4,000 devices per month by Q2 next year. Because the current regulatory submission is built around lossless processing, Kardiolink needs a better lossless algorithm rather than a lossy redesign. The technical target is to exploit the quasi-periodic structure of ECG, baseline wander, and wearable-noise characteristics while preserving full signal fidelity for clinical reporting and regulatory continuity.",
+      "research_questions": [
+       "Can a new ECG-specific lossless compression pipeline reduce cloud-bound storage from 3:1 to at least 5:1 on KL-Patch 72 data, while remaining bit-exact on decompression and compatible with the existing clinical workflow?",
+       "Which preprocessing and prediction steps best exploit ECG structure across 30-minute segments from about 140,000 labelled examples: channel-wise differencing, adaptive baseline modelling, entropy coding, or segment-type switching?",
+       "Can the algorithm run within the existing KL-Patch firmware and upload workflow constraints, without increasing device-side power or memory use beyond the current embedded budget?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Collect and characterise the 140,000 30-minute ECG segments under NDA; build a baseline benchmark against the current 3:1 pipeline; design candidate lossless schemes tailored to three-channel 250 Hz ECG and evaluate compression ratio, CPU load, and memory footprint.",
+        "result": "A validated benchmark suite and a shortlist of ECG-aware lossless methods with quantified gains over the current pipeline."
+       },
+       {
+        "year": 2,
+        "work": "Develop and integrate the best-performing method into a prototype firmware and host-side decompression chain; test end-to-end on KL-Patch 72 data and compare storage, upload time, and reconstruction integrity against the existing workflow.",
+        "result": "A working prototype that is compatible with Kardiolink’s current data path and demonstrates a substantial storage reduction on real data."
+       },
+       {
+        "year": 3,
+        "work": "Harden the solution for regulatory and operational use: robustness testing across patient cohorts and noise conditions, documentation for technical-file update, and preparation of validation evidence for deployment at projected scale.",
+        "result": "A deployment-ready lossless compression module and the evidence package needed for internal adoption and regulatory review."
+       }
+      ],
+      "company_brings": "Kardiolink a.d. brings a real production problem, access to the KL-Patch 72 data stream, approximately 140,000 labelled 30-minute ECG segments under NDA, and the practical constraints of a regulated medtech workflow already tied to lossless compression. The company also brings firmware, cloud, and clinical teams that can test whether a new method actually fits the product.",
+      "faculty_brings": "Branislav Stojanović brings expertise in embedded systems, signal processing, data compression, and anomaly-preserving methods for resource-constrained devices. His group has prior work on embedded signal compression, anomaly-aware lossy and lossless coding, adaptive sampling, and low-power IoT sensing, plus laboratory equipment for algorithm prototyping and embedded validation.",
+      "why_this_pair": "This pair is well matched because the problem is not generic compression; it is ECG-specific, regulated, and constrained by firmware, storage cost, and clinical fidelity. Kardiolink has the exact data volume, device architecture, and regulatory context, while Branislav Stojanović has a research profile focused on compression algorithms for sensor streams and preserving diagnostic information under tight embedded constraints. That combination makes it realistic to build and validate an algorithm that is both scientifically novel and deployable.",
+      "first_step": "Next month, the two sides should agree the data-sharing protocol under NDA, define the benchmark split on the 140,000 segments, and run a two-week baseline study on the current compression chain so they can lock the target metrics before algorithm development starts.",
+      "claims": [
+       {
+        "text": "Branislav Stojanović is a Full Professor at the Faculty of Technical Sciences, Department of Computing and Control Engineering.",
+        "about": "researcher",
+        "evidence": [
+         "R0641"
+        ]
+       },
+       {
+        "text": "Branislav Stojanović’s fields include Embedded Systems and IoT, Signal Processing, Data Compression, and Computer Engineering.",
+        "about": "researcher",
+        "evidence": [
+         "R0641"
+        ]
+       },
+       {
+        "text": "Branislav Stojanović’s expertise includes embedded signal compression for resource-constrained sensor nodes.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-07294",
+         "SYN-PUB-07295",
+         "SYN-PUB-03183",
+         "SYN-PUB-07297",
+         "SYN-PUB-07298",
+         "SYN-PUB-00967",
+         "SYN-PUB-07301",
+         "SYN-PUB-04195",
+         "SYN-PRJ-0150",
+         "SYN-PAT-009"
+        ]
+       },
+       {
+        "text": "Branislav Stojanović’s expertise includes anomaly-preserving and fault-aware lossy compression.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-07297",
+         "SYN-PUB-07302",
+         "SYN-PUB-04195",
+         "SYN-PRJ-0150",
+         "SYN-PAT-009"
+        ]
+       },
+       {
+        "text": "Branislav Stojanović’s expertise includes adaptive sampling, edge processing, and low-power IoT sensing.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-07296",
+         "SYN-PUB-07299",
+         "SYN-PUB-07300",
+         "SYN-PRJ-0151"
+        ]
+       },
+       {
+        "text": "Branislav Stojanović’s expertise includes embedded implementations on microcontrollers and fixed-point DSP.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-07294",
+         "SYN-PUB-03183",
+         "SYN-PUB-07298",
+         "SYN-PUB-07301"
+        ]
+       },
+       {
+        "text": "Branislav Stojanović’s expertise includes industrial, structural health, and vibration monitoring applications.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-07295",
+         "SYN-PUB-07297",
+         "SYN-PUB-04195",
+         "SYN-PRJ-0150",
+         "SYN-PUB-00967"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. is a medtech and digital health company.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. has 112 employees.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. was founded in 2004.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. is based in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. designs and manufactures cardiac monitoring devices in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d.’s core product is the KL-Patch line, including the KL-Patch 72 single-use adhesive ECG monitoring patch.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. also offers KL-Patch 14, KardioPortal, KL-Reader, and custom OEM patch manufacturing.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. uses ADS1293 and ADS1298 analog front-end ICs, nRF52840 SoC, FreeRTOS on ARM Cortex-M4, modified SZ lossless ECG compression, AWS S3 and Glacier, IEC 62304-compliant toolchain, Altium Designer, Python, and MATLAB.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. has twelve people working across hardware, firmware, and algorithm development and a shared lab for electronics prototyping, signal acquisition testing, and EMC pre-compliance testing.",
+        "about": "company",
+        "evidence": [
+         "C005"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. deploys around 2,200 devices per month and projects around 4,000 devices per month by Q2 next year.",
+        "about": "company",
+        "evidence": [
+         "C005-CH2"
+        ]
+       },
+       {
+        "text": "Each KL-Patch 72 device generates roughly 900 MB of raw 16-bit ECG samples over its wear period at 250 Hz across three channels.",
+        "about": "company",
+        "evidence": [
+         "C005-CH2"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. generates roughly 2 TB of raw ECG signal per month from field devices.",
+        "about": "company",
+        "evidence": [
+         "C005-CH2"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d.’s current lossless compression gives about a 3:1 ratio and cloud storage costs have reached €7,400 per month.",
+        "about": "company",
+        "evidence": [
+         "C005-CH2"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. has a labelled dataset of about 140,000 30-minute segments available under NDA for algorithm development and benchmarking.",
+        "about": "company",
+        "evidence": [
+         "C005-CH2"
+        ]
+       },
+       {
+        "text": "Kardiolink a.d. needs a better lossless algorithm that understands ECG structure because its regulatory submission is built around lossless processing and changing to lossy would require a new clinical validation study and technical-file amendments.",
+        "about": "company",
+        "evidence": [
+         "C005-CH2"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Branislav Stojanović is a Full Professor at the Faculty of Technical Sciences, Department of Computing and Control Engineering.",
+       "evidence": [
+        "R0641"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Stojanović’s fields include Embedded Systems and IoT, Signal Processing, Data Compression, and Computer Engineering.",
+       "evidence": [
+        "R0641"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Stojanović’s expertise includes embedded signal compression for resource-constrained sensor nodes.",
+       "evidence": [
+        "SYN-PUB-07294",
+        "SYN-PUB-07295",
+        "SYN-PUB-03183",
+        "SYN-PUB-07297",
+        "SYN-PUB-07298",
+        "SYN-PUB-00967",
+        "SYN-PUB-07301",
+        "SYN-PUB-04195",
+        "SYN-PRJ-0150",
+        "SYN-PAT-009"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Stojanović’s expertise includes anomaly-preserving and fault-aware lossy compression.",
+       "evidence": [
+        "SYN-PUB-07297",
+        "SYN-PUB-07302",
+        "SYN-PUB-04195",
+        "SYN-PRJ-0150",
+        "SYN-PAT-009"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Stojanović’s expertise includes adaptive sampling, edge processing, and low-power IoT sensing.",
+       "evidence": [
+        "SYN-PUB-07296",
+        "SYN-PUB-07299",
+        "SYN-PUB-07300",
+        "SYN-PRJ-0151"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.98
+      },
+      {
+       "claim": "Branislav Stojanović’s expertise includes embedded implementations on microcontrollers and fixed-point DSP.",
+       "evidence": [
+        "SYN-PUB-07294",
+        "SYN-PUB-03183",
+        "SYN-PUB-07298",
+        "SYN-PUB-07301"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Stojanović’s expertise includes industrial, structural health, and vibration monitoring applications.",
+       "evidence": [
+        "SYN-PUB-07295",
+        "SYN-PUB-07297",
+        "SYN-PUB-04195",
+        "SYN-PRJ-0150",
+        "SYN-PUB-00967"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. is a medtech and digital health company.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. has 112 employees.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. was founded in 2004.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. is based in Novi Sad.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. designs and manufactures cardiac monitoring devices in Novi Sad.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d.’s core product is the KL-Patch line, including the KL-Patch 72 single-use adhesive ECG monitoring patch.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. also offers KL-Patch 14, KardioPortal, KL-Reader, and custom OEM patch manufacturing.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. uses ADS1293 and ADS1298 analog front-end ICs, nRF52840 SoC, FreeRTOS on ARM Cortex-M4, modified SZ lossless ECG compression, AWS S3 and Glacier, IEC 62304-compliant toolchain, Altium Designer, Python, and MATLAB.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. has twelve people working across hardware, firmware, and algorithm development and a shared lab for electronics prototyping, signal acquisition testing, and EMC pre-compliance testing.",
+       "evidence": [
+        "C005"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. deploys around 2,200 devices per month and projects around 4,000 devices per month by Q2 next year.",
+       "evidence": [
+        "C005-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Each KL-Patch 72 device generates roughly 900 MB of raw 16-bit ECG samples over its wear period at 250 Hz across three channels.",
+       "evidence": [
+        "C005-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. generates roughly 2 TB of raw ECG signal per month from field devices.",
+       "evidence": [
+        "C005-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d.’s current lossless compression gives about a 3:1 ratio and cloud storage costs have reached €7,400 per month.",
+       "evidence": [
+        "C005-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. has a labelled dataset of about 140,000 30-minute segments available under NDA for algorithm development and benchmarking.",
+       "evidence": [
+        "C005-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kardiolink a.d. needs a better lossless algorithm that understands ECG structure because its regulatory submission is built around lossless processing and changing to lossy would require a new clinical validation study and technical-file amendments.",
+       "evidence": [
+        "C005-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Lossless, ECG-aware compression for KL-Patch data to cut cloud storage without changing the regulated workflow",
+    "problem": "Kardiolink a.d. in Novi Sad is generating roughly 2 TB of raw ECG data per month from KL-Patch devices, and its current lossless pipeline only achieves about 3:1 compression. That leaves the company spending about €7,400 per month on cloud storage today, with usage projected to rise to around 4,000 devices per month by Q2 next year. Because the current regulatory submission is built around lossless processing, Kardiolink needs a better lossless algorithm rather than a lossy redesign. The technical target is to exploit the quasi-periodic structure of ECG, baseline wander, and wearable-noise characteristics while preserving full signal fidelity for clinical reporting and regulatory continuity.",
+    "research_questions": [
+     "Can a new ECG-specific lossless compression pipeline reduce cloud-bound storage from 3:1 to at least 5:1 on KL-Patch 72 data, while remaining bit-exact on decompression and compatible with the existing clinical workflow?",
+     "Which preprocessing and prediction steps best exploit ECG structure across 30-minute segments from about 140,000 labelled examples: channel-wise differencing, adaptive baseline modelling, entropy coding, or segment-type switching?",
+     "Can the algorithm run within the existing KL-Patch firmware and upload workflow constraints, without increasing device-side power or memory use beyond the current embedded budget?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Collect and characterise the 140,000 30-minute ECG segments under NDA; build a baseline benchmark against the current 3:1 pipeline; design candidate lossless schemes tailored to three-channel 250 Hz ECG and evaluate compression ratio, CPU load, and memory footprint.",
+      "result": "A validated benchmark suite and a shortlist of ECG-aware lossless methods with quantified gains over the current pipeline."
+     },
+     {
+      "year": 2,
+      "work": "Develop and integrate the best-performing method into a prototype firmware and host-side decompression chain; test end-to-end on KL-Patch 72 data and compare storage, upload time, and reconstruction integrity against the existing workflow.",
+      "result": "A working prototype that is compatible with Kardiolink’s current data path and demonstrates a substantial storage reduction on real data."
+     },
+     {
+      "year": 3,
+      "work": "Harden the solution for regulatory and operational use: robustness testing across patient cohorts and noise conditions, documentation for technical-file update, and preparation of validation evidence for deployment at projected scale.",
+      "result": "A deployment-ready lossless compression module and the evidence package needed for internal adoption and regulatory review."
+     }
+    ],
+    "company_brings": "Kardiolink a.d. brings a real production problem, access to the KL-Patch 72 data stream, approximately 140,000 labelled 30-minute ECG segments under NDA, and the practical constraints of a regulated medtech workflow already tied to lossless compression. The company also brings firmware, cloud, and clinical teams that can test whether a new method actually fits the product.",
+    "faculty_brings": "Branislav Stojanović brings expertise in embedded systems, signal processing, data compression, and anomaly-preserving methods for resource-constrained devices. His group has prior work on embedded signal compression, anomaly-aware lossy and lossless coding, adaptive sampling, and low-power IoT sensing, plus laboratory equipment for algorithm prototyping and embedded validation.",
+    "why_this_pair": "This pair is well matched because the problem is not generic compression; it is ECG-specific, regulated, and constrained by firmware, storage cost, and clinical fidelity. Kardiolink has the exact data volume, device architecture, and regulatory context, while Branislav Stojanović has a research profile focused on compression algorithms for sensor streams and preserving diagnostic information under tight embedded constraints. That combination makes it realistic to build and validate an algorithm that is both scientifically novel and deployable.",
+    "first_step": "Next month, the two sides should agree the data-sharing protocol under NDA, define the benchmark split on the 140,000 segments, and run a two-week baseline study on the current compression chain so they can lock the target metrics before algorithm development starts.",
+    "claims": [
+     {
+      "text": "Branislav Stojanović is a Full Professor at the Faculty of Technical Sciences, Department of Computing and Control Engineering.",
+      "about": "researcher",
+      "evidence": [
+       "R0641"
+      ]
+     },
+     {
+      "text": "Branislav Stojanović’s fields include Embedded Systems and IoT, Signal Processing, Data Compression, and Computer Engineering.",
+      "about": "researcher",
+      "evidence": [
+       "R0641"
+      ]
+     },
+     {
+      "text": "Branislav Stojanović’s expertise includes embedded signal compression for resource-constrained sensor nodes.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-07294",
+       "SYN-PUB-07295",
+       "SYN-PUB-03183",
+       "SYN-PUB-07297",
+       "SYN-PUB-07298",
+       "SYN-PUB-00967",
+       "SYN-PUB-07301",
+       "SYN-PUB-04195",
+       "SYN-PRJ-0150",
+       "SYN-PAT-009"
+      ]
+     },
+     {
+      "text": "Branislav Stojanović’s expertise includes anomaly-preserving and fault-aware lossy compression.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-07297",
+       "SYN-PUB-07302",
+       "SYN-PUB-04195",
+       "SYN-PRJ-0150",
+       "SYN-PAT-009"
+      ]
+     },
+     {
+      "text": "Branislav Stojanović’s expertise includes adaptive sampling, edge processing, and low-power IoT sensing.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-07296",
+       "SYN-PUB-07299",
+       "SYN-PUB-07300",
+       "SYN-PRJ-0151"
+      ]
+     },
+     {
+      "text": "Branislav Stojanović’s expertise includes embedded implementations on microcontrollers and fixed-point DSP.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-07294",
+       "SYN-PUB-03183",
+       "SYN-PUB-07298",
+       "SYN-PUB-07301"
+      ]
+     },
+     {
+      "text": "Branislav Stojanović’s expertise includes industrial, structural health, and vibration monitoring applications.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-07295",
+       "SYN-PUB-07297",
+       "SYN-PUB-04195",
+       "SYN-PRJ-0150",
+       "SYN-PUB-00967"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. is a medtech and digital health company.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. has 112 employees.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. was founded in 2004.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. is based in Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. designs and manufactures cardiac monitoring devices in Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d.’s core product is the KL-Patch line, including the KL-Patch 72 single-use adhesive ECG monitoring patch.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. also offers KL-Patch 14, KardioPortal, KL-Reader, and custom OEM patch manufacturing.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. uses ADS1293 and ADS1298 analog front-end ICs, nRF52840 SoC, FreeRTOS on ARM Cortex-M4, modified SZ lossless ECG compression, AWS S3 and Glacier, IEC 62304-compliant toolchain, Altium Designer, Python, and MATLAB.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. has twelve people working across hardware, firmware, and algorithm development and a shared lab for electronics prototyping, signal acquisition testing, and EMC pre-compliance testing.",
+      "about": "company",
+      "evidence": [
+       "C005"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. deploys around 2,200 devices per month and projects around 4,000 devices per month by Q2 next year.",
+      "about": "company",
+      "evidence": [
+       "C005-CH2"
+      ]
+     },
+     {
+      "text": "Each KL-Patch 72 device generates roughly 900 MB of raw 16-bit ECG samples over its wear period at 250 Hz across three channels.",
+      "about": "company",
+      "evidence": [
+       "C005-CH2"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. generates roughly 2 TB of raw ECG signal per month from field devices.",
+      "about": "company",
+      "evidence": [
+       "C005-CH2"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d.’s current lossless compression gives about a 3:1 ratio and cloud storage costs have reached €7,400 per month.",
+      "about": "company",
+      "evidence": [
+       "C005-CH2"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. has a labelled dataset of about 140,000 30-minute segments available under NDA for algorithm development and benchmarking.",
+      "about": "company",
+      "evidence": [
+       "C005-CH2"
+      ]
+     },
+     {
+      "text": "Kardiolink a.d. needs a better lossless algorithm that understands ECG structure because its regulatory submission is built around lossless processing and changing to lossy would require a new clinical validation study and technical-file amendments.",
+      "about": "company",
+      "evidence": [
+       "C005-CH2"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "C005-CH2",
+    "companyId": "C005",
+    "researcherId": "R0641",
+    "retrievalScore": 75.328,
+    "matchedTerms": [
+     "ecg",
+     "signal",
+     "devices",
+     "compression",
+     "device",
+     "wear",
+     "operating",
+     "lossy",
+     "study",
+     "technical",
+     "signals",
+     "wearable"
+    ],
+    "score": 2.28,
+    "confidence": 0.72,
+    "screener": "Screener-3",
+    "key": "R0641xC005-CH2",
+    "selectedAt": 1880,
+    "profiler": "886d2ef6-67b6-4e6d-bb31-f6ab538c82d9",
+    "analyst": "752ae7a8-4762-4093-930a-4de26a7def66",
+    "status": "done",
+    "writer": "17e76f40-f1a1-4c28-88b6-042e73f8f92c"
+   }
+  },
+  {
+   "key": "R0217xC021-CH1",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Prelazak FinPulsove rekoncilijacije sa satnog Spark batch procesa na near-real-time pipeline ispod 20 minuta",
+      "problem": "FinPuls Tehnologije d.o.o. danas zatvara dnevni obračun za klijente sa 50.000 porudžbina dnevno za 70–90 minuta, iako finansijski timovi tih klijenata moraju da imaju brojke zatvorene do 08:30. Postojeći Spark batch poslovi rade na satnom intervalu; optimizacija Spark konfiguracije i partitioning-a donela je samo oko 12 minuta poboljšanja. FinPuls već prima podatke od Stripe, Adyen, Klarne i lokalnih acquirera kroz Kafka ingest, ali Kafka se ne koristi za samu rekoncilijaciju. Potreban je hibridni arhitekturni pristup koji zadržava tačnost i audibilnost, a skraćuje end-to-end vreme na manje od 20 minuta bez gubitka konzistentnosti.",
+      "research_questions": [
+       "Može li se postojeći Spark batch pipeline preoblikovati u hibridni micro-batch/streaming dizajn koji za klijente sa 50.000 porudžbina dnevno smanjuje end-to-end vreme rekoncilijacije sa 70–90 minuta na manje od 20 minuta uz istu tačnost?",
+       "Koji model obrade stanja i idempotentnog spajanja transakcija između četiri ili više payment providera daje najbolji kompromis između brzine, konzistentnosti i audit trail-a u FinPulsovom sistemu?",
+       "Koliki praktični dobitak donosi pomeranje rekoncilijacionog dela sa satnog Spark batch-a na Kafka-driven obradu u odnosu na postojeću optimizaciju partitioning-a, mereno na realnim klijentskim tokovima i produkcijskim SLA uslovima?"
+      ],
+      "plan": [
+       {
+        "year": 1,
+        "work": "Mapiranje postojećeg toka podataka, definisanje metričkog modela za tačnost i kašnjenje, te izrada prototipa hibridnog pipeline-a nad Kafka ingest-om i postojećim Spark transformacijama. Andrea Malešević i Dragan Stanković vode tehnički dizajn i izbor modela obrade stanja.",
+        "result": "Validiran prototip koji na reprezentativnom klijentskom skupu pokazuje gde nastaje najveće kašnjenje i koje delove procesa vredi prebaciti na near-real-time obradu."
+       },
+       {
+        "year": 2,
+        "work": "Implementacija idempotentnog matching sloja, optimizacija stateful obrade i testiranje na jednom produkcijskom klijentu sa 50.000 dnevnih porudžbina. Uspostavljanje audit traga i mehanizama za rollback/replay.",
+        "result": "Pilot verzija koja zatvara dnevni obračun za manje od 20 minuta i zadržava audibilnost za interne i eksterne revizore."
+       },
+       {
+        "year": 3,
+        "work": "Stabilizacija rešenja, generalizacija za više provider formata, hardening za rad pod opterećenjem i dokumentovanje postupka migracije sa batch na hibridni model. Evaluacija troškova infrastrukture i operativnog rizika.",
+        "result": "Produkcijski spreman modul za rekoncijaciju koji se može primeniti na više klijenata i predstavlja FinPulsov standardni put zatvaranja dana pre jutarnjeg sastanka."
+       }
+      ],
+      "company_brings": "FinPuls obezbeđuje stvarni produkcijski problem, pristup postojećem Spark/Kafka/DBT stack-u, istorijske tokove podataka sa četiri ili više providera i jasne SLA ograničenja: 50.000 porudžbina dnevno, zatvaranje pre 08:30 i cilj ispod 20 minuta. Tim takođe obezbeđuje 1–2 inženjera tokom do tri meseca za implementaciju i integraciju rezultata u postojeći sistem.",
+      "faculty_brings": "Andrea Malešević donosi ekspertizu iz distribuiranih sistema i baza podataka, optimizacije upita u visokopropusnim sistemima, projektovanja skalabilnih struktura podataka i performansnog benchmarkinga. Prirodno-matematički fakultet obezbeđuje istraživačku metodologiju, laboratorijsko okruženje sa klasterom od 24 čvora, kao i iskustvo u analizi konsistentnosti i performansi na realnim distribuiranim sistemima.",
+      "why_this_pair": "Ovaj par je prirodan zato što FinPuls ima vrlo konkretan i merljiv problem migracije sa batch na hibridni model u sistemu gde brzina, konzistentnost i audit trail moraju da koegzistiraju, a Andrea Malešević upravo radi na optimizaciji upita, skalabilnim strukturama podataka i infrastrukturi javnih ključeva i distribuiranih sistema. FinPuls je dovoljno mali da brzo implementira rezultate, ali dovoljno operativno zreo da može da validira rešenje na stvarnim klijentima sa strogim rokovima. Andrea ima i ranije iskustvo procene arhitekture sistema za upravljanje sertifikatima, što pomaže pri radu sa strogošću konzistentnosti i produkcijskim migracijama.",
+      "first_step": "Tokom narednog meseca, Andrea Malešević, Milena Vuković i Dragan Stanković treba da održe radionicu od 2 sata na kojoj će mapirati postojeći end-to-end tok od prijema podataka do finalnog izveštaja, označiti tačke gde se gubi vreme, definisati metrike uspeha i izabrati jedan klijentov dataset za pilot sa ciljem da se prvo meri poboljšanje na procesu od 50.000 porudžbina dnevno.",
+      "claims": [
+       {
+        "text": "Andrea Malešević je docent na Prirodno-matematičkom fakultetu Univerziteta u Novom Sadu, na Departmanu za matematiku i informatiku.",
+        "about": "researcher",
+        "evidence": [
+         "R0217"
+        ]
+       },
+       {
+        "text": "Andrea Malešević radi u oblastima distribuiranih sistema i baza podataka, algoritama i struktura podataka, mrežne bezbednosti i PKI.",
+        "about": "researcher",
+        "evidence": [
+         "R0217"
+        ]
+       },
+       {
+        "text": "Andrea Malešević se bavi optimizacijom upita u visokopropusnim distribuiranim sistemima, skalabilnim strukturama podataka i efikasnim rešavanjem OCSP upita.",
+        "about": "researcher",
+        "evidence": [
+         "R0217",
+         "SYN-PRJ-0504",
+         "SYN-PUB-02768",
+         "SYN-PUB-01685",
+         "SYN-PUB-02770",
+         "SYN-PUB-02771",
+         "SYN-PUB-02772",
+         "SYN-PUB-02773"
+        ]
+       },
+       {
+        "text": "Andrea Malešević koristi klaster od 24 čvora u Laboratoriji za distribuirane sisteme PMF-a i testna okruženja zasnovana na Apache Cassandri i PostgreSQL-u.",
+        "about": "researcher",
+        "evidence": [
+         "R0217"
+        ]
+       },
+       {
+        "text": "Andrea Malešević je diplomirala matematiku 2012. godine i odbranila doktorsku disertaciju iz oblasti distribuiranih baza podataka 2019. godine na Prirodno-matematičkom fakultetu u Novom Sadu.",
+        "about": "researcher",
+        "evidence": [
+         "R0217"
+        ]
+       },
+       {
+        "text": "Andrea Malešević je od 2020. radila kao asistent s doktoratom, a od 2023. kao docent na Departmanu za matematiku i informatiku.",
+        "about": "researcher",
+        "evidence": [
+         "R0217"
+        ]
+       },
+       {
+        "text": "Andrea Malešević je imala šestomesečni konsultantski angažman 2020–2021. sa lokalnom firmom za razvoj softvera iz Novog Sada na proceni arhitekture sistema za upravljanje sertifikatima.",
+        "about": "researcher",
+        "evidence": [
+         "R0217"
+        ]
+       },
+       {
+        "text": "FinPuls Tehnologije d.o.o. je fintech kompanija za B2B payment infrastructure i reconciliation, sa 12 zaposlenih, osnovana 2021. godine, sa sedištem u Novom Sadu.",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       },
+       {
+        "text": "FinPuls Tehnologije d.o.o. ima proizvode za platformu za rekoncijaciju plaćanja u realnom vremenu, konektore za Stripe, Adyen, Klarna i lokalne acquire-re, izveštajni modul sa revizijskim tragom i beta widget za cash-flow trendove.",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       },
+       {
+        "text": "FinPuls Tehnologije d.o.o. servisira deset aktivnih klijenata, uglavnom e-commerce operatere iz Nemačke, Austrije i Srbije, koji procesiraju između 10.000 i 80.000 porudžbina dnevno.",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       },
+       {
+        "text": "FinPulsova tehnologija uključuje Python, Apache Spark, Apache Kafka, PostgreSQL, TimescaleDB, AWS, dbt, Terraform, REST i webhook integracije.",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       },
+       {
+        "text": "FinPuls može da odvoji jednog do dva inženjera za istraživačku saradnju u trajanju do tri meseca.",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       },
+       {
+        "text": "FinPulsov konkretan problem je da poslovni klijenti sa 50.000 porudžbina dnevno zatvaraju dnevni obračun za 70–90 minuta, dok finansijski timovi imaju rok do 08:30, a cilj je da proces traje manje od 20 minuta bez gubitka tačnosti.",
+        "about": "company",
+        "evidence": [
+         "C021-CH1"
+        ]
+       },
+       {
+        "text": "FinPuls već prima podatke od Stripe, Adyen, Klarne i lokalnih acquirera putem Kafka ingest-a, ali Kafka se ne koristi za samu rekoncijaciju.",
+        "about": "company",
+        "evidence": [
+         "C021-CH1"
+        ]
+       },
+       {
+        "text": "FinPuls je već pokušao da optimizuje Spark konfiguraciju i partitioning strategiju, ali je dobitak bio oko 12 minuta.",
+        "about": "company",
+        "evidence": [
+         "C021-CH1"
+        ]
+       },
+       {
+        "text": "FinPuls ima cilj da celokupan proces završi za manje od 20 minuta bez gubitka tačnosti.",
+        "about": "company",
+        "evidence": [
+         "C021-CH1"
+        ]
+       },
+       {
+        "text": "FinPulsovi osnivači su Milena Vuković (CEO), Dragan Stanković (CTO) i Jovana Ilić (CPO).",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       },
+       {
+        "text": "FinPuls je osnovan u okviru Naučno-tehnološkog parka Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "C021"
+        ]
+       }
+      ]
+     },
+     "checks": [
+      {
+       "claim": "Andrea Malešević je docent na Prirodno-matematičkom fakultetu Univerziteta u Novom Sadu, na Departmanu za matematiku i informatiku.",
+       "evidence": [
+        "R0217"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Andrea Malešević radi u oblastima distribuiranih sistema i baza podataka, algoritama i struktura podataka, mrežne bezbednosti i PKI.",
+       "evidence": [
+        "R0217"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Andrea Malešević se bavi optimizacijom upita u visokopropusnim distribuiranim sistemima, skalabilnim strukturama podataka i efikasnim rešavanjem OCSP upita.",
+       "evidence": [
+        "R0217",
+        "SYN-PRJ-0504",
+        "SYN-PUB-02768",
+        "SYN-PUB-01685",
+        "SYN-PUB-02770",
+        "SYN-PUB-02771",
+        "SYN-PUB-02772",
+        "SYN-PUB-02773"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Andrea Malešević koristi klaster od 24 čvora u Laboratoriji za distribuirane sisteme PMF-a i testna okruženja zasnovana na Apache Cassandri i PostgreSQL-u.",
+       "evidence": [
+        "R0217"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Andrea Malešević je diplomirala matematiku 2012. godine i odbranila doktorsku disertaciju iz oblasti distribuiranih baza podataka 2019. godine na Prirodno-matematičkom fakultetu u Novom Sadu.",
+       "evidence": [
+        "R0217"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Andrea Malešević je od 2020. radila kao asistent s doktoratom, a od 2023. kao docent na Departmanu za matematiku i informatiku.",
+       "evidence": [
+        "R0217"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Andrea Malešević je imala šestomesečni konsultantski angažman 2020–2021. sa lokalnom firmom za razvoj softvera iz Novog Sada na proceni arhitekture sistema za upravljanje sertifikatima.",
+       "evidence": [
+        "R0217"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls Tehnologije d.o.o. je fintech kompanija za B2B payment infrastructure i reconciliation, sa 12 zaposlenih, osnovana 2021. godine, sa sedištem u Novom Sadu.",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls Tehnologije d.o.o. ima proizvode za platformu za rekoncijaciju plaćanja u realnom vremenu, konektore za Stripe, Adyen, Klarna i lokalne acquire-re, izveštajni modul sa revizijskim tragom i beta widget za cash-flow trendove.",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls Tehnologije d.o.o. servisira deset aktivnih klijenata, uglavnom e-commerce operatere iz Nemačke, Austrije i Srbije, koji procesiraju između 10.000 i 80.000 porudžbina dnevno.",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPulsova tehnologija uključuje Python, Apache Spark, Apache Kafka, PostgreSQL, TimescaleDB, AWS, dbt, Terraform, REST i webhook integracije.",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls može da odvoji jednog do dva inženjera za istraživačku saradnju u trajanju do tri meseca.",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPulsov konkretan problem je da poslovni klijenti sa 50.000 porudžbina dnevno zatvaraju dnevni obračun za 70–90 minuta, dok finansijski timovi imaju rok do 08:30, a cilj je da proces traje manje od 20 minuta bez gubitka tačnosti.",
+       "evidence": [
+        "C021-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls već prima podatke od Stripe, Adyen, Klarne i lokalnih acquirera putem Kafka ingest-a, ali Kafka se ne koristi za samu rekoncijaciju.",
+       "evidence": [
+        "C021-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls je već pokušao da optimizuje Spark konfiguraciju i partitioning strategiju, ali je dobitak bio oko 12 minuta.",
+       "evidence": [
+        "C021-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls ima cilj da celokupan proces završi za manje od 20 minuta bez gubitka tačnosti.",
+       "evidence": [
+        "C021-CH1"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPulsovi osnivači su Milena Vuković (CEO), Dragan Stanković (CTO) i Jovana Ilić (CPO).",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "FinPuls je osnovan u okviru Naučno-tehnološkog parka Novi Sad.",
+       "evidence": [
+        "C021"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Prelazak FinPulsove rekoncilijacije sa satnog Spark batch procesa na near-real-time pipeline ispod 20 minuta",
+    "problem": "FinPuls Tehnologije d.o.o. danas zatvara dnevni obračun za klijente sa 50.000 porudžbina dnevno za 70–90 minuta, iako finansijski timovi tih klijenata moraju da imaju brojke zatvorene do 08:30. Postojeći Spark batch poslovi rade na satnom intervalu; optimizacija Spark konfiguracije i partitioning-a donela je samo oko 12 minuta poboljšanja. FinPuls već prima podatke od Stripe, Adyen, Klarne i lokalnih acquirera kroz Kafka ingest, ali Kafka se ne koristi za samu rekoncilijaciju. Potreban je hibridni arhitekturni pristup koji zadržava tačnost i audibilnost, a skraćuje end-to-end vreme na manje od 20 minuta bez gubitka konzistentnosti.",
+    "research_questions": [
+     "Može li se postojeći Spark batch pipeline preoblikovati u hibridni micro-batch/streaming dizajn koji za klijente sa 50.000 porudžbina dnevno smanjuje end-to-end vreme rekoncilijacije sa 70–90 minuta na manje od 20 minuta uz istu tačnost?",
+     "Koji model obrade stanja i idempotentnog spajanja transakcija između četiri ili više payment providera daje najbolji kompromis između brzine, konzistentnosti i audit trail-a u FinPulsovom sistemu?",
+     "Koliki praktični dobitak donosi pomeranje rekoncilijacionog dela sa satnog Spark batch-a na Kafka-driven obradu u odnosu na postojeću optimizaciju partitioning-a, mereno na realnim klijentskim tokovima i produkcijskim SLA uslovima?"
+    ],
+    "plan": [
+     {
+      "year": 1,
+      "work": "Mapiranje postojećeg toka podataka, definisanje metričkog modela za tačnost i kašnjenje, te izrada prototipa hibridnog pipeline-a nad Kafka ingest-om i postojećim Spark transformacijama. Andrea Malešević i Dragan Stanković vode tehnički dizajn i izbor modela obrade stanja.",
+      "result": "Validiran prototip koji na reprezentativnom klijentskom skupu pokazuje gde nastaje najveće kašnjenje i koje delove procesa vredi prebaciti na near-real-time obradu."
+     },
+     {
+      "year": 2,
+      "work": "Implementacija idempotentnog matching sloja, optimizacija stateful obrade i testiranje na jednom produkcijskom klijentu sa 50.000 dnevnih porudžbina. Uspostavljanje audit traga i mehanizama za rollback/replay.",
+      "result": "Pilot verzija koja zatvara dnevni obračun za manje od 20 minuta i zadržava audibilnost za interne i eksterne revizore."
+     },
+     {
+      "year": 3,
+      "work": "Stabilizacija rešenja, generalizacija za više provider formata, hardening za rad pod opterećenjem i dokumentovanje postupka migracije sa batch na hibridni model. Evaluacija troškova infrastrukture i operativnog rizika.",
+      "result": "Produkcijski spreman modul za rekoncijaciju koji se može primeniti na više klijenata i predstavlja FinPulsov standardni put zatvaranja dana pre jutarnjeg sastanka."
+     }
+    ],
+    "company_brings": "FinPuls obezbeđuje stvarni produkcijski problem, pristup postojećem Spark/Kafka/DBT stack-u, istorijske tokove podataka sa četiri ili više providera i jasne SLA ograničenja: 50.000 porudžbina dnevno, zatvaranje pre 08:30 i cilj ispod 20 minuta. Tim takođe obezbeđuje 1–2 inženjera tokom do tri meseca za implementaciju i integraciju rezultata u postojeći sistem.",
+    "faculty_brings": "Andrea Malešević donosi ekspertizu iz distribuiranih sistema i baza podataka, optimizacije upita u visokopropusnim sistemima, projektovanja skalabilnih struktura podataka i performansnog benchmarkinga. Prirodno-matematički fakultet obezbeđuje istraživačku metodologiju, laboratorijsko okruženje sa klasterom od 24 čvora, kao i iskustvo u analizi konsistentnosti i performansi na realnim distribuiranim sistemima.",
+    "why_this_pair": "Ovaj par je prirodan zato što FinPuls ima vrlo konkretan i merljiv problem migracije sa batch na hibridni model u sistemu gde brzina, konzistentnost i audit trail moraju da koegzistiraju, a Andrea Malešević upravo radi na optimizaciji upita, skalabilnim strukturama podataka i infrastrukturi javnih ključeva i distribuiranih sistema. FinPuls je dovoljno mali da brzo implementira rezultate, ali dovoljno operativno zreo da može da validira rešenje na stvarnim klijentima sa strogim rokovima. Andrea ima i ranije iskustvo procene arhitekture sistema za upravljanje sertifikatima, što pomaže pri radu sa strogošću konzistentnosti i produkcijskim migracijama.",
+    "first_step": "Tokom narednog meseca, Andrea Malešević, Milena Vuković i Dragan Stanković treba da održe radionicu od 2 sata na kojoj će mapirati postojeći end-to-end tok od prijema podataka do finalnog izveštaja, označiti tačke gde se gubi vreme, definisati metrike uspeha i izabrati jedan klijentov dataset za pilot sa ciljem da se prvo meri poboljšanje na procesu od 50.000 porudžbina dnevno.",
+    "claims": [
+     {
+      "text": "Andrea Malešević je docent na Prirodno-matematičkom fakultetu Univerziteta u Novom Sadu, na Departmanu za matematiku i informatiku.",
+      "about": "researcher",
+      "evidence": [
+       "R0217"
+      ]
+     },
+     {
+      "text": "Andrea Malešević radi u oblastima distribuiranih sistema i baza podataka, algoritama i struktura podataka, mrežne bezbednosti i PKI.",
+      "about": "researcher",
+      "evidence": [
+       "R0217"
+      ]
+     },
+     {
+      "text": "Andrea Malešević se bavi optimizacijom upita u visokopropusnim distribuiranim sistemima, skalabilnim strukturama podataka i efikasnim rešavanjem OCSP upita.",
+      "about": "researcher",
+      "evidence": [
+       "R0217",
+       "SYN-PRJ-0504",
+       "SYN-PUB-02768",
+       "SYN-PUB-01685",
+       "SYN-PUB-02770",
+       "SYN-PUB-02771",
+       "SYN-PUB-02772",
+       "SYN-PUB-02773"
+      ]
+     },
+     {
+      "text": "Andrea Malešević koristi klaster od 24 čvora u Laboratoriji za distribuirane sisteme PMF-a i testna okruženja zasnovana na Apache Cassandri i PostgreSQL-u.",
+      "about": "researcher",
+      "evidence": [
+       "R0217"
+      ]
+     },
+     {
+      "text": "Andrea Malešević je diplomirala matematiku 2012. godine i odbranila doktorsku disertaciju iz oblasti distribuiranih baza podataka 2019. godine na Prirodno-matematičkom fakultetu u Novom Sadu.",
+      "about": "researcher",
+      "evidence": [
+       "R0217"
+      ]
+     },
+     {
+      "text": "Andrea Malešević je od 2020. radila kao asistent s doktoratom, a od 2023. kao docent na Departmanu za matematiku i informatiku.",
+      "about": "researcher",
+      "evidence": [
+       "R0217"
+      ]
+     },
+     {
+      "text": "Andrea Malešević je imala šestomesečni konsultantski angažman 2020–2021. sa lokalnom firmom za razvoj softvera iz Novog Sada na proceni arhitekture sistema za upravljanje sertifikatima.",
+      "about": "researcher",
+      "evidence": [
+       "R0217"
+      ]
+     },
+     {
+      "text": "FinPuls Tehnologije d.o.o. je fintech kompanija za B2B payment infrastructure i reconciliation, sa 12 zaposlenih, osnovana 2021. godine, sa sedištem u Novom Sadu.",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     },
+     {
+      "text": "FinPuls Tehnologije d.o.o. ima proizvode za platformu za rekoncijaciju plaćanja u realnom vremenu, konektore za Stripe, Adyen, Klarna i lokalne acquire-re, izveštajni modul sa revizijskim tragom i beta widget za cash-flow trendove.",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     },
+     {
+      "text": "FinPuls Tehnologije d.o.o. servisira deset aktivnih klijenata, uglavnom e-commerce operatere iz Nemačke, Austrije i Srbije, koji procesiraju između 10.000 i 80.000 porudžbina dnevno.",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     },
+     {
+      "text": "FinPulsova tehnologija uključuje Python, Apache Spark, Apache Kafka, PostgreSQL, TimescaleDB, AWS, dbt, Terraform, REST i webhook integracije.",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     },
+     {
+      "text": "FinPuls može da odvoji jednog do dva inženjera za istraživačku saradnju u trajanju do tri meseca.",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     },
+     {
+      "text": "FinPulsov konkretan problem je da poslovni klijenti sa 50.000 porudžbina dnevno zatvaraju dnevni obračun za 70–90 minuta, dok finansijski timovi imaju rok do 08:30, a cilj je da proces traje manje od 20 minuta bez gubitka tačnosti.",
+      "about": "company",
+      "evidence": [
+       "C021-CH1"
+      ]
+     },
+     {
+      "text": "FinPuls već prima podatke od Stripe, Adyen, Klarne i lokalnih acquirera putem Kafka ingest-a, ali Kafka se ne koristi za samu rekoncijaciju.",
+      "about": "company",
+      "evidence": [
+       "C021-CH1"
+      ]
+     },
+     {
+      "text": "FinPuls je već pokušao da optimizuje Spark konfiguraciju i partitioning strategiju, ali je dobitak bio oko 12 minuta.",
+      "about": "company",
+      "evidence": [
+       "C021-CH1"
+      ]
+     },
+     {
+      "text": "FinPuls ima cilj da celokupan proces završi za manje od 20 minuta bez gubitka tačnosti.",
+      "about": "company",
+      "evidence": [
+       "C021-CH1"
+      ]
+     },
+     {
+      "text": "FinPulsovi osnivači su Milena Vuković (CEO), Dragan Stanković (CTO) i Jovana Ilić (CPO).",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     },
+     {
+      "text": "FinPuls je osnovan u okviru Naučno-tehnološkog parka Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "C021"
+      ]
+     }
+    ]
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "C021-CH1",
+    "companyId": "C021",
+    "researcherId": "R0217",
+    "retrievalScore": 46.113,
+    "matchedTerms": [
+     "kao",
+     "ima",
+     "podataka",
+     "imaju",
+     "nije",
+     "pristupa",
+     "enje",
+     "bez",
+     "apache"
+    ],
+    "score": 2.03,
+    "confidence": 0.95,
+    "screener": "Screener-3",
+    "key": "R0217xC021-CH1",
+    "selectedAt": 1886,
+    "profiler": "886d2ef6-67b6-4e6d-bb31-f6ab538c82d9",
+    "analyst": "752ae7a8-4762-4093-930a-4de26a7def66",
+    "status": "done",
+    "writer": "17e76f40-f1a1-4c28-88b6-042e73f8f92c"
+   }
+  }
+ ],
+ "jobs": [
+  {
+   "jobId": "screen-Screener-1-1",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 2,
+   "status": "done",
+   "finishedAt": 2788
+  },
+  {
+   "jobId": "screen-Screener-2-1",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 29,
+   "status": "done",
+   "finishedAt": 2352
+  },
+  {
+   "jobId": "screen-Screener-3-1",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 31,
+   "status": "done",
+   "finishedAt": 1887
+  },
+  {
+   "jobId": "profile-R0641",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 1883,
+   "status": "done",
+   "finishedAt": 8599
+  },
+  {
+   "jobId": "profile-C005-CH2",
+   "agent": "Analyst-1",
+   "kind": "profile_company",
+   "startedAt": 1885,
+   "status": "done",
+   "finishedAt": 11471
+  },
+  {
+   "jobId": "profile-R0271",
+   "agent": "Profiler-2",
+   "kind": "profile_researcher",
+   "startedAt": 1885,
+   "status": "done",
+   "finishedAt": 9335
+  },
+  {
+   "jobId": "profile-C013-CH1",
+   "agent": "Analyst-2",
+   "kind": "profile_company",
+   "startedAt": 1886,
+   "status": "done",
+   "finishedAt": 9775
+  },
+  {
+   "jobId": "profile-R0217",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 1886,
+   "status": "done",
+   "finishedAt": 9357
+  },
+  {
+   "jobId": "profile-C021-CH1",
+   "agent": "Analyst-1",
+   "kind": "profile_company",
+   "startedAt": 1886,
+   "status": "done",
+   "finishedAt": 9199
+  },
+  {
+   "jobId": "screen-Screener-3-2",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 1887,
+   "status": "done",
+   "finishedAt": 2465
+  },
+  {
+   "jobId": "screen-Screener-2-2",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 2352,
+   "status": "done",
+   "finishedAt": 2782
+  },
+  {
+   "jobId": "screen-Screener-3-3",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 2465,
+   "status": "done",
+   "finishedAt": 2946
+  },
+  {
+   "jobId": "screen-Screener-2-3",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 2782,
+   "status": "done",
+   "finishedAt": 3254
+  },
+  {
+   "jobId": "screen-Screener-1-2",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 2788,
+   "status": "done",
+   "finishedAt": 3472
+  },
+  {
+   "jobId": "screen-Screener-3-4",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 2946,
+   "status": "done",
+   "finishedAt": 3872
+  },
+  {
+   "jobId": "screen-Screener-2-4",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 3254,
+   "status": "done",
+   "finishedAt": 3570
+  },
+  {
+   "jobId": "screen-Screener-1-3",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 3472,
+   "status": "done",
+   "finishedAt": 4047
+  },
+  {
+   "jobId": "screen-Screener-1-4",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 4047,
+   "status": "done",
+   "finishedAt": 4349
+  },
+  {
+   "jobId": "write-R0217xC021-CH1",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 9357,
+   "status": "done",
+   "finishedAt": 23209
+  },
+  {
+   "jobId": "write-R0271xC013-CH1",
+   "agent": "Writer-2",
+   "kind": "write",
+   "startedAt": 9775,
+   "status": "done",
+   "finishedAt": 19903
+  },
+  {
+   "jobId": "write-R0641xC005-CH2",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 11471,
+   "status": "done",
+   "finishedAt": 22700
+  }
+ ]
+}

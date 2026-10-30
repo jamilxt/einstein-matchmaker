@@ -122,6 +122,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-02-live](docs/evidence/run-02-live) | on | 9 | 21/21 | 4 of 7 | 10 | 0 | 36.6 s | $0.092 |
 | [run-03-live](docs/evidence/run-03-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 19.1 s | $0.054 |
 | [run-04-live-nocritic](docs/evidence/run-04-live-nocritic) | off | 9 | 21/21 | (would have: 1) | (flagged: 2) | 2 | 20.1 s | $0.056 |
+| [run-05-live](docs/evidence/run-05-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 23.6 s | $0.062 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 
@@ -131,6 +132,8 @@ What changed between runs, and why we kept every one:
 - **Run 2:** exposed a bug of ours. Evidence records were cut at 900 characters before the Critic read them, so some true facts looked unsupported. Fixed.
 - **Run 3:** with complete evidence and clearer citation rules, all three proposals passed on the first draft. The Critic still checked all 35 claims.
 - **Run 4 (Critic off):** both flagged claims turned out to be false alarms by the checker (claims that cite both sides of the pair, such as "supervised by X and Y"). Fixed afterwards.
+
+- **Run 5 (final, all fixes):** all three proposals passed on the first draft, with 51 claims checked. The Matchmaker happened to pick the same three pairs as run 4, so runs 4 and 5 compare the same pairs with the Critic off and on. The fit scores (2.0 to 2.3) are lower than run 3's (2.9 to 3.0): the Matchmaker takes the first pair over its 2.0 threshold instead of waiting for all 180 scores. That is the price of early selection. The FinPuls proposal is in Serbian because FinPuls wrote its challenge in Serbian, and the Writer answered in the company's language.
 
 The natural runs are too small to measure the Critic, which is why we tested it directly.
 
