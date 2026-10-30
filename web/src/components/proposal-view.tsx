@@ -16,7 +16,7 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 					</Badge>
 					<span className="text-xs text-muted-foreground tabular">
 						{p.drafts} draft{p.drafts === 1 ? "" : "s"}
-						{p.score !== null && <> · fit {p.score.toFixed(2)} / 3</>}
+						{p.score !== null && <> · fit {p.score.toFixed(2)} / 3 ({fitWord(p.score)})</>}
 					</span>
 				</div>
 				<h3 className="text-xl font-semibold leading-snug tracking-tight text-balance md:text-2xl">{p.title}</h3>
@@ -115,4 +115,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 			<div className="max-w-[72ch] text-foreground/90">{children}</div>
 		</section>
 	)
+}
+
+function fitWord(score: number): string {
+	return score >= 2.5 ? "strong" : score >= 1.5 ? "moderate" : "partial"
 }

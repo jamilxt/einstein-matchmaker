@@ -44,7 +44,7 @@ async function main() {
 		st.ds.challenges.set("Q001-CH1", { challenge: company.challenges[0], company: company as any })
 	}
 	const index = new ResearcherIndex(st.ds)
-	const all = st.reverse ? shortlistPairs(st.ds, index, 9).filter((p) => p.challengeId === "Q001-CH1") : shortlistPairs(st.ds, index, TUNING.perChallenge)
+	const all = st.reverse ? shortlistPairs(st.ds, index, 15).filter((p) => p.challengeId === "Q001-CH1") : shortlistPairs(st.ds, index, TUNING.perChallenge)
 	// Deterministic, spread-out sample of challenges so a run is cheap but not cherry-picked.
 	const chIds = [...new Set(all.map((p) => p.challengeId))]
 	const step = Math.max(1, Math.floor(chIds.length / TUNING.challenges))

@@ -21,7 +21,7 @@ export type Snapshot = {
 	candidates: Candidate[]
 	ended: boolean
 	spend?: number
-	phase: "screening" | "profiling" | "writing" | "done" | "idle"
+	phase: "starting" | "screening" | "profiling" | "writing" | "done" | "idle"
 }
 
 export function candidatesFrom(trace: TraceEvent[]): Candidate[] {
@@ -110,6 +110,6 @@ export function derive(trace: TraceEvent[], now: number, fallbackCandidates: Can
 	}
 
 	const runningKinds = new Set(jobs.filter((b) => b.running).map((b) => b.tone))
-	const phase: Snapshot["phase"] = ended ? "done" : runningKinds.has("write") ? "writing" : runningKinds.has("profile") ? "profiling" : runningKinds.has("screen") ? "screening" : trace.length ? "writing" : "idle"
+	const phase: Snapshot["phase"] = ended ? "done" : runningKinds.has("write") ? "writing" : runningKinds.has("profile") ? "profiling" : runningKinds.has("screen") ? "screening" : trace.length ? "starting" : "idle"
 	return { now, bars: all, inFlight, peak, screened, pairs, selectedOrder, critic, finishedKeys, candidates, ended, spend, phase }
 }

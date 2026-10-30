@@ -191,7 +191,7 @@ const challengeEvidenceTool: Tool = {
 			.slice(0, 3)
 			.map(({ p }) => `[${p.kind}, ${p.date}] ${p.title}: ${p.text.slice(0, 700)}`)
 		return [
-			`${company.id} ${company.name}: ${company.sector}, ${company.employees} employees, ${company.location}`,
+			/^Q\d+$/.test(company.id) ? (ds.evidenceText(company.id) ?? company.name) : `${company.id} ${company.name}: ${company.sector}, ${company.employees} employees, ${company.location}`,
 			`About: ${company.about}`,
 			`Tech: ${company.tech.join("; ")}`,
 			`Challenge ${challenge.id}: ${challenge.text}`,
@@ -401,6 +401,7 @@ export function buildTeam(tracePath: string): Team {
 					"the concrete problem, 2 to 3 measurable research questions, a 3-year plan, what each side brings, why this pair and not another, and a first step they could take next month. " +
 					"Be as specific as the example: use the company's own numbers and constraints from the challenge text (volumes, error rates, deadlines, tools) in the problem and research questions. " +
 					"Add who supervises on each side and an 'agreed up front' line on publication and IP. " +
+					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). " +
 					"List every factual statement about either party in `claims` with the dataset id of the record that states it: " +
 					"company size, location, sector, products or capacity -> the company id (e.g. C003); the company's problem -> the challenge id (e.g. C003-CH2); " +
 					"a researcher's title, department or role -> the researcher id (e.g. R0995); a researcher's expertise -> their publication, project or patent ids. Use only ids given to you. " +
