@@ -240,7 +240,10 @@ createServer(async (req, res) => {
 	const url = new URL(req.url ?? "/", "http://local")
 	const p = url.pathname
 	try {
-		if (req.method === "GET" && p === "/api/config") return json(res, 200, { liveSearch: LIVE_SEARCH, activeSearch, perSearchBudgetUsd: PER_SEARCH_BUDGET, ...ledger(), totalBudgetUsd: TOTAL_SEARCH_BUDGET })
+		// nginx marks requests from the public internet; live search stays VPN-only (replays are free).
+		const isPublic = req.headers["x-einstein-access"] !== "vpn" && process.env.TRUST_ACCESS_HEADER === "1"
+		const liveSearch = LIVE_SEARCH && !isPublic
+		if (req.method === "GET" && p === "/api/config") return json(res, 200, { liveSearch, publicReplayOnly: isPublic, activeSearch, perSearchBudgetUsd: PER_SEARCH_BUDGET, ...ledger(), totalBudgetUsd: TOTAL_SEARCH_BUDGET })
 		if (req.method === "GET" && p === "/api/runs") return json(res, 200, listRuns())
 		if (req.method === "GET" && p === "/api/evals") return json(res, 200, evals())
 		if (req.method === "GET" && p.startsWith("/api/runs/")) {
@@ -250,7 +253,10 @@ createServer(async (req, res) => {
 			return json(res, 200, buildView(ds, id, dir))
 		}
 		if (req.method === "GET" && p.startsWith("/api/record/")) return record(decodeURIComponent(p.slice("/api/record/".length)), url.searchParams.get("run"), res)
-		if (req.method === "POST" && p === "/api/search") return startSearch(req, res)
+		if (req.method === "POST" && p === "/api/search") {
+			if (!liveSearch) return json(res, 403, { error: "Live search is off on the public demo. Recorded runs replay at no cost; run it yourself with ALLOW_LIVE_SEARCH=1 (see README)." })
+			return startSearch(req, res)
+		}
 		if (req.method === "GET" && p.startsWith("/api/stream/")) return stream(p.slice("/api/stream/".length), res)
 		if (req.method === "GET") return serveStatic(p, res)
 		json(res, 405, { error: "method not allowed" })

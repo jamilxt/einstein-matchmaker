@@ -8,6 +8,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 - **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a 3-year plan, supervisors, a first step, and a claim-by-claim source list.
 - **A Critic that we measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)).
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
+- **Live demo: [einstein.jamilxt.com](https://einstein.jamilxt.com).** The public site replays every recorded run at no cost. Live search is off there; run it yourself with your own key (below).
 - **A web UI** that streams a live search or replays any recorded run: agent lanes, a match map, the Critic's decisions, and proposals with clickable sources.
 
 ## Screenshots

@@ -162,7 +162,7 @@ export function SearchPage({ config, runs, go }: { config: ServerConfig | null; 
 						<Alert>
 							<AlertTitle>Live search is switched off here</AlertTitle>
 							<AlertDescription>
-								Each search calls paid AI models, so this public copy only replays recorded runs.
+								Each search calls paid AI models, so this public copy only replays recorded runs. To run your own, clone the repo and add an OpenAI key (see the README).
 								{recordedSearch && (
 									<Button variant="link" className="h-auto p-0" onClick={() => go(`#/runs/${recordedSearch.id}`)}>
 										Watch a recorded search

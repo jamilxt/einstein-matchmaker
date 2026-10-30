@@ -9,6 +9,7 @@ Environment=HOST=127.0.0.1
 Environment=PORT=8791
 # Live searches call paid OpenAI APIs. Hard caps per search and in total (ledger: runs/search-ledger.json).
 Environment=ALLOW_LIVE_SEARCH=1
+Environment=TRUST_ACCESS_HEADER=1
 Environment=SEARCH_BUDGET_USD=0.10
 Environment=SEARCH_TOTAL_BUDGET_USD=0.30
 ExecStart=/usr/bin/env node --import tsx src/server.ts
