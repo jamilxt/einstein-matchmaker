@@ -101,6 +101,28 @@ export function writeReport(runDir: string, live: boolean) {
 	}
 
 	writeFileSync(join(runDir, "proposals.md"), md.join("\n"))
+	const name = (id: string) => s.ds.researchers.get(id)
+	writeFileSync(
+		join(runDir, "run.json"),
+		JSON.stringify(
+			{
+				summary,
+				reverse: s.reverse,
+				candidates: s.candidates.map((c) => {
+					const r = name(c.researcherId)!
+					const sc = s.screened.get(`${c.researcherId}x${c.challengeId}`)
+					return { key: `${c.researcherId}x${c.challengeId}`, researcherId: c.researcherId, researcher: r.name, title: r.title, department: r.department, challengeId: c.challengeId, companyId: c.companyId, company: s.ds.companies.get(c.companyId)?.name, score: sc?.score ?? null }
+				}),
+				selected: [...s.selected.values()],
+				researcherProfiles: Object.fromEntries(s.researcherProfiles),
+				companyProfiles: Object.fromEntries(s.companyProfiles),
+				proposals: recs.map((r) => ({ ...r, pair: s.selected.get(r.key) })),
+				jobs: jobs,
+			},
+			null,
+			1,
+		),
+	)
 	writeFileSync(join(runDir, "timeline.txt"), timeline.join("\n") + "\n")
 
 	console.log("\n" + timeline.join("\n"))

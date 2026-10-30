@@ -231,7 +231,9 @@ export function buildTeam(tracePath: string): Team {
 			handler(["run.start"], false, (_p, self) => {
 				const groups = new Map<string, any[]>()
 				for (const c of state().candidates) groups.set(c.challengeId, [...(groups.get(c.challengeId) ?? []), c])
-				const all = [...groups.values()]
+				let all = [...groups.values()]
+				// One challenge (reverse search): split its candidates so every Screener has work.
+				if (all.length < screeners.length) all = all.flatMap((g) => Array.from({ length: Math.ceil(g.length / 3) }, (_, i) => g.slice(i * 3, i * 3 + 3)))
 				const shards = screeners.map(() => [] as any[][])
 				all.forEach((g, i) => shards[i % screeners.length].push(g))
 				shards.forEach((groupsForScreener, i) => emit("screen.batch", self.id, { assignee: screeners[i].getId(), groups: groupsForScreener }))
@@ -312,7 +314,7 @@ export function buildTeam(tracePath: string): Team {
 	const select = (self: { id: string }, c: Screened) => {
 		const s = state()
 		if (s.selected.size >= TUNING.proposals) return
-		if (s.usedResearchers.has(c.researcherId) || s.usedCompanies.has(c.companyId)) return
+		if (s.usedResearchers.has(c.researcherId) || (!s.reverse && s.usedCompanies.has(c.companyId))) return
 		s.usedResearchers.add(c.researcherId)
 		s.usedCompanies.add(c.companyId)
 		const key = pairKey(c)

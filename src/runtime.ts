@@ -71,6 +71,7 @@ export class MatchState extends RuntimeState {
 	spend = { usd: 0, byModel: {} as Record<string, { input: number; output: number; usd: number; calls: number }> }
 	halted = false
 	finished = false
+	reverse = false
 
 	now(): number {
 		return Date.now() - this.t0
