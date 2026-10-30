@@ -34,16 +34,16 @@ export function checkCitations(
 				issues.push({ claimIndex: i, kind: "unknown_id", id, message: `${id} does not exist in the dataset` })
 				continue
 			}
-			const ok =
-				claim.about === "researcher"
-					? id === pair.researcherId || ds.belongsToResearcher(id, pair.researcherId)
-					: ds.belongsToCompany(id, pair.companyId)
-			if (!ok) {
+			// A claim may legitimately draw on both sides of the pair (e.g. "supervised by X and Y").
+			// What must never happen is citing a record that belongs to neither party.
+			const ownedByPair =
+				id === pair.researcherId || ds.belongsToResearcher(id, pair.researcherId) || ds.belongsToCompany(id, pair.companyId)
+			if (!ownedByPair) {
 				issues.push({
 					claimIndex: i,
 					kind: "wrong_owner",
 					id,
-					message: `${id} is not linked to ${claim.about === "researcher" ? pair.researcherId : pair.companyId}`,
+					message: `${id} belongs to neither ${pair.researcherId} nor ${pair.companyId}`,
 				})
 			}
 		}
