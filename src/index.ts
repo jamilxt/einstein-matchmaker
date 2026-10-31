@@ -111,7 +111,7 @@ async function main() {
 	join(analyst)
 	join(reviewer)
 
-	// two producers fire the SAME event concurrently-style (same tick) —
+	// two producers fire the SAME event concurrently-style (same tick),
 	// the minimal concurrency proof pattern; timestamps prove parallel reaction.
 	sendEvent({ producerId: "scout", type: "signal.detected", occurredAt: new Date(), payload: { what: "spike in errors" } }, scout.getId())
 	sendEvent({ producerId: "analyst", type: "signal.detected", occurredAt: new Date(), payload: { what: "latency drift" } }, analyst.getId())

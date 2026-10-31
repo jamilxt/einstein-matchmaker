@@ -7,3 +7,4 @@ runs/search-ledger.json
 
 # offline (stub) evaluation output is not evidence
 /docs/evidence/*-stub/
+docs/demo/
