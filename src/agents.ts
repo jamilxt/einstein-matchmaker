@@ -425,7 +425,7 @@ export function buildTeam(tracePath: string): Team {
 					"Be as specific as the example: use the company's own numbers and constraints from the challenge text. " +
 					"Commit only the company staff, time, equipment and data the records offer, with their own limits (for example 'up to three months'); if the plan needs more, put it in `to_agree`. " +
 					"You are told today's date: never plan work for a date that has passed; if the company names a deadline that is already past, say so and plan for the next cycle. " +
-					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). Name only people who appear in the records given to you. " +
+					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). Name only people who appear in the records given to you. Do not attach a job title or role to a named person unless the same record explicitly links that person to that role; keep separately stated company roles separate from named people. " +
 					LANG_RULE +
 					"List every factual statement about either party in `claims` with the dataset id of the record that states it: " +
 					"company size, location, sector, products or capacity -> the company id (e.g. C003); the company's problem -> the challenge id (e.g. C003-CH2); " +

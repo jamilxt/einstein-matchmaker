@@ -4,7 +4,7 @@ A team of concurrent [Mozaik](https://github.com/jigjoy-ai/mozaik) agents that f
 
 Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to 31 October 2026), on the official synthetic dataset.
 
-- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work (six runs).
+- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work (seven runs).
 - **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with a pass or fail target per period, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
 - **A Critic that I measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)). Offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past, consent, budget and timeouts.
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
@@ -59,7 +59,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 | --- | --- |
 | Architecture diagram | [Architecture](#architecture) below, and the **How it works** page in the web UI |
 | Trace of one full run showing where the Critic stepped in | [`docs/evidence/run-01-live/trace.jsonl`](docs/evidence/run-01-live/trace.jsonl), walked through in [The Critic in a real run](#the-critic-in-a-real-run) |
-| At least three proposals for three different pairs | [`docs/evidence/run-06-live/proposals.md`](docs/evidence/run-06-live/proposals.md). There are 18 batch proposals across six live runs, plus 9 from Reverse Search |
+| At least three proposals for three different pairs | [`docs/evidence/run-07-live/proposals.md`](docs/evidence/run-07-live/proposals.md). There are 21 batch proposals across seven live runs, plus 9 from Reverse Search |
 | How it plugs into the EINSTEIN network and EINSTEIN Stars | [EINSTEIN network and EINSTEIN Stars](#einstein-network-and-einstein-stars) |
 | What it does, architecture, how to run | This README |
 
@@ -159,16 +159,16 @@ flowchart LR
 
 Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". I send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
 
-**Cost.** Across the 9 live runs in `docs/evidence`, metered from API-reported token usage:
+**Cost.** Across all 10 live runs in `docs/evidence`, metered from API-reported token usage:
 
 | | Decisions API | gpt-5.4-mini |
 | --- | --- | --- |
-| Requests | 121 | 136 |
-| Input tokens read | 706,235 | 196,962 |
-| Cost | **$0.071 (13% of spend)** | $0.489 (87% of spend) |
+| Requests | 137 | 152 |
+| Input tokens read | 807,759 | 221,933 |
+| Cost | **$0.081 (13% of spend)** | $0.556 (87% of spend) |
 
 - The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for an eighth of the bill. Its input costs $0.10 per million tokens and its output is free.
-- The same 706,235 input tokens sent to `gpt-5.4-mini` would cost $0.53 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
+- The same 807,759 input tokens sent to `gpt-5.4-mini` would cost $0.61 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
 - The full hard Critic evaluation, 125 claims with their evidence, cost $0.007.
 
 **Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 5.3 s in the live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
@@ -193,6 +193,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-04-live-nocritic](docs/evidence/run-04-live-nocritic) | off | 9 | 21/21 | (would have: 1) | (flagged: 2) | 2 | 20.1 s | $0.056 |
 | [run-05-live](docs/evidence/run-05-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 23.6 s | $0.062 |
 | [run-06-live](docs/evidence/run-06-live) | on, with text check | 9 | 21/21 | 0 of 3 | 0 | 0 | 27.6 s | $0.065 |
+| [run-07-live](docs/evidence/run-07-live) | on, with text check | 9 | 21/21 | 1 of 3 | 1 | 0 | 27.3 s | $0.077 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
@@ -206,7 +207,9 @@ What changed between runs, and why I kept every one:
 
 - **Run 5 (final, all fixes):** all three proposals passed on the first draft, with 51 claims checked. The Matchmaker happened to pick the same three pairs as run 4, so runs 4 and 5 compare the same pairs with the Critic off and on. The fit scores (2.0 to 2.3) are lower than run 3's (2.9 to 3.0): the Matchmaker takes the first pair over its 2.0 threshold instead of waiting for all 180 scores. That is the price of early selection. The FinPuls proposal came out in Serbian because FinPuls wrote its challenge in Serbian. Proposals are now written in English by default; pass `--lang=sr` for Serbian (Latin script).
 
-- **Run 6 (after the judge-style review):** the first run with the text check, consent-based forms and the new proposal sections. All three researchers had consented to industrial PhD supervision, so all three are PhDs (the consent change shows in the guard tests, not in this run). The Critic checked 60 claims and the text of all three drafts and approved each on the first draft. Fit scores were 2.86 to 3.00. The Matchmaker picked the same three pairs as run 1, so runs 1 and 6 show the same pairs before and after all the fixes: run 1 needed 8 drafts and 17 blocked claims to reach three approvals, run 6 needed 3 drafts and none. Reading them as a company CTO, one factual slip remains that no check caught: the AutomVoj first step calls Dragan Ilić the chief engineer, while the record names him as the senior PLC programmer. The text check confirms that a named person is in the pair's records, not what role the text gives them.
+- **Run 6 (after the judge-style review):** the first run with the text check, consent-based forms and the new proposal sections. All three researchers had consented to industrial PhD supervision, so all three are PhDs (the consent change shows in the guard tests, not in this run). The Critic checked 60 claims and the text of all three drafts and approved each on the first draft. Fit scores were 2.86 to 3.00. The Matchmaker picked the same three pairs as run 1, so runs 1 and 6 show the same pairs before and after all the fixes: run 1 needed 8 drafts and 17 blocked claims to reach three approvals, run 6 needed 3 drafts and none. A CTO-style review caught one attribution error that the checks missed: the original run 6 draft joined Dragan Ilić to the chief-engineer title, although the records call him a senior PLC programmer. I corrected the displayed proposal and run summary to keep the chief engineer unnamed and identify Ilić only by the role the record states. The raw trace remains unchanged as historical evidence. I also tightened the Writer instruction; this role-attribution case still lacks a general deterministic role check.
+
+- **Run 7 (after correcting the role-attribution slip):** reran the same batch with the tightened Writer instruction. It selected the same three pairs as run 6; the AutomVoj first step names Dragan Ilić without assigning him the chief-engineer title. The Critic checked 60 claims and all three proposal texts. One claim was sent back and corrected; all three proposals were approved, with 0 text problems and 0 unsupported claims in the finals. The run took 27.3 s and cost $0.07701.
 
 The natural runs are too small to measure the Critic, which is why I tested it directly.
 
@@ -269,9 +272,9 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 
 ### Proposals
 
-From run 6, the first run with every fix ([full text](docs/evidence/run-06-live/proposals.md)). Each one has research questions, a plan with a pass or fail target per year, what is new beyond the researcher's own papers, what data exists and what must be collected, what is still to agree, and every claim with its sources (60 claims, all supported).
+From run 7 ([full text](docs/evidence/run-07-live/proposals.md)). Each one has research questions, a plan with a pass or fail target per year, what is new beyond the researcher's own papers, what data exists and what must be collected, what is still to agree, and every claim with its sources (60 claims checked; one claim blocked and corrected, all final claims supported).
 
-1. **Incremental PLC software product-line reuse for AutomVoj's 38 TIA Portal codebases.** Veljko Pantelić (R0995, Computing and Control Engineering) with AutomVoj (C003). A safety patch takes three engineers two full weeks across 38 diverged ladder-logic codebases; the Year 3 target is to halve that. *Weak spots a CTO would raise:* the faculty lab runs Wago and Beckhoff controllers while AutomVoj runs Siemens S7, and the first step gives Dragan Ilić the wrong role.
+1. **Incremental PLC software product-line reuse for AutomVoj's 38 TIA Portal codebases.** Veljko Pantelić (R0995, Computing and Control Engineering) with AutomVoj (C003). The proposal targets reuse across the company's 38 diverged ladder-logic codebases, with a Year 3 target of applying the workflow to at least 15. The corrected first step names Dragan Ilić without assigning him the chief-engineer role. *Weak spot a CTO would raise:* the faculty lab runs Wago and Beckhoff controllers while AutomVoj runs Siemens S7.
 2. **Contract-driven test generation for multi-supplier CAN integration at DriveLogic Vojvodina.** Martina Lačoková (R0919, Computing and Control Engineering) with DriveLogic (C018). Three of the last four delivered projects came back with CAN faults despite 87 to 89% branch coverage. Her consent is limited to PhD candidates from embedded systems companies, which DriveLogic is, and the plan keeps to the company's €40,000 first-phase cap and its offer of one senior engineer at about 40%. *Weak spot:* her own project SYN-PRJ-0434 already covers contract-based CAN integration testing, so the new contribution (targeting DriveLogic's observed boundary faults) is narrower than the title suggests.
 3. **Plain-language explanations for automated SME credit decisions at Kredo Fintech.** Branislav Žarković (R0801, Finance and Banking) with Kredo Fintech (C010). Borrower-facing explanations in Serbian and Macedonian, generated and stored at decision time. *Weak spot:* the company wants production use within about six months, and the plan does not say what ships at month six inside a three-year PhD.
 
