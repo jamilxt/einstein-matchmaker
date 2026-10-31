@@ -66,7 +66,10 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 				<ol className="space-y-3">
 					{p.plan.map((y, i) => (
 						<li key={i} className="grid gap-1 sm:grid-cols-[7rem_1fr]">
-							<span className="text-xs font-medium text-primary tabular sm:pt-0.5">{y.period ?? `Year ${y.year}`}</span>
+							<span className="text-xs font-medium text-primary tabular sm:pt-0.5">
+								{y.period ?? `Year ${y.year}`}
+								{y.owner && <span className="mt-0.5 block font-normal text-muted-foreground">{y.owner}</span>}
+							</span>
 							<div>
 								<p>{y.work}</p>
 								<p className="mt-1 text-muted-foreground">
@@ -107,9 +110,28 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 					<p>{p.data_status}</p>
 				</Section>
 			)}
+			{p.baseline && (
+				<Section title="Baseline: what the targets are compared against">
+					<p>{p.baseline}</p>
+				</Section>
+			)}
 			{p.company_deadline && (
 				<Section title="The company's time limit">
 					<p>{p.company_deadline}</p>
+				</Section>
+			)}
+			{p.risks && p.risks.length > 0 && (
+				<Section title="Risks and when to stop">
+					<ul className="space-y-2">
+						{p.risks.map((r, i) => (
+							<li key={i}>
+								<p>{r.risk}</p>
+								<p className="mt-0.5 text-muted-foreground">
+									<span className="font-medium text-foreground">Stop if:</span> {r.stop_if}
+								</p>
+							</li>
+						))}
+					</ul>
 				</Section>
 			)}
 			<Section title="First step">

@@ -123,7 +123,7 @@ const proposalSchema = {
 	schema: {
 		type: "object",
 		additionalProperties: false,
-		required: ["title", "problem", "research_questions", "plan", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status", "company_deadline", "first_step", "to_agree", "claims"],
+		required: ["title", "problem", "research_questions", "plan", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status", "baseline", "company_deadline", "risks", "first_step", "to_agree", "claims"],
 		properties: {
 			title: { type: "string" },
 			problem: { type: "string" },
@@ -133,8 +133,8 @@ const proposalSchema = {
 				items: {
 					type: "object",
 					additionalProperties: false,
-					required: ["period", "work", "result", "pass_if"],
-					properties: { period: { type: "string" }, work: { type: "string" }, result: { type: "string" }, pass_if: { type: "string" } },
+					required: ["period", "owner", "work", "result", "pass_if"],
+					properties: { period: { type: "string" }, owner: { type: "string" }, work: { type: "string" }, result: { type: "string" }, pass_if: { type: "string" } },
 				},
 			},
 			company_brings: { type: "string" },
@@ -142,7 +142,12 @@ const proposalSchema = {
 			why_this_pair: { type: "string" },
 			novelty: { type: "string" },
 			data_status: { type: "string" },
+			baseline: { type: "string" },
 			company_deadline: { type: "string" },
+			risks: {
+				type: "array",
+				items: { type: "object", additionalProperties: false, required: ["risk", "stop_if"], properties: { risk: { type: "string" }, stop_if: { type: "string" } } },
+			},
 			first_step: { type: "string" },
 			to_agree: { type: "string" },
 			claims: {
@@ -422,7 +427,10 @@ export function buildTeam(tracePath: string): Team {
 					"`novelty`: what is new beyond the researcher's own published work listed to you (name the closest of their papers and cite it in claims); " +
 					"`data_status`: what data the records say exists today, and what would have to be collected (never call data available unless a record says so); " +
 					"a first step for next month; `to_agree`: what still has to be agreed (funding and who pays for the candidate or staff time, IP in new results and background IP, publication delay, data access). " +
-					"Every plan period has a `pass_if`: a measurable pass or fail target. Targets are proposals, not facts. " +
+					"Every plan period has a `pass_if`: a measurable pass or fail target, and an `owner`: who delivers it (a role such as 'company engineer', 'doctoral candidate' or 'faculty supervisor', or a person named in the records). Targets are proposals, not facts. " +
+					"Plan periods follow on with no gap in time (for example 'Months 1 to 6', 'Months 7 to 12', 'Year 2', 'Year 3'). " +
+					"`baseline`: what the pass targets are compared against: how the company does this today and its own figures, from the records (cite them in claims); if the records give no figure, say so and make measuring it part of the first period. " +
+					"`risks`: 2 to 4 real risks of this collaboration (data access, transfer to the company's platform, staff time, results not beating the baseline), each with `stop_if`: a concrete point at which the work should stop or be rescoped. " +
 					"Be as specific as the example: use the company's own numbers and constraints from the challenge text. " +
 					"Commit only the company staff, time, equipment and data the records offer, with their own limits (for example 'up to three months'); if the plan needs more, put it in `to_agree`. " +
 					"You are told today's date: never plan work for a date that has passed; if the company names a deadline that is already past, say so and plan for the next cycle. " +

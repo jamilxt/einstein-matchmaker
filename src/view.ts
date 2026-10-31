@@ -25,7 +25,9 @@ export type ViewProposal = {
 	consent: string | null
 	/** false when the Critic rejected the last draft: nothing is shown but the outcome and its reasons. */
 	released: boolean
-	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string }[]
+	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string; owner?: string }[]
+	baseline: string
+	risks: { risk: string; stop_if: string }[]
 	novelty: string
 	data_status: string
 	company_deadline: string
@@ -170,6 +172,8 @@ export function buildView(ds: Dataset, id: string, dir: string): RunView {
 			consent: p.consent ?? null,
 			released: p.released ?? true,
 			novelty: p.novelty ?? "",
+			baseline: p.baseline ?? "",
+			risks: p.risks ?? [],
 			data_status: p.data_status ?? "",
 			company_deadline: p.company_deadline ?? "",
 			to_agree: p.to_agree ?? "",

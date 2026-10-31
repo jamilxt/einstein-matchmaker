@@ -101,12 +101,14 @@ export function writeReport(runDir: string, live: boolean) {
 			continue
 		}
 		md.push(`### The problem`, p.problem, "", `### Research questions`, ...p.research_questions.map((q, i) => `${i + 1}. ${q}`), "")
-		md.push(`### Plan`, "| Period | Work | Result | Pass if |", "| --- | --- | --- | --- |", ...p.plan.map((x) => `| ${x.period ?? `Year ${x.year}`} | ${x.work} | ${x.result} | ${x.pass_if ?? ""} |`), "")
+		md.push(`### Plan`, ...(p.plan.some((x) => x.owner) ? ["| Period | Owner | Work | Result | Pass if |", "| --- | --- | --- | --- | --- |", ...p.plan.map((x) => `| ${x.period ?? `Year ${x.year}`} | ${x.owner ?? ""} | ${x.work} | ${x.result} | ${x.pass_if ?? ""} |`)] : ["| Period | Work | Result | Pass if |", "| --- | --- | --- | --- |", ...p.plan.map((x) => `| ${x.period ?? `Year ${x.year}`} | ${x.work} | ${x.result} | ${x.pass_if ?? ""} |`)]), "")
 		md.push(`### What each side brings`, `- **Company:** ${p.company_brings}`, `- **Faculty:** ${p.faculty_brings}`, "")
 		md.push(`### Why this pair`, p.why_this_pair, "")
 		if (p.novelty) md.push(`### What is new`, p.novelty, "")
 		if (p.data_status) md.push(`### Data: what exists and what to collect`, p.data_status, "")
+		if (p.baseline) md.push(`### Baseline: what the targets are compared against`, p.baseline, "")
 		if (p.company_deadline) md.push(`### The company's time limit`, p.company_deadline, "")
+		if (p.risks?.length) md.push(`### Risks and when to stop`, ...p.risks.map((r) => `- **${r.risk}** Stop if: ${r.stop_if}`), "")
 		md.push(`### First step`, p.first_step, "")
 		if (p.to_agree) md.push(`### Still to agree`, p.to_agree, "")
 		md.push(`### Claims and sources`)

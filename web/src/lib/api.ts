@@ -21,7 +21,9 @@ export type ViewProposal = {
 	consent: string | null
 	/** false when the Critic rejected the last draft: nothing is shown but the outcome and its reasons. */
 	released: boolean
-	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string }[]
+	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string; owner?: string }[]
+	baseline?: string
+	risks?: { risk: string; stop_if: string }[]
 	novelty: string
 	data_status: string
 	company_deadline?: string

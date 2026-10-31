@@ -111,7 +111,12 @@ function stubProposal(key: string, revising: boolean) {
 		// Planted prose mistake on some first drafts: a figure that no claim backs.
 		problem: challenge.text + (planted ? " The company has 999999 employees." : ""),
 		research_questions: [`[stub] Can ${r.fields[0]} methods address: ${challenge.text.slice(0, 80)}?`],
-		plan: periods.map((period) => ({ period, work: `[stub] ${period} work`, result: `[stub] ${period} result`, pass_if: `[stub] ${period} target met` })),
+		plan: periods.map((period) => ({ period, work: `[stub] ${period} work`, result: `[stub] ${period} result`, pass_if: `[stub] ${period} target met`, owner: "[stub] company engineer" })),
+		baseline: "[stub] how the company does this today, from the records",
+		risks: [
+			{ risk: "[stub] the company data is not available in time", stop_if: "[stub] no data access by the end of month 2" },
+			{ risk: "[stub] the method does not beat the baseline", stop_if: "[stub] below the baseline at the first review" },
+		],
 		company_brings: `[stub] ${company.rd_capacity}`,
 		faculty_brings: `[stub] ${r.department}`,
 		why_this_pair: `[stub] ${rp.summary.replace(/\d+/g, "")}`,

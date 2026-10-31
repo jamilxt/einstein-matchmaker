@@ -10,13 +10,14 @@
 import type { Dataset } from "../data/dataset"
 import type { Claim } from "./citations"
 import { checkDeadline, checkPhdLength } from "./deadline"
+import { checkPlanShape } from "./plan-shape"
 
 export type ProseIssue = { field: string; excerpt: string; why: string }
 
 /** Sections that state facts about the two parties. Figures here must be backed by a claim. */
-export const FACT_FIELDS = ["title", "problem", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status"] as const
+export const FACT_FIELDS = ["title", "problem", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status", "baseline"] as const
 /** Sections that look forward (targets, plans). They may propose numbers; dates in them must lie in the future. */
-export const PLAN_FIELDS = ["research_questions", "plan", "first_step", "to_agree"] as const
+export const PLAN_FIELDS = ["research_questions", "plan", "first_step", "to_agree", "risks"] as const
 
 type ProseProposal = Record<string, unknown> & { claims?: Claim[] }
 
@@ -125,6 +126,8 @@ export function checkProse(
 	issues.push(...checkDeadline(ds, pair, proposal))
 	// 6. An industrial PhD still runs about three years when an early delivery is added.
 	issues.push(...checkPhdLength(proposal))
+	// 7. A baseline, risks with stop points, an owner per period, and no gap between periods (verify/plan-shape.ts).
+	issues.push(...checkPlanShape(proposal))
 
 	// One issue per distinct reason is enough for the Writer to act on.
 	const seen = new Set<string>()

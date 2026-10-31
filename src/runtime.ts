@@ -32,7 +32,10 @@ export type Proposal = {
 	problem: string
 	research_questions: string[]
 	/** `period` + `pass_if` since the consent-aware Writer; older runs have `year` only. */
-	plan: { period?: string; year?: number; work: string; result: string; pass_if?: string }[]
+	plan: { period?: string; year?: number; work: string; result: string; pass_if?: string; owner?: string }[]
+	/** Since run 13: what the targets are compared against, and risks with stop points. */
+	baseline?: string
+	risks?: { risk: string; stop_if: string }[]
 	company_brings: string
 	faculty_brings: string
 	why_this_pair: string

@@ -8,6 +8,7 @@ import { consentedForms, proposalForm } from "./data/consent"
 import { MatchState } from "./runtime"
 import { checkProse } from "./verify/coverage"
 import { checkDeadline, checkPhdLength, statedDeadline } from "./verify/deadline"
+import { checkPlanShape, periodSpan } from "./verify/plan-shape"
 import { checkClaims, titleOnly } from "./verify/critic-check"
 import { decider } from "./decisions"
 import { TUNING } from "./config"
@@ -149,6 +150,30 @@ console.log("== Ids in the text, and exact-title claims (verify/coverage.ts, ver
 	expect("an exact-title claim is matched without the model", titleOnly(ds, "SYN-PUB-08747 is about explaining credit decisions to supervisors: a case study.", ["SYN-PUB-08747"]))
 	expect("a title claim with anything more still goes to the model", !titleOnly(ds, "SYN-PUB-08747 is about explaining credit decisions to supervisors: a case study, which cut defaults by 40%.", ["SYN-PUB-08747"]))
 	expect("a title cited to a different record is not matched", !titleOnly(ds, "SYN-PUB-08749 is about explaining credit decisions to supervisors: a case study.", ["SYN-PUB-08749"]))
+}
+
+console.log("== Plan shape (verify/plan-shape.ts)")
+{
+	// Run 12's approved Kredo plan went from "Months 1 to 6" straight to "Year 2". Given the new fields, the gap is caught.
+	const run12 = JSON.parse(readFileSync("docs/evidence/run-12-live/run.json", "utf-8"))
+	const kredo = run12.proposals.find((p: any) => p.key.endsWith("C010-CH2")).final
+	const good = {
+		baseline: "Today the company explains declines with a fixed reason-code list; the records give no figure for appeal rates, so Months 1 to 6 measure it first.",
+		risks: [
+			{ risk: "Supervisor rules on explanations change during the project.", stop_if: "the regulator's guidance makes the planned format unusable, rescope at the next review" },
+			{ risk: "Explanations do not help loan officers decide faster.", stop_if: "the month 6 user test shows no gain over today's reason codes" },
+		],
+	}
+	const withOwners = (plan: any[]) => plan.map((x: any) => ({ ...x, owner: "doctoral candidate with the company data lead" }))
+	const gap = checkPlanShape({ ...kredo, ...good, plan: withOwners(kredo.plan) })
+	expect("run 12 Kredo's jump from month 6 to Year 2 is caught", gap.some((i) => i.why.includes("jumps from month 6")), kredo.plan.map((x: any) => x.period).join(", "))
+	const filled = withOwners([kredo.plan[0], { period: "Months 7 to 12", work: "w", result: "r", pass_if: "p" }, ...kredo.plan.slice(1)])
+	expect("the same plan with months 7 to 12 added passes", checkPlanShape({ ...kredo, ...good, plan: filled }).length === 0, checkPlanShape({ ...kredo, ...good, plan: filled }).map((i) => i.why).join("; ").slice(0, 120))
+	const bare = checkPlanShape({ ...kredo, baseline: "", risks: [{ risk: "Something could go wrong here.", stop_if: "" }], plan: kredo.plan })
+	const fields = new Set(bare.map((i) => i.field))
+	expect("no baseline, one risk without a stop point, and periods without owners are all caught", fields.has("baseline") && fields.has("risks") && bare.some((i) => i.why.includes("no owner")), [...fields].join(","))
+	expect("proposals recorded before these fields existed are left alone", checkPlanShape(kredo).length === 0)
+	expect("period labels are read as month spans", JSON.stringify([periodSpan("Months 7 to 12"), periodSpan("Year 2"), periodSpan("Weeks 1 to 8"), periodSpan("Years 2 to 3")]) === "[[7,12],[13,24],[1,2],[13,36]]")
 }
 
 console.log("== Critic request size (verify/critic-check.ts)")
