@@ -1,4 +1,4 @@
-// 3alet 2026 scaffold — smoke check on @mozaik-ai/core 4.0.6
+// NTP Novi Sad Hackathon scaffold: smoke check on @mozaik-ai/core 4.0.6
 // Two agents + one human on a shared runtime. Pattern mirrors the verified
 // OpsRoom v4 reference: defineRuntime() in module scope, RuntimeState subclass,
 // situation handlers per participant, sendEvent fan-out, runLoop signature.
