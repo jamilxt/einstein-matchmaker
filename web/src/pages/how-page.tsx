@@ -243,6 +243,12 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					<RunNote go={go} id="run-07-live" title="Run 7, role-attribution retest" stat="60 claims checked, 1 sent back">
 						All three proposals passed after one claim was revised. The new Writer instruction avoids the earlier title mix-up in this run, but this is not a general role-verification guarantee.
 					</RunNote>
+					<RunNote go={go} id="run-10-live" title="Run 10, my Critic bug" stat="2 of 3 rejected, all 16 blocks wrong">
+						One request carried all 57 claims of a draft, and the model scored true facts near 0 ("212 employees": 0.04). The Critic now sends at most 8 claims per request.
+					</RunNote>
+					<RunNote go={go} id="run-12-live" title="Run 12, final" stat="3 of 3 approved, 0 claims blocked">
+						The deadline check sent Kredo's first draft back for planning in years against a six-month need; the second draft opened with Months 1 to 6. It checks timing, not what the period delivers.
+					</RunNote>
 				</div>
 			</section>
 		</div>

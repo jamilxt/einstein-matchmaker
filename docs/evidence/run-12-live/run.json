@@ -1,0 +1,3067 @@
+{
+ "summary": {
+  "runId": "2026-10-31T09-08-28-988Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+   "profiler": "gpt-5.4-mini",
+   "analyst": "gpt-5.4-mini",
+   "writer": "gpt-5.4-mini",
+   "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 23330,
+  "shortlist": {
+   "pairs": 9,
+   "challenges": 3
+  },
+  "screened": 9,
+  "selected": [
+   {
+    "key": "R0919xC018-CH2",
+    "score": 2.99,
+    "screener": "Screener-3",
+    "selectedAtMs": 582
+   },
+   {
+    "key": "R0995xC003-CH2",
+    "score": 2.96,
+    "screener": "Screener-1",
+    "selectedAtMs": 623
+   },
+   {
+    "key": "R0801xC010-CH2",
+    "score": 2.09,
+    "screener": "Screener-2",
+    "selectedAtMs": 792
+   }
+  ],
+  "concurrency": {
+   "jobs": 12,
+   "peakInFlight": 7,
+   "peakAtMs": 792,
+   "inFlightAtPeak": [
+    "Screener-2:screen",
+    "Profiler-1:profile_researcher",
+    "Analyst-1:profile_company",
+    "Profiler-2:profile_researcher",
+    "Analyst-2:profile_company",
+    "Profiler-1:profile_researcher",
+    "Analyst-1:profile_company"
+   ],
+   "jobsOverlappingAnotherAgent": 12
+  },
+  "critic_record": {
+   "drafts": 4,
+   "revisionsRequested": 1,
+   "claimsChecked": 92,
+   "claimsBlocked": 0,
+   "proseIssuesBlocked": 1,
+   "rejected": 0,
+   "unsupportedClaimsInFinalProposals": 0,
+   "outcomes": [
+    {
+     "key": "R0801xC010-CH2",
+     "verdict": "approved",
+     "drafts": 2
+    },
+    {
+     "key": "R0995xC003-CH2",
+     "verdict": "approved",
+     "drafts": 1
+    },
+    {
+     "key": "R0919xC018-CH2",
+     "verdict": "approved",
+     "drafts": 1
+    }
+   ]
+  },
+  "spend": {
+   "usd": 0.07775,
+   "budgetUsd": 0.3,
+   "halted": false,
+   "byModel": {
+    "decisions:gpt-6-luna": {
+     "input": 54872,
+     "output": 0,
+     "usd": 0.0054872,
+     "calls": 15
+    },
+    "gpt-5.4-mini": {
+     "input": 25667,
+     "output": 11781,
+     "usd": 0.07226475,
+     "calls": 16
+    }
+   },
+   "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+   "challenges": 60,
+   "perChallenge": 3,
+   "proposals": 3,
+   "screeners": 3,
+   "profilers": 2,
+   "analysts": 2,
+   "writers": 2,
+   "selectThreshold": 2,
+   "claimBatch": 8,
+   "supportThreshold": 0.5,
+   "maxRevisions": 2,
+   "jobTimeoutMs": 90000,
+   "runTimeoutMs": 600000,
+   "screenBatch": 6
+  }
+ },
+ "reverse": false,
+ "candidates": [
+  {
+   "key": "R0246xC003-CH2",
+   "researcherId": "R0246",
+   "researcher": "Vuk Todić",
+   "title": "Assistant Professor",
+   "department": "Department of Industrial Engineering and Management",
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "company": "AutomVoj a.d.",
+   "score": 0.86
+  },
+  {
+   "key": "R0995xC003-CH2",
+   "researcherId": "R0995",
+   "researcher": "Veljko Pantelić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "company": "AutomVoj a.d.",
+   "score": 2.96
+  },
+  {
+   "key": "R0666xC003-CH2",
+   "researcherId": "R0666",
+   "researcher": "Jelena Jokić",
+   "title": "Associate Professor",
+   "department": "Department of Mechanical Engineering",
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "company": "AutomVoj a.d.",
+   "score": 0.55
+  },
+  {
+   "key": "R0801xC010-CH2",
+   "researcherId": "R0801",
+   "researcher": "Branislav Žarković",
+   "title": "Full Professor",
+   "department": "Department of Finance and Banking",
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "company": "Kredo Fintech",
+   "score": 2.09
+  },
+  {
+   "key": "R0251xC010-CH2",
+   "researcherId": "R0251",
+   "researcher": "Tibor Takács",
+   "title": "Associate Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "company": "Kredo Fintech",
+   "score": 2.91
+  },
+  {
+   "key": "R0648xC010-CH2",
+   "researcherId": "R0648",
+   "researcher": "Róbert Pásztor",
+   "title": "Full Professor",
+   "department": "Department of Administrative and Public Law",
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "company": "Kredo Fintech",
+   "score": 2.88
+  },
+  {
+   "key": "R0948xC018-CH2",
+   "researcherId": "R0948",
+   "researcher": "Mirjana Vidaković",
+   "title": "Full Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "company": "DriveLogic Vojvodina d.o.o.",
+   "score": 1.04
+  },
+  {
+   "key": "R0919xC018-CH2",
+   "researcherId": "R0919",
+   "researcher": "Martina Lačoková",
+   "title": "Senior Research Associate",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "company": "DriveLogic Vojvodina d.o.o.",
+   "score": 2.99
+  },
+  {
+   "key": "R0375xC018-CH2",
+   "researcherId": "R0375",
+   "researcher": "Stefan Kostić",
+   "title": "Assistant Professor",
+   "department": "Department of Computing and Control Engineering",
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "company": "DriveLogic Vojvodina d.o.o.",
+   "score": 1.46
+  }
+ ],
+ "selected": [
+  {
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "researcherId": "R0919",
+   "retrievalScore": 97.301,
+   "matchedTerms": [
+    "test",
+    "coverage",
+    "integration",
+    "communication",
+    "stack",
+    "after",
+    "components",
+    "interaction",
+    "faults",
+    "before",
+    "contract",
+    "testing"
+   ],
+   "score": 2.99,
+   "confidence": 0.99,
+   "screener": "Screener-3",
+   "key": "R0919xC018-CH2",
+   "selectedAt": 582,
+   "profiler": "f5f2c5e7-2ee5-484b-805b-eef608d0f32f",
+   "analyst": "ecba971a-fe28-4dc8-9848-dea2840f47d6",
+   "status": "done",
+   "form": "industrial_phd",
+   "consent": "industrial PhD supervision for candidates from embedded systems companies",
+   "writer": "c9c62c92-a948-4818-bda0-4d352b720dc8"
+  },
+  {
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "researcherId": "R0995",
+   "retrievalScore": 57.51,
+   "matchedTerms": [
+    "plc",
+    "logic",
+    "safety",
+    "codebases",
+    "full",
+    "changes",
+    "during",
+    "structured",
+    "code",
+    "but",
+    "load",
+    "text"
+   ],
+   "score": 2.96,
+   "confidence": 0.96,
+   "screener": "Screener-1",
+   "key": "R0995xC003-CH2",
+   "selectedAt": 623,
+   "profiler": "ea614d2b-4fea-4d13-be4d-11489a563ed5",
+   "analyst": "52aef508-991a-4411-8b87-9d2ae5bff8f2",
+   "status": "done",
+   "form": "industrial_phd",
+   "consent": "industrial PhD supervision",
+   "writer": "ac53ad6d-3017-419f-a04c-4e30fc30b3d3"
+  },
+  {
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "researcherId": "R0801",
+   "retrievalScore": 62.821,
+   "matchedTerms": [
+    "bank",
+    "credit",
+    "borrower",
+    "scoring",
+    "ensemble",
+    "features",
+    "borrowers",
+    "compliance",
+    "before",
+    "serbian",
+    "research",
+    "open"
+   ],
+   "score": 2.09,
+   "confidence": 0.69,
+   "screener": "Screener-2",
+   "key": "R0801xC010-CH2",
+   "selectedAt": 792,
+   "profiler": "f5f2c5e7-2ee5-484b-805b-eef608d0f32f",
+   "analyst": "ecba971a-fe28-4dc8-9848-dea2840f47d6",
+   "status": "done",
+   "form": "industrial_phd",
+   "consent": "industrial PhD supervision",
+   "writer": "ac53ad6d-3017-419f-a04c-4e30fc30b3d3"
+  }
+ ],
+ "researcherProfiles": {
+  "R0801": {
+   "researcherId": "R0801",
+   "summary": "Branislav Žarković is a Full Professor in Finance and Banking at the Faculty of Economics in Subotica, with demonstrated expertise in credit risk and SME finance. His work spans credit scoring for thin-file and micro-enterprise borrowers, alternative-data and open-banking-based underwriting, explainable and interpretable machine-learning models for lending, and regulatory/compliance implications of AI in credit decisions.",
+   "expertise": [
+    {
+     "topic": "Credit scoring for thin-file borrowers and micro-enterprises",
+     "evidence": [
+      "SYN-PUB-08746",
+      "SYN-PUB-08748",
+      "SYN-PUB-08753"
+     ]
+    },
+    {
+     "topic": "SME finance and credit access analysis",
+     "evidence": [
+      "SYN-PUB-08750",
+      "SYN-PUB-08752",
+      "SYN-PUB-08746"
+     ]
+    },
+    {
+     "topic": "Alternative data and open banking for lending decisions",
+     "evidence": [
+      "SYN-PUB-08748",
+      "SYN-PUB-08753"
+     ]
+    },
+    {
+     "topic": "Explainable and interpretable machine-learning models in credit risk",
+     "evidence": [
+      "SYN-PUB-08747",
+      "SYN-PUB-08751",
+      "SYN-PUB-08754"
+     ]
+    },
+    {
+     "topic": "Regulatory and compliance implications of AI in credit scoring",
+     "evidence": [
+      "SYN-PUB-08747",
+      "SYN-PUB-08749",
+      "SYN-PUB-08751"
+     ]
+    }
+   ]
+  },
+  "R0995": {
+   "researcherId": "R0995",
+   "summary": "Veljko Pantelić (R0995) is an Assistant Professor in Computing and Control Engineering whose work centers on software engineering for industrial automation, especially model-driven engineering, domain-specific languages, and variability-aware PLC software development. His record shows sustained work on IEC 61131-3 Structured Text tooling, product-line code generation, safety-aware automation workflows, and related empirical/benchmarking studies.",
+   "expertise": [
+    {
+     "topic": "IEC 61131-3 Structured Text metamodeling and conformance checking",
+     "evidence": [
+      "SYN-PUB-10372"
+     ]
+    },
+    {
+     "topic": "Model transformations and code generation for PLC and industrial automation software",
+     "evidence": [
+      "SYN-PUB-10373",
+      "SYN-PUB-02958",
+      "SYN-PRJ-0390"
+     ]
+    },
+    {
+     "topic": "Software product lines and variability management in PLC systems",
+     "evidence": [
+      "SYN-PUB-10374",
+      "SYN-PUB-10377",
+      "SYN-PUB-10379",
+      "SYN-PRJ-0390",
+      "SYN-PRJ-0391"
+     ]
+    },
+    {
+     "topic": "Domain-specific language design and Eclipse-based tooling for industrial control",
+     "evidence": [
+      "SYN-PUB-10375",
+      "SYN-PUB-10378"
+     ]
+    },
+    {
+     "topic": "Safety-aware and empirically evaluated PLC engineering workflows",
+     "evidence": [
+      "SYN-PUB-10377",
+      "SYN-PUB-10380",
+      "SYN-PRJ-0391"
+     ]
+    }
+   ]
+  },
+  "R0919": {
+   "researcherId": "R0919",
+   "summary": "Martina Lačoková (R0919) is a Senior Research Associate in Computing and Control Engineering whose work centers on testing, verification, and contract-based integration of embedded and automotive software, especially CAN/CAN FD systems and multi-supplier stacks. Her record shows a strong blend of combinatorial test generation, formal specification, runtime monitoring, and industrially oriented tool development.",
+   "expertise": [
+    {
+     "topic": "Combinatorial interaction testing and constrained covering array generation",
+     "evidence": [
+      "SYN-PUB-09743",
+      "SYN-PUB-09745",
+      "SYN-PUB-09747",
+      "SYN-PUB-09748",
+      "SYN-PUB-09749",
+      "SYN-PRJ-0434"
+     ]
+    },
+    {
+     "topic": "Formal specification, assume-guarantee contracts, and compositional verification for embedded systems",
+     "evidence": [
+      "SYN-PUB-09744",
+      "SYN-PUB-01450",
+      "SYN-PUB-03011",
+      "SYN-PRJ-0435"
+     ]
+    },
+    {
+     "topic": "CAN/CAN FD integration testing and automotive/industrial embedded networks",
+     "evidence": [
+      "SYN-PUB-09744",
+      "SYN-PUB-02017",
+      "SYN-PUB-09746",
+      "SYN-PUB-09749",
+      "SYN-PUB-03011",
+      "SYN-PRJ-0434",
+      "SYN-PRJ-0435"
+     ]
+    },
+    {
+     "topic": "Runtime verification and low-overhead monitoring for embedded controllers",
+     "evidence": [
+      "SYN-PUB-02017",
+      "SYN-PUB-09746",
+      "SYN-PUB-09750",
+      "SYN-PUB-09744"
+     ]
+    },
+    {
+     "topic": "Tool-supported automation for contract derivation, checking, and incremental test maintenance",
+     "evidence": [
+      "SYN-PUB-03011",
+      "SYN-PUB-09748",
+      "SYN-PUB-09750",
+      "SYN-PUB-09747"
+     ]
+    }
+   ]
+  }
+ },
+ "companyProfiles": {
+  "C003-CH2": {
+   "challengeId": "C003-CH2",
+   "companyId": "C003",
+   "summary": "AutomVoj a.d. is a Zrenjanin-based robotics and industrial automation company focused on conveyor and sorting systems for food and beverage producers. It has 212 employees and delivers PLC-based systems across Serbia and Central Europe, handling mechanical design, electrical assembly, PLC programming, and commissioning in-house.",
+   "needs": []
+  },
+  "C018-CH2": {
+   "challengeId": "C018-CH2",
+   "companyId": "C018",
+   "summary": "DriveLogic Vojvodina d.o.o. is a Novi Sad-based automotive and mobility software company focused on AUTOSAR Classic integration, configuration, and V-cycle testing for ECU projects. It has 27 employees and works primarily for Tier-1/Tier-2 suppliers on European OEM programs.",
+   "needs": []
+  },
+  "C010-CH2": {
+   "challengeId": "C010-CH2",
+   "companyId": "C010",
+   "summary": "Kredo Fintech is a regulated Serbian non-bank lender in Novi Sad with 26 employees, focused on fast online loans for micro and small businesses. Its data team of five supports automated credit decisions and model monitoring using Python, dbt, Snowflake, Airflow, scikit-learn, PostgreSQL, REST APIs, and Docker.",
+   "needs": []
+  }
+ },
+ "proposals": [
+  {
+   "key": "R0801xC010-CH2",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Industrial PhD on plain-language, decision-time explanations for Kredo Fintech’s automated SME credit decisions",
+      "problem": "Kredo Fintech needs a compliant explanation format for every automated credit decision that is generated at decision time, stored with the decision record, and shown in the borrower portal in Serbian and, for expansion, Macedonian. The current gradient-boosted ensemble performs well, but its outputs are hard to explain in plain terms, and the existing SHAP-based internal summary is too technical for borrowers and not satisfactory for compliance.",
+      "research_questions": [
+       "Which explanation template produces the highest borrower comprehension while still reflecting the main drivers of the model’s decision and allowing a challenge of the decision?",
+       "How well can a plain-language explanation be generated automatically at decision time from SHAP-based feature attributions, without reducing decision workflow reliability?",
+       "What translation and wording constraints are needed so the same explanation logic remains understandable and compliant in Serbian and Macedonian?"
+      ],
+      "plan": [
+       {
+        "period": "Year 1",
+        "work": "Map the current decision workflow, the gradient-boosted ensemble output, and the existing SHAP summary; define a borrower-facing explanation schema; draft Serbian plain-language templates; set up an evaluation set from historical decisions and internal compliance review.",
+        "result": "A documented explanation specification, first Serbian template set, and evaluation protocol that can be tested on historical cases.",
+        "pass_if": "At least 90% of a reviewed sample of 100 historical decisions can be rendered into the new schema automatically, and Kredo Fintech’s compliance officer accepts the draft format for pilot testing."
+       },
+       {
+        "period": "Year 2",
+        "work": "Build and test the automatic explanation generator at decision time; compare alternative wording strategies for clarity, accuracy, and challengeability; add storage of the explanation alongside the decision record; prepare Macedonian wording rules and a transfer check on Kredo’s own stack.",
+        "result": "A production-ready Serbian explanation module with logged output, plus a verified Macedonian translation rule set for future rollout.",
+        "pass_if": "The module generates an explanation for 100% of test decisions within the decision-time workflow, stores it correctly in the decision record, and the same logic passes a transfer check on Kredo’s Python, Snowflake, PostgreSQL, and portal environment."
+       },
+       {
+        "period": "Year 3",
+        "work": "Run a controlled pilot in production on Kredo’s live decision flow after internal safety and compliance review; monitor borrower comprehension, complaint/challenge rate, and operational failure rate; refine wording and governance for expansion to North Macedonia.",
+        "result": "Validated explanation process for production use in Serbia and a documented expansion-ready version for Macedonian deployment.",
+        "pass_if": "The pilot runs for at least 3 months with no unapproved live-use changes, explanation generation succeeds in at least 99% of automated decisions, and borrower understanding improves in a measured user test versus the current technical summary."
+       }
+      ],
+      "company_brings": "Kredo Fintech brings the live use case, its regulated automated lending process, the current gradient-boosted ensemble, existing SHAP-based internal summaries, the borrower portal, and the data team of five working with Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs, and Docker. The company also brings the stated production constraint that the explanation must work reliably within about six months and be suitable for Serbian and, later, Macedonian users.",
+      "faculty_brings": "Branislav Žarković brings expertise in credit scoring for thin-file borrowers and micro-enterprises, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring, supported by his work on scoring micro-enterprises, explaining credit decisions, open-banking-based lending, and explainability requirements under the EU AI Act.",
+      "why_this_pair": "This pair combines Kredo Fintech’s regulated production lending system and decision-time implementation needs with Branislav Žarković’s research record on credit scoring, alternative data, explainability, and regulation. The fit is especially strong because the challenge is not to invent a new model, but to turn an already-performing model into a borrower-facing explanation process that is understandable and compliant in a live lending environment.",
+      "novelty": "The closest prior work is SYN-PUB-08747, where Branislav Žarković studied explaining credit decisions to supervisors, and SYN-PUB-08751 on explainability requirements under the EU AI Act. This project goes beyond those papers by focusing on a borrower-facing explanation that is generated automatically at decision time, stored with the decision record, and deployed in Kredo Fintech’s production workflow in Serbian and Macedonian. It also extends the earlier explainability work from supervisory framing to operational borrower comprehension and challengeability in a regulated fintech setting.",
+      "data_status": "Kredo Fintech states that it already has a live automated lending system, a current gradient-boosted ensemble, SHAP-based internal summaries, decision records, borrower portal infrastructure, and transaction data, tax filings, and sector benchmarks used in underwriting. The records do not state that historical explanations are already available in borrower-facing Serbian or Macedonian form, so those explanation examples would need to be collected or reconstructed from past decisions and internal logs. User comprehension data and any formal borrower challenge outcomes would also need to be collected during testing and pilot phases.",
+      "company_deadline": "within about six months",
+      "first_step": "Next month, the parties should run a joint workshop to map the current decision flow, review 50 to 100 recent decisions and SHAP outputs, and agree on the first Serbian explanation template and compliance checklist.",
+      "to_agree": "The parties still need to agree on funding for the doctoral candidate and supervision time, access to historical decision records and model logs, intellectual property in any new explanation templates and software, background IP boundaries, publication review and delay terms, and the exact data access and security procedure for using Kredo Fintech’s decision records and borrower-portal environment.",
+      "claims": [
+       {
+        "text": "Branislav Žarković is a Full Professor in Finance and Banking at the Faculty of Economics in Subotica, University of Novi Sad, where he leads research on credit risk and SME finance.",
+        "about": "researcher",
+        "evidence": [
+         "R0801"
+        ]
+       },
+       {
+        "text": "Branislav Žarković has expertise in credit scoring for thin-file borrowers and micro-enterprises, SME finance and credit access analysis, alternative data and open banking for lending decisions, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-08746",
+         "SYN-PUB-08747",
+         "SYN-PUB-08748",
+         "SYN-PUB-08749",
+         "SYN-PUB-08750",
+         "SYN-PUB-08751",
+         "SYN-PUB-08752",
+         "SYN-PUB-08753",
+         "SYN-PUB-08754"
+        ]
+       },
+       {
+        "text": "Branislav Žarković is open to industrial PhD supervision and joint research projects with industry partners.",
+        "about": "researcher",
+        "evidence": [
+         "R0801"
+        ]
+       },
+       {
+        "text": "Kredo Fintech is a fintech company with 26 employees, founded in 2020, based in NTP Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech builds an online lending platform for firms with one to nine employees that need between 500 and 50,000 euros in days, not months.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech pulls transaction data, tax filings, and sector benchmarks into underwriting, has funded over 1,400 loans since launch, and says its default rate sits below the Serbian banking sector average for SME portfolios.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech’s team of 26 works out of the Science and Technology Park in Novi Sad, and its data team of five handles pipeline engineering and model monitoring.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech is regulated by the National Bank of Serbia.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech’s products include Kredo SME Loans, Kredo Flex Line, Kredo Score Report, and Kredo Portal.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech’s technology stack includes Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs for Open Banking data ingestion, and Docker.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "The challenge is that every automated credit decision must be accompanied by a plain-language explanation a borrower can understand and, if needed, challenge, but the current SHAP-based summary is too technical for borrowers and does not satisfy the compliance officer.",
+        "about": "company",
+        "evidence": [
+         "C010-CH2"
+        ]
+       },
+       {
+        "text": "The explanation must be generated automatically at decision time, stored alongside the decision record, and rendered in the borrower portal in Serbian and, for expansion, Macedonian.",
+        "about": "company",
+        "evidence": [
+         "C010-CH2"
+        ]
+       },
+       {
+        "text": "Kredo Fintech wants a solution that works reliably in production within about six months.",
+        "about": "company",
+        "evidence": [
+         "C010-CH2"
+        ]
+       },
+       {
+        "text": "Branislav Žarković’s closest relevant published works include explaining credit decisions to supervisors, explainability requirements under the EU AI Act, scoring micro-enterprises with little credit history, alternative data in consumer credit scoring, and open banking data for thin-file borrower assessment.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-08746",
+         "SYN-PUB-08747",
+         "SYN-PUB-08748",
+         "SYN-PUB-08751",
+         "SYN-PUB-08753"
+        ]
+       }
+      ],
+      "form": "industrial_phd"
+     },
+     "checks": [
+      {
+       "claim": "Branislav Žarković is a Full Professor in Finance and Banking at the Faculty of Economics in Subotica, University of Novi Sad, where he leads research on credit risk and SME finance.",
+       "evidence": [
+        "R0801"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Branislav Žarković has expertise in credit scoring for thin-file borrowers and micro-enterprises, SME finance and credit access analysis, alternative data and open banking for lending decisions, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring.",
+       "evidence": [
+        "SYN-PUB-08746",
+        "SYN-PUB-08747",
+        "SYN-PUB-08748",
+        "SYN-PUB-08749",
+        "SYN-PUB-08750",
+        "SYN-PUB-08751",
+        "SYN-PUB-08752",
+        "SYN-PUB-08753",
+        "SYN-PUB-08754"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Branislav Žarković is open to industrial PhD supervision and joint research projects with industry partners.",
+       "evidence": [
+        "R0801"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech is a fintech company with 26 employees, founded in 2020, based in NTP Novi Sad.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech builds an online lending platform for firms with one to nine employees that need between 500 and 50,000 euros in days, not months.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech pulls transaction data, tax filings, and sector benchmarks into underwriting, has funded over 1,400 loans since launch, and says its default rate sits below the Serbian banking sector average for SME portfolios.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech’s team of 26 works out of the Science and Technology Park in Novi Sad, and its data team of five handles pipeline engineering and model monitoring.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech is regulated by the National Bank of Serbia.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech’s products include Kredo SME Loans, Kredo Flex Line, Kredo Score Report, and Kredo Portal.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech’s technology stack includes Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs for Open Banking data ingestion, and Docker.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge is that every automated credit decision must be accompanied by a plain-language explanation a borrower can understand and, if needed, challenge, but the current SHAP-based summary is too technical for borrowers and does not satisfy the compliance officer.",
+       "evidence": [
+        "C010-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The explanation must be generated automatically at decision time, stored alongside the decision record, and rendered in the borrower portal in Serbian and, for expansion, Macedonian.",
+       "evidence": [
+        "C010-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech wants a solution that works reliably in production within about six months.",
+       "evidence": [
+        "C010-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Žarković’s closest relevant published works include explaining credit decisions to supervisors, explainability requirements under the EU AI Act, scoring micro-enterprises with little credit history, alternative data in consumer credit scoring, and open banking data for thin-file borrower assessment.",
+       "evidence": [
+        "SYN-PUB-08746",
+        "SYN-PUB-08747",
+        "SYN-PUB-08748",
+        "SYN-PUB-08751",
+        "SYN-PUB-08753"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "[plan] Year 1, Year 2, Year 3",
+       "evidence": [],
+       "deterministic": [
+        "the company needs a result within 6 months, but no plan period ends by then: add a period such as \"Months 1 to 6\" that delivers what the company asked for (a PhD can continue after it)"
+       ],
+       "supported": false,
+       "kind": "prose"
+      }
+     ],
+     "verdict": "revise"
+    },
+    {
+     "attempt": 2,
+     "proposal": {
+      "title": "Industrial PhD on plain-language, decision-time explanations for Kredo Fintech’s automated SME credit decisions",
+      "problem": "Kredo Fintech needs a compliant explanation format for every automated credit decision that is generated at decision time, stored with the decision record, and shown in the borrower portal in Serbian and, for expansion, Macedonian. The current gradient-boosted ensemble performs well, but its outputs are hard to explain in plain terms, and the existing SHAP-based internal summary is too technical for borrowers and not satisfactory to compliance.",
+      "research_questions": [
+       "Which explanation template produces the highest borrower comprehension while still reflecting the main drivers of the model’s decision and allowing a challenge of the decision?",
+       "How well can a plain-language explanation be generated automatically at decision time from SHAP-based feature attributions, without reducing decision workflow reliability?",
+       "What translation and wording constraints are needed so the same explanation logic remains understandable and compliant in Serbian and Macedonian?"
+      ],
+      "plan": [
+       {
+        "period": "Months 1 to 6",
+        "work": "Map the current decision workflow and the existing SHAP summary; define a borrower-facing explanation schema; draft Serbian plain-language templates; and test them on historical decisions with internal compliance review.",
+        "result": "A documented explanation specification, first Serbian template set, and pilot-ready evaluation protocol.",
+        "pass_if": "At least 90% of a reviewed sample of 100 historical decisions can be rendered into the new schema automatically, and the compliance review accepts the draft format for pilot testing."
+       },
+       {
+        "period": "Year 2",
+        "work": "Build and test the automatic explanation generator at decision time; compare alternative wording strategies for clarity, accuracy, and challengeability; add storage of the explanation alongside the decision record; and prepare Macedonian wording rules with a transfer check on Kredo’s own stack.",
+        "result": "A production-ready Serbian explanation module with logged output, plus a verified Macedonian translation rule set for future rollout.",
+        "pass_if": "The module generates an explanation for 100% of test decisions within the decision-time workflow, stores it correctly in the decision record, and the same logic passes a transfer check on Kredo’s Python, Snowflake, PostgreSQL, and portal environment."
+       },
+       {
+        "period": "Year 3",
+        "work": "Run a controlled pilot in production on Kredo’s live decision flow after internal safety and compliance review; monitor borrower comprehension, complaint or challenge rate, and operational failure rate; refine wording and governance for expansion to North Macedonia.",
+        "result": "Validated explanation process for production use in Serbia and an expansion-ready version for Macedonian deployment.",
+        "pass_if": "The pilot runs for at least 3 months with no unapproved live-use changes, explanation generation succeeds in at least 99% of automated decisions, and borrower understanding improves in a measured user test versus the current technical summary."
+       }
+      ],
+      "company_brings": "Kredo Fintech brings the live use case, its regulated automated lending process, the current gradient-boosted ensemble, existing SHAP-based internal summaries, the borrower portal, and the data team of five working with Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs, and Docker. The company also brings the stated production constraint that the explanation must work reliably within about six months and be suitable for Serbian and, later, Macedonian users.",
+      "faculty_brings": "Branislav Žarković brings expertise in credit scoring for thin-file borrowers and micro-enterprises, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring, supported by his work on scoring micro-enterprises, explaining credit decisions, open-banking-based lending, and explainability requirements under the EU AI Act.",
+      "why_this_pair": "This pair combines Kredo Fintech’s regulated production lending system and decision-time implementation needs with Branislav Žarković’s research record on credit scoring, alternative data, explainability, and regulation. The fit is especially strong because the challenge is not to invent a new model, but to turn an already-performing model into a borrower-facing explanation process that is understandable and compliant in a live lending environment.",
+      "novelty": "The closest prior work is SYN-PUB-08747, where Branislav Žarković studied explaining credit decisions to supervisors, and SYN-PUB-08751 on explainability requirements under the EU AI Act. This project goes beyond those papers by focusing on a borrower-facing explanation that is generated automatically at decision time, stored with the decision record, and deployed in Kredo Fintech’s production workflow in Serbian and Macedonian. It also extends the earlier explainability work from supervisory framing to operational borrower comprehension and challengeability in a regulated fintech setting.",
+      "data_status": "Kredo Fintech states that it already has a live automated lending system, a current gradient-boosted ensemble, SHAP-based internal summaries, decision records, borrower portal infrastructure, and transaction data, tax filings, and sector benchmarks used in underwriting. The records do not state that historical explanations are already available in borrower-facing Serbian or Macedonian form, so those explanation examples would need to be collected or reconstructed from past decisions and internal logs. User comprehension data and any formal borrower challenge outcomes would also need to be collected during testing and pilot phases.",
+      "company_deadline": "within about six months",
+      "first_step": "Next month, the parties should run a joint workshop to map the current decision flow, review recent decisions and SHAP outputs, and agree on the first Serbian explanation template and compliance checklist.",
+      "to_agree": "The parties still need to agree on funding for the doctoral candidate and supervision time, access to historical decision records and model logs, intellectual property in any new explanation templates and software, background IP boundaries, publication review and delay terms, and the exact data access and security procedure for using Kredo Fintech’s decision records and borrower-portal environment.",
+      "claims": [
+       {
+        "text": "Branislav Žarković is a Full Professor in Finance and Banking at the Faculty of Economics in Subotica, University of Novi Sad, where he leads research on credit risk and SME finance.",
+        "about": "researcher",
+        "evidence": [
+         "R0801"
+        ]
+       },
+       {
+        "text": "Branislav Žarković has expertise in credit scoring for thin-file borrowers and micro-enterprises, SME finance and credit access analysis, alternative data and open banking for lending decisions, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-08746",
+         "SYN-PUB-08747",
+         "SYN-PUB-08748",
+         "SYN-PUB-08749",
+         "SYN-PUB-08750",
+         "SYN-PUB-08751",
+         "SYN-PUB-08752",
+         "SYN-PUB-08753",
+         "SYN-PUB-08754"
+        ]
+       },
+       {
+        "text": "Branislav Žarković is open to industrial PhD supervision and joint research projects with industry partners.",
+        "about": "researcher",
+        "evidence": [
+         "R0801"
+        ]
+       },
+       {
+        "text": "Kredo Fintech is a fintech company with 26 employees, founded in 2020, based in NTP Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech builds an online lending platform for firms with one to nine employees that need between 500 and 50,000 euros in days, not months.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech pulls transaction data, tax filings, and sector benchmarks into underwriting, has funded over 1,400 loans since launch, and says its default rate sits below the Serbian banking sector average for SME portfolios.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech’s team of 26 works out of the Science and Technology Park in Novi Sad, and its data team of five handles pipeline engineering and model monitoring.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech is regulated by the National Bank of Serbia.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech’s products include Kredo SME Loans, Kredo Flex Line, Kredo Score Report, and Kredo Portal.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "Kredo Fintech’s technology stack includes Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs for Open Banking data ingestion, and Docker.",
+        "about": "company",
+        "evidence": [
+         "C010"
+        ]
+       },
+       {
+        "text": "The challenge is that every automated credit decision must be accompanied by a plain-language explanation a borrower can understand and, if needed, challenge, but the current SHAP-based summary is too technical for borrowers and does not satisfy the compliance officer.",
+        "about": "company",
+        "evidence": [
+         "C010-CH2"
+        ]
+       },
+       {
+        "text": "The explanation must be generated automatically at decision time, stored alongside the decision record, and rendered in the borrower portal in Serbian and, for expansion, Macedonian.",
+        "about": "company",
+        "evidence": [
+         "C010-CH2"
+        ]
+       },
+       {
+        "text": "Kredo Fintech wants a solution that works reliably in production within about six months.",
+        "about": "company",
+        "evidence": [
+         "C010-CH2"
+        ]
+       },
+       {
+        "text": "Branislav Žarković’s closest relevant published works include explaining credit decisions to supervisors, explainability requirements under the EU AI Act, scoring micro-enterprises with little credit history, alternative data in consumer credit scoring, and open banking data for thin-file borrower assessment.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-08746",
+         "SYN-PUB-08747",
+         "SYN-PUB-08748",
+         "SYN-PUB-08751",
+         "SYN-PUB-08753"
+        ]
+       }
+      ],
+      "form": "industrial_phd"
+     },
+     "checks": [
+      {
+       "claim": "Branislav Žarković is a Full Professor in Finance and Banking at the Faculty of Economics in Subotica, University of Novi Sad, where he leads research on credit risk and SME finance.",
+       "evidence": [
+        "R0801"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Branislav Žarković has expertise in credit scoring for thin-file borrowers and micro-enterprises, SME finance and credit access analysis, alternative data and open banking for lending decisions, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring.",
+       "evidence": [
+        "SYN-PUB-08746",
+        "SYN-PUB-08747",
+        "SYN-PUB-08748",
+        "SYN-PUB-08749",
+        "SYN-PUB-08750",
+        "SYN-PUB-08751",
+        "SYN-PUB-08752",
+        "SYN-PUB-08753",
+        "SYN-PUB-08754"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 0.99
+      },
+      {
+       "claim": "Branislav Žarković is open to industrial PhD supervision and joint research projects with industry partners.",
+       "evidence": [
+        "R0801"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech is a fintech company with 26 employees, founded in 2020, based in NTP Novi Sad.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech builds an online lending platform for firms with one to nine employees that need between 500 and 50,000 euros in days, not months.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech pulls transaction data, tax filings, and sector benchmarks into underwriting, has funded over 1,400 loans since launch, and says its default rate sits below the Serbian banking sector average for SME portfolios.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech’s team of 26 works out of the Science and Technology Park in Novi Sad, and its data team of five handles pipeline engineering and model monitoring.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech is regulated by the National Bank of Serbia.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech’s products include Kredo SME Loans, Kredo Flex Line, Kredo Score Report, and Kredo Portal.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech’s technology stack includes Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs for Open Banking data ingestion, and Docker.",
+       "evidence": [
+        "C010"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge is that every automated credit decision must be accompanied by a plain-language explanation a borrower can understand and, if needed, challenge, but the current SHAP-based summary is too technical for borrowers and does not satisfy the compliance officer.",
+       "evidence": [
+        "C010-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The explanation must be generated automatically at decision time, stored alongside the decision record, and rendered in the borrower portal in Serbian and, for expansion, Macedonian.",
+       "evidence": [
+        "C010-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Kredo Fintech wants a solution that works reliably in production within about six months.",
+       "evidence": [
+        "C010-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Branislav Žarković’s closest relevant published works include explaining credit decisions to supervisors, explainability requirements under the EU AI Act, scoring micro-enterprises with little credit history, alternative data in consumer credit scoring, and open banking data for thin-file borrower assessment.",
+       "evidence": [
+        "SYN-PUB-08746",
+        "SYN-PUB-08747",
+        "SYN-PUB-08748",
+        "SYN-PUB-08751",
+        "SYN-PUB-08753"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Industrial PhD on plain-language, decision-time explanations for Kredo Fintech’s automated SME credit decisions",
+    "problem": "Kredo Fintech needs a compliant explanation format for every automated credit decision that is generated at decision time, stored with the decision record, and shown in the borrower portal in Serbian and, for expansion, Macedonian. The current gradient-boosted ensemble performs well, but its outputs are hard to explain in plain terms, and the existing SHAP-based internal summary is too technical for borrowers and not satisfactory to compliance.",
+    "research_questions": [
+     "Which explanation template produces the highest borrower comprehension while still reflecting the main drivers of the model’s decision and allowing a challenge of the decision?",
+     "How well can a plain-language explanation be generated automatically at decision time from SHAP-based feature attributions, without reducing decision workflow reliability?",
+     "What translation and wording constraints are needed so the same explanation logic remains understandable and compliant in Serbian and Macedonian?"
+    ],
+    "plan": [
+     {
+      "period": "Months 1 to 6",
+      "work": "Map the current decision workflow and the existing SHAP summary; define a borrower-facing explanation schema; draft Serbian plain-language templates; and test them on historical decisions with internal compliance review.",
+      "result": "A documented explanation specification, first Serbian template set, and pilot-ready evaluation protocol.",
+      "pass_if": "At least 90% of a reviewed sample of 100 historical decisions can be rendered into the new schema automatically, and the compliance review accepts the draft format for pilot testing."
+     },
+     {
+      "period": "Year 2",
+      "work": "Build and test the automatic explanation generator at decision time; compare alternative wording strategies for clarity, accuracy, and challengeability; add storage of the explanation alongside the decision record; and prepare Macedonian wording rules with a transfer check on Kredo’s own stack.",
+      "result": "A production-ready Serbian explanation module with logged output, plus a verified Macedonian translation rule set for future rollout.",
+      "pass_if": "The module generates an explanation for 100% of test decisions within the decision-time workflow, stores it correctly in the decision record, and the same logic passes a transfer check on Kredo’s Python, Snowflake, PostgreSQL, and portal environment."
+     },
+     {
+      "period": "Year 3",
+      "work": "Run a controlled pilot in production on Kredo’s live decision flow after internal safety and compliance review; monitor borrower comprehension, complaint or challenge rate, and operational failure rate; refine wording and governance for expansion to North Macedonia.",
+      "result": "Validated explanation process for production use in Serbia and an expansion-ready version for Macedonian deployment.",
+      "pass_if": "The pilot runs for at least 3 months with no unapproved live-use changes, explanation generation succeeds in at least 99% of automated decisions, and borrower understanding improves in a measured user test versus the current technical summary."
+     }
+    ],
+    "company_brings": "Kredo Fintech brings the live use case, its regulated automated lending process, the current gradient-boosted ensemble, existing SHAP-based internal summaries, the borrower portal, and the data team of five working with Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs, and Docker. The company also brings the stated production constraint that the explanation must work reliably within about six months and be suitable for Serbian and, later, Macedonian users.",
+    "faculty_brings": "Branislav Žarković brings expertise in credit scoring for thin-file borrowers and micro-enterprises, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring, supported by his work on scoring micro-enterprises, explaining credit decisions, open-banking-based lending, and explainability requirements under the EU AI Act.",
+    "why_this_pair": "This pair combines Kredo Fintech’s regulated production lending system and decision-time implementation needs with Branislav Žarković’s research record on credit scoring, alternative data, explainability, and regulation. The fit is especially strong because the challenge is not to invent a new model, but to turn an already-performing model into a borrower-facing explanation process that is understandable and compliant in a live lending environment.",
+    "novelty": "The closest prior work is SYN-PUB-08747, where Branislav Žarković studied explaining credit decisions to supervisors, and SYN-PUB-08751 on explainability requirements under the EU AI Act. This project goes beyond those papers by focusing on a borrower-facing explanation that is generated automatically at decision time, stored with the decision record, and deployed in Kredo Fintech’s production workflow in Serbian and Macedonian. It also extends the earlier explainability work from supervisory framing to operational borrower comprehension and challengeability in a regulated fintech setting.",
+    "data_status": "Kredo Fintech states that it already has a live automated lending system, a current gradient-boosted ensemble, SHAP-based internal summaries, decision records, borrower portal infrastructure, and transaction data, tax filings, and sector benchmarks used in underwriting. The records do not state that historical explanations are already available in borrower-facing Serbian or Macedonian form, so those explanation examples would need to be collected or reconstructed from past decisions and internal logs. User comprehension data and any formal borrower challenge outcomes would also need to be collected during testing and pilot phases.",
+    "company_deadline": "within about six months",
+    "first_step": "Next month, the parties should run a joint workshop to map the current decision flow, review recent decisions and SHAP outputs, and agree on the first Serbian explanation template and compliance checklist.",
+    "to_agree": "The parties still need to agree on funding for the doctoral candidate and supervision time, access to historical decision records and model logs, intellectual property in any new explanation templates and software, background IP boundaries, publication review and delay terms, and the exact data access and security procedure for using Kredo Fintech’s decision records and borrower-portal environment.",
+    "claims": [
+     {
+      "text": "Branislav Žarković is a Full Professor in Finance and Banking at the Faculty of Economics in Subotica, University of Novi Sad, where he leads research on credit risk and SME finance.",
+      "about": "researcher",
+      "evidence": [
+       "R0801"
+      ]
+     },
+     {
+      "text": "Branislav Žarković has expertise in credit scoring for thin-file borrowers and micro-enterprises, SME finance and credit access analysis, alternative data and open banking for lending decisions, explainable and interpretable machine-learning models in credit risk, and regulatory and compliance implications of AI in credit scoring.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-08746",
+       "SYN-PUB-08747",
+       "SYN-PUB-08748",
+       "SYN-PUB-08749",
+       "SYN-PUB-08750",
+       "SYN-PUB-08751",
+       "SYN-PUB-08752",
+       "SYN-PUB-08753",
+       "SYN-PUB-08754"
+      ]
+     },
+     {
+      "text": "Branislav Žarković is open to industrial PhD supervision and joint research projects with industry partners.",
+      "about": "researcher",
+      "evidence": [
+       "R0801"
+      ]
+     },
+     {
+      "text": "Kredo Fintech is a fintech company with 26 employees, founded in 2020, based in NTP Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "Kredo Fintech builds an online lending platform for firms with one to nine employees that need between 500 and 50,000 euros in days, not months.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "Kredo Fintech pulls transaction data, tax filings, and sector benchmarks into underwriting, has funded over 1,400 loans since launch, and says its default rate sits below the Serbian banking sector average for SME portfolios.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "Kredo Fintech’s team of 26 works out of the Science and Technology Park in Novi Sad, and its data team of five handles pipeline engineering and model monitoring.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "Kredo Fintech is regulated by the National Bank of Serbia.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "Kredo Fintech’s products include Kredo SME Loans, Kredo Flex Line, Kredo Score Report, and Kredo Portal.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "Kredo Fintech’s technology stack includes Python, dbt, Snowflake, Apache Airflow, scikit-learn, PostgreSQL, REST APIs for Open Banking data ingestion, and Docker.",
+      "about": "company",
+      "evidence": [
+       "C010"
+      ]
+     },
+     {
+      "text": "The challenge is that every automated credit decision must be accompanied by a plain-language explanation a borrower can understand and, if needed, challenge, but the current SHAP-based summary is too technical for borrowers and does not satisfy the compliance officer.",
+      "about": "company",
+      "evidence": [
+       "C010-CH2"
+      ]
+     },
+     {
+      "text": "The explanation must be generated automatically at decision time, stored alongside the decision record, and rendered in the borrower portal in Serbian and, for expansion, Macedonian.",
+      "about": "company",
+      "evidence": [
+       "C010-CH2"
+      ]
+     },
+     {
+      "text": "Kredo Fintech wants a solution that works reliably in production within about six months.",
+      "about": "company",
+      "evidence": [
+       "C010-CH2"
+      ]
+     },
+     {
+      "text": "Branislav Žarković’s closest relevant published works include explaining credit decisions to supervisors, explainability requirements under the EU AI Act, scoring micro-enterprises with little credit history, alternative data in consumer credit scoring, and open banking data for thin-file borrower assessment.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-08746",
+       "SYN-PUB-08747",
+       "SYN-PUB-08748",
+       "SYN-PUB-08751",
+       "SYN-PUB-08753"
+      ]
+     }
+    ],
+    "form": "industrial_phd"
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "C010-CH2",
+    "companyId": "C010",
+    "researcherId": "R0801",
+    "retrievalScore": 62.821,
+    "matchedTerms": [
+     "bank",
+     "credit",
+     "borrower",
+     "scoring",
+     "ensemble",
+     "features",
+     "borrowers",
+     "compliance",
+     "before",
+     "serbian",
+     "research",
+     "open"
+    ],
+    "score": 2.09,
+    "confidence": 0.69,
+    "screener": "Screener-2",
+    "key": "R0801xC010-CH2",
+    "selectedAt": 792,
+    "profiler": "f5f2c5e7-2ee5-484b-805b-eef608d0f32f",
+    "analyst": "ecba971a-fe28-4dc8-9848-dea2840f47d6",
+    "status": "done",
+    "form": "industrial_phd",
+    "consent": "industrial PhD supervision",
+    "writer": "ac53ad6d-3017-419f-a04c-4e30fc30b3d3"
+   }
+  },
+  {
+   "key": "R0995xC003-CH2",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Industrial PhD on incremental product-line modernization for 38 TIA Portal ladder-logic PLC codebases at AutomVoj a.d.",
+      "problem": "AutomVoj a.d. has 38 active PLC codebases in TIA Portal, each a customer-specific ladder-logic variant, and a safety-related patch currently takes three engineers two full weeks to adapt and test across the installed base. The concrete problem is to introduce a practical, maintainable reuse approach that can reduce cross-codebase patch effort without requiring a full rewrite of existing systems.",
+      "research_questions": [
+       "Can a feature-model-based variability representation be extracted from the 38 existing ladder-logic codebases with enough fidelity to capture the differences that matter for safety-related patches?",
+       "Can an incremental code-generation or synchronization workflow be built so that a safety patch can be propagated to all affected PLC variants without full regeneration and with traceable adaptation points?",
+       "Can the proposed approach be transferred to AutomVoj a.d.'s own Siemens TIA Portal and validated on real codebases so that the patching effort is reduced below the current three-engineer, two-week baseline?"
+      ],
+      "plan": [
+       {
+        "period": "Year 1",
+        "work": "Study the 38 active codebases and classify recurring variation points, then build an initial variability model and a first extraction/synchronization prototype for Siemens TIA Portal ladder logic. Run a transfer check on AutomVoj a.d.'s own PLC platform before claiming any result for company use.",
+        "result": "A documented variability model for the initial codebase sample and a prototype that can reproduce selected existing ladder-logic differences in TIA Portal.",
+        "pass_if": "At least 10 representative codebases are analyzed, and the prototype can round-trip or regenerate at least 5 identified variation points without manual rework in the lab validation set."
+       },
+       {
+        "period": "Year 2",
+        "work": "Extend the prototype to incremental propagation of safety-related changes, define patch templates for recurring emergency-stop and related logic updates, and validate on a broader subset of the installed-base variants with Dragan Ilić's review of practical maintainability.",
+        "result": "An incremental patching workflow that applies one defined safety change across multiple variants with traceable edits.",
+        "pass_if": "A safety patch is propagated to at least 20 codebases, and the average adaptation effort is reduced by at least 50 percent compared with the current three-engineer baseline on the same class of change."
+       },
+       {
+        "period": "Year 3",
+        "work": "Harden the method for routine use, document maintenance procedures, and evaluate the full workflow on AutomVoj a.d.'s 38 active codebases with an emphasis on preserving existing commissioning constraints and maintainability.",
+        "result": "A deployable product-line modernization procedure for the installed base, including documentation, code templates, and evaluation results.",
+        "pass_if": "The workflow can support a safety-related update across all 38 active codebases with no live installation changes before AutomVoj a.d.'s own safety review approves them, and with all affected variants passing the agreed validation tests."
+       }
+      ],
+      "company_brings": "AutomVoj a.d. brings the concrete industrial problem, the 38 active TIA Portal ladder-logic codebases, its Siemens S7-1500 and S7-300 / TIA Portal environment, access to the in-house testing floor, and practical review by Dragan Ilić and the automation team.",
+      "faculty_brings": "The Faculty of Technical Sciences brings research supervision under Veljko Pantelić, model-driven engineering and PLC product-line expertise, and tooling experience with EMF, Xtext, Sirius, and PLC code generation and variability management.",
+      "why_this_pair": "This pair matches a real industrial need in PLC modernization with a research program already centered on IEC 61131-3, variability management, and incremental generation. AutomVoj a.d. has the exact kind of legacy PLC landscape the research can address, while Veljko Pantelić has prior work on PLC metamodeling, product lines, and incremental generation that directly fits the problem.",
+      "novelty": "Compared with Veljko Pantelić's closest prior work, especially SYN-PUB-02958 on incremental model-to-text generation and SYN-PUB-10379 on extracting feature models from legacy PLC codebases, this project is new because it targets a live industrial base of 38 active ladder-logic codebases in Siemens TIA Portal and explicitly combines variability extraction with incremental safety-patch propagation and transfer to the company's own platform. It also goes beyond SYN-PRJ-0390 by focusing on legacy modernisation rather than only generation infrastructure, and beyond SYN-PUB-10377 by applying safety-aware product-line ideas to an operational retrofit workflow.",
+      "data_status": "The records state that AutomVoj a.d. currently has 38 active PLC codebases written in ladder logic in TIA Portal, and that the company has an in-house testing floor. The records do not state that any annotated training dataset, feature model, or extracted variability model already exists. The project would therefore need to collect and inspect representative codebases, change histories where available, and validation cases for recurring safety patches before a reusable model can be built.",
+      "company_deadline": "none stated",
+      "first_step": "In the next month, identify 10 representative PLC codebases from the 38 active systems, agree on one recurring safety-related change to study, and set up access to the relevant TIA Portal projects and test procedures for the first extraction exercise.",
+      "to_agree": "Funding for the doctoral candidate and the allocation of staff time from AutomVoj a.d. and the Faculty of Technical Sciences; access to the 38 codebases and any related commissioning notes or change logs; background IP ownership for existing TIA Portal libraries and any newly created models, generators, or templates; publication review and delay terms; and the safety-review process before any result is tested on a live installation.",
+      "claims": [
+       {
+        "text": "Veljko Pantelić is an Assistant Professor in the Department of Computing and Control Engineering at the Faculty of Technical Sciences.",
+        "about": "researcher",
+        "evidence": [
+         "R0995"
+        ]
+       },
+       {
+        "text": "Veljko Pantelić's fields include Software Engineering, Industrial Automation, Model-Driven Engineering, Programming Languages and Compilers.",
+        "about": "researcher",
+        "evidence": [
+         "R0995"
+        ]
+       },
+       {
+        "text": "Veljko Pantelić's keywords include IEC 61131-3, model-driven engineering, software product lines, domain-specific languages, code generation, PLC programming, metamodeling, feature models, model transformation, and Structured Text.",
+        "about": "researcher",
+        "evidence": [
+         "R0995"
+        ]
+       },
+       {
+        "text": "Veljko Pantelić's group uses Eclipse Modeling Framework, Xtext, Sirius, and a small PLC laboratory equipped with several Wago and Beckhoff controllers for validation experiments.",
+        "about": "researcher",
+        "evidence": [
+         "R0995"
+        ]
+       },
+       {
+        "text": "Veljko Pantelić's doctoral work focused on metamodel-driven code generation pipelines targeting IEC 61131-3 Structured Text for programmable logic controllers.",
+        "about": "researcher",
+        "evidence": [
+         "R0995"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10372 concerns a metamodel for IEC 61131-3 Structured Text with design rationale and conformance checking.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10372"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10373 concerns mapping UML Class Diagrams to IEC 61131-3 Function Blocks via ATL Transformations.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10373"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10374 concerns variability modelling in PLC software families using feature models and configuration constraints.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10374"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10375 concerns an Xtext grammar and IDE support for a subset of IEC 61131-3 Structured Text.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10375"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10376 concerns model-driven engineering for PLC software and a literature mapping study from 2005 to 2019.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10376"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10377 concerns integrating safety requirements into PLC product-line models using SysML parametric diagrams.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10377"
+        ]
+       },
+       {
+        "text": "SYN-PUB-02958 concerns incremental model-to-text generation for PLC software and handling configuration changes without full regeneration.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-02958"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10378 concerns DSL design for conveyor routing logic as a case study in abstraction level calibration.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10378"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10379 concerns round-trip engineering for IEC 61131-3 and extracting feature models from legacy PLC codebases.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10379"
+        ]
+       },
+       {
+        "text": "SYN-PUB-10380 concerns a benchmark suite for PLC code generators, including construction, metrics, and baseline results.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-10380"
+        ]
+       },
+       {
+        "text": "SYN-PRJ-0390 concerns product-line code generation infrastructure for configurable PLC software.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PRJ-0390"
+        ]
+       },
+       {
+        "text": "SYN-PRJ-0391 concerns safety-aware product-line modelling for certified automation software.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PRJ-0391"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. is a robotics and industrial automation company.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. has 212 employees.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. was founded in 1983.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. is based in Zrenjanin.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. builds conveyor and sorting automation systems from its base in Zrenjanin.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d.'s core business is designing, manufacturing, and commissioning PLC-based conveyor lines and automated sorting equipment for food and beverage producers.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. works on chilled and ambient food production lines, fruit, vegetable, and packaged goods sorting and grading equipment, electrical control panels and drive cabinets, on-site commissioning, maintenance contracts, spare-parts supply, and system retrofits and capacity upgrades on legacy conveyor installations.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. uses Siemens S7-1500 and S7-300 PLC platforms, Ladder logic and structured text programming in TIA Portal, Siemens SINAMICS and SEW-EURODRIVE drive systems, EPLAN Electric P8, Profibus and Profinet, Siemens WinCC and Weintek panels, and AutoCAD Mechanical.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003 AutomVoj a.d. has no dedicated R&D department and development happens informally through project work led by the chief engineer and two senior automation engineers.",
+        "about": "company",
+        "evidence": [
+         "C003"
+        ]
+       },
+       {
+        "text": "C003-CH2 states that AutomVoj a.d. has 38 active PLC codebases in ladder logic written in TIA Portal.",
+        "about": "company",
+        "evidence": [
+         "C003-CH2"
+        ]
+       },
+       {
+        "text": "C003-CH2 states that a safety-related patch currently takes three engineers two full weeks to adapt and test across the installed base.",
+        "about": "company",
+        "evidence": [
+         "C003-CH2"
+        ]
+       },
+       {
+        "text": "C003-CH2 states that the company has to touch 38 separate codebases for such a patch and that two sites previously differed enough that the standard fix did not apply cleanly.",
+        "about": "company",
+        "evidence": [
+         "C003-CH2"
+        ]
+       },
+       {
+        "text": "C003-CH2 states that the company has one senior PLC programmer, Dragan Ilić, who understands the full picture and also leads active commissioning projects.",
+        "about": "company",
+        "evidence": [
+         "C003-CH2"
+        ]
+       },
+       {
+        "text": "C003-CH2 states that the company needs a practical approach that does not require rewriting everything at once and that the team can maintain going forward.",
+        "about": "company",
+        "evidence": [
+         "C003-CH2"
+        ]
+       }
+      ],
+      "form": "industrial_phd"
+     },
+     "checks": [
+      {
+       "claim": "Veljko Pantelić is an Assistant Professor in the Department of Computing and Control Engineering at the Faculty of Technical Sciences.",
+       "evidence": [
+        "R0995"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Veljko Pantelić's fields include Software Engineering, Industrial Automation, Model-Driven Engineering, Programming Languages and Compilers.",
+       "evidence": [
+        "R0995"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Veljko Pantelić's keywords include IEC 61131-3, model-driven engineering, software product lines, domain-specific languages, code generation, PLC programming, metamodeling, feature models, model transformation, and Structured Text.",
+       "evidence": [
+        "R0995"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Veljko Pantelić's group uses Eclipse Modeling Framework, Xtext, Sirius, and a small PLC laboratory equipped with several Wago and Beckhoff controllers for validation experiments.",
+       "evidence": [
+        "R0995"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Veljko Pantelić's doctoral work focused on metamodel-driven code generation pipelines targeting IEC 61131-3 Structured Text for programmable logic controllers.",
+       "evidence": [
+        "R0995"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10372 concerns a metamodel for IEC 61131-3 Structured Text with design rationale and conformance checking.",
+       "evidence": [
+        "SYN-PUB-10372"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10373 concerns mapping UML Class Diagrams to IEC 61131-3 Function Blocks via ATL Transformations.",
+       "evidence": [
+        "SYN-PUB-10373"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10374 concerns variability modelling in PLC software families using feature models and configuration constraints.",
+       "evidence": [
+        "SYN-PUB-10374"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10375 concerns an Xtext grammar and IDE support for a subset of IEC 61131-3 Structured Text.",
+       "evidence": [
+        "SYN-PUB-10375"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10376 concerns model-driven engineering for PLC software and a literature mapping study from 2005 to 2019.",
+       "evidence": [
+        "SYN-PUB-10376"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10377 concerns integrating safety requirements into PLC product-line models using SysML parametric diagrams.",
+       "evidence": [
+        "SYN-PUB-10377"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-02958 concerns incremental model-to-text generation for PLC software and handling configuration changes without full regeneration.",
+       "evidence": [
+        "SYN-PUB-02958"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10378 concerns DSL design for conveyor routing logic as a case study in abstraction level calibration.",
+       "evidence": [
+        "SYN-PUB-10378"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10379 concerns round-trip engineering for IEC 61131-3 and extracting feature models from legacy PLC codebases.",
+       "evidence": [
+        "SYN-PUB-10379"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-10380 concerns a benchmark suite for PLC code generators, including construction, metrics, and baseline results.",
+       "evidence": [
+        "SYN-PUB-10380"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PRJ-0390 concerns product-line code generation infrastructure for configurable PLC software.",
+       "evidence": [
+        "SYN-PRJ-0390"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PRJ-0391 concerns safety-aware product-line modelling for certified automation software.",
+       "evidence": [
+        "SYN-PRJ-0391"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. is a robotics and industrial automation company.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. has 212 employees.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. was founded in 1983.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. is based in Zrenjanin.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. builds conveyor and sorting automation systems from its base in Zrenjanin.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d.'s core business is designing, manufacturing, and commissioning PLC-based conveyor lines and automated sorting equipment for food and beverage producers.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. works on chilled and ambient food production lines, fruit, vegetable, and packaged goods sorting and grading equipment, electrical control panels and drive cabinets, on-site commissioning, maintenance contracts, spare-parts supply, and system retrofits and capacity upgrades on legacy conveyor installations.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. uses Siemens S7-1500 and S7-300 PLC platforms, Ladder logic and structured text programming in TIA Portal, Siemens SINAMICS and SEW-EURODRIVE drive systems, EPLAN Electric P8, Profibus and Profinet, Siemens WinCC and Weintek panels, and AutoCAD Mechanical.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003 AutomVoj a.d. has no dedicated R&D department and development happens informally through project work led by the chief engineer and two senior automation engineers.",
+       "evidence": [
+        "C003"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003-CH2 states that AutomVoj a.d. has 38 active PLC codebases in ladder logic written in TIA Portal.",
+       "evidence": [
+        "C003-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003-CH2 states that a safety-related patch currently takes three engineers two full weeks to adapt and test across the installed base.",
+       "evidence": [
+        "C003-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003-CH2 states that the company has to touch 38 separate codebases for such a patch and that two sites previously differed enough that the standard fix did not apply cleanly.",
+       "evidence": [
+        "C003-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003-CH2 states that the company has one senior PLC programmer, Dragan Ilić, who understands the full picture and also leads active commissioning projects.",
+       "evidence": [
+        "C003-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "C003-CH2 states that the company needs a practical approach that does not require rewriting everything at once and that the team can maintain going forward.",
+       "evidence": [
+        "C003-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Industrial PhD on incremental product-line modernization for 38 TIA Portal ladder-logic PLC codebases at AutomVoj a.d.",
+    "problem": "AutomVoj a.d. has 38 active PLC codebases in TIA Portal, each a customer-specific ladder-logic variant, and a safety-related patch currently takes three engineers two full weeks to adapt and test across the installed base. The concrete problem is to introduce a practical, maintainable reuse approach that can reduce cross-codebase patch effort without requiring a full rewrite of existing systems.",
+    "research_questions": [
+     "Can a feature-model-based variability representation be extracted from the 38 existing ladder-logic codebases with enough fidelity to capture the differences that matter for safety-related patches?",
+     "Can an incremental code-generation or synchronization workflow be built so that a safety patch can be propagated to all affected PLC variants without full regeneration and with traceable adaptation points?",
+     "Can the proposed approach be transferred to AutomVoj a.d.'s own Siemens TIA Portal and validated on real codebases so that the patching effort is reduced below the current three-engineer, two-week baseline?"
+    ],
+    "plan": [
+     {
+      "period": "Year 1",
+      "work": "Study the 38 active codebases and classify recurring variation points, then build an initial variability model and a first extraction/synchronization prototype for Siemens TIA Portal ladder logic. Run a transfer check on AutomVoj a.d.'s own PLC platform before claiming any result for company use.",
+      "result": "A documented variability model for the initial codebase sample and a prototype that can reproduce selected existing ladder-logic differences in TIA Portal.",
+      "pass_if": "At least 10 representative codebases are analyzed, and the prototype can round-trip or regenerate at least 5 identified variation points without manual rework in the lab validation set."
+     },
+     {
+      "period": "Year 2",
+      "work": "Extend the prototype to incremental propagation of safety-related changes, define patch templates for recurring emergency-stop and related logic updates, and validate on a broader subset of the installed-base variants with Dragan Ilić's review of practical maintainability.",
+      "result": "An incremental patching workflow that applies one defined safety change across multiple variants with traceable edits.",
+      "pass_if": "A safety patch is propagated to at least 20 codebases, and the average adaptation effort is reduced by at least 50 percent compared with the current three-engineer baseline on the same class of change."
+     },
+     {
+      "period": "Year 3",
+      "work": "Harden the method for routine use, document maintenance procedures, and evaluate the full workflow on AutomVoj a.d.'s 38 active codebases with an emphasis on preserving existing commissioning constraints and maintainability.",
+      "result": "A deployable product-line modernization procedure for the installed base, including documentation, code templates, and evaluation results.",
+      "pass_if": "The workflow can support a safety-related update across all 38 active codebases with no live installation changes before AutomVoj a.d.'s own safety review approves them, and with all affected variants passing the agreed validation tests."
+     }
+    ],
+    "company_brings": "AutomVoj a.d. brings the concrete industrial problem, the 38 active TIA Portal ladder-logic codebases, its Siemens S7-1500 and S7-300 / TIA Portal environment, access to the in-house testing floor, and practical review by Dragan Ilić and the automation team.",
+    "faculty_brings": "The Faculty of Technical Sciences brings research supervision under Veljko Pantelić, model-driven engineering and PLC product-line expertise, and tooling experience with EMF, Xtext, Sirius, and PLC code generation and variability management.",
+    "why_this_pair": "This pair matches a real industrial need in PLC modernization with a research program already centered on IEC 61131-3, variability management, and incremental generation. AutomVoj a.d. has the exact kind of legacy PLC landscape the research can address, while Veljko Pantelić has prior work on PLC metamodeling, product lines, and incremental generation that directly fits the problem.",
+    "novelty": "Compared with Veljko Pantelić's closest prior work, especially SYN-PUB-02958 on incremental model-to-text generation and SYN-PUB-10379 on extracting feature models from legacy PLC codebases, this project is new because it targets a live industrial base of 38 active ladder-logic codebases in Siemens TIA Portal and explicitly combines variability extraction with incremental safety-patch propagation and transfer to the company's own platform. It also goes beyond SYN-PRJ-0390 by focusing on legacy modernisation rather than only generation infrastructure, and beyond SYN-PUB-10377 by applying safety-aware product-line ideas to an operational retrofit workflow.",
+    "data_status": "The records state that AutomVoj a.d. currently has 38 active PLC codebases written in ladder logic in TIA Portal, and that the company has an in-house testing floor. The records do not state that any annotated training dataset, feature model, or extracted variability model already exists. The project would therefore need to collect and inspect representative codebases, change histories where available, and validation cases for recurring safety patches before a reusable model can be built.",
+    "company_deadline": "none stated",
+    "first_step": "In the next month, identify 10 representative PLC codebases from the 38 active systems, agree on one recurring safety-related change to study, and set up access to the relevant TIA Portal projects and test procedures for the first extraction exercise.",
+    "to_agree": "Funding for the doctoral candidate and the allocation of staff time from AutomVoj a.d. and the Faculty of Technical Sciences; access to the 38 codebases and any related commissioning notes or change logs; background IP ownership for existing TIA Portal libraries and any newly created models, generators, or templates; publication review and delay terms; and the safety-review process before any result is tested on a live installation.",
+    "claims": [
+     {
+      "text": "Veljko Pantelić is an Assistant Professor in the Department of Computing and Control Engineering at the Faculty of Technical Sciences.",
+      "about": "researcher",
+      "evidence": [
+       "R0995"
+      ]
+     },
+     {
+      "text": "Veljko Pantelić's fields include Software Engineering, Industrial Automation, Model-Driven Engineering, Programming Languages and Compilers.",
+      "about": "researcher",
+      "evidence": [
+       "R0995"
+      ]
+     },
+     {
+      "text": "Veljko Pantelić's keywords include IEC 61131-3, model-driven engineering, software product lines, domain-specific languages, code generation, PLC programming, metamodeling, feature models, model transformation, and Structured Text.",
+      "about": "researcher",
+      "evidence": [
+       "R0995"
+      ]
+     },
+     {
+      "text": "Veljko Pantelić's group uses Eclipse Modeling Framework, Xtext, Sirius, and a small PLC laboratory equipped with several Wago and Beckhoff controllers for validation experiments.",
+      "about": "researcher",
+      "evidence": [
+       "R0995"
+      ]
+     },
+     {
+      "text": "Veljko Pantelić's doctoral work focused on metamodel-driven code generation pipelines targeting IEC 61131-3 Structured Text for programmable logic controllers.",
+      "about": "researcher",
+      "evidence": [
+       "R0995"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10372 concerns a metamodel for IEC 61131-3 Structured Text with design rationale and conformance checking.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10372"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10373 concerns mapping UML Class Diagrams to IEC 61131-3 Function Blocks via ATL Transformations.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10373"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10374 concerns variability modelling in PLC software families using feature models and configuration constraints.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10374"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10375 concerns an Xtext grammar and IDE support for a subset of IEC 61131-3 Structured Text.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10375"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10376 concerns model-driven engineering for PLC software and a literature mapping study from 2005 to 2019.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10376"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10377 concerns integrating safety requirements into PLC product-line models using SysML parametric diagrams.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10377"
+      ]
+     },
+     {
+      "text": "SYN-PUB-02958 concerns incremental model-to-text generation for PLC software and handling configuration changes without full regeneration.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-02958"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10378 concerns DSL design for conveyor routing logic as a case study in abstraction level calibration.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10378"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10379 concerns round-trip engineering for IEC 61131-3 and extracting feature models from legacy PLC codebases.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10379"
+      ]
+     },
+     {
+      "text": "SYN-PUB-10380 concerns a benchmark suite for PLC code generators, including construction, metrics, and baseline results.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-10380"
+      ]
+     },
+     {
+      "text": "SYN-PRJ-0390 concerns product-line code generation infrastructure for configurable PLC software.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PRJ-0390"
+      ]
+     },
+     {
+      "text": "SYN-PRJ-0391 concerns safety-aware product-line modelling for certified automation software.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PRJ-0391"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. is a robotics and industrial automation company.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. has 212 employees.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. was founded in 1983.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. is based in Zrenjanin.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. builds conveyor and sorting automation systems from its base in Zrenjanin.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d.'s core business is designing, manufacturing, and commissioning PLC-based conveyor lines and automated sorting equipment for food and beverage producers.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. works on chilled and ambient food production lines, fruit, vegetable, and packaged goods sorting and grading equipment, electrical control panels and drive cabinets, on-site commissioning, maintenance contracts, spare-parts supply, and system retrofits and capacity upgrades on legacy conveyor installations.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. uses Siemens S7-1500 and S7-300 PLC platforms, Ladder logic and structured text programming in TIA Portal, Siemens SINAMICS and SEW-EURODRIVE drive systems, EPLAN Electric P8, Profibus and Profinet, Siemens WinCC and Weintek panels, and AutoCAD Mechanical.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003 AutomVoj a.d. has no dedicated R&D department and development happens informally through project work led by the chief engineer and two senior automation engineers.",
+      "about": "company",
+      "evidence": [
+       "C003"
+      ]
+     },
+     {
+      "text": "C003-CH2 states that AutomVoj a.d. has 38 active PLC codebases in ladder logic written in TIA Portal.",
+      "about": "company",
+      "evidence": [
+       "C003-CH2"
+      ]
+     },
+     {
+      "text": "C003-CH2 states that a safety-related patch currently takes three engineers two full weeks to adapt and test across the installed base.",
+      "about": "company",
+      "evidence": [
+       "C003-CH2"
+      ]
+     },
+     {
+      "text": "C003-CH2 states that the company has to touch 38 separate codebases for such a patch and that two sites previously differed enough that the standard fix did not apply cleanly.",
+      "about": "company",
+      "evidence": [
+       "C003-CH2"
+      ]
+     },
+     {
+      "text": "C003-CH2 states that the company has one senior PLC programmer, Dragan Ilić, who understands the full picture and also leads active commissioning projects.",
+      "about": "company",
+      "evidence": [
+       "C003-CH2"
+      ]
+     },
+     {
+      "text": "C003-CH2 states that the company needs a practical approach that does not require rewriting everything at once and that the team can maintain going forward.",
+      "about": "company",
+      "evidence": [
+       "C003-CH2"
+      ]
+     }
+    ],
+    "form": "industrial_phd"
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "C003-CH2",
+    "companyId": "C003",
+    "researcherId": "R0995",
+    "retrievalScore": 57.51,
+    "matchedTerms": [
+     "plc",
+     "logic",
+     "safety",
+     "codebases",
+     "full",
+     "changes",
+     "during",
+     "structured",
+     "code",
+     "but",
+     "load",
+     "text"
+    ],
+    "score": 2.96,
+    "confidence": 0.96,
+    "screener": "Screener-1",
+    "key": "R0995xC003-CH2",
+    "selectedAt": 623,
+    "profiler": "ea614d2b-4fea-4d13-be4d-11489a563ed5",
+    "analyst": "52aef508-991a-4411-8b87-9d2ae5bff8f2",
+    "status": "done",
+    "form": "industrial_phd",
+    "consent": "industrial PhD supervision",
+    "writer": "ac53ad6d-3017-419f-a04c-4e30fc30b3d3"
+   }
+  },
+  {
+   "key": "R0919xC018-CH2",
+   "attempts": [
+    {
+     "attempt": 1,
+     "proposal": {
+      "title": "Industrial PhD on contract-driven integration testing for multi-supplier CAN stacks at DriveLogic Vojvodina d.o.o.",
+      "problem": "DriveLogic Vojvodina d.o.o. reports 87% branch coverage but still sees CAN communication faults after delivery, especially at boundaries between components from different suppliers. The concrete problem is to turn ARXML descriptions, COM configuration, and the CANoe environment into systematic test scenarios that target interface assumptions between suppliers before shipping, while fitting DriveLogic’s current AUTOSAR Classic workflow and its first-phase budget cap of €40,000.",
+      "research_questions": [
+       "Can interface contracts inferred from ARXML and COM configuration predict which cross-supplier CAN interactions are most likely to fail in integration, and can that prediction be measured against delivered fault cases?",
+       "Can constrained combinatorial test generation produce interface-focused CAN test suites that find more boundary faults than the current manually written tests while staying within the same execution budget?",
+       "Can contract-derived tests be transferred into DriveLogic’s own CANoe-based process without losing relevance, and can the method be maintained incrementally as ARXML changes across projects?"
+      ],
+      "plan": [
+       {
+        "period": "Year 1",
+        "work": "Study DriveLogic’s ARXML, COM configuration, and CANoe-based test process on one current project or a representative project archive. Derive a contract model for cross-supplier CAN interactions, map it to the company’s interface assumptions, and build a first generator for interface-focused test scenarios. Run a transfer check on DriveLogic’s own CANoe environment before any result is claimed for the company workflow.",
+        "result": "A prototype method that produces contract-targeted CAN test scenarios and a first set of measurable comparison results against existing manually written integration tests.",
+        "pass_if": "On at least one representative project, the prototype generates a test suite that covers all identified cross-supplier interface contracts and finds at least one interaction fault or fault-relevant discrepancy that is not covered by the current branch-coverage-oriented test set."
+       },
+       {
+        "period": "Year 2",
+        "work": "Extend the prototype to handle changing ARXML and COM configurations across project revisions, and add incremental maintenance so that existing contract tests are updated rather than rewritten. Evaluate the method on historical DriveLogic integration defects and on at least one new project cycle, using the company’s own toolchain and review process.",
+        "result": "An incremental, company-compatible contract-testing workflow with documented maintenance effort and defect-detection results.",
+        "pass_if": "For at least two project variants, the maintained test suite changes by no more than the contract-relevant subset of test cases, while still detecting the known boundary-type fault pattern reported by DriveLogic in at least two of the four delivered projects."
+       },
+       {
+        "period": "Year 3",
+        "work": "Consolidate the method into a dissertation-level framework, refine acceptance criteria for when contract-derived tests are sufficient, and package guidance for adoption in DriveLogic’s regular V-cycle testing. If safety-related changes are involved, no live installation is used until DriveLogic’s own safety review approves it.",
+        "result": "A validated industrial PhD outcome: a reusable workflow, evaluation across multiple projects, and thesis material grounded in DriveLogic’s toolchain and constraints.",
+        "pass_if": "DriveLogic can apply the workflow on a new AUTOSAR integration task with no more than one senior engineer part-time support, and the method demonstrates a repeatable reduction in late-found CAN interaction faults relative to the company’s current ad hoc test selection."
+       }
+      ],
+      "company_brings": "DriveLogic Vojvodina d.o.o. brings its Novi Sad-based AUTOSAR Classic integration setting, access to ARXML descriptions, COM configuration, and CANoe environment, plus practical integration cases from powertrain, body, or chassis ECU projects. The company can dedicate one senior engineer part-time, roughly 40% of that person’s working week, to a collaborative activity tied to active projects. The company also brings its established V-cycle testing practice, LDRA-based branch coverage reports, and the concrete problem of three late-found CAN faults in the last four delivered projects.",
+      "faculty_brings": "Martina Lačoková and the Faculty of Technical Sciences bring expertise in combinatorial interaction testing, constrained covering arrays, interface contract specification, compositional verification, runtime monitoring, and CAN/CAN FD integration testing. The group also brings a CAN/LIN bus laboratory with vector hardware interfaces and a small cluster for constraint-solving workloads, which can support method development and analysis before transfer to DriveLogic’s own platform.",
+      "why_this_pair": "This pair matches a company problem about cross-supplier CAN boundary faults with a researcher whose published work directly addresses combinatorial test generation, interface contracts, incremental test maintenance, and runtime monitoring for embedded and automotive networks. DriveLogic’s AUTOSAR-only focus, its use of CANoe and ARXML, and its need for a method that targets assumptions between suppliers align closely with Martina Lačoková’s embedded-systems testing profile and prior industrially oriented work.",
+      "novelty": "Compared with Martina Lačoková’s closest published work, this proposal goes beyond SYN-PUB-09743 by moving from generating minimum-size covering arrays in constrained parameter spaces to generating contract-targeted tests from real DriveLogic ARXML and COM inputs. It goes beyond SYN-PUB-09744 and SYN-PUB-03011 by focusing on a full industrial transfer to the company’s own CANoe workflow for cross-supplier integration faults, not only formal specification or automated contract derivation. It also extends SYN-PUB-09748 by making incremental maintenance a central deliverable for changing project configurations, and it builds on SYN-PUB-09749 by turning the taxonomy of cross-layer faults into a repeatable detection workflow for a specific company setting. The novelty is therefore in the end-to-end industrialisation: reading the company’s descriptions, deriving interface contracts, generating tests aimed at the assumptions between suppliers, and validating transfer in DriveLogic’s environment.",
+      "data_status": "DriveLogic states that it has full access to the ARXML descriptions of all components in the project, the COM configuration, and the CANoe environment. It also has LDRA coverage reports showing 87% branch coverage before shipment and has observed three CAN communication faults in the last four delivered projects. What still has to be collected for the research is a structured record of the actual interface assumptions, the relevant historical fault cases, and the mapping from each fault to the contract condition that failed, together with any additional project revisions needed for validation. The company does not state that historical fault logs are already curated in research-ready form, so that curation would need to be collected as part of the project.",
+      "company_deadline": "none stated",
+      "first_step": "In the next month, select one representative DriveLogic AUTOSAR integration project, extract its ARXML and COM inputs, and define the first contract vocabulary with the company’s senior engineer so the prototype can be checked against DriveLogic’s own CANoe process.",
+      "to_agree": "Funding for the industrial PhD candidate and the division of salary or scholarship costs; the exact amount of DriveLogic staff time beyond the stated 40% of one senior engineer; access rules for ARXML, COM, CANoe, and any historical defect records; background IP ownership for existing company toolchains and university methods; ownership and licensing of new results; publication delay for thesis-related papers and any company review period; whether additional computing or lab equipment beyond the faculty’s CAN/LIN lab and small cluster is needed; and the scope of any safety review if the method is ever tried on a live installation.",
+      "claims": [
+       {
+        "text": "Martina Lačoková is a Senior Research Associate in the Department of Computing and Control Engineering at the Faculty of Technical Sciences.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "Her fields include Software Engineering and Testing, Embedded and Real-Time Systems, Formal Methods and Verification, and Automotive and Industrial Control.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "Her keywords include combinatorial interaction testing, t-way test generation, interface contract specification, compositional verification, CAN bus, multi-supplier integration, runtime assertion monitoring, covering arrays, constraint solving, and embedded software.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "She received her Ph.D. in 2014 from the Faculty of Technical Sciences, University of Novi Sad, with a thesis on combinatorial test generation for automotive communication middleware.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "Since 2015 she has held a Senior Research Associate position in the Department of Computing and Control Engineering.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "Her group focuses on test adequacy and compositional verification for embedded software assembled from components supplied by multiple vendors, with emphasis on CAN-based automotive and industrial networks.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "The group maintains a CAN/LIN bus laboratory with vector hardware interfaces and a small cluster for constraint-solving workloads.",
+        "about": "researcher",
+        "evidence": [
+         "R0919"
+        ]
+       },
+       {
+        "text": "DriveLogic Vojvodina d.o.o. is an automotive and mobility software company based in Novi Sad.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "DriveLogic Vojvodina d.o.o. has 27 employees and was founded in 2004.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "The company focuses entirely on AUTOSAR-based embedded software for configuration, integration, and V-cycle testing for powertrain, body and chassis ECUs.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "Its products include AUTOSAR Classic BSW configuration and software component integration, V-cycle test planning, execution and coverage reporting for ECU software, CAN, LIN and Ethernet communication stack integration and validation, ECU flashing, diagnostic tooling and UDS/OBD-II protocol support, and AUTOSAR toolchain migration and legacy codebase porting.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "The company uses AUTOSAR Classic (R4.x), Vector DaVinci Configurator, CAPL scripting, CANoe/CANalyzer, TRACE32 and JTAG-based ECU debugging, Jenkins-based CI pipelines, LDRA Testbed, gcov, Python scripting, and PC-lint Plus.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "DriveLogic can dedicate one senior engineer part-time, roughly 40% of that person’s working week, to a collaborative development or research activity tied to active projects.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "The company works on more than forty OEM projects and serves Tier-1 and Tier-2 suppliers delivering ECUs to European OEMs.",
+        "about": "company",
+        "evidence": [
+         "C018"
+        ]
+       },
+       {
+        "text": "DriveLogic’s challenge states that its test coverage reports show 87% branch coverage but it still finds integration bugs in the CAN communication stack after delivery.",
+        "about": "company",
+        "evidence": [
+         "C018-CH2"
+        ]
+       },
+       {
+        "text": "The challenge says that in the last four delivered projects, three came back with CAN communication faults found during customer integration testing.",
+        "about": "company",
+        "evidence": [
+         "C018-CH2"
+        ]
+       },
+       {
+        "text": "The challenge says the fault was at a boundary between components from different suppliers, each conforming to spec individually but producing unexpected behaviour when connected.",
+        "about": "company",
+        "evidence": [
+         "C018-CH2"
+        ]
+       },
+       {
+        "text": "The challenge states that DriveLogic has full access to the ARXML descriptions of all components in the project, the COM configuration, and the CANoe environment.",
+        "about": "company",
+        "evidence": [
+         "C018-CH2"
+        ]
+       },
+       {
+        "text": "The challenge says the company would not start something that cost more than €40,000 in the first phase.",
+        "about": "company",
+        "evidence": [
+         "C018-CH2"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09743 is about generating minimum-size covering arrays for constrained parameter spaces in automotive middleware.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09743"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09744 is about interface contract specification for multi-supplier CAN node integration.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09744"
+        ]
+       },
+       {
+        "text": "SYN-PUB-02017 is about runtime assertion monitoring for CAN-based embedded systems using low-overhead instrumentation.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-02017"
+        ]
+       },
+       {
+        "text": "SYN-PUB-01450 is about compositional verification of embedded software stacks.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-01450"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09745 evaluates strength-3 combinatorial test suites against real field faults in a CAN stack implementation.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09745"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09746 is about specification and automated checking of timing contracts for multi-frame CAN FD messages.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09746"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09747 is a benchmark suite for constrained covering array generators.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09747"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09748 is about incremental test suite maintenance for evolving CAN interface contracts.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09748"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09749 is a taxonomy and detection study of cross-layer interaction faults in multi-supplier embedded stacks.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09749"
+        ]
+       },
+       {
+        "text": "SYN-PUB-03011 is about automated derivation of CAN-CL contracts from AUTOSAR system descriptions.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-03011"
+        ]
+       },
+       {
+        "text": "SYN-PUB-09750 is about monitoring overhead profiles for CAN-CL runtime contracts across six microcontroller families.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PUB-09750"
+        ]
+       },
+       {
+        "text": "SYN-PRJ-0434 is a project on contract-based integration testing for multi-supplier CAN networks in small-series manufacturing.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PRJ-0434"
+        ]
+       },
+       {
+        "text": "SYN-PRJ-0435 is a project on embedded software dependability by compositional specification and testing.",
+        "about": "researcher",
+        "evidence": [
+         "SYN-PRJ-0435"
+        ]
+       }
+      ],
+      "form": "industrial_phd"
+     },
+     "checks": [
+      {
+       "claim": "Martina Lačoková is a Senior Research Associate in the Department of Computing and Control Engineering at the Faculty of Technical Sciences.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her fields include Software Engineering and Testing, Embedded and Real-Time Systems, Formal Methods and Verification, and Automotive and Industrial Control.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her keywords include combinatorial interaction testing, t-way test generation, interface contract specification, compositional verification, CAN bus, multi-supplier integration, runtime assertion monitoring, covering arrays, constraint solving, and embedded software.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "She received her Ph.D. in 2014 from the Faculty of Technical Sciences, University of Novi Sad, with a thesis on combinatorial test generation for automotive communication middleware.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Since 2015 she has held a Senior Research Associate position in the Department of Computing and Control Engineering.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Her group focuses on test adequacy and compositional verification for embedded software assembled from components supplied by multiple vendors, with emphasis on CAN-based automotive and industrial networks.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The group maintains a CAN/LIN bus laboratory with vector hardware interfaces and a small cluster for constraint-solving workloads.",
+       "evidence": [
+        "R0919"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "DriveLogic Vojvodina d.o.o. is an automotive and mobility software company based in Novi Sad.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "DriveLogic Vojvodina d.o.o. has 27 employees and was founded in 2004.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company focuses entirely on AUTOSAR-based embedded software for configuration, integration, and V-cycle testing for powertrain, body and chassis ECUs.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "Its products include AUTOSAR Classic BSW configuration and software component integration, V-cycle test planning, execution and coverage reporting for ECU software, CAN, LIN and Ethernet communication stack integration and validation, ECU flashing, diagnostic tooling and UDS/OBD-II protocol support, and AUTOSAR toolchain migration and legacy codebase porting.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company uses AUTOSAR Classic (R4.x), Vector DaVinci Configurator, CAPL scripting, CANoe/CANalyzer, TRACE32 and JTAG-based ECU debugging, Jenkins-based CI pipelines, LDRA Testbed, gcov, Python scripting, and PC-lint Plus.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "DriveLogic can dedicate one senior engineer part-time, roughly 40% of that person’s working week, to a collaborative development or research activity tied to active projects.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The company works on more than forty OEM projects and serves Tier-1 and Tier-2 suppliers delivering ECUs to European OEMs.",
+       "evidence": [
+        "C018"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "DriveLogic’s challenge states that its test coverage reports show 87% branch coverage but it still finds integration bugs in the CAN communication stack after delivery.",
+       "evidence": [
+        "C018-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge says that in the last four delivered projects, three came back with CAN communication faults found during customer integration testing.",
+       "evidence": [
+        "C018-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge says the fault was at a boundary between components from different suppliers, each conforming to spec individually but producing unexpected behaviour when connected.",
+       "evidence": [
+        "C018-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge states that DriveLogic has full access to the ARXML descriptions of all components in the project, the COM configuration, and the CANoe environment.",
+       "evidence": [
+        "C018-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "The challenge says the company would not start something that cost more than €40,000 in the first phase.",
+       "evidence": [
+        "C018-CH2"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-09743 is about generating minimum-size covering arrays for constrained parameter spaces in automotive middleware.",
+       "evidence": [
+        "SYN-PUB-09743"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      },
+      {
+       "claim": "SYN-PUB-09744 is about interface contract specification for multi-supplier CAN node integration.",
+       "evidence": [
+        "SYN-PUB-09744"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-02017 is about runtime assertion monitoring for CAN-based embedded systems using low-overhead instrumentation.",
+       "evidence": [
+        "SYN-PUB-02017"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      },
+      {
+       "claim": "SYN-PUB-01450 is about compositional verification of embedded software stacks.",
+       "evidence": [
+        "SYN-PUB-01450"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-09745 evaluates strength-3 combinatorial test suites against real field faults in a CAN stack implementation.",
+       "evidence": [
+        "SYN-PUB-09745"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-09746 is about specification and automated checking of timing contracts for multi-frame CAN FD messages.",
+       "evidence": [
+        "SYN-PUB-09746"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      },
+      {
+       "claim": "SYN-PUB-09747 is a benchmark suite for constrained covering array generators.",
+       "evidence": [
+        "SYN-PUB-09747"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-09748 is about incremental test suite maintenance for evolving CAN interface contracts.",
+       "evidence": [
+        "SYN-PUB-09748"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      },
+      {
+       "claim": "SYN-PUB-09749 is a taxonomy and detection study of cross-layer interaction faults in multi-supplier embedded stacks.",
+       "evidence": [
+        "SYN-PUB-09749"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-03011 is about automated derivation of CAN-CL contracts from AUTOSAR system descriptions.",
+       "evidence": [
+        "SYN-PUB-03011"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1
+      },
+      {
+       "claim": "SYN-PUB-09750 is about monitoring overhead profiles for CAN-CL runtime contracts across six microcontroller families.",
+       "evidence": [
+        "SYN-PUB-09750"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      },
+      {
+       "claim": "SYN-PRJ-0434 is a project on contract-based integration testing for multi-supplier CAN networks in small-series manufacturing.",
+       "evidence": [
+        "SYN-PRJ-0434"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      },
+      {
+       "claim": "SYN-PRJ-0435 is a project on embedded software dependability by compositional specification and testing.",
+       "evidence": [
+        "SYN-PRJ-0435"
+       ],
+       "deterministic": [],
+       "supported": true,
+       "support": 1,
+       "matched": "title"
+      }
+     ],
+     "verdict": "approve"
+    }
+   ],
+   "final": {
+    "title": "Industrial PhD on contract-driven integration testing for multi-supplier CAN stacks at DriveLogic Vojvodina d.o.o.",
+    "problem": "DriveLogic Vojvodina d.o.o. reports 87% branch coverage but still sees CAN communication faults after delivery, especially at boundaries between components from different suppliers. The concrete problem is to turn ARXML descriptions, COM configuration, and the CANoe environment into systematic test scenarios that target interface assumptions between suppliers before shipping, while fitting DriveLogic’s current AUTOSAR Classic workflow and its first-phase budget cap of €40,000.",
+    "research_questions": [
+     "Can interface contracts inferred from ARXML and COM configuration predict which cross-supplier CAN interactions are most likely to fail in integration, and can that prediction be measured against delivered fault cases?",
+     "Can constrained combinatorial test generation produce interface-focused CAN test suites that find more boundary faults than the current manually written tests while staying within the same execution budget?",
+     "Can contract-derived tests be transferred into DriveLogic’s own CANoe-based process without losing relevance, and can the method be maintained incrementally as ARXML changes across projects?"
+    ],
+    "plan": [
+     {
+      "period": "Year 1",
+      "work": "Study DriveLogic’s ARXML, COM configuration, and CANoe-based test process on one current project or a representative project archive. Derive a contract model for cross-supplier CAN interactions, map it to the company’s interface assumptions, and build a first generator for interface-focused test scenarios. Run a transfer check on DriveLogic’s own CANoe environment before any result is claimed for the company workflow.",
+      "result": "A prototype method that produces contract-targeted CAN test scenarios and a first set of measurable comparison results against existing manually written integration tests.",
+      "pass_if": "On at least one representative project, the prototype generates a test suite that covers all identified cross-supplier interface contracts and finds at least one interaction fault or fault-relevant discrepancy that is not covered by the current branch-coverage-oriented test set."
+     },
+     {
+      "period": "Year 2",
+      "work": "Extend the prototype to handle changing ARXML and COM configurations across project revisions, and add incremental maintenance so that existing contract tests are updated rather than rewritten. Evaluate the method on historical DriveLogic integration defects and on at least one new project cycle, using the company’s own toolchain and review process.",
+      "result": "An incremental, company-compatible contract-testing workflow with documented maintenance effort and defect-detection results.",
+      "pass_if": "For at least two project variants, the maintained test suite changes by no more than the contract-relevant subset of test cases, while still detecting the known boundary-type fault pattern reported by DriveLogic in at least two of the four delivered projects."
+     },
+     {
+      "period": "Year 3",
+      "work": "Consolidate the method into a dissertation-level framework, refine acceptance criteria for when contract-derived tests are sufficient, and package guidance for adoption in DriveLogic’s regular V-cycle testing. If safety-related changes are involved, no live installation is used until DriveLogic’s own safety review approves it.",
+      "result": "A validated industrial PhD outcome: a reusable workflow, evaluation across multiple projects, and thesis material grounded in DriveLogic’s toolchain and constraints.",
+      "pass_if": "DriveLogic can apply the workflow on a new AUTOSAR integration task with no more than one senior engineer part-time support, and the method demonstrates a repeatable reduction in late-found CAN interaction faults relative to the company’s current ad hoc test selection."
+     }
+    ],
+    "company_brings": "DriveLogic Vojvodina d.o.o. brings its Novi Sad-based AUTOSAR Classic integration setting, access to ARXML descriptions, COM configuration, and CANoe environment, plus practical integration cases from powertrain, body, or chassis ECU projects. The company can dedicate one senior engineer part-time, roughly 40% of that person’s working week, to a collaborative activity tied to active projects. The company also brings its established V-cycle testing practice, LDRA-based branch coverage reports, and the concrete problem of three late-found CAN faults in the last four delivered projects.",
+    "faculty_brings": "Martina Lačoková and the Faculty of Technical Sciences bring expertise in combinatorial interaction testing, constrained covering arrays, interface contract specification, compositional verification, runtime monitoring, and CAN/CAN FD integration testing. The group also brings a CAN/LIN bus laboratory with vector hardware interfaces and a small cluster for constraint-solving workloads, which can support method development and analysis before transfer to DriveLogic’s own platform.",
+    "why_this_pair": "This pair matches a company problem about cross-supplier CAN boundary faults with a researcher whose published work directly addresses combinatorial test generation, interface contracts, incremental test maintenance, and runtime monitoring for embedded and automotive networks. DriveLogic’s AUTOSAR-only focus, its use of CANoe and ARXML, and its need for a method that targets assumptions between suppliers align closely with Martina Lačoková’s embedded-systems testing profile and prior industrially oriented work.",
+    "novelty": "Compared with Martina Lačoková’s closest published work, this proposal goes beyond SYN-PUB-09743 by moving from generating minimum-size covering arrays in constrained parameter spaces to generating contract-targeted tests from real DriveLogic ARXML and COM inputs. It goes beyond SYN-PUB-09744 and SYN-PUB-03011 by focusing on a full industrial transfer to the company’s own CANoe workflow for cross-supplier integration faults, not only formal specification or automated contract derivation. It also extends SYN-PUB-09748 by making incremental maintenance a central deliverable for changing project configurations, and it builds on SYN-PUB-09749 by turning the taxonomy of cross-layer faults into a repeatable detection workflow for a specific company setting. The novelty is therefore in the end-to-end industrialisation: reading the company’s descriptions, deriving interface contracts, generating tests aimed at the assumptions between suppliers, and validating transfer in DriveLogic’s environment.",
+    "data_status": "DriveLogic states that it has full access to the ARXML descriptions of all components in the project, the COM configuration, and the CANoe environment. It also has LDRA coverage reports showing 87% branch coverage before shipment and has observed three CAN communication faults in the last four delivered projects. What still has to be collected for the research is a structured record of the actual interface assumptions, the relevant historical fault cases, and the mapping from each fault to the contract condition that failed, together with any additional project revisions needed for validation. The company does not state that historical fault logs are already curated in research-ready form, so that curation would need to be collected as part of the project.",
+    "company_deadline": "none stated",
+    "first_step": "In the next month, select one representative DriveLogic AUTOSAR integration project, extract its ARXML and COM inputs, and define the first contract vocabulary with the company’s senior engineer so the prototype can be checked against DriveLogic’s own CANoe process.",
+    "to_agree": "Funding for the industrial PhD candidate and the division of salary or scholarship costs; the exact amount of DriveLogic staff time beyond the stated 40% of one senior engineer; access rules for ARXML, COM, CANoe, and any historical defect records; background IP ownership for existing company toolchains and university methods; ownership and licensing of new results; publication delay for thesis-related papers and any company review period; whether additional computing or lab equipment beyond the faculty’s CAN/LIN lab and small cluster is needed; and the scope of any safety review if the method is ever tried on a live installation.",
+    "claims": [
+     {
+      "text": "Martina Lačoková is a Senior Research Associate in the Department of Computing and Control Engineering at the Faculty of Technical Sciences.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "Her fields include Software Engineering and Testing, Embedded and Real-Time Systems, Formal Methods and Verification, and Automotive and Industrial Control.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "Her keywords include combinatorial interaction testing, t-way test generation, interface contract specification, compositional verification, CAN bus, multi-supplier integration, runtime assertion monitoring, covering arrays, constraint solving, and embedded software.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "She received her Ph.D. in 2014 from the Faculty of Technical Sciences, University of Novi Sad, with a thesis on combinatorial test generation for automotive communication middleware.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "Since 2015 she has held a Senior Research Associate position in the Department of Computing and Control Engineering.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "Her group focuses on test adequacy and compositional verification for embedded software assembled from components supplied by multiple vendors, with emphasis on CAN-based automotive and industrial networks.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "The group maintains a CAN/LIN bus laboratory with vector hardware interfaces and a small cluster for constraint-solving workloads.",
+      "about": "researcher",
+      "evidence": [
+       "R0919"
+      ]
+     },
+     {
+      "text": "DriveLogic Vojvodina d.o.o. is an automotive and mobility software company based in Novi Sad.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "DriveLogic Vojvodina d.o.o. has 27 employees and was founded in 2004.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "The company focuses entirely on AUTOSAR-based embedded software for configuration, integration, and V-cycle testing for powertrain, body and chassis ECUs.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "Its products include AUTOSAR Classic BSW configuration and software component integration, V-cycle test planning, execution and coverage reporting for ECU software, CAN, LIN and Ethernet communication stack integration and validation, ECU flashing, diagnostic tooling and UDS/OBD-II protocol support, and AUTOSAR toolchain migration and legacy codebase porting.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "The company uses AUTOSAR Classic (R4.x), Vector DaVinci Configurator, CAPL scripting, CANoe/CANalyzer, TRACE32 and JTAG-based ECU debugging, Jenkins-based CI pipelines, LDRA Testbed, gcov, Python scripting, and PC-lint Plus.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "DriveLogic can dedicate one senior engineer part-time, roughly 40% of that person’s working week, to a collaborative development or research activity tied to active projects.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "The company works on more than forty OEM projects and serves Tier-1 and Tier-2 suppliers delivering ECUs to European OEMs.",
+      "about": "company",
+      "evidence": [
+       "C018"
+      ]
+     },
+     {
+      "text": "DriveLogic’s challenge states that its test coverage reports show 87% branch coverage but it still finds integration bugs in the CAN communication stack after delivery.",
+      "about": "company",
+      "evidence": [
+       "C018-CH2"
+      ]
+     },
+     {
+      "text": "The challenge says that in the last four delivered projects, three came back with CAN communication faults found during customer integration testing.",
+      "about": "company",
+      "evidence": [
+       "C018-CH2"
+      ]
+     },
+     {
+      "text": "The challenge says the fault was at a boundary between components from different suppliers, each conforming to spec individually but producing unexpected behaviour when connected.",
+      "about": "company",
+      "evidence": [
+       "C018-CH2"
+      ]
+     },
+     {
+      "text": "The challenge states that DriveLogic has full access to the ARXML descriptions of all components in the project, the COM configuration, and the CANoe environment.",
+      "about": "company",
+      "evidence": [
+       "C018-CH2"
+      ]
+     },
+     {
+      "text": "The challenge says the company would not start something that cost more than €40,000 in the first phase.",
+      "about": "company",
+      "evidence": [
+       "C018-CH2"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09743 is about generating minimum-size covering arrays for constrained parameter spaces in automotive middleware.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09743"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09744 is about interface contract specification for multi-supplier CAN node integration.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09744"
+      ]
+     },
+     {
+      "text": "SYN-PUB-02017 is about runtime assertion monitoring for CAN-based embedded systems using low-overhead instrumentation.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-02017"
+      ]
+     },
+     {
+      "text": "SYN-PUB-01450 is about compositional verification of embedded software stacks.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-01450"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09745 evaluates strength-3 combinatorial test suites against real field faults in a CAN stack implementation.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09745"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09746 is about specification and automated checking of timing contracts for multi-frame CAN FD messages.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09746"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09747 is a benchmark suite for constrained covering array generators.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09747"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09748 is about incremental test suite maintenance for evolving CAN interface contracts.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09748"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09749 is a taxonomy and detection study of cross-layer interaction faults in multi-supplier embedded stacks.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09749"
+      ]
+     },
+     {
+      "text": "SYN-PUB-03011 is about automated derivation of CAN-CL contracts from AUTOSAR system descriptions.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-03011"
+      ]
+     },
+     {
+      "text": "SYN-PUB-09750 is about monitoring overhead profiles for CAN-CL runtime contracts across six microcontroller families.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PUB-09750"
+      ]
+     },
+     {
+      "text": "SYN-PRJ-0434 is a project on contract-based integration testing for multi-supplier CAN networks in small-series manufacturing.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PRJ-0434"
+      ]
+     },
+     {
+      "text": "SYN-PRJ-0435 is a project on embedded software dependability by compositional specification and testing.",
+      "about": "researcher",
+      "evidence": [
+       "SYN-PRJ-0435"
+      ]
+     }
+    ],
+    "form": "industrial_phd"
+   },
+   "verdict": "approved",
+   "pair": {
+    "challengeId": "C018-CH2",
+    "companyId": "C018",
+    "researcherId": "R0919",
+    "retrievalScore": 97.301,
+    "matchedTerms": [
+     "test",
+     "coverage",
+     "integration",
+     "communication",
+     "stack",
+     "after",
+     "components",
+     "interaction",
+     "faults",
+     "before",
+     "contract",
+     "testing"
+    ],
+    "score": 2.99,
+    "confidence": 0.99,
+    "screener": "Screener-3",
+    "key": "R0919xC018-CH2",
+    "selectedAt": 582,
+    "profiler": "f5f2c5e7-2ee5-484b-805b-eef608d0f32f",
+    "analyst": "ecba971a-fe28-4dc8-9848-dea2840f47d6",
+    "status": "done",
+    "form": "industrial_phd",
+    "consent": "industrial PhD supervision for candidates from embedded systems companies",
+    "writer": "c9c62c92-a948-4818-bda0-4d352b720dc8"
+   }
+  }
+ ],
+ "jobs": [
+  {
+   "jobId": "screen-Screener-1-1",
+   "agent": "Screener-1",
+   "kind": "screen",
+   "startedAt": 1,
+   "status": "done",
+   "finishedAt": 624
+  },
+  {
+   "jobId": "screen-Screener-2-1",
+   "agent": "Screener-2",
+   "kind": "screen",
+   "startedAt": 22,
+   "status": "done",
+   "finishedAt": 793
+  },
+  {
+   "jobId": "screen-Screener-3-1",
+   "agent": "Screener-3",
+   "kind": "screen",
+   "startedAt": 23,
+   "status": "done",
+   "finishedAt": 584
+  },
+  {
+   "jobId": "profile-R0919",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 582,
+   "status": "done",
+   "finishedAt": 5144
+  },
+  {
+   "jobId": "profile-C018-CH2",
+   "agent": "Analyst-1",
+   "kind": "profile_company",
+   "startedAt": 584,
+   "status": "done",
+   "finishedAt": 5116
+  },
+  {
+   "jobId": "profile-R0995",
+   "agent": "Profiler-2",
+   "kind": "profile_researcher",
+   "startedAt": 623,
+   "status": "done",
+   "finishedAt": 5128
+  },
+  {
+   "jobId": "profile-C003-CH2",
+   "agent": "Analyst-2",
+   "kind": "profile_company",
+   "startedAt": 624,
+   "status": "done",
+   "finishedAt": 5049
+  },
+  {
+   "jobId": "profile-R0801",
+   "agent": "Profiler-1",
+   "kind": "profile_researcher",
+   "startedAt": 792,
+   "status": "done",
+   "finishedAt": 5001
+  },
+  {
+   "jobId": "profile-C010-CH2",
+   "agent": "Analyst-1",
+   "kind": "profile_company",
+   "startedAt": 792,
+   "status": "done",
+   "finishedAt": 5663
+  },
+  {
+   "jobId": "write-R0995xC003-CH2",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 5128,
+   "status": "done",
+   "finishedAt": 17131
+  },
+  {
+   "jobId": "write-R0919xC018-CH2",
+   "agent": "Writer-2",
+   "kind": "write",
+   "startedAt": 5144,
+   "status": "done",
+   "finishedAt": 18285
+  },
+  {
+   "jobId": "write-R0801xC010-CH2",
+   "agent": "Writer-1",
+   "kind": "write",
+   "startedAt": 5664,
+   "status": "done",
+   "finishedAt": 22950
+  }
+ ]
+}
