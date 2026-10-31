@@ -9,6 +9,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 - **A Critic that I measured.** On 125 subtle planted-error and true claims it caught 52, 53 and 53 of 53 errors in three runs and wrongly blocked 0 of 72 true claims each time ([results](docs/evidence/critic-eval-hard/replay.md)). 30 offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past or missing the company's deadline, consent, budget and timeouts.
 - **Numbers anyone can recheck without a key.** `npm run verify:evidence` rebuilds every published number from the raw traces and fails if the README disagrees; it runs in CI on every push.
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
+- **Demo video (1:46): [youtu.be/YS5SHwL9kKU](https://youtu.be/YS5SHwL9kKU).** Agents at work, the Critic sending a draft back, the final proposal, the Critic test, Reverse Search in Serbian, and the keyless recheck.
 - **Live demo: [einstein.jamilxt.com](https://einstein.jamilxt.com).** The public site replays every recorded run at no cost. Live search is off there; run it yourself with your own key (below).
 - **A web UI** that streams a live search or replays any recorded run: agent lanes, a match map, the Critic's decisions, and proposals with clickable sources.
 
