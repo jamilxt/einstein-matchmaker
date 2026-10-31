@@ -80,6 +80,7 @@ npm run setup:data        # clones jigjoy-ai/einstein-matchmaker-data next to th
 npm start                 # batch: 60 challenges, 180 pairs, 3 proposals
 npm run start:nocritic    # same, with the Critic only recording what it would block (ablation)
 npx tsx src/run.ts --input=examples/conveyor.json   # Reverse Search for one company problem
+npx tsx src/run.ts --only=C010-CH2,C003-CH2,C018-CH2   # rerun named challenges; agents still pick the researchers
 ```
 
 Proposals are in English by default, even for companies that write in Serbian. Add `--lang=sr` to any run for Serbian (Latin script).

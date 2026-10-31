@@ -48,7 +48,17 @@ async function main() {
 	// Deterministic, spread-out sample of challenges so a run is cheap but not cherry-picked.
 	const chIds = [...new Set(all.map((p) => p.challengeId))]
 	const step = Math.max(1, Math.floor(chIds.length / TUNING.challenges))
-	const picked = st.reverse ? new Set(["Q001-CH1"]) : new Set(chIds.filter((_, i) => i % step === 0).slice(0, TUNING.challenges))
+	// --only=C010-CH2,C003-CH2 reruns named challenges (for retesting a fix on a known case). The agents still
+	// shortlist, screen and choose the researchers; only the company challenges are fixed.
+	const only = process.argv.find((a) => a.startsWith("--only="))?.split("=")[1]?.split(",").filter(Boolean)
+	if (only) {
+		const unknown = only.filter((id) => !chIds.includes(id))
+		if (unknown.length) {
+			console.error(`--only: no shortlisted pairs for ${unknown.join(", ")}`)
+			process.exit(2)
+		}
+	}
+	const picked = st.reverse ? new Set(["Q001-CH1"]) : only ? new Set(only) : new Set(chIds.filter((_, i) => i % step === 0).slice(0, TUNING.challenges))
 	st.candidates = all.filter((p) => picked.has(p.challengeId))
 	console.log(`shortlist: ${st.candidates.length} pairs over ${picked.size} challenges (${index.excluded.length} researchers excluded by open_to)`)
 
