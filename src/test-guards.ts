@@ -105,7 +105,7 @@ console.log("== Deadline fit (verify/deadline.ts)")
 	const automvoj = run8.proposals.find((p: any) => p.key === "R0995xC003-CH2").final
 	expect(
 		"a challenge with no stated limit accepts \"none stated\" (run 8 AutomVoj)",
-		checkDeadline(ds, { researcherId: "R0995", companyId: "C003", challengeId: "C003-CH2" }, { ...automvoj, company_deadline: "none stated" }).length === 0,
+		checkDeadline(ds, { challengeId: "C003-CH2" }, { ...automvoj, company_deadline: "none stated" }).length === 0,
 	)
 	// Controls over the whole dataset: the correct answer must never be blocked.
 	let wrong = 0
