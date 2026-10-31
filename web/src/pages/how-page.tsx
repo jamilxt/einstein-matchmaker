@@ -30,6 +30,7 @@ type Replay = {
 	layers: { name: string; caught: number; fb: number }[]
 	sweep: { t: number; caught: number; fb: number }[]
 	maxPlantedScore: number
+	repeats?: { id: string; caught: number; planted: number; fb: number; trueClaims: number; borderline?: number }[]
 }
 type Evals = { easy: EvalSet | null; hardBefore: EvalSet | null; hardAfter: EvalSet | null; replay?: Replay | null }
 
@@ -357,6 +358,29 @@ function ReplayCard({ r }: { r: Replay }) {
 					</p>
 				</div>
 			</CardContent>
+			{r.repeats && r.repeats.length > 1 && (
+				<CardContent className="border-t pt-4 text-sm">
+					<p className="font-medium">Repeated {r.repeats.length} times on the same {r.planted + r.trueClaims} claims</p>
+					<ul className="mt-2 grid gap-2 sm:grid-cols-3">
+						{r.repeats.map((x, i) => (
+							<li key={x.id} className="rounded-md border p-3">
+								<span className="text-muted-foreground">Run {i + 1}: </span>
+								<span className="font-medium tabular">
+									{x.caught}/{x.planted}
+								</span>{" "}
+								caught,{" "}
+								<span className="font-medium tabular">
+									{x.fb}/{x.trueClaims}
+								</span>{" "}
+								true claims blocked
+							</li>
+						))}
+					</ul>
+					<p className="mt-2 text-muted-foreground">
+						Only the borderline neighbour-field claim changed its verdict, scoring {r.repeats.map((x) => x.borderline?.toFixed(2)).join(", ")} against the {r.threshold.toFixed(2)} bar. No true claim was blocked in any run.
+					</p>
+				</CardContent>
+			)}
 		</Card>
 	)
 }

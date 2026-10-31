@@ -183,10 +183,26 @@ for (const l of layers) log(`      ${l.name}: ${l.caught}/${planted.length} caug
 for (const s of sweep) log(`      threshold ${s.t.toFixed(1)}: ${s.caught}/${planted.length} caught, ${s.fb}/${truths.length} false blocks`)
 log(`      lowest score on a true claim: ${minTrue}; highest score on a planted error: ${maxPlanted}`)
 
+// Repeats of the same 125 claims (npm run eval:critic:hard -- --live --same-pairs --out=critic-eval-hard-repeat-N).
+const repeatDirs = readdirSync(ROOT).filter((d) => /^critic-eval-hard-repeat-\d+$/.test(d)).sort()
+const repeats = [{ id: "critic-eval-hard", rows }, ...repeatDirs.map((d) => ({ id: d, rows: JSON.parse(readFileSync(join(ROOT, d, "results.json"), "utf-8")).rows as any[] }))].map(({ id, rows: rs }) => {
+	const s = JSON.parse(readFileSync(join(ROOT, id, "results.json"), "utf-8")).summary
+	const pl = rs.filter((r) => !r.truth)
+	const tr = rs.filter((r) => r.truth)
+	const c = pl.filter((r) => blockedAt(r, threshold)).length
+	const f = tr.filter((r) => blockedAt(r, threshold)).length
+	check(`${id}: ${c}/${pl.length} caught, ${f}/${tr.length} true claims blocked, as its summary says`, c === s.plantedErrors.caught && f === s.trueClaims.wronglyBlocked)
+	const sameClaims = rs.length === rows.length && rs.every((r) => rows.some((b) => b.pair === r.pair && b.kind === r.kind && b.claim === r.claim))
+	check(`${id}: the same ${rows.length} claims as the published evaluation`, sameClaims)
+	const borderline = rs.find((r) => r.kind === "neighbour_field" && r.pair === "R0919xC018-CH2")?.support
+	return { id, caught: c, planted: pl.length, fb: f, trueClaims: tr.length, borderline }
+})
+for (const r of repeats) log(`      ${r.id}: ${r.caught}/${r.planted} caught, ${r.fb}/${r.trueClaims} false blocks, borderline case scored ${r.borderline}`)
+
 // Structured copy for the UI (served by /api/evals), so the page shows exactly these numbers.
 writeFileSync(
 	join(ROOT, "critic-eval-hard", "replay.json"),
-	JSON.stringify({ threshold, planted: planted.length, trueClaims: truths.length, layers, sweep, minTrueScore: minTrue, maxPlantedScore: maxPlanted }, null, "\t") + "\n",
+	JSON.stringify({ threshold, planted: planted.length, trueClaims: truths.length, layers, sweep, minTrueScore: minTrue, maxPlantedScore: maxPlanted, repeats }, null, "\t") + "\n",
 )
 writeFileSync(
 	join(ROOT, "critic-eval-hard", "replay.md"),
@@ -208,6 +224,14 @@ writeFileSync(
 		"| Threshold | Planted errors caught | True claims blocked |",
 		"| --- | --- | --- |",
 		...sweep.map((s) => `| ${s.t.toFixed(1)}${s.t === threshold ? " (used)" : ""} | ${s.caught} / ${planted.length} | ${s.fb} / ${truths.length} |`),
+		"",
+		"## Repeated on the same claims",
+		"",
+		"| Run | Planted errors caught | True claims blocked | Borderline neighbour-field case scored |",
+		"| --- | --- | --- | --- |",
+		...repeats.map((r) => `| [${r.id}](../${r.id}/results.md) | ${r.caught} / ${r.planted} | ${r.fb} / ${r.trueClaims} | ${r.borderline} |`),
+		"",
+		"The repeats ran the current Critic, which sends at most 8 claims per request; the first run sent one request per pair. Only the borderline case changed its verdict across runs.",
 		"",
 		`Lowest score given to a true claim: ${minTrue}. Highest score given to a planted error: ${maxPlanted}. A threshold above ${maxPlanted} would catch every planted error in this set, but the gap is one borderline case and this set is small, so I kept the 0.5 threshold chosen before the evaluation instead of tuning it to the test.`,
 		"",

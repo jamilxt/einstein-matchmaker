@@ -1,0 +1,1846 @@
+{
+  "summary": {
+    "mode": "live (OpenAI Decisions API, gpt-6-luna)",
+    "pairs": 9,
+    "supportThreshold": 0.5,
+    "plantedErrors": {
+      "caught": 53,
+      "total": 53,
+      "byKind": {
+        "off_by_one_size": {
+          "hit": 9,
+          "total": 9
+        },
+        "wrong_title": {
+          "hit": 9,
+          "total": 9
+        },
+        "wrong_city": {
+          "hit": 9,
+          "total": 9
+        },
+        "wrong_sector": {
+          "hit": 9,
+          "total": 9
+        },
+        "neighbour_field": {
+          "hit": 9,
+          "total": 9
+        },
+        "same_field_foreign_paper": {
+          "hit": 8,
+          "total": 8
+        }
+      }
+    },
+    "trueClaims": {
+      "wronglyBlocked": 0,
+      "total": 72,
+      "byKind": {
+        "true_title": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_field": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_publication": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_topic": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_size": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_city": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_sector": {
+          "hit": 0,
+          "total": 9
+        },
+        "true_challenge": {
+          "hit": 0,
+          "total": 9
+        }
+      }
+    },
+    "wallClockMs": 1195,
+    "spendUsd": 0.00723
+  },
+  "rows": [
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Željko Mamužić is a Senior Research Associate in the Department of Traffic Engineering.",
+      "evidence": [
+        "R0271"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Željko Mamužić works in Intelligent Transport Systems.",
+      "evidence": [
+        "R0271"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Željko Mamužić co-authored \"A Comparison of Map-Matching Algorithms for Low-Frequency GPS Traces in Urban Road Networks\" (2011).",
+      "evidence": [
+        "SYN-PUB-03398"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Željko Mamužić has published on map matching.",
+      "evidence": [
+        "SYN-PUB-03398"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Pannonia Osiguranje-Tech a.d. has 187 employees.",
+      "evidence": [
+        "C013"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Pannonia Osiguranje-Tech a.d. is based in Subotica.",
+      "evidence": [
+        "C013"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Pannonia Osiguranje-Tech a.d. works in Insurtech — usage-based motor and property insurance.",
+      "evidence": [
+        "C013"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "Pannonia Osiguranje-Tech a.d. says: \"Our telematics black-box records speed, braking and cornering, but we still price everyone in the same age-vehicle bracket the same way — we need a model that actually translates raw trip events into a per-driver risk score we can price off.\"",
+      "evidence": [
+        "C013-CH1"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 187",
+      "claim": "Pannonia Osiguranje-Tech a.d. has 188 employees.",
+      "evidence": [
+        "C013"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Senior Research Associate",
+      "claim": "Željko Mamužić is an Assistant Professor in the Department of Traffic Engineering.",
+      "evidence": [
+        "R0271"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Subotica",
+      "claim": "Pannonia Osiguranje-Tech a.d. is based in Zrenjanin.",
+      "evidence": [
+        "C013"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Insurtech — usage-based motor and property insurance",
+      "claim": "Pannonia Osiguranje-Tech a.d. works in Cybersecurity.",
+      "evidence": [
+        "C013"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technical Sciences",
+      "claim": "Željko Mamužić has published on discrete mathematics.",
+      "evidence": [
+        "SYN-PUB-03398",
+        "SYN-PUB-03399"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0271xC013-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-00967)",
+      "claim": "Željko Mamužić co-authored \"Embedded Predictive Coding for Inertial Measurement Unit Streams in Vehicle Telematics\".",
+      "evidence": [
+        "SYN-PUB-00967"
+      ],
+      "deterministic": [
+        "SYN-PUB-00967 belongs to neither R0271 nor C013"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Andrea Malešević is a docent in the Department of Mathematics and Informatics.",
+      "evidence": [
+        "R0217"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Andrea Malešević works in Distributed Systems and Databases.",
+      "evidence": [
+        "R0217"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Andrea Malešević co-authored \"Efikasnost B+-stabla nasuprot LSM-stablu u okruženjima s intenzivnim čitanjem: empirijska analiza\" (2014).",
+      "evidence": [
+        "SYN-PUB-02765"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Andrea Malešević has published on B+-tree.",
+      "evidence": [
+        "SYN-PUB-02765"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "FinPuls Tehnologije d.o.o. has 12 employees.",
+      "evidence": [
+        "C021"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "FinPuls Tehnologije d.o.o. is based in Novi Sad.",
+      "evidence": [
+        "C021"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "FinPuls Tehnologije d.o.o. works in Fintech — B2B payment infrastructure and reconciliation.",
+      "evidence": [
+        "C021"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "FinPuls Tehnologije d.o.o. says: \"Reconciliation jobs that match transactions across Stripe, Adyen, Klarna and local acquirers take up to 90 minutes to run for clients with 50,000 daily orders — merchants need the numbers closed before their morning finance meeting.\"",
+      "evidence": [
+        "C021-CH1"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 12",
+      "claim": "FinPuls Tehnologije d.o.o. has 13 employees.",
+      "evidence": [
+        "C021"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: docent",
+      "claim": "Andrea Malešević is an Assistant Professor in the Department of Mathematics and Informatics.",
+      "evidence": [
+        "R0217"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Novi Sad",
+      "claim": "FinPuls Tehnologije d.o.o. is based in Zrenjanin.",
+      "evidence": [
+        "C021"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Fintech — B2B payment infrastructure and reconciliation",
+      "claim": "FinPuls Tehnologije d.o.o. works in Cybersecurity.",
+      "evidence": [
+        "C021"
+      ],
+      "support": 0.01,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Prirodno-matematički fakultet",
+      "claim": "Andrea Malešević has published on statistička fizika i kondenzovana materija.",
+      "evidence": [
+        "SYN-PUB-02765",
+        "SYN-PUB-02766"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0217xC021-CH1",
+      "run": "run-04-live-nocritic",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-03570)",
+      "claim": "Andrea Malešević co-authored \"Certificate-Based Firmware Authentication for Resource-Constrained Devices Without Persistent Internet Connectivity\".",
+      "evidence": [
+        "SYN-PUB-03570"
+      ],
+      "deterministic": [
+        "SYN-PUB-03570 belongs to neither R0217 nor C021"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Krisztina Kiss is a Full Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Krisztina Kiss works in Industrial cybersecurity.",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Krisztina Kiss co-authored \"Statistical Baseline Modelling of Modbus/TCP Traffic in a Substation Automation Network\" (2010).",
+      "evidence": [
+        "SYN-PUB-10472"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Krisztina Kiss has published on Modbus/TCP.",
+      "evidence": [
+        "SYN-PUB-10472"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "ArmaturaSec d.o.o. has 67 employees.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "ArmaturaSec d.o.o. is based in Zrenjanin.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "ArmaturaSec d.o.o. works in Cybersecurity.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "ArmaturaSec d.o.o. says: \"We need to detect unusual behaviour on Modbus and BACnet networks without labelled attack data — our clients have never been breached (or don't know it), so we have zero examples of malicious traffic and supervised classifiers are useless to us.\"",
+      "evidence": [
+        "C001-CH1"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 67",
+      "claim": "ArmaturaSec d.o.o. has 68 employees.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Full Professor",
+      "claim": "Krisztina Kiss is an Assistant Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R1008"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Zrenjanin",
+      "claim": "ArmaturaSec d.o.o. is based in Novi Sad.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Cybersecurity",
+      "claim": "ArmaturaSec d.o.o. works in Game development.",
+      "evidence": [
+        "C001"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technical Sciences",
+      "claim": "Krisztina Kiss has published on discrete mathematics.",
+      "evidence": [
+        "SYN-PUB-10472",
+        "SYN-PUB-10473"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R1008xC001-CH1",
+      "run": "run-02-live",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-00181)",
+      "claim": "Krisztina Kiss co-authored \"Data-Driven Detection of Abnormal Energy Consumption Patterns in Continuous Electroforming Lines Using Statistical Process Control Charts\".",
+      "evidence": [
+        "SYN-PUB-00181"
+      ],
+      "deterministic": [
+        "SYN-PUB-00181 belongs to neither R1008 nor C001"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Veljko Savić is an Associate Professor in the Department of Production Engineering.",
+      "evidence": [
+        "R0135"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Veljko Savić works in Production and Industrial Engineering.",
+      "evidence": [
+        "R0135"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Veljko Savić co-authored \"Weibull-based failure rate estimation for flat-die pellet presses processing mixed agricultural residues\" (2011).",
+      "evidence": [
+        "SYN-PUB-01784"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Veljko Savić has published on Weibull distribution.",
+      "evidence": [
+        "SYN-PUB-01784"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Suncokret Eko d.o.o. has 31 employees.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Suncokret Eko d.o.o. is based in Novi Sad.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Suncokret Eko d.o.o. works in Cleantech — biomass and organic waste valorisation.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "Suncokret Eko d.o.o. says: \"Our pellet press breaks down about once a month because the sunflower husk feedstock has inconsistent moisture and particle size coming from different suppliers; downtime costs us roughly 15,000 EUR per incident when we have delivery commitments.\"",
+      "evidence": [
+        "C007-CH3"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 31",
+      "claim": "Suncokret Eko d.o.o. has 32 employees.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Associate Professor",
+      "claim": "Veljko Savić is an Assistant Professor in the Department of Production Engineering.",
+      "evidence": [
+        "R0135"
+      ],
+      "support": 0.02,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Novi Sad",
+      "claim": "Suncokret Eko d.o.o. is based in Zrenjanin.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Cleantech — biomass and organic waste valorisation",
+      "claim": "Suncokret Eko d.o.o. works in Cybersecurity.",
+      "evidence": [
+        "C007"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technical Sciences",
+      "claim": "Veljko Savić has published on discrete mathematics.",
+      "evidence": [
+        "SYN-PUB-01784",
+        "SYN-PUB-01785"
+      ],
+      "support": 0.02,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0135xC007-CH3",
+      "run": "run-02-live",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-00336)",
+      "claim": "Veljko Savić co-authored \"Quantisation Effects on Convolutional Neural Networks for Vibration-Based Fault Detection Deployed on Cortex-M7\".",
+      "evidence": [
+        "SYN-PUB-00336"
+      ],
+      "deterministic": [
+        "SYN-PUB-00336 belongs to neither R0135 nor C007"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Branislav Stojanović is a Full Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R0641"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Branislav Stojanović works in Embedded Systems and IoT.",
+      "evidence": [
+        "R0641"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Branislav Stojanović co-authored \"Piecewise Linear Approximation for Sensor Data Reduction on 8-bit Microcontrollers\" (2010).",
+      "evidence": [
+        "SYN-PUB-07294"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Branislav Stojanović has published on piecewise linear approximation.",
+      "evidence": [
+        "SYN-PUB-07294"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kardiolink a.d. has 112 employees.",
+      "evidence": [
+        "C005"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kardiolink a.d. is based in Novi Sad.",
+      "evidence": [
+        "C005"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kardiolink a.d. works in Medtech and digital health.",
+      "evidence": [
+        "C005"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "Kardiolink a.d. says: \"We generate roughly 2 TB of raw ECG signal per month from field devices; our current lossless compression gives us only 3:1 ratio and storage costs at our cloud provider have reached €7,400 per month, which is unsustainable at the patient volume we are projecting for next year.\"",
+      "evidence": [
+        "C005-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 112",
+      "claim": "Kardiolink a.d. has 113 employees.",
+      "evidence": [
+        "C005"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Full Professor",
+      "claim": "Branislav Stojanović is an Assistant Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R0641"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Novi Sad",
+      "claim": "Kardiolink a.d. is based in Zrenjanin.",
+      "evidence": [
+        "C005"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Medtech and digital health",
+      "claim": "Kardiolink a.d. works in Cybersecurity.",
+      "evidence": [
+        "C005"
+      ],
+      "support": 0.04,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technical Sciences",
+      "claim": "Branislav Stojanović has published on discrete mathematics.",
+      "evidence": [
+        "SYN-PUB-07294",
+        "SYN-PUB-07295"
+      ],
+      "support": 0.01,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0641xC005-CH2",
+      "run": "run-04-live-nocritic",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-00181)",
+      "claim": "Branislav Stojanović co-authored \"Data-Driven Detection of Abnormal Energy Consumption Patterns in Continuous Electroforming Lines Using Statistical Process Control Charts\".",
+      "evidence": [
+        "SYN-PUB-00181"
+      ],
+      "deterministic": [
+        "SYN-PUB-00181 belongs to neither R0641 nor C005"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Veljko Pantelić is an Assistant Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R0995"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Veljko Pantelić works in Software Engineering.",
+      "evidence": [
+        "R0995"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Veljko Pantelić co-authored \"A Metamodel for IEC 61131-3 Structured Text: Design Rationale and Conformance Checking\" (2015).",
+      "evidence": [
+        "SYN-PUB-10372"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Veljko Pantelić has published on IEC 61131-3.",
+      "evidence": [
+        "SYN-PUB-10372"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "AutomVoj a.d. has 212 employees.",
+      "evidence": [
+        "C003"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "AutomVoj a.d. is based in Zrenjanin.",
+      "evidence": [
+        "C003"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "AutomVoj a.d. works in Robotics and industrial automation.",
+      "evidence": [
+        "C003"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "AutomVoj a.d. says: \"Our PLC programs for different customers are each a custom spaghetti of ladder logic; when we want to push a safety patch we have to touch 38 separate codebases and it takes three engineers two full weeks.\"",
+      "evidence": [
+        "C003-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 212",
+      "claim": "AutomVoj a.d. has 213 employees.",
+      "evidence": [
+        "C003"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Assistant Professor",
+      "claim": "Veljko Pantelić is an Associate Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R0995"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Zrenjanin",
+      "claim": "AutomVoj a.d. is based in Novi Sad.",
+      "evidence": [
+        "C003"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Robotics and industrial automation",
+      "claim": "AutomVoj a.d. works in Cybersecurity.",
+      "evidence": [
+        "C003"
+      ],
+      "support": 0.03,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technical Sciences",
+      "claim": "Veljko Pantelić has published on discrete mathematics.",
+      "evidence": [
+        "SYN-PUB-10372",
+        "SYN-PUB-10373"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0995xC003-CH2",
+      "run": "run-01-live",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-02488)",
+      "claim": "Veljko Pantelić co-authored \"Systematic safety analysis integration in AUTOSAR software development workflows\".",
+      "evidence": [
+        "SYN-PUB-02488"
+      ],
+      "deterministic": [
+        "SYN-PUB-02488 belongs to neither R0995 nor C003"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Goran Radulović is an Associate Professor in the Department of Applied and Engineering Chemistry.",
+      "evidence": [
+        "R0679"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Goran Radulović works in Analytical Chemistry.",
+      "evidence": [
+        "R0679"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Goran Radulović co-authored \"Effect of Carbonate Alkalinity on Absorbance Readings in the 1,10-Phenanthroline Iron(II) Method at Elevated pH\" (2010).",
+      "evidence": [
+        "SYN-PUB-07641"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Goran Radulović has published on alkalinity interference.",
+      "evidence": [
+        "SYN-PUB-07641"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kristal Voda preduzetnik has 9 employees.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kristal Voda preduzetnik is based in Zrenjanin.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kristal Voda preduzetnik works in Water quality testing and on-site treatment equipment for food industry.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "Kristal Voda preduzetnik says: \"Our portable turbidity and nitrate test kits give inconsistent readings in hard water above 450 mg/L CaCO₃; we calibrate with distilled water but field samples from Banat wells are much harder and the kits weren't designed for that matrix.\"",
+      "evidence": [
+        "C015-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 9",
+      "claim": "Kristal Voda preduzetnik has 10 employees.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Associate Professor",
+      "claim": "Goran Radulović is an Assistant Professor in the Department of Applied and Engineering Chemistry.",
+      "evidence": [
+        "R0679"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Zrenjanin",
+      "claim": "Kristal Voda preduzetnik is based in Novi Sad.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Water quality testing and on-site treatment equipment for food industry",
+      "claim": "Kristal Voda preduzetnik works in Cybersecurity.",
+      "evidence": [
+        "C015"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0679xC015-CH2",
+      "run": "run-02-live",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technology",
+      "claim": "Goran Radulović has published on chemical engineering.",
+      "evidence": [
+        "SYN-PUB-07641",
+        "SYN-PUB-07642"
+      ],
+      "support": 0.34,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Branislav Žarković is a Full Professor in the Department of Finance and Banking.",
+      "evidence": [
+        "R0801"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Branislav Žarković works in credit risk.",
+      "evidence": [
+        "R0801"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Branislav Žarković co-authored \"Scoring micro-enterprises with little credit history\" (2023).",
+      "evidence": [
+        "SYN-PUB-08746"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Branislav Žarković has published on Scoring micro-enterprises with little credit history.",
+      "evidence": [
+        "SYN-PUB-08746"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kredo Fintech has 26 employees.",
+      "evidence": [
+        "C010"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kredo Fintech is based in NTP Novi Sad.",
+      "evidence": [
+        "C010"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "Kredo Fintech works in Fintech.",
+      "evidence": [
+        "C010"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "Kredo Fintech says: \"The central bank wants every automated decision explained.\"",
+      "evidence": [
+        "C010-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 26",
+      "claim": "Kredo Fintech has 27 employees.",
+      "evidence": [
+        "C010"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Full Professor",
+      "claim": "Branislav Žarković is an Assistant Professor in the Department of Finance and Banking.",
+      "evidence": [
+        "R0801"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: NTP Novi Sad",
+      "claim": "Kredo Fintech is based in Zrenjanin.",
+      "evidence": [
+        "C010"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Fintech",
+      "claim": "Kredo Fintech works in Cybersecurity.",
+      "evidence": [
+        "C010"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Economics in Subotica",
+      "claim": "Branislav Žarković has published on information systems.",
+      "evidence": [
+        "SYN-PUB-08746",
+        "SYN-PUB-08747"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0801xC010-CH2",
+      "run": "run-01-live",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-01526)",
+      "claim": "Branislav Žarković co-authored \"The Effect of Mandatory Pre-Trade Transparency on Price Volatility in Thin Grain Markets: An ABM Study\".",
+      "evidence": [
+        "SYN-PUB-01526"
+      ],
+      "deterministic": [
+        "SYN-PUB-01526 belongs to neither R0801 nor C010"
+      ],
+      "blocked": true
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_title",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Martina Lačoková is a Senior Research Associate in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R0919"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_field",
+      "truth": true,
+      "note": "from researcher record",
+      "claim": "Martina Lačoková works in Software Engineering and Testing.",
+      "evidence": [
+        "R0919"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_publication",
+      "truth": true,
+      "note": "from publication record",
+      "claim": "Martina Lačoková co-authored \"Generating Minimum-Size Covering Arrays for Constrained Parameter Spaces in Automotive Middleware\" (2013).",
+      "evidence": [
+        "SYN-PUB-09743"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_topic",
+      "truth": true,
+      "note": "keyword of own paper",
+      "claim": "Martina Lačoková has published on covering arrays.",
+      "evidence": [
+        "SYN-PUB-09743"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_size",
+      "truth": true,
+      "note": "from company record",
+      "claim": "DriveLogic Vojvodina d.o.o. has 27 employees.",
+      "evidence": [
+        "C018"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_city",
+      "truth": true,
+      "note": "from company record",
+      "claim": "DriveLogic Vojvodina d.o.o. is based in Novi Sad.",
+      "evidence": [
+        "C018"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_sector",
+      "truth": true,
+      "note": "from company record",
+      "claim": "DriveLogic Vojvodina d.o.o. works in Automotive and mobility software.",
+      "evidence": [
+        "C018"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "true_challenge",
+      "truth": true,
+      "note": "first sentence of the challenge",
+      "claim": "DriveLogic Vojvodina d.o.o. says: \"Our test coverage reports show 87% branch coverage but we keep finding integration bugs in the CAN communication stack after delivery; we suspect the problem is at the boundary between components from different suppliers but we have no systematic way to find those interaction faults before shipping.\"",
+      "evidence": [
+        "C018-CH2"
+      ],
+      "support": 1,
+      "deterministic": [],
+      "blocked": false
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "off_by_one_size",
+      "truth": false,
+      "note": "real: 27",
+      "claim": "DriveLogic Vojvodina d.o.o. has 28 employees.",
+      "evidence": [
+        "C018"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_title",
+      "truth": false,
+      "note": "real: Senior Research Associate",
+      "claim": "Martina Lačoková is an Assistant Professor in the Department of Computing and Control Engineering.",
+      "evidence": [
+        "R0919"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_city",
+      "truth": false,
+      "note": "real: Novi Sad",
+      "claim": "DriveLogic Vojvodina d.o.o. is based in Zrenjanin.",
+      "evidence": [
+        "C018"
+      ],
+      "support": 0,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "wrong_sector",
+      "truth": false,
+      "note": "real: Automotive and mobility software",
+      "claim": "DriveLogic Vojvodina d.o.o. works in Cybersecurity.",
+      "evidence": [
+        "C018"
+      ],
+      "support": 0.05,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "neighbour_field",
+      "truth": false,
+      "note": "field of a colleague in Faculty of Technical Sciences",
+      "claim": "Martina Lačoková has published on discrete mathematics.",
+      "evidence": [
+        "SYN-PUB-09743",
+        "SYN-PUB-09744"
+      ],
+      "support": 0.47,
+      "deterministic": [],
+      "blocked": true
+    },
+    {
+      "pair": "R0919xC018-CH2",
+      "run": "run-01-live",
+      "kind": "same_field_foreign_paper",
+      "truth": false,
+      "note": "real paper by someone else in the same field (SYN-PUB-02750)",
+      "claim": "Martina Lačoková co-authored \"Widening Strategies for Numerical Abstract Domains Applied to Security Analysis\".",
+      "evidence": [
+        "SYN-PUB-02750"
+      ],
+      "deterministic": [
+        "SYN-PUB-02750 belongs to neither R0919 nor C018"
+      ],
+      "blocked": true
+    }
+  ]
+}

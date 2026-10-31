@@ -42,5 +42,31 @@
 		}
 	],
 	"minTrueScore": 1,
-	"maxPlantedScore": 0.55
+	"maxPlantedScore": 0.55,
+	"repeats": [
+		{
+			"id": "critic-eval-hard",
+			"caught": 52,
+			"planted": 53,
+			"fb": 0,
+			"trueClaims": 72,
+			"borderline": 0.55
+		},
+		{
+			"id": "critic-eval-hard-repeat-2",
+			"caught": 53,
+			"planted": 53,
+			"fb": 0,
+			"trueClaims": 72,
+			"borderline": 0.47
+		},
+		{
+			"id": "critic-eval-hard-repeat-3",
+			"caught": 53,
+			"planted": 53,
+			"fb": 0,
+			"trueClaims": 72,
+			"borderline": 0.47
+		}
+	]
 }

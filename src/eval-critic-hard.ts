@@ -31,6 +31,13 @@ function pairsFromRuns(): Pair[] {
 			out.push({ researcherId: m[1], companyId: m[2], challengeId: m[3], run })
 		}
 	}
+	// --same-pairs: keep the pair set of the published evaluation, so a repeat measures the same 125 claims
+	// even though later runs (8 to 12) added new pairs to docs/evidence.
+	if (process.argv.includes("--same-pairs")) {
+		const base = JSON.parse(readFileSync(join("docs", "evidence", "critic-eval-hard", "results.json"), "utf-8"))
+		const keep = new Set<string>(base.rows.map((r: any) => r.pair))
+		return out.filter((p) => keep.has(`${p.researcherId}x${p.challengeId}`))
+	}
 	return out
 }
 
@@ -118,7 +125,9 @@ async function main() {
 		wallClockMs: ms,
 		spendUsd: Number(state().spend.usd.toFixed(5)),
 	}
-	const dir = join("docs", "evidence", LIVE ? "critic-eval-hard" : "critic-eval-hard-stub")
+	// --out=<name> writes a repeat next to the published result instead of over it.
+	const out = process.argv.find((a) => a.startsWith("--out="))?.split("=")[1]
+	const dir = join("docs", "evidence", LIVE ? (out ?? "critic-eval-hard") : "critic-eval-hard-stub")
 	mkdirSync(dir, { recursive: true })
 	writeFileSync(join(dir, "results.json"), JSON.stringify({ summary, rows }, null, 2))
 	const md = [

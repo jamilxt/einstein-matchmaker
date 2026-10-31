@@ -21,4 +21,14 @@ The planted errors cite records that exist and belong to the pair, except the pa
 | 0.6 | 53 / 53 | 0 / 72 |
 | 0.7 | 53 / 53 | 0 / 72 |
 
+## Repeated on the same claims
+
+| Run | Planted errors caught | True claims blocked | Borderline neighbour-field case scored |
+| --- | --- | --- | --- |
+| [critic-eval-hard](../critic-eval-hard/results.md) | 52 / 53 | 0 / 72 | 0.55 |
+| [critic-eval-hard-repeat-2](../critic-eval-hard-repeat-2/results.md) | 53 / 53 | 0 / 72 | 0.47 |
+| [critic-eval-hard-repeat-3](../critic-eval-hard-repeat-3/results.md) | 53 / 53 | 0 / 72 | 0.47 |
+
+The repeats ran the current Critic, which sends at most 8 claims per request; the first run sent one request per pair. Only the borderline case changed its verdict across runs.
+
 Lowest score given to a true claim: 1. Highest score given to a planted error: 0.55. A threshold above 0.55 would catch every planted error in this set, but the gap is one borderline case and this set is small, so I kept the 0.5 threshold chosen before the evaluation instead of tuning it to the test.
