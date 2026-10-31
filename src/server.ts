@@ -64,6 +64,7 @@ const LABELS: Record<string, string> = {
 	"run-04-live-nocritic": "Run 4: Critic off (ablation)",
 	"run-05-live": "Run 5: before the review fixes",
 	"run-06-live": "Run 6: final, text check and consent forms",
+	"run-07-live": "Run 7: role-attribution retest",
 	"search-01-packaging": "Search: packaging line, bearing failures",
 	"search-02-winery": "Search: winery, stalled fermentations",
 	"search-03-serbian-input": "Search: bakery, problem written in Serbian",

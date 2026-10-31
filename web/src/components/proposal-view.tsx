@@ -46,6 +46,12 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 				)}
 			</header>
 
+			<aside role="note" className="border-l-2 border-primary/40 bg-muted/40 px-3 py-2 text-xs leading-relaxed text-muted-foreground">
+				{p.companyId.startsWith("Q")
+					? "Illustrative search only. Researcher profiles come from the official synthetic dataset; the company and problem text were supplied to the demo. No partnership, data access, staffing, funding, or approval is implied."
+					: "Illustrative example only. Company and researcher records come from the official synthetic dataset. No real counterpart has approved this proposal or committed data, staffing, or funding."}
+			</aside>
+
 			<Section title="The problem">
 				<p>{p.problem}</p>
 			</Section>

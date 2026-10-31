@@ -228,8 +228,11 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					<RunNote go={go} id="run-05-live" title="Run 5" stat="3 of 3 approved on the first draft">
 						The same three pairs as run 4, with the Critic on: 51 claims checked, none blocked. One plan was dated in the past, which the later text check now catches.
 					</RunNote>
-					<RunNote go={go} id="run-06-live" title="Run 6, final" stat="60 claims and 3 texts checked">
-						First run with the text check, consent-based forms and the new proposal sections. All three passed on the first draft; one wrong role in a first step is a slip no check covers.
+					<RunNote go={go} id="run-06-live" title="Run 6" stat="60 claims and 3 texts checked">
+						The first run with the text check and consent-based forms. A later review found a title mix-up in one first step. It is corrected in the run 7 proposal, but there is still no general deterministic role check.
+					</RunNote>
+					<RunNote go={go} id="run-07-live" title="Run 7, role-attribution retest" stat="60 claims checked, 1 sent back">
+						All three proposals passed after one claim was revised. The new Writer instruction avoids the earlier title mix-up in this run, but this is not a general role-verification guarantee.
 					</RunNote>
 				</div>
 			</section>
