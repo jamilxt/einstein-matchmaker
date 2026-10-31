@@ -4,9 +4,10 @@ A team of concurrent [Mozaik](https://github.com/jigjoy-ai/mozaik) agents that f
 
 Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to 31 October 2026), on the official synthetic dataset.
 
-- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once, and in every live batch run all 21 jobs overlapped another agent's work (seven runs).
-- **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with a pass or fail target per period, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
-- **A Critic that I measured.** It caught 52 of 53 subtle planted errors and wrongly blocked 0 of 72 true claims ([results](docs/evidence/critic-eval-hard/results.md)). Offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past, consent, budget and timeouts.
+- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once. In all twelve live batch runs and three searches, every job overlapped another agent's work.
+- **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with a pass or fail target per period that meets the company's own time limit, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
+- **A Critic that I measured.** On 125 subtle planted-error and true claims it caught 52, 53 and 53 of 53 errors in three runs and wrongly blocked 0 of 72 true claims each time ([results](docs/evidence/critic-eval-hard/replay.md)). 30 offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past or missing the company's deadline, consent, budget and timeouts.
+- **Numbers anyone can recheck without a key.** `npm run verify:evidence` rebuilds every published number from the raw traces and fails if the README disagrees; it runs in CI on every push.
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
 - **Live demo: [einstein.jamilxt.com](https://einstein.jamilxt.com).** The public site replays every recorded run at no cost. Live search is off there; run it yourself with your own key (below).
 - **A web UI** that streams a live search or replays any recorded run: agent lanes, a match map, the Critic's decisions, and proposals with clickable sources.
@@ -21,9 +22,9 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 
 ![A proposal next to the Critic's decisions](docs/screenshots/03-proposal-and-critic.png)
 
-**The final proposal format (run 6).** The collaboration form comes from the researcher's own consent, quoted under the pair. Further down: a plan with a pass or fail target per year, what is new, what data exists, and what is still to agree.
+**The final proposal format (run 12).** The collaboration form comes from the researcher's own consent, quoted under the pair. Kredo needs a result "within about six months", so the plan opens with Months 1 to 6 before the PhD continues. On the right, the Critic feed shows why: the first draft planned in years and was sent back with "add a period such as Months 1 to 6". Further down: what is new, what data exists, the company's time limit, and what is still to agree.
 
-![A run 6 proposal with its form and consent](docs/screenshots/10-final-proposal.png)
+![A run 12 proposal with its form, consent and six-month delivery period](docs/screenshots/10-final-proposal.png)
 
 **Every source is one click away.** This is the record exactly as the Critic read it.
 
@@ -41,9 +42,11 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 
 ![How it works page](docs/screenshots/06-how-it-works.png)
 
-**The Critic evaluation**, including the bug it found and the one miss.
+**The Critic evaluation**, including the bug it found, the one borderline miss, which check catches what, and the three repeated runs.
 
 ![Critic evaluation](docs/screenshots/07-critic-evaluation.png)
+
+![Which check catches what, other thresholds, and three repeated runs](docs/screenshots/11-critic-repeats.png)
 
 **On a phone, in dark mode.**
 
@@ -59,7 +62,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 | --- | --- |
 | Architecture diagram | [Architecture](#architecture) below, and the **How it works** page in the web UI |
 | Trace of one full run showing where the Critic stepped in | [`docs/evidence/run-01-live/trace.jsonl`](docs/evidence/run-01-live/trace.jsonl), walked through in [The Critic in a real run](#the-critic-in-a-real-run) |
-| At least three proposals for three different pairs | [`docs/evidence/run-07-live/proposals.md`](docs/evidence/run-07-live/proposals.md). There are 21 batch proposals across seven live runs, plus 9 from Reverse Search |
+| At least three proposals for three different pairs | [`docs/evidence/run-12-live/proposals.md`](docs/evidence/run-12-live/proposals.md). There are 33 released batch proposals across twelve live runs, plus 9 from Reverse Search |
 | How it plugs into the EINSTEIN network and EINSTEIN Stars | [EINSTEIN network and EINSTEIN Stars](#einstein-network-and-einstein-stars) |
 | What it does, architecture, how to run | This README |
 
@@ -154,7 +157,7 @@ flowchart LR
 **How they coordinate on Mozaik** ([`src/agents.ts`](src/agents.ts), [`src/jobs.ts`](src/jobs.ts), [`src/runtime.ts`](src/runtime.ts)):
 
 - **Shared state, no direct calls.** All participants live on one runtime with a shared `MatchState`. They react to semantic events (`screen.batch`, `pair.screened`, `pair.selected`, `profile.requested`, `profile.ready`, `proposal.requested`, `critic.verdict`). Nobody calls anybody, and nothing waits for a whole stage to finish.
-- **Early selection.** The Matchmaker doesn't wait for all 180 scores. In every live batch run it picked its first pair before screening ended (0.5 to 3.2 s in, with screening ending at 2.0 to 5.3 s), so profiling overlapped the rest of screening.
+- **Early selection.** The Matchmaker doesn't wait for all 180 scores. In every live batch run it picked its first pair before screening ended (0.5 to 3.2 s in; in the nine full runs screening ended at 2.0 to 5.3 s), so profiling overlapped the rest of screening.
 - **The Critic is an interception, not a later stage.** Each Writer job runs its loop with an `InterceptionHandler` on the model's final message. If a claim fails, or the text carries a figure or a name that no checked claim backs, the handler injects a correction listing the exact problems and reasons, and the same loop continues. True facts get re-cited to the right record, and anything no record states is removed. After 2 revisions an unfixable draft is rejected: it is recorded with the Critic's reasons, and neither the report nor the UI shows its text as a proposal.
 - **One job, one fresh `ModelContext`.** Two live loops sharing one memory cross-contaminated in testing. Each job also gets a watchdog, because `runLoop` swallows failures ([mozaik#114](https://github.com/jigjoy-ai/mozaik/issues/114)), and a budget halt that ends the loop cleanly instead of redirecting to `idle` ([mozaik#113](https://github.com/jigjoy-ai/mozaik/issues/113)).
 
@@ -162,23 +165,23 @@ flowchart LR
 
 Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". I send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
 
-**Cost.** Across all 10 live runs in `docs/evidence`, metered from API-reported token usage:
+**Cost.** Across all 15 live runs in `docs/evidence` (12 batch runs and 3 searches), metered from API-reported token usage:
 
 | | Decisions API | gpt-5.4-mini |
 | --- | --- | --- |
-| Requests | 137 | 152 |
-| Input tokens read | 807,759 | 221,933 |
-| Cost | **$0.081 (13% of spend)** | $0.556 (87% of spend) |
+| Requests | 223 | 240 |
+| Input tokens read | 1,350,306 | 412,491 |
+| Cost | **$0.135 (11% of spend)** | $1.058 (89% of spend) |
 
-- The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for an eighth of the bill. Its input costs $0.10 per million tokens and its output is free.
-- The same 807,759 input tokens sent to `gpt-5.4-mini` would cost $0.61 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
+- The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for about a ninth of the bill. Its input costs $0.10 per million tokens and its output is free.
+- The same 1,350,306 input tokens sent to `gpt-5.4-mini` would cost $1.01 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
 - The full hard Critic evaluation, 125 claims with their evidence, cost $0.007.
 
-**Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 5.3 s in the live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
+**Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 5.3 s in the nine full live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
 
 **Results.** The answer comes back typed: a score on a fixed scale, or a probability that a claim is supported. Nothing has to be parsed out of free text, and no answer can drift into a paragraph. That gave us:
 
-- **A threshold I can set and test.** The Critic blocks a claim when its support probability is below 0.5. That is what made the planted-error evaluation possible: 52 of 53 errors caught, 0 of 72 true claims wrongly blocked, and the one miss is visible as a number (0.55).
+- **A threshold I can set and test.** The Critic blocks a claim when its support probability is below 0.5. That is what made the planted-error evaluation possible: 52 of 53 errors caught, 0 of 72 true claims wrongly blocked, and the one miss is visible as a number (0.55, then 0.47 and 0.47 in two repeats).
 - **Scores the UI can show honestly.** A fit of 1.8 of 3 is shown as moderate, as in the winery search, instead of a model's confident prose.
 - **Cheap red-teaming.** Because checks cost fractions of a cent, I could rerun the whole evaluation after each fix.
 
@@ -346,7 +349,8 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 
 ## Limitations
 
-- On borderline topics the Critic can let a neighbouring-field claim through (1 of 53 planted errors).
+- On borderline topics the Critic can let a neighbouring-field claim through: the one borderline planted error scored 0.55, 0.47 and 0.47 in three runs against a 0.50 bar, so it was missed once.
+- The model's support score is not perfectly stable. In live runs 10 and 11 it scored some plainly true claims near 0; sending at most 8 claims per request and matching exact-title claims by string fixed the cases I found, and run 12 had none, but a false block can still send a good draft back or, after two revisions, reject it.
 - Natural Critic-on versus Critic-off runs are too small to show a difference, so the planted-error evaluation is the real measurement.
 - Fit scores come from a model and are a starting point for a human conversation, not a decision.
 - The text check finds figures and names, not every kind of fact. It checks figures only in the fact sections (targets in the plan are proposals), and it recognises people by first names that occur in the dataset, so a name from outside that list is not caught. A plain-language statement with no figure or name still relies on the Writer listing it as a claim.
@@ -365,6 +369,7 @@ All times are CET. The hackathon started on Friday 30 October at 10:00.
   - The first version of the agent team (10:26). It was written quickly with an AI coding assistant, and then reshaped by what the live runs showed.
   - Every Critic fix found in the live runs, and both Critic evaluations.
   - Reverse Search, the web UI and server, the deployment, and this README.
+  - On Saturday 31 October: the evidence verifier and CI, the deadline check, the Critic batching and id fixes found in live runs 8 to 12, and the repeated Critic evaluation.
 
 Every live run in [`docs/evidence`](docs/evidence) has a timestamped trace, and the commit history is public.
 

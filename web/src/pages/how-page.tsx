@@ -14,7 +14,7 @@ const STAGES: Stage[] = [
 	{ name: "Matchmaker", model: "no model", job: "Picks a strong pair the moment its score arrives, while screening is still running." },
 	{ name: "Profilers, Analysts", count: "×2, ×2", model: "gpt-5.4-mini + tools", job: "Build a cited researcher profile and a structured company need, side by side." },
 	{ name: "Writers", count: "×2", model: "gpt-5.4-mini", job: "Draft the proposal in the consented form (industrial PhD, joint project or contract research) and list every factual claim with the record it came from." },
-	{ name: "Critic", model: "ID and text checks + Decisions API", job: "Intercepts each draft. Blocks claims the cited records do not support, and figures or names in the text that no checked claim backs. Sends the draft back up to twice, then rejects it.", tone: "gate" },
+	{ name: "Critic", model: "ID and text checks + Decisions API", job: "Intercepts each draft. Blocks claims the cited records do not support, figures or names in the text that no checked claim backs, and plans that miss the company's own time limit. Checks claims in parallel batches of 8. Sends the draft back up to twice, then rejects it.", tone: "gate" },
 ]
 
 type EvalSet = {
@@ -179,7 +179,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 									<p className="mt-1">"{m.claim}"</p>
 									<p className="mt-1 text-muted-foreground">
 										Support {m.support.toFixed(2)}, just over the 0.50 bar. Her cited papers are on verification and covering arrays, which sit close to combinatorics, so the model
-										was unsure. A borderline case I report rather than hide.
+										was unsure. In two repeated runs it scored {(evals?.replay?.repeats ?? []).slice(1).map((x) => x.borderline?.toFixed(2)).join(" and ") || "the same"} and was caught. A borderline case I report rather than hide.
 									</p>
 								</div>
 							))}
