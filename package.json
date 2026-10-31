@@ -13,7 +13,9 @@
 		"serve": "tsx src/server.ts",
 		"eval:critic:hard": "tsx src/eval-critic-hard.ts",
 		"build:web": "bash web/scripts/build.sh",
-		"test:guards": "tsx src/test-guards.ts"
+		"test:guards": "tsx src/test-guards.ts",
+		"verify:evidence": "tsx src/verify-evidence.ts",
+		"check": "npm run typecheck && npm run test:guards && npm run verify:evidence"
 	},
 	"dependencies": {
 		"@mozaik-ai/core": "4.2.0",

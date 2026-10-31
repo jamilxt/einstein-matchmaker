@@ -105,6 +105,8 @@ ALLOW_LIVE=1 ALLOW_LIVE_SEARCH=1 npm run serve     # turns on the search form in
 
 To run the Critic evaluation: `ALLOW_LIVE=1 npm run eval:critic:hard -- --live`. It costs about $0.01. The guard tests run offline with no key: `npm run test:guards`.
 
+**Check my numbers without a key.** `npm run verify:evidence` does not trust any `summary.json`. For every committed run it rebuilds the job intervals from the raw `trace.jsonl` and recomputes the peak jobs in flight, the overlap count, drafts, drafts sent back, claims blocked and spend, then compares them with the summary and with the evidence table below. It re-runs the ID-ownership check on every released batch proposal and the text check on runs 6 and 7, and it replays the Critic evaluation from the recorded scores ([replay](docs/evidence/critic-eval-hard/replay.md)). `npm run check` runs types, guard tests and this together; the same three run in CI on every push ([workflow](.github/workflows/checks.yml)). It proves the published numbers follow from the committed files. It cannot prove the traces came from a real API, since they are plain files.
+
 ## Architecture
 
 ```mermaid
@@ -193,7 +195,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-04-live-nocritic](docs/evidence/run-04-live-nocritic) | off | 9 | 21/21 | (would have: 1) | (flagged: 2) | 2 | 20.1 s | $0.056 |
 | [run-05-live](docs/evidence/run-05-live) | on | 9 | 21/21 | 0 of 3 | 0 | 0 | 23.6 s | $0.062 |
 | [run-06-live](docs/evidence/run-06-live) | on, with text check | 9 | 21/21 | 0 of 3 | 0 | 0 | 27.6 s | $0.065 |
-| [run-07-live](docs/evidence/run-07-live) | on, with text check | 9 | 21/21 | 1 of 3 | 1 | 0 | 27.3 s | $0.077 |
+| [run-07-live](docs/evidence/run-07-live) | on, with text check | 9 | 21/21 | 1 of 4 | 1 | 0 | 27.3 s | $0.077 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
@@ -233,6 +235,7 @@ The natural runs are too small to measure the Critic, which is why I tested it d
 
 - **The bug v1 found:** all 12 false blocks were true claims about who wrote a paper. Paper records reached the Critic without their author list. I now pass authors, project participants and patent inventors with every record.
 - **The one miss:** "Martina Lačoková has published on discrete mathematics" scored 0.55 against a 0.50 bar. Her cited papers are on verification and covering arrays, which is close to combinatorics. It is a borderline case and a genuine miss.
+- **Which layer does the work.** Replaying the recorded scores offline ([replay](docs/evidence/critic-eval-hard/replay.md)): the ID and ownership rules alone catch 8 of 53, all of them the paper by someone else; the support score catches 44 of the other 45. At every threshold tested, from 0.3 to 0.7, no true claim is blocked, and the one miss would be caught at 0.6. I kept 0.5, chosen before the evaluation, rather than tune the threshold to a 53-case test.
 - **An earlier, easier set** (invented IDs, invented company facts, large number changes) scored 18/18 ([results](docs/evidence/critic-eval/results.md)). I replaced it because its errors were too easy and its true claims came from drafts the Critic had already approved.
 
 ### The Critic in a real run
