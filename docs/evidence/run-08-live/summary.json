@@ -1,0 +1,115 @@
+{
+  "runId": "2026-10-31T08-30-58-580Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+    "profiler": "gpt-5.4-mini",
+    "analyst": "gpt-5.4-mini",
+    "writer": "gpt-5.4-mini",
+    "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 56898,
+  "shortlist": {
+    "pairs": 180,
+    "challenges": 60
+  },
+  "screened": 180,
+  "selected": [
+    {
+      "key": "R0995xC003-CH2",
+      "score": 2.99,
+      "screener": "Screener-2",
+      "selectedAtMs": 2195
+    },
+    {
+      "key": "R0801xC010-CH2",
+      "score": 2.86,
+      "screener": "Screener-2",
+      "selectedAtMs": 2200
+    },
+    {
+      "key": "R0919xC018-CH2",
+      "score": 3,
+      "screener": "Screener-2",
+      "selectedAtMs": 2200
+    }
+  ],
+  "concurrency": {
+    "jobs": 21,
+    "peakInFlight": 9,
+    "peakAtMs": 2202,
+    "inFlightAtPeak": [
+      "Screener-1:screen",
+      "Screener-3:screen",
+      "Profiler-1:profile_researcher",
+      "Analyst-1:profile_company",
+      "Profiler-2:profile_researcher",
+      "Analyst-2:profile_company",
+      "Profiler-1:profile_researcher",
+      "Analyst-1:profile_company",
+      "Screener-2:screen"
+    ],
+    "jobsOverlappingAnotherAgent": 21
+  },
+  "critic_record": {
+    "drafts": 5,
+    "revisionsRequested": 2,
+    "claimsChecked": 87,
+    "claimsBlocked": 3,
+    "proseIssuesBlocked": 0,
+    "rejected": 0,
+    "unsupportedClaimsInFinalProposals": 0,
+    "outcomes": [
+      {
+        "key": "R0919xC018-CH2",
+        "verdict": "approved",
+        "drafts": 2
+      },
+      {
+        "key": "R0801xC010-CH2",
+        "verdict": "approved",
+        "drafts": 1
+      },
+      {
+        "key": "R0995xC003-CH2",
+        "verdict": "approved",
+        "drafts": 2
+      }
+    ]
+  },
+  "spend": {
+    "usd": 0.09761,
+    "budgetUsd": 0.3,
+    "halted": false,
+    "byModel": {
+      "decisions:gpt-6-luna": {
+        "input": 120818,
+        "output": 0,
+        "usd": 0.0120818,
+        "calls": 17
+      },
+      "gpt-5.4-mini": {
+        "input": 31284,
+        "output": 13793,
+        "usd": 0.0855315,
+        "calls": 17
+      }
+    },
+    "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+    "challenges": 60,
+    "perChallenge": 3,
+    "proposals": 3,
+    "screeners": 3,
+    "profilers": 2,
+    "analysts": 2,
+    "writers": 2,
+    "selectThreshold": 2,
+    "supportThreshold": 0.5,
+    "maxRevisions": 2,
+    "jobTimeoutMs": 90000,
+    "runTimeoutMs": 600000,
+    "screenBatch": 6
+  }
+}
