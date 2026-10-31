@@ -41,6 +41,9 @@ export function figureMatches(text: string): { raw: string; n: string }[] {
 }
 export const figures = (text: string) => figureMatches(text).map((f) => f.n)
 
+/** Dataset ids (SYN-PUB-02958, R0995, C003-CH2, Q001). Their digits are references, not figures. */
+export const ID_RE = /(?<![\p{L}\d-])(?:SYN-[A-Z]{3}-\d+|[RC]\d{3,4}(?:-CH\d+)?|Q\d{3}(?:-CH\d+)?)(?![\p{L}\d])/gu
+
 const excerptAround = (text: string, needle: string) => {
 	const i = text.indexOf(needle)
 	const a = Math.max(0, i - 50)
@@ -65,8 +68,19 @@ export function checkProse(
 
 	// 2. Every figure in a fact section appears in a claim.
 	const claimFigures = new Set(claims.flatMap((c) => figures(c.text ?? "")))
-	for (const f of FACT_FIELDS) {
+	// Run 11: an id in the text ("SYN-PUB-02958") was read as the figure 02958, and the Writer could not
+	// fix a complaint about a "figure". Ids are checked as citations instead: each one in the text must
+	// be cited by some claim, so the Critic has checked a statement about that record.
+	const cited = new Set(claims.flatMap((c) => c.evidence ?? []))
+	for (const f of [...FACT_FIELDS, ...PLAN_FIELDS]) {
 		const text = fieldText(proposal, f)
+		for (const m of text.matchAll(ID_RE)) {
+			if (cited.has(m[0])) continue
+			issues.push({ field: f, excerpt: excerptAround(text, m[0]), why: `the text mentions ${m[0]}, but no claim cites it: add a claim that cites it, or describe it by title instead of id` })
+		}
+	}
+	for (const f of FACT_FIELDS) {
+		const text = fieldText(proposal, f).replace(ID_RE, " ")
 		for (const { raw, n } of figureMatches(text)) {
 			if (claimFigures.has(n)) continue
 			issues.push({ field: f, excerpt: excerptAround(text, raw), why: `the figure "${raw.trim()}" in ${f} is not in any claim, so no record was checked for it` })

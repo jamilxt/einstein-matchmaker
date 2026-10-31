@@ -200,6 +200,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-08-live](docs/evidence/run-08-live) | on, with text check | 9 | 21/21 | 2 of 5 | 3 | 0 | 56.9 s | $0.098 |
 | [run-09-live](docs/evidence/run-09-live) | on, with text and deadline checks | 9 | 21/21 | 1 of 4 | 1 | 0 | 26.1 s | $0.092 |
 | [run-10-live](docs/evidence/run-10-live) | on, with text and deadline checks | 6 | 12/12 | 5 of 8 | 16 | 0 | 43.6 s | $0.165 |
+| [run-11-live](docs/evidence/run-11-live) | on, with text and deadline checks | 6 | 12/12 | 4 of 7 | 2 | 0 | 37.1 s | $0.124 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
@@ -222,6 +223,8 @@ What changed between runs, and why I kept every one:
 - **Run 9 (after the deadline check and the new Writer rules):** the Matchmaker picked three different pairs this time (ArmaturaSec, Suncokret Eko and Kristal Voda), including the first joint research project in a batch run, because the researcher's consent covers joint projects and not PhD supervision. None of the three challenges states a time limit, and all three proposals say "none stated", which the deadline check accepted. So this run does not show the Kredo six-month case live; the guard tests cover it offline. The new rules do show: each plan adds a step that checks transfer from the faculty testbed to the company's own platform before claiming results there, and changes to a live line or site wait for the company's safety review. One claim about the proposal itself ("the researcher's consent for this form is ...") was still listed and blocked, so that instruction reduced the problem but did not remove it. The Critic checked 90 claims and approved all three; 0 unsupported claims at release. 26.1 s, $0.09188.
 
 - **Run 10 (retest of the Kredo deadline, `--only=C010-CH2,C003-CH2,C018-CH2`):** the agents chose the same three researchers as runs 6 to 8. The deadline fix worked: the Kredo draft quoted "about six months" and planned Months 1 to 6. But the run exposed two problems, and only DriveLogic was approved. **Kredo and AutomVoj were rejected, and the Critic was wrong both times.** I opened every blocked claim against its record: all 16 were true (for example "AutomVoj a.d. has 212 employees" scored 0.04, and "Kredo Fintech is regulated by the National Bank of Serbia" scored 0.08, though both sentences are in the cited company record). The AutomVoj draft listed 57 claims, and the Critic sent all of them, with the company record repeated in many blocks, in one Decisions request. That is my bug. The Critic now sends at most 8 claims per request, concurrently ([`critic-check.ts`](src/verify/critic-check.ts)); a guard test feeds it the real 57-claim draft. Second, the Writer met the six-month limit by shrinking the whole PhD plan to six months; a new deterministic check requires an industrial PhD plan to run about three years, with the early delivery as its first period. No rejected text was released. 43.6 s, $0.16513. The batching fix still needs a live run to confirm.
+
+- **Run 11 (after the batching fix, same three challenges):** the Kredo proposal was approved with the fix working end to end: it quotes "within about six months", delivers in Months 1 to 6, and continues the PhD to month 36. DriveLogic was approved on the first draft. With 8 claims per request, the Critic no longer blocked company facts. Two weaknesses remained, both mine, and AutomVoj was rejected because of one: (1) the text check read the paper id "SYN-PUB-02958" in the novelty section as the figure 02958, so the Writer got a complaint about a "figure" it could not fix in two revisions, although the paper was cited. The text check now removes dataset ids before looking for figures, and instead requires every id in the text to be cited by some claim. (2) The model scored two exact paper-title claims ("SYN-PUB-08747 is about explaining credit decisions to supervisors: a case study") at 0 while scoring seven identical ones at 1. A claim that states nothing but a cited record's exact title is now matched by string, with no model; anything more still goes to the model. Both have guard tests built from this run's drafts. 37.1 s, $0.12409.
 
 The natural runs are too small to measure the Critic, which is why I tested it directly.
 
@@ -286,8 +289,10 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 | The same plan with a "Months 1 to 6" delivery period; the correct answer for all 489 challenges | pass |
 | The real run 10 Kredo PhD plan that stops after six months | blocked |
 | The real run 10 AutomVoj draft with 57 claims | sent in 8 requests of at most 8 claims |
+| The real run 11 AutomVoj draft, whose cited paper id was read as a figure | passes; an uncited id is still sent back |
+| A claim that only states a cited paper's exact title; the same with anything added | matched without the model; sent to the model |
 
-24 of 24 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
+30 of 30 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
 
 ### Proposals
 

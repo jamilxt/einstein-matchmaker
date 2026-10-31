@@ -8,7 +8,7 @@ import { consentedForms, proposalForm } from "./data/consent"
 import { MatchState } from "./runtime"
 import { checkProse } from "./verify/coverage"
 import { checkDeadline, checkPhdLength, statedDeadline } from "./verify/deadline"
-import { checkClaims } from "./verify/critic-check"
+import { checkClaims, titleOnly } from "./verify/critic-check"
 import { decider } from "./decisions"
 import { TUNING } from "./config"
 
@@ -128,6 +128,27 @@ console.log("== Deadline fit (verify/deadline.ts)")
 	const full = { ...short, plan: [...short.plan, { period: "Year 2", work: "w", result: "r", pass_if: "p" }, { period: "Year 3", work: "w", result: "r", pass_if: "p" }] }
 	expect("the same plan continued to Year 3 meets both the six-month limit and the PhD length", checkDeadline(ds, kPair, full).length === 0 && checkPhdLength(full).length === 0)
 	expect("a six-month joint project is not held to the PhD length", checkPhdLength({ ...short, form: "joint_project" }).length === 0)
+}
+
+console.log("== Ids in the text, and exact-title claims (verify/coverage.ts, verify/critic-check.ts)")
+{
+	// Live run 11: "SYN-PUB-02958" in the novelty text was read as the figure 02958; AutomVoj was rejected for it.
+	const run11 = JSON.parse(readFileSync("docs/evidence/run-11-live/run.json", "utf-8"))
+	const av = run11.proposals.find((p: any) => p.key === "R0995xC003-CH2")
+	const aPair = { researcherId: "R0995", companyId: "C003", challengeId: "C003-CH2" }
+	const last = { ...av.attempts[av.attempts.length - 1].proposal, form: "industrial_phd" }
+	const lastIssues = checkProse(ds, aPair, last, today)
+	expect("the real run 11 AutomVoj draft is no longer blocked for a cited id read as a figure", !lastIssues.some((i) => i.why.includes("02958")), lastIssues.map((i) => i.why).join("; ").slice(0, 160))
+	const first = { ...av.attempts[0].proposal, form: "industrial_phd" }
+	expect("its first draft, which cites both ids it names, passes the id rule too", !checkProse(ds, aPair, first, today).some((i) => i.why.includes("SYN-")))
+	const uncited = { ...last, novelty: `${last.novelty} It also builds on SYN-PUB-10380.` }
+	expect(
+		"an id in the text that no claim cites is sent back, with a message the Writer can act on",
+		checkProse(ds, aPair, uncited, today).some((i) => i.why.includes("SYN-PUB-10380") && i.why.includes("no claim cites it")),
+	)
+	expect("an exact-title claim is matched without the model", titleOnly(ds, "SYN-PUB-08747 is about explaining credit decisions to supervisors: a case study.", ["SYN-PUB-08747"]))
+	expect("a title claim with anything more still goes to the model", !titleOnly(ds, "SYN-PUB-08747 is about explaining credit decisions to supervisors: a case study, which cut defaults by 40%.", ["SYN-PUB-08747"]))
+	expect("a title cited to a different record is not matched", !titleOnly(ds, "SYN-PUB-08749 is about explaining credit decisions to supervisors: a case study.", ["SYN-PUB-08749"]))
 }
 
 console.log("== Critic request size (verify/critic-check.ts)")
