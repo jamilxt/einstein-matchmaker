@@ -1,0 +1,113 @@
+{
+  "runId": "2026-10-31T12-24-23-308Z",
+  "mode": "live",
+  "critic": "enforcing",
+  "models": {
+    "profiler": "gpt-5.4-mini",
+    "analyst": "gpt-5.4-mini",
+    "writer": "gpt-5.4-mini",
+    "decisions": "gpt-6-luna"
+  },
+  "wallClockMs": 23082,
+  "shortlist": {
+    "pairs": 9,
+    "challenges": 3
+  },
+  "screened": 9,
+  "selected": [
+    {
+      "key": "R0995xC003-CH2",
+      "score": 2.96,
+      "screener": "Screener-1",
+      "selectedAtMs": 2043
+    },
+    {
+      "key": "R0801xC010-CH2",
+      "score": 2.09,
+      "screener": "Screener-2",
+      "selectedAtMs": 2126
+    },
+    {
+      "key": "R0919xC018-CH2",
+      "score": 2.99,
+      "screener": "Screener-3",
+      "selectedAtMs": 2411
+    }
+  ],
+  "concurrency": {
+    "jobs": 12,
+    "peakInFlight": 6,
+    "peakAtMs": 2411,
+    "inFlightAtPeak": [
+      "Profiler-1:profile_researcher",
+      "Analyst-1:profile_company",
+      "Profiler-2:profile_researcher",
+      "Analyst-2:profile_company",
+      "Profiler-1:profile_researcher",
+      "Analyst-1:profile_company"
+    ],
+    "jobsOverlappingAnotherAgent": 12
+  },
+  "critic_record": {
+    "drafts": 3,
+    "revisionsRequested": 0,
+    "claimsChecked": 75,
+    "claimsBlocked": 0,
+    "proseIssuesBlocked": 0,
+    "rejected": 0,
+    "unsupportedClaimsInFinalProposals": 0,
+    "outcomes": [
+      {
+        "key": "R0995xC003-CH2",
+        "verdict": "approved",
+        "drafts": 1
+      },
+      {
+        "key": "R0919xC018-CH2",
+        "verdict": "approved",
+        "drafts": 1
+      },
+      {
+        "key": "R0801xC010-CH2",
+        "verdict": "approved",
+        "drafts": 1
+      }
+    ]
+  },
+  "spend": {
+    "usd": 0.06645,
+    "budgetUsd": 0.15,
+    "halted": false,
+    "byModel": {
+      "decisions:gpt-6-luna": {
+        "input": 37721,
+        "output": 0,
+        "usd": 0.0037721,
+        "calls": 13
+      },
+      "gpt-5.4-mini": {
+        "input": 21774,
+        "output": 10300,
+        "usd": 0.0626805,
+        "calls": 15
+      }
+    },
+    "note": "metered from API-reported token usage"
+  },
+  "tuning": {
+    "challenges": 60,
+    "perChallenge": 3,
+    "proposals": 3,
+    "screeners": 3,
+    "profilers": 2,
+    "analysts": 2,
+    "writers": 2,
+    "selectThreshold": 2,
+    "claimBatch": 8,
+    "supportThreshold": 0.5,
+    "maxRevisions": 2,
+    "jobTimeoutMs": 90000,
+    "runTimeoutMs": 600000,
+    "screenBatch": 6
+  }
+}

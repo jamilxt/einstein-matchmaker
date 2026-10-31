@@ -247,8 +247,11 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 					<RunNote go={go} id="run-10-live" title="Run 10, my Critic bug" stat="2 of 3 rejected, all 16 blocks wrong">
 						One request carried all 57 claims of a draft, and the model scored true facts near 0 ("212 employees": 0.04). The Critic now sends at most 8 claims per request.
 					</RunNote>
-					<RunNote go={go} id="run-12-live" title="Run 12, final" stat="3 of 3 approved, 0 claims blocked">
+					<RunNote go={go} id="run-12-live" title="Run 12" stat="3 of 3 approved, 0 claims blocked">
 						The deadline check sent Kredo's first draft back for planning in years against a six-month need; the second draft opened with Months 1 to 6. It checks timing, not what the period delivers.
+					</RunNote>
+					<RunNote go={go} id="run-13-live" title="Run 13, final" stat="3 of 3 approved on the first draft">
+						Every proposal now has a baseline, risks with a point to stop, and an owner per period, and a plan-shape check blocks gaps between periods. Kredo runs Months 1 to 6, then 7 to 12. The check confirms the sections exist, not that they are good.
 					</RunNote>
 				</div>
 			</section>

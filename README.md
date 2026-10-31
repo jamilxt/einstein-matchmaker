@@ -4,9 +4,9 @@ A team of concurrent [Mozaik](https://github.com/jigjoy-ai/mozaik) agents that f
 
 Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to 31 October 2026), on the official synthetic dataset.
 
-- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once. In all twelve live batch runs and three searches, every job overlapped another agent's work.
-- **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with a pass or fail target per period that meets the company's own time limit, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
-- **A Critic that I measured.** On 125 subtle planted-error and true claims it caught 52, 53 and 53 of 53 errors in three runs and wrongly blocked 0 of 72 true claims each time ([results](docs/evidence/critic-eval-hard/replay.md)). 30 offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past or missing the company's deadline, consent, budget and timeouts.
+- **13 Mozaik participants on one runtime.** Screening, profiling, writing and review overlap. At the peak, 9 jobs ran at once. In all thirteen live batch runs and three searches, every job overlapped another agent's work.
+- **Proposals in the shape of the EINSTEIN example topic.** Each has the company's own numbers, measurable research questions, a plan with an owner and a pass or fail target per period that meets the company's own time limit, a baseline the targets are compared against, risks with a point at which to stop, what is new beyond the researcher's own papers, what data exists and what must be collected, a first step, what is still to agree (funding, IP, publication), and a claim-by-claim source list.
+- **A Critic that I measured.** On 125 subtle planted-error and true claims it caught 52, 53 and 53 of 53 errors in three runs and wrongly blocked 0 of 72 true claims each time ([results](docs/evidence/critic-eval-hard/replay.md)). 35 offline guard tests (`npm run test:guards`) cover what a claim check alone misses: facts in the text with no claim, people outside the pair, plans dated in the past, missing the company's deadline or with a gap between periods, a missing baseline or stop point, consent, budget and timeouts.
 - **Numbers anyone can recheck without a key.** `npm run verify:evidence` rebuilds every published number from the raw traces and fails if the README disagrees; it runs in CI on every push.
 - **Two ways in:** a batch run over 60 company challenges, and **Reverse Search**, where a company types its problem and gets matched researchers.
 - **Demo video (1:46): [youtu.be/YS5SHwL9kKU](https://youtu.be/YS5SHwL9kKU).** Agents at work, the Critic sending a draft back, the final proposal, the Critic test, Reverse Search in Serbian, and the keyless recheck.
@@ -23,9 +23,13 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 
 ![A proposal next to the Critic's decisions](docs/screenshots/03-proposal-and-critic.png)
 
-**The final proposal format (run 12).** The collaboration form comes from the researcher's own consent, quoted under the pair. Kredo needs a result "within about six months", so the plan opens with Months 1 to 6 before the PhD continues. On the right, the Critic feed shows why: the first draft planned in years and was sent back with "add a period such as Months 1 to 6". Further down: what is new, what data exists, the company's time limit, and what is still to agree.
+**The proposal format, with a live send-back (run 12).** The collaboration form comes from the researcher's own consent, quoted under the pair. Kredo needs a result "within about six months", so the plan opens with Months 1 to 6 before the PhD continues. On the right, the Critic feed shows why: the first draft planned in years and was sent back with "add a period such as Months 1 to 6". Further down: what is new, what data exists, the company's time limit, and what is still to agree.
 
 ![A run 12 proposal with its form, consent and six-month delivery period](docs/screenshots/10-final-proposal.png)
+
+**Baselines, risks and owners (run 13).** Every proposal now states the baseline its targets are compared against and its risks, each with a point at which to stop.
+
+![A run 13 proposal: AutomVoj's own patch figures as the baseline, and four risks with stop points](docs/screenshots/12-baseline-and-risks.png)
 
 **Every source is one click away.** This is the record exactly as the Critic read it.
 
@@ -63,7 +67,7 @@ Built for the **EINSTEIN track** of the JigJoy and NTP Novi Sad hackathon (30 to
 | --- | --- |
 | Architecture diagram | [Architecture](#architecture) below, and the **How it works** page in the web UI |
 | Trace of one full run showing where the Critic stepped in | [`docs/evidence/run-01-live/trace.jsonl`](docs/evidence/run-01-live/trace.jsonl), walked through in [The Critic in a real run](#the-critic-in-a-real-run) |
-| At least three proposals for three different pairs | [`docs/evidence/run-12-live/proposals.md`](docs/evidence/run-12-live/proposals.md). There are 33 released batch proposals across twelve live runs, plus 9 from Reverse Search |
+| At least three proposals for three different pairs | [`docs/evidence/run-13-live/proposals.md`](docs/evidence/run-13-live/proposals.md). There are 36 released batch proposals across thirteen live runs, plus 9 from Reverse Search |
 | How it plugs into the EINSTEIN network and EINSTEIN Stars | [EINSTEIN network and EINSTEIN Stars](#einstein-network-and-einstein-stars) |
 | What it does, architecture, how to run | This README |
 
@@ -166,16 +170,16 @@ flowchart LR
 
 Two jobs in this system are judgements, not writing: "how well does this researcher fit this challenge, 0 to 3?" and "does this record support this claim, yes or no?". I send both to the OpenAI Decisions API (`gpt-6-luna`) and keep `gpt-5.4-mini` for the jobs that must write text (profiles, company needs, proposals).
 
-**Cost.** Across all 15 live runs in `docs/evidence` (12 batch runs and 3 searches), metered from API-reported token usage:
+**Cost.** Across all 16 live runs in `docs/evidence` (13 batch runs and 3 searches), metered from API-reported token usage:
 
 | | Decisions API | gpt-5.4-mini |
 | --- | --- | --- |
-| Requests | 223 | 240 |
-| Input tokens read | 1,350,306 | 412,491 |
-| Cost | **$0.135 (11% of spend)** | $1.058 (89% of spend) |
+| Requests | 236 | 255 |
+| Input tokens read | 1,388,027 | 434,265 |
+| Cost | **$0.139 (11% of spend)** | $1.121 (89% of spend) |
 
 - The Decisions API did most of the reading (every pair to screen, every claim with its evidence) for about a ninth of the bill. Its input costs $0.10 per million tokens and its output is free.
-- The same 1,350,306 input tokens sent to `gpt-5.4-mini` would cost $1.01 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
+- The same 1,388,027 input tokens sent to `gpt-5.4-mini` would cost $1.04 for the input alone, 7.5 times more, before paying for any output. That is price arithmetic, not a run I did: I never built a chat-model screener to compare quality.
 - The full hard Critic evaluation, 125 claims with their evidence, cost $0.007.
 
 **Speed.** Three Screeners score all 180 shortlisted pairs in 2.0 to 5.3 s in the nine full live runs. The Critic checked all 125 evaluation claims in 1.4 s. Fast screening is what lets the Matchmaker pick pairs early and start profiling while screening is still running.
@@ -206,6 +210,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-10-live](docs/evidence/run-10-live) | on, with text and deadline checks | 6 | 12/12 | 5 of 8 | 16 | 0 | 43.6 s | $0.165 |
 | [run-11-live](docs/evidence/run-11-live) | on, with text and deadline checks | 6 | 12/12 | 4 of 7 | 2 | 0 | 37.1 s | $0.124 |
 | [run-12-live](docs/evidence/run-12-live) | on, with text and deadline checks | 7 | 12/12 | 1 of 4 | 0 | 0 | 23.3 s | $0.078 |
+| [run-13-live](docs/evidence/run-13-live) | on, with text, deadline and plan-shape checks | 6 | 12/12 | 0 of 3 | 0 | 0 | 23.1 s | $0.066 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
@@ -232,6 +237,8 @@ What changed between runs, and why I kept every one:
 - **Run 11 (after the batching fix, same three challenges):** the Kredo proposal was approved with the fix working end to end: it quotes "within about six months", delivers in Months 1 to 6, and continues the PhD to month 36. DriveLogic was approved on the first draft. With 8 claims per request, the Critic no longer blocked company facts. Two weaknesses remained, both mine, and AutomVoj was rejected because of one: (1) the text check read the paper id "SYN-PUB-02958" in the novelty section as the figure 02958, so the Writer got a complaint about a "figure" it could not fix in two revisions, although the paper was cited. The text check now removes dataset ids before looking for figures, and instead requires every id in the text to be cited by some claim. (2) The model scored two exact paper-title claims ("SYN-PUB-08747 is about explaining credit decisions to supervisors: a case study") at 0 while scoring seven identical ones at 1. A claim that states nothing but a cited record's exact title is now matched by string, with no model; anything more still goes to the model. Both have guard tests built from this run's drafts. 37.1 s, $0.12409.
 
 - **Run 12 (after the id and title fixes, same three challenges):** all three proposals were approved, with 0 claims blocked and 0 unsupported claims at release. The deadline check did its job live: Kredo's first draft quoted "within about six months" but planned in years, the Critic sent it back with "add a period such as Months 1 to 6", and the second draft did. DriveLogic and AutomVoj passed on the first draft; 7 exact-title claims were matched without the model. AutomVoj adds a transfer check on its own Siemens platform, and Dragan Ilić is named only as the senior PLC programmer. Two limits remain: Kredo's months 1 to 6 deliver a pilot-ready format accepted by compliance, not production use, and the plan jumps from month 6 to Year 2. The deadline check confirms a period ends in time; it does not judge what that period delivers. 23.3 s, $0.07775.
+
+- **Run 13 (after comparing run 12 with careful pilot briefs, same three challenges):** the Writer now has to give a baseline the targets are compared against, 2 to 4 risks each with a point at which to stop, and an owner for every plan period, and a new deterministic check ([`plan-shape.ts`](src/verify/plan-shape.ts)) sends back a draft that misses any of them or leaves a gap in time between periods. A guard test feeds it run 12's approved Kredo plan, and it catches the jump from month 6 to Year 2. In run 13 all three proposals were approved on the first draft, with 75 claims checked and 0 blocked. Kredo now runs Months 1 to 6, Months 7 to 12, Year 2 and Year 3. Each baseline uses the company's own figures where the records give them (three engineers for two full weeks per AutomVoj safety patch; 87 to 89% branch coverage and three customer-found CAN faults in DriveLogic's last four projects) and says where they do not (Kredo has no figure, so Months 1 to 6 measure it). The Critic did not send anything back this time, so run 12 remains the example of a live send-back. Limits: the pass targets are still proposals the parties would have to agree, some stop points are loose ("a meaningful subset such as 10 codebases"), and the shape check confirms the sections exist and follow on, not that they are good. 23.1 s, $0.06645.
 
 The natural runs are too small to measure the Critic, which is why I tested it directly.
 
@@ -298,17 +305,21 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 | The real run 10 Kredo PhD plan that stops after six months | blocked |
 | The real run 10 AutomVoj draft with 57 claims | sent in 8 requests of at most 8 claims |
 | The real run 11 AutomVoj draft, whose cited paper id was read as a figure | passes; an uncited id is still sent back |
+| The real run 12 Kredo plan (Months 1 to 6, then Year 2), given the new sections; the same with Months 7 to 12 added | gap blocked; pass |
+| No baseline, a risk with no stop point, periods with no owner | all blocked |
 | A claim that only states a cited paper's exact title; the same with anything added | matched without the model; sent to the model |
 
-30 of 30 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
+35 of 35 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
 
 ### Proposals
 
-From run 12 ([full text](docs/evidence/run-12-live/proposals.md)), the last live run, with every check in this README switched on and no human edits. The UI labels proposals as illustrative and makes no commitment claims. Run 7 also has a [human-reviewed copy](docs/evidence/run-07-live/proposals-reviewed.md) with feasibility edits made by hand; those edits were not run through the Critic, and several of them (the six-month gate, the platform transfer check, the safety review) are now produced by the Writer itself in run 12.
+From run 13 ([full text](docs/evidence/run-13-live/proposals.md)), the last live run, with every check in this README switched on and no human edits. The UI labels proposals as illustrative and makes no commitment claims. Run 7 also has a [human-reviewed copy](docs/evidence/run-07-live/proposals-reviewed.md) with feasibility edits made by hand; those edits were not run through the Critic, and several of them (the six-month gate, the platform transfer check, the safety review) are now produced by the Writer itself in runs 12 and 13.
 
-1. **Plain-language, decision-time explanations for Kredo Fintech's automated SME credit decisions.** Branislav Žarković (R0801, Finance and Banking) with Kredo Fintech (C010). Kredo needs something "within about six months", so the plan opens with Months 1 to 6: a Serbian explanation schema tested on 100 historical decisions and accepted by compliance for a pilot. Production use comes later, after Kredo's own compliance review.
-2. **Incremental product-line modernization for AutomVoj's 38 TIA Portal ladder-logic codebases.** Veljko Pantelić (R0995, Computing and Control Engineering) with AutomVoj (C003). The faculty lab runs Wago and Beckhoff controllers, so Year 1 includes a transfer check on AutomVoj's own Siemens platform before any result is claimed for company use.
-3. **Contract-driven integration testing for multi-supplier CAN stacks at DriveLogic Vojvodina.** Martina Lačoková (R0919, Computing and Control Engineering) with DriveLogic (C018). The synthetic record describes CAN faults despite 87 to 89% branch coverage; the proposal keeps DriveLogic's €40,000 first-phase limit and the 40% of one senior engineer the company offers.
+1. **Plain-language, bilingual explanations for Kredo Fintech's automated SME credit decisions.** Branislav Žarković (R0801, Finance and Banking) with Kredo Fintech (C010). Kredo needs something "within about six months", so the plan runs Months 1 to 6 (a prototype that explains at least 95% of sampled decisions inside the existing flow, reviewed against a checklist agreed with the compliance officer), then Months 7 to 12 (a controlled live or shadow run compared with today's technical summaries), then Years 2 and 3. The records give no figure for today's explanations, so the baseline is measured first. One stop point: if no reviewer-approved explanation exists by month 6, production integration stops.
+2. **Modular PLC standardization for AutomVoj's 38 TIA Portal codebases.** Veljko Pantelić (R0995, Computing and Control Engineering) with AutomVoj (C003). The baseline is AutomVoj's own figure: one safety patch takes three engineers two full weeks. The faculty lab runs Wago and Beckhoff controllers, so a stop point says that if the method cannot be shown on AutomVoj's own Siemens platform for 3 codebases by the end of Year 1, the project stops claiming transfer.
+3. **Contract-driven integration test generation for multi-supplier AUTOSAR CAN stacks at DriveLogic Vojvodina.** Martina Lačoková (R0919, Computing and Control Engineering) with DriveLogic (C018). The baseline is the synthetic record's 87 to 89% branch coverage with three customer-found CAN faults in the last four projects. The proposal keeps the 40% of one senior engineer the company offers, and stops or narrows if generated tests need more than one person-day per interface to run in CANoe.
+
+Run 12 ([full text](docs/evidence/run-12-live/proposals.md)) has the same three pairs without baselines, risks or owners.
 
 The earlier showcase, run 3 ([full text](docs/evidence/run-03-live/proposals.md)), has stronger industrial detail in places (Suncokret Eko's moisture ranges and incident cost) but predates the fixes.
 
@@ -370,7 +381,7 @@ All times are CET. The hackathon started on Friday 30 October at 10:00.
   - The first version of the agent team (10:26). It was written quickly with an AI coding assistant, and then reshaped by what the live runs showed.
   - Every Critic fix found in the live runs, and both Critic evaluations.
   - Reverse Search, the web UI and server, the deployment, and this README.
-  - On Saturday 31 October: the evidence verifier and CI, the deadline check, the Critic batching and id fixes found in live runs 8 to 12, and the repeated Critic evaluation.
+  - On Saturday 31 October: the evidence verifier and CI, the deadline check, the Critic batching and id fixes found in live runs 8 to 12, the repeated Critic evaluation, and the baseline, risk and owner sections checked in run 13.
 
 Every live run in [`docs/evidence`](docs/evidence) has a timestamped trace, and the commit history is public.
 
