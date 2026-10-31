@@ -106,6 +106,7 @@ export function writeReport(runDir: string, live: boolean) {
 		md.push(`### Why this pair`, p.why_this_pair, "")
 		if (p.novelty) md.push(`### What is new`, p.novelty, "")
 		if (p.data_status) md.push(`### Data: what exists and what to collect`, p.data_status, "")
+		if (p.company_deadline) md.push(`### The company's time limit`, p.company_deadline, "")
 		md.push(`### First step`, p.first_step, "")
 		if (p.to_agree) md.push(`### Still to agree`, p.to_agree, "")
 		md.push(`### Claims and sources`)

@@ -9,6 +9,7 @@
 // No model involved, so it cannot be talked out of a verdict.
 import type { Dataset } from "../data/dataset"
 import type { Claim } from "./citations"
+import { checkDeadline } from "./deadline"
 
 export type ProseIssue = { field: string; excerpt: string; why: string }
 
@@ -105,6 +106,9 @@ export function checkProse(
 				issues.push({ field: f, excerpt: excerptAround(text, m[0]), why: `plans work for ${m[0]}, which is already past (today is ${today.toISOString().slice(0, 10)})` })
 		}
 	}
+
+	// 5. The plan meets the time limit the company itself states (verify/deadline.ts).
+	issues.push(...checkDeadline(ds, pair, proposal))
 
 	// One issue per distinct reason is enough for the Writer to act on.
 	const seen = new Set<string>()

@@ -14,6 +14,7 @@ import {
 	type SemanticEvent,
 } from "@mozaik-ai/core"
 import { state } from "./runtime"
+import { statedDeadline } from "./verify/deadline"
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
@@ -102,7 +103,9 @@ function stubProposal(key: string, revising: boolean) {
 		claims.push({ text: `${r.name} also led a widely cited study on this exact problem.`, about: "researcher", evidence: ["SYN-PUB-99999"] })
 		claims.push({ text: `${r.name} authored "${foreign.title}".`, about: "researcher", evidence: [foreign.id] })
 	}
-	const periods = form === "industrial_phd" ? ["Year 1", "Year 2", "Year 3"] : form === "joint_project" ? ["Months 1 to 6", "Months 7 to 18"] : ["Months 1 to 3", "Months 4 to 9"]
+	const deadline = statedDeadline(`${challenge.text} ${challenge.detail ?? ""}`)
+	const early = deadline && deadline.months < 12 ? [`Months 1 to ${Math.max(1, Math.floor(deadline.months))}`] : []
+	const periods = form === "industrial_phd" ? [...early, "Year 1", "Year 2", "Year 3"] : form === "joint_project" ? ["Months 1 to 6", "Months 7 to 18"] : ["Months 1 to 3", "Months 4 to 9"]
 	return {
 		title: `[stub] ${rp.expertise[0]?.topic ?? r.fields[0]} for ${company.name}`,
 		// Planted prose mistake on some first drafts: a figure that no claim backs.
@@ -114,6 +117,7 @@ function stubProposal(key: string, revising: boolean) {
 		why_this_pair: `[stub] ${rp.summary.replace(/\d+/g, "")}`,
 		novelty: "[stub] what is new beyond the researcher's own papers",
 		data_status: "[stub] data the records describe, and data to collect",
+		company_deadline: deadline?.sentence ?? "none stated",
 		first_step: "[stub] a two-day workshop at NTP",
 		to_agree: "[stub] funding, IP, publication delay, data access",
 		claims,

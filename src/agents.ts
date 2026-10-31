@@ -123,7 +123,7 @@ const proposalSchema = {
 	schema: {
 		type: "object",
 		additionalProperties: false,
-		required: ["title", "problem", "research_questions", "plan", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status", "first_step", "to_agree", "claims"],
+		required: ["title", "problem", "research_questions", "plan", "company_brings", "faculty_brings", "why_this_pair", "novelty", "data_status", "company_deadline", "first_step", "to_agree", "claims"],
 		properties: {
 			title: { type: "string" },
 			problem: { type: "string" },
@@ -142,6 +142,7 @@ const proposalSchema = {
 			why_this_pair: { type: "string" },
 			novelty: { type: "string" },
 			data_status: { type: "string" },
+			company_deadline: { type: "string" },
 			first_step: { type: "string" },
 			to_agree: { type: "string" },
 			claims: {
@@ -425,9 +426,14 @@ export function buildTeam(tracePath: string): Team {
 					"Be as specific as the example: use the company's own numbers and constraints from the challenge text. " +
 					"Commit only the company staff, time, equipment and data the records offer, with their own limits (for example 'up to three months'); if the plan needs more, put it in `to_agree`. " +
 					"You are told today's date: never plan work for a date that has passed; if the company names a deadline that is already past, say so and plan for the next cycle. " +
+					"`company_deadline`: the time limit the company states for a result, copied word for word from the challenge text, or exactly 'none stated'. If that limit is shorter than the plan's first period, " +
+					"start the plan with a period in months (for example 'Months 1 to 6') that delivers what the company asked for by then; a PhD can continue its research after that. Never push the company's result past its own limit. " +
+					"If the faculty's lab equipment, platform or toolchain differs from what the company records list (for example a different PLC vendor), add an explicit step that checks transfer to the company's own platform before any result is claimed for it. " +
+					"For safety-related changes, nothing runs on a live installation until the company's own safety review approves it. " +
 					"In the proposal text, refer to people and companies by name, never by their dataset id (ids belong only in `claims`). Name only people who appear in the records given to you. Do not attach a job title or role to a named person unless the same record explicitly links that person to that role; keep separately stated company roles separate from named people. " +
 					LANG_RULE +
 					"List every factual statement about either party in `claims` with the dataset id of the record that states it: " +
+					"(only facts a record states about the researcher or the company; never statements about this proposal itself, such as its form, its dates or its structure) " +
 					"company size, location, sector, products or capacity -> the company id (e.g. C003); the company's problem -> the challenge id (e.g. C003-CH2); " +
 					"a researcher's title, department or role -> the researcher id (e.g. R0995); a researcher's expertise -> their publication, project or patent ids. Use only ids given to you. " +
 					"Every figure that appears in the title, problem, what each side brings, why this pair, novelty or data status must also appear in one of your claims. " +

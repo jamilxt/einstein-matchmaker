@@ -38,6 +38,7 @@ export type Proposal = {
 	why_this_pair: string
 	novelty?: string
 	data_status?: string
+	company_deadline?: string
 	first_step: string
 	to_agree?: string
 	claims: Claim[]

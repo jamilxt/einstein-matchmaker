@@ -7,6 +7,7 @@ import { Dataset } from "./data/dataset"
 import { consentedForms, proposalForm } from "./data/consent"
 import { MatchState } from "./runtime"
 import { checkProse } from "./verify/coverage"
+import { checkDeadline, statedDeadline } from "./verify/deadline"
 
 const ds = Dataset.load()
 const today = new Date("2026-10-30T12:00:00Z")
@@ -82,6 +83,41 @@ for (const dir of ["run-05-live", "search-01-packaging", "search-02-winery", "se
 	}
 }
 expect(`approved live proposals pass the text check (${controls - controlFlags}/${controls})`, controlFlags === 0)
+
+console.log("== Deadline fit (verify/deadline.ts)")
+{
+	// The real run 8 Kredo proposal: true facts, but production in year 3 for a six-month need.
+	const run8 = JSON.parse(readFileSync("docs/evidence/run-08-live/run.json", "utf-8"))
+	const kredo = run8.proposals.find((p: any) => p.key === "R0801xC010-CH2").final
+	const kPair = { researcherId: "R0801", companyId: "C010", challengeId: "C010-CH2" }
+	const quote = "we need something that works reliably in production within about six months"
+	const withQuote = { ...JSON.parse(JSON.stringify(kredo)), company_deadline: quote }
+	expect(
+		"the real run 8 Kredo plan (production in year 3, need within six months) is sent back",
+		checkDeadline(ds, kPair, withQuote).some((i) => i.why.includes("no plan period ends by then")),
+	)
+	const noneStated = { ...JSON.parse(JSON.stringify(kredo)), company_deadline: "none stated" }
+	expect("\"none stated\" is refused when the challenge states a time limit", checkDeadline(ds, kPair, noneStated).some((i) => i.why.includes("states a time limit")))
+	const invented = { ...JSON.parse(JSON.stringify(kredo)), company_deadline: "within three months" }
+	expect("a time limit the challenge does not contain is refused", checkDeadline(ds, kPair, invented).some((i) => i.why.includes("word for word")))
+	const fixed = { ...withQuote, plan: [{ period: "Months 1 to 6", work: "w", result: "r", pass_if: "p" }, ...withQuote.plan] }
+	expect("the same plan with a 'Months 1 to 6' delivery period passes", checkDeadline(ds, kPair, fixed).length === 0)
+	const automvoj = run8.proposals.find((p: any) => p.key === "R0995xC003-CH2").final
+	expect(
+		"a challenge with no stated limit accepts \"none stated\" (run 8 AutomVoj)",
+		checkDeadline(ds, { researcherId: "R0995", companyId: "C003", challengeId: "C003-CH2" }, { ...automvoj, company_deadline: "none stated" }).length === 0,
+	)
+	// Controls over the whole dataset: the correct answer must never be blocked.
+	let wrong = 0
+	let limited = 0
+	for (const { challenge } of ds.challenges.values()) {
+		const d = statedDeadline(`${challenge.text} ${challenge.detail ?? ""}`)
+		if (d) limited++
+		const plan = [...(d && d.months < 12 ? [{ period: `Months 1 to ${Math.max(1, Math.floor(d.months))}` }] : []), { period: "Year 1" }, { period: "Year 2" }]
+		if (checkDeadline(ds, { challengeId: challenge.id }, { company_deadline: d?.sentence ?? "none stated", plan }).length) wrong++
+	}
+	expect(`correct answers pass for all ${ds.challenges.size} challenges (${limited} state a readable limit)`, wrong === 0, `${wrong} blocked`)
+}
 
 console.log("== Consent (data/consent.ts)")
 {

@@ -24,6 +24,7 @@ export type ViewProposal = {
 	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string }[]
 	novelty: string
 	data_status: string
+	company_deadline?: string
 	to_agree: string
 	company_brings: string
 	faculty_brings: string

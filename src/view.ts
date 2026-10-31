@@ -28,6 +28,7 @@ export type ViewProposal = {
 	plan: { period?: string; year?: number | string; work: string; result: string; pass_if?: string }[]
 	novelty: string
 	data_status: string
+	company_deadline: string
 	to_agree: string
 	company_brings: string
 	faculty_brings: string
@@ -170,6 +171,7 @@ export function buildView(ds: Dataset, id: string, dir: string): RunView {
 			released: p.released ?? true,
 			novelty: p.novelty ?? "",
 			data_status: p.data_status ?? "",
+			company_deadline: p.company_deadline ?? "",
 			to_agree: p.to_agree ?? "",
 			title: p.title ?? (p.released === false ? `Not released: ${c.researcher} with ${c.company}` : p.key),
 			problem: p.problem ?? "",

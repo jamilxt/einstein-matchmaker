@@ -259,6 +259,7 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 - **Consent was too broad.** Anyone open to any collaboration got an industrial PhD proposal. Now the form follows the consent ([`src/data/consent.ts`](src/data/consent.ts)).
 - **Rejected drafts were still shown**, labelled rejected. Now only the outcome and the Critic's reasons are.
 - **The budget was checked after spending**, so concurrent calls could all start against the same headroom; a stalled job stopped being reviewed but kept running; two searches could start at once. All three are fixed (reservation before each call, the watchdog ends the loop, the search lock is taken before reading the request).
+- **Plans could miss the company's own deadline.** Live run 8 kept every fact true but put Kredo's production deployment in year 3, although Kredo needs it "within about six months". The Writer now copies the company's time limit word for word into `company_deadline` (or writes "none stated"), and [`src/verify/deadline.ts`](src/verify/deadline.ts) checks with no model that the quote is really in the challenge, that "none stated" is not used when the challenge says "we need ... within N months", and that a limit under a year has a plan period in months that ends by then. The Writer is also told to add a compatibility step when the faculty's lab equipment differs from the company's (run 8 validated Siemens logic on Wago and Beckhoff controllers), and not to list statements about the proposal itself as claims (run 8's three blocked claims). Those two are instructions only, not checks.
 - **Proposals were weaker than their structure.** A plan was dated before today, staffing went beyond what a company offered, and novelty over the researcher's own papers was not stated. The Writer now gets today's date, the researcher's own paper titles and the consent wording, and must fill `novelty`, `data_status`, `to_agree` and a `pass_if` target per period.
 
 `npm run test:guards` runs these attacks and controls offline, with no key:
@@ -273,8 +274,11 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 | PhD only with explicit PhD consent; Serbian and Cyrillic consent read | pass |
 | Two calls that together exceed the budget; a non-numeric budget | second call refused; refused |
 | A 300 ms watchdog on every job | loops end, nothing released |
+| The real run 8 Kredo plan: production in year 3, but the company needs it "within about six months" | blocked |
+| "none stated" when the challenge states a limit; a limit the challenge does not contain | both blocked |
+| The same plan with a "Months 1 to 6" delivery period; the correct answer for all 489 challenges | pass |
 
-14 of 14 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
+20 of 20 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
 
 ### Proposals
 
@@ -328,6 +332,7 @@ EINSTEIN is a Horizon Europe Excellence Initiative (grant 101136377, 2024 to 202
 - Natural Critic-on versus Critic-off runs are too small to show a difference, so the planted-error evaluation is the real measurement.
 - Fit scores come from a model and are a starting point for a human conversation, not a decision.
 - The text check finds figures and names, not every kind of fact. It checks figures only in the fact sections (targets in the plan are proposals), and it recognises people by first names that occur in the dataset, so a name from outside that list is not caught. A plain-language statement with no figure or name still relies on the Writer listing it as a claim.
+- The deadline check reads limits phrased as "within (about) N months or weeks", in English and Serbian. In the dataset that covers 37 of 489 challenges. Limits phrased otherwise ("before next season", "by Q3 next year") are only checked for exact quoting, and equipment compatibility is an instruction to the Writer, not a check.
 - The budget reservation uses a fixed output allowance per call, so it is an estimate. A timed-out job stops its loop, but a request already in flight is not cancelled.
 - Recorded runs 1 to 5 and the three searches predate the text check and the consent-based form. Run 3's water-testing proposal names Goran Radulović as a PhD supervisor, although his `open_to` lists joint projects and contract research, not PhD supervision; the current system writes him a joint project instead.
 - Reverse Search shortlists by keywords first. A problem described in very different words from the researchers' papers can miss people, and the Decisions screening only reorders what the shortlist found.

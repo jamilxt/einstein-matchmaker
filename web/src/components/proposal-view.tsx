@@ -107,6 +107,11 @@ export function ProposalView({ p, onSource }: { p: ViewProposal; onSource: (id: 
 					<p>{p.data_status}</p>
 				</Section>
 			)}
+			{p.company_deadline && (
+				<Section title="The company's time limit">
+					<p>{p.company_deadline}</p>
+				</Section>
+			)}
 			<Section title="First step">
 				<p>{p.first_step}</p>
 			</Section>
