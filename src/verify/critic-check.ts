@@ -16,20 +16,27 @@ export async function checkClaims(ds: Dataset, pair: { researcherId: string; com
 		supported: false,
 	}))
 	const toAsk = checks.map((c, i) => ({ c, i })).filter(({ c }) => c.deterministic.length === 0)
-	if (toAsk.length) {
-		const blocks = toAsk.map(({ c, i }) => `### claim${i}\n${c.evidence.map((id) => ds.evidenceText(id)?.slice(0, 4000)).join("\n")}`)
-		const questions = toAsk.map(({ c, i }) => ({
-			type: "predicate" as const,
-			name: `claim${i}`,
-			instructions: `Using only the evidence in [[claim${i}]], is this statement supported: "${c.claim}"`,
-		}))
-		const answers = await decider.decide(blocks.join("\n\n"), questions)
-		for (const a of answers) {
-			if (a.type !== "predicate") continue
-			const idx = Number(a.name.replace("claim", ""))
-			checks[idx].support = a.probability
-			checks[idx].supported = a.probability >= TUNING.supportThreshold
-		}
-	}
+	// Ask in small batches, concurrently. One request carrying every claim of a long draft (57 in live
+	// run 10, with the same company record repeated in many blocks) scored plainly true facts near 0.
+	// The planted-error evaluation ran at about 14 claims per request, so batches stay well below that.
+	const batches: (typeof toAsk)[] = []
+	for (let k = 0; k < toAsk.length; k += TUNING.claimBatch) batches.push(toAsk.slice(k, k + TUNING.claimBatch))
+	await Promise.all(
+		batches.map(async (batch) => {
+			const blocks = batch.map(({ c, i }) => `### claim${i}\n${c.evidence.map((id) => ds.evidenceText(id)?.slice(0, 4000)).join("\n")}`)
+			const questions = batch.map(({ c, i }) => ({
+				type: "predicate" as const,
+				name: `claim${i}`,
+				instructions: `Using only the evidence in [[claim${i}]], is this statement supported: "${c.claim}"`,
+			}))
+			const answers = await decider.decide(blocks.join("\n\n"), questions)
+			for (const a of answers) {
+				if (a.type !== "predicate") continue
+				const idx = Number(a.name.replace("claim", ""))
+				checks[idx].support = a.probability
+				checks[idx].supported = a.probability >= TUNING.supportThreshold
+			}
+		}),
+	)
 	return checks
 }

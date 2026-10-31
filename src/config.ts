@@ -55,6 +55,7 @@ export const TUNING = {
 	analysts: 2,
 	writers: 2,
 	selectThreshold: 2.0, // Decisions score (0 none .. 3 strong) needed for early selection
+	claimBatch: 8, // claims per Decisions request in the Critic (run 10: one 57-claim request scored true facts near 0)
 	supportThreshold: 0.5, // Decisions predicate probability needed for a claim to count as supported
 	maxRevisions: 2,
 	jobTimeoutMs: Number(process.env.JOB_TIMEOUT_MS ?? 90_000),

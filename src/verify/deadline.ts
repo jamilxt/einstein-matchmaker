@@ -71,6 +71,32 @@ function periodEndMonths(label: string): number | undefined {
 	return /week|nedelj/i.test(unit[0]) ? end / 4.3 : end
 }
 
+/** The last month a plan period covers, for "Year 3" (36) as well as "Months 19 to 36" (36). */
+export function periodEnd(label: string): number | undefined {
+	const year = label.match(/\b(?:year|godina)\s*(\d+)/i)
+	if (year) return Number(year[1]) * 12
+	return periodEndMonths(label)
+}
+
+/**
+ * An industrial PhD runs about three years. Run 10 met Kredo's six-month limit by shrinking the whole
+ * PhD plan to six months; the deadline needs a delivery period, not a shorter doctorate.
+ */
+export function checkPhdLength(proposal: Record<string, unknown>): ProseIssue[] {
+	if (proposal.form !== "industrial_phd" || !Array.isArray(proposal.plan) || !proposal.plan.length) return []
+	const ends = (proposal.plan as { period?: string; year?: number }[]).map((p) => (p.period ? periodEnd(p.period) : p.year ? p.year * 12 : undefined))
+	if (ends.some((e) => e === undefined)) return [] // a label this check cannot read; leave it to the reader
+	const last = Math.max(...(ends as number[]))
+	if (last >= 36) return []
+	return [
+		{
+			field: "plan",
+			excerpt: (proposal.plan as { period?: string }[]).map((p) => p.period).join(", "),
+			why: `an industrial PhD plan must run about three years, but this one ends after ${last} months: keep the early delivery period for the company and continue to Year 3`,
+		},
+	]
+}
+
 export function checkDeadline(ds: Dataset, pair: { challengeId: string }, proposal: Record<string, unknown>): ProseIssue[] {
 	const value = proposal.company_deadline
 	if (typeof value !== "string") return [] // recorded before this check existed

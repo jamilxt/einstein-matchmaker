@@ -199,6 +199,7 @@ All of it is committed under [`docs/evidence/`](docs/evidence) and can be replay
 | [run-07-live](docs/evidence/run-07-live) | on, with text check | 9 | 21/21 | 1 of 4 | 1 | 0 | 27.3 s | $0.077 |
 | [run-08-live](docs/evidence/run-08-live) | on, with text check | 9 | 21/21 | 2 of 5 | 3 | 0 | 56.9 s | $0.098 |
 | [run-09-live](docs/evidence/run-09-live) | on, with text and deadline checks | 9 | 21/21 | 1 of 4 | 1 | 0 | 26.1 s | $0.092 |
+| [run-10-live](docs/evidence/run-10-live) | on, with text and deadline checks | 6 | 12/12 | 5 of 8 | 16 | 0 | 43.6 s | $0.165 |
 | [search-01-packaging](docs/evidence/search-01-packaging) | on | 6 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.063 |
 | [search-02-winery](docs/evidence/search-02-winery) | on | 4 | 10/10 | 0 of 3 | 0 | 0 | 21.6 s | $0.034 |
 | [search-03-serbian-input](docs/evidence/search-03-serbian-input) | on | 4 | 10/10 | 2 of 5 | 2 | 0 | 30.6 s | $0.060 |
@@ -219,6 +220,8 @@ What changed between runs, and why I kept every one:
 - **Run 8 (regression check after adding `verify:evidence`):** same three pairs as runs 6 and 7. The Critic checked 87 claims, sent 2 of 5 drafts back and blocked 3 claims; all three proposals were approved with 0 text problems and 0 unsupported claims. All 3 blocked claims were statements about the proposal itself ("the proposal form is an industrial PhD", "the proposal does not plan work before today"), which no dataset record states, so the Writer dropped them. The run took 56.9 s instead of about 27 s because one company-profiling call took 36 s; the Writers waited for it. It cost $0.09761. Two weaknesses that the human-reviewed run 7 copy fixed by hand still appear in the live text: the Kredo plan puts production deployment in year 3 although the company needs it within about six months, and the AutomVoj plan validates Siemens ladder logic in a Wago and Beckhoff lab without a compatibility step. The checks cover facts and citations, not plan feasibility.
 
 - **Run 9 (after the deadline check and the new Writer rules):** the Matchmaker picked three different pairs this time (ArmaturaSec, Suncokret Eko and Kristal Voda), including the first joint research project in a batch run, because the researcher's consent covers joint projects and not PhD supervision. None of the three challenges states a time limit, and all three proposals say "none stated", which the deadline check accepted. So this run does not show the Kredo six-month case live; the guard tests cover it offline. The new rules do show: each plan adds a step that checks transfer from the faculty testbed to the company's own platform before claiming results there, and changes to a live line or site wait for the company's safety review. One claim about the proposal itself ("the researcher's consent for this form is ...") was still listed and blocked, so that instruction reduced the problem but did not remove it. The Critic checked 90 claims and approved all three; 0 unsupported claims at release. 26.1 s, $0.09188.
+
+- **Run 10 (retest of the Kredo deadline, `--only=C010-CH2,C003-CH2,C018-CH2`):** the agents chose the same three researchers as runs 6 to 8. The deadline fix worked: the Kredo draft quoted "about six months" and planned Months 1 to 6. But the run exposed two problems, and only DriveLogic was approved. **Kredo and AutomVoj were rejected, and the Critic was wrong both times.** I opened every blocked claim against its record: all 16 were true (for example "AutomVoj a.d. has 212 employees" scored 0.04, and "Kredo Fintech is regulated by the National Bank of Serbia" scored 0.08, though both sentences are in the cited company record). The AutomVoj draft listed 57 claims, and the Critic sent all of them, with the company record repeated in many blocks, in one Decisions request. That is my bug. The Critic now sends at most 8 claims per request, concurrently ([`critic-check.ts`](src/verify/critic-check.ts)); a guard test feeds it the real 57-claim draft. Second, the Writer met the six-month limit by shrinking the whole PhD plan to six months; a new deterministic check requires an industrial PhD plan to run about three years, with the early delivery as its first period. No rejected text was released. 43.6 s, $0.16513. The batching fix still needs a live run to confirm.
 
 The natural runs are too small to measure the Critic, which is why I tested it directly.
 
@@ -281,8 +284,10 @@ Before submitting, I reviewed the entry the way a judge would and found gaps tha
 | The real run 8 Kredo plan: production in year 3, but the company needs it "within about six months" | blocked |
 | "none stated" when the challenge states a limit; a limit the challenge does not contain | both blocked |
 | The same plan with a "Months 1 to 6" delivery period; the correct answer for all 489 challenges | pass |
+| The real run 10 Kredo PhD plan that stops after six months | blocked |
+| The real run 10 AutomVoj draft with 57 claims | sent in 8 requests of at most 8 claims |
 
-20 of 20 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
+24 of 24 pass. These are deterministic checks: they prove the guards fire on these cases, not that the Writer's prose is true in general.
 
 ### Proposals
 

@@ -7,7 +7,10 @@ import { Dataset } from "./data/dataset"
 import { consentedForms, proposalForm } from "./data/consent"
 import { MatchState } from "./runtime"
 import { checkProse } from "./verify/coverage"
-import { checkDeadline, statedDeadline } from "./verify/deadline"
+import { checkDeadline, checkPhdLength, statedDeadline } from "./verify/deadline"
+import { checkClaims } from "./verify/critic-check"
+import { decider } from "./decisions"
+import { TUNING } from "./config"
 
 const ds = Dataset.load()
 const today = new Date("2026-10-30T12:00:00Z")
@@ -117,6 +120,32 @@ console.log("== Deadline fit (verify/deadline.ts)")
 		if (checkDeadline(ds, { challengeId: challenge.id }, { company_deadline: d?.sentence ?? "none stated", plan }).length) wrong++
 	}
 	expect(`correct answers pass for all ${ds.challenges.size} challenges (${limited} state a readable limit)`, wrong === 0, `${wrong} blocked`)
+	// Live run 10: the Writer met Kredo's six-month limit by shrinking the whole PhD plan to six months.
+	const run10 = JSON.parse(readFileSync("docs/evidence/run-10-live/run.json", "utf-8"))
+	const k10 = run10.proposals.find((p: any) => p.key === "R0801xC010-CH2")
+	const short = { ...k10.attempts[k10.attempts.length - 1].proposal, form: "industrial_phd" }
+	expect("the real run 10 Kredo PhD plan that ends after 6 months is sent back", checkProse(ds, kPair, short, today).some((i) => i.why.includes("three years")))
+	const full = { ...short, plan: [...short.plan, { period: "Year 2", work: "w", result: "r", pass_if: "p" }, { period: "Year 3", work: "w", result: "r", pass_if: "p" }] }
+	expect("the same plan continued to Year 3 meets both the six-month limit and the PhD length", checkDeadline(ds, kPair, full).length === 0 && checkPhdLength(full).length === 0)
+	expect("a six-month joint project is not held to the PhD length", checkPhdLength({ ...short, form: "joint_project" }).length === 0)
+}
+
+console.log("== Critic request size (verify/critic-check.ts)")
+{
+	// Live run 10: one request with all 57 claims of the AutomVoj draft scored true facts ("212 employees") near 0.
+	const run10 = JSON.parse(readFileSync("docs/evidence/run-10-live/run.json", "utf-8"))
+	const a = run10.proposals.find((p: any) => p.key === "R0995xC003-CH2").attempts[0].proposal
+	const sizes: number[] = []
+	const original = decider.decide.bind(decider)
+	;(decider as any).decide = async (_input: string, qs: any[]) => (sizes.push(qs.length), qs.map((q) => ({ type: "predicate", name: q.name, probability: 1 })))
+	const checks = await checkClaims(ds, { researcherId: "R0995", companyId: "C003" }, a.claims)
+	;(decider as any).decide = original
+	const answered = checks.filter((c) => c.support !== undefined || c.deterministic.length).length
+	expect(
+		`the run 10 draft's ${a.claims.length} claims go out in requests of at most ${TUNING.claimBatch}`,
+		sizes.length > 1 && Math.max(...sizes) <= TUNING.claimBatch && answered === a.claims.length,
+		`${sizes.length} requests, sizes ${sizes.join("/")}, ${answered} answered`,
+	)
 }
 
 console.log("== Consent (data/consent.ts)")
