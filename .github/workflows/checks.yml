@@ -20,4 +20,4 @@ jobs:
       - run: npm run test:guards
       - run: npm run verify:evidence
       - name: Committed replay file is current
-        run: git diff --exit-code docs/evidence/critic-eval-hard/replay.md
+        run: git diff --exit-code docs/evidence/critic-eval-hard/replay.md docs/evidence/critic-eval-hard/replay.json

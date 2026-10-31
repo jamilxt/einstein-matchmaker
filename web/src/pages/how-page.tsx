@@ -23,7 +23,15 @@ type EvalSet = {
 	misses: { claim: string; support: number; note: string }[]
 	falseBlocks: { kind: string; claim: string }[]
 }
-type Evals = { easy: EvalSet | null; hardBefore: EvalSet | null; hardAfter: EvalSet | null }
+type Replay = {
+	threshold: number
+	planted: number
+	trueClaims: number
+	layers: { name: string; caught: number; fb: number }[]
+	sweep: { t: number; caught: number; fb: number }[]
+	maxPlantedScore: number
+}
+type Evals = { easy: EvalSet | null; hardBefore: EvalSet | null; hardAfter: EvalSet | null; replay?: Replay | null }
 
 const KIND: Record<string, string> = {
 	off_by_one_size: "Staff count off by one",
@@ -204,6 +212,7 @@ export function HowPage({ go }: { go: (hash: string) => void }) {
 						</Card>
 					</div>
 				)}
+				{evals?.replay && <ReplayCard r={evals.replay} />}
 			</section>
 
 			<section className="space-y-5">
@@ -268,5 +277,80 @@ function RunNote({ id, title, stat, children, go }: { id: string; title: string;
 				<p className="mt-auto text-xs font-medium text-primary">Replay</p>
 			</Card>
 		</button>
+	)
+}
+
+// Offline replay of the recorded evaluation scores (docs/evidence/critic-eval-hard/replay.json).
+function ReplayCard({ r }: { r: Replay }) {
+	const [rules, both] = r.layers
+	const allAt = r.sweep.find((s) => s.t > r.threshold && s.caught === r.planted && s.fb === 0)
+	return (
+		<Card>
+			<CardHeader>
+				<CardTitle>Which check does the work, and how close the calls are</CardTitle>
+				<CardDescription>
+					Recomputed with no model call from the scores recorded in this test. Run <code className="font-mono text-xs">npm run verify:evidence</code> to get the same numbers.
+				</CardDescription>
+			</CardHeader>
+			<CardContent className="grid gap-6 md:grid-cols-2">
+				<div className="space-y-3 text-sm">
+					<p className="font-medium">By layer</p>
+					<ul className="space-y-2">
+						<li className="flex items-baseline justify-between gap-3 border-b pb-2">
+							<span>ID and ownership rules alone</span>
+							<span className="font-medium tabular">
+								{rules.caught}/{r.planted}
+							</span>
+						</li>
+						<li className="flex items-baseline justify-between gap-3 border-b pb-2">
+							<span>Rules plus the support score</span>
+							<span className="font-medium tabular">
+								{both.caught}/{r.planted}
+							</span>
+						</li>
+					</ul>
+					<p className="text-muted-foreground">
+						The rules only catch a paper that belongs to someone else. Every other planted error cites the right record and says something false about it, so it takes the support score
+						to catch it.
+					</p>
+				</div>
+				<div className="space-y-3 text-sm">
+					<p className="font-medium">Same scores, other thresholds</p>
+					<table className="w-full text-left">
+						<thead className="text-xs text-muted-foreground">
+							<tr className="border-b">
+								<th className="pb-2 font-normal">Threshold</th>
+								<th className="pb-2 font-normal">Errors caught</th>
+								<th className="pb-2 font-normal">True claims blocked</th>
+							</tr>
+						</thead>
+						<tbody className="tabular">
+							{r.sweep.map((s) => (
+								<tr key={s.t} className={cn("border-b", s.t === r.threshold && "font-medium")}>
+									<td className="py-1.5">
+										{s.t.toFixed(1)}
+										{s.t === r.threshold && (
+											<Badge variant="secondary" className="ml-2">
+												used
+											</Badge>
+										)}
+									</td>
+									<td className="py-1.5">
+										{s.caught}/{r.planted}
+									</td>
+									<td className="py-1.5">
+										{s.fb}/{r.trueClaims}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+					<p className="text-muted-foreground">
+						{allAt && `A threshold of ${allAt.t.toFixed(1)} would also catch the one miss (score ${r.maxPlantedScore.toFixed(2)}). `}I kept {r.threshold.toFixed(1)}, set before the test,
+						rather than tune it to a {r.planted}-case set.
+					</p>
+				</div>
+			</CardContent>
+		</Card>
 	)
 }

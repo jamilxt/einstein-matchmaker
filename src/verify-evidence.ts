@@ -183,6 +183,11 @@ for (const l of layers) log(`      ${l.name}: ${l.caught}/${planted.length} caug
 for (const s of sweep) log(`      threshold ${s.t.toFixed(1)}: ${s.caught}/${planted.length} caught, ${s.fb}/${truths.length} false blocks`)
 log(`      lowest score on a true claim: ${minTrue}; highest score on a planted error: ${maxPlanted}`)
 
+// Structured copy for the UI (served by /api/evals), so the page shows exactly these numbers.
+writeFileSync(
+	join(ROOT, "critic-eval-hard", "replay.json"),
+	JSON.stringify({ threshold, planted: planted.length, trueClaims: truths.length, layers, sweep, minTrueScore: minTrue, maxPlantedScore: maxPlanted }, null, "\t") + "\n",
+)
 writeFileSync(
 	join(ROOT, "critic-eval-hard", "replay.md"),
 	[

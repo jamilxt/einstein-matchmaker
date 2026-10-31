@@ -1,0 +1,46 @@
+{
+	"threshold": 0.5,
+	"planted": 53,
+	"trueClaims": 72,
+	"layers": [
+		{
+			"name": "ID and ownership rules only",
+			"caught": 8,
+			"fb": 0
+		},
+		{
+			"name": "Rules + support score (threshold 0.5)",
+			"caught": 52,
+			"fb": 0
+		}
+	],
+	"sweep": [
+		{
+			"t": 0.3,
+			"caught": 51,
+			"fb": 0
+		},
+		{
+			"t": 0.4,
+			"caught": 52,
+			"fb": 0
+		},
+		{
+			"t": 0.5,
+			"caught": 52,
+			"fb": 0
+		},
+		{
+			"t": 0.6,
+			"caught": 53,
+			"fb": 0
+		},
+		{
+			"t": 0.7,
+			"caught": 53,
+			"fb": 0
+		}
+	],
+	"minTrueScore": 1,
+	"maxPlantedScore": 0.55
+}

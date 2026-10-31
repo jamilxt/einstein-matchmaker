@@ -127,7 +127,10 @@ function evals() {
 			falseBlocks: rows.filter((r: any) => truth(r) && r.blocked).map((r: any) => ({ kind: r.kind, claim: r.claim, evidence: r.evidence, support: r.support })),
 		}
 	}
-	return { easy: read("critic-eval"), hardBefore: read("critic-eval-hard-v1"), hardAfter: read("critic-eval-hard") }
+	// Offline replay of the hard set (written by `npm run verify:evidence`): per-layer catches and a threshold sweep.
+	const replayFile = join("docs/evidence", "critic-eval-hard", "replay.json")
+	const replay = existsSync(replayFile) ? JSON.parse(readFileSync(replayFile, "utf-8")) : null
+	return { easy: read("critic-eval"), hardBefore: read("critic-eval-hard-v1"), hardAfter: read("critic-eval-hard"), replay }
 }
 
 function readBody(req: IncomingMessage): Promise<string> {
